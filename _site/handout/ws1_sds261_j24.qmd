@@ -1,0 +1,8 @@
+---
+title: "WS1 - DB, R, SQL, Oh My!"
+author: "Jo Hardin"
+format: pdf
+---
+
+
+worksheet
