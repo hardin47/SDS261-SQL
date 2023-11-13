@@ -1,0 +1,111 @@
+---
+title: "Schedule"
+description: |
+  Schedule for SDS 261, Data Science, the SQL, Interterm 2024
+execute: 
+  message: false
+  warning: false
+---
+
+```{r}
+#| echo: false
+library(tidyverse)
+library(kableExtra)
+library(knitr)
+```
+
+Here's your roadmap for the semester! Each day, follow the general process outlined below:
+
+-   Enjoy the notes / text <i class="fas fa-book-open"></i>
+
+-   Attend class, review the <i class="fas fa-pencil-alt"></i>worksheet and solutions if you have any questions after completing it during class.
+
+-   Complete the Lab assignment (<i class="fa-solid fa-file-pdf"></i> pdf & <i class="fa-brands fa-r-project"></i> Rmd linked below), <i class="fa-solid fa-paper-plane"></i> submit the assignment via Gradescope accessed on the course Canvas site.  <b>HW is due weekly on Wednesday at 11:59pm.</b>
+
+-   Discuss the reflection questions <i class="fas fa-lightbulb" target="_blank"></i> and ethics considerations <i class="fas fa-balance-scale"></i> (see the <i class="fas fa-book-open"></i> class notes) with your classmates, mentor, and professor.
+
+-   The textbook is <b> <a href = "https://mdsr-book.github.io/mdsr3e/" target = "_blank">Modern Data Science with R, 3rd edition</a></b> by Baumer, Kaplan, and Horton.
+
+
+
+
+```{r echo = FALSE}
+schedule <- tribble(
+  ~`date`, ~topic, ~agenda, ~readings, ~`in lab`, ~resources,
+  "Day 1 <br> 1.08.24", 'starting + <br> R + RStudio + <br> SQL + MySQL + <br> SLR',"• course info <br> • R + SQL", 
+  '<a href="https://st47s.com/SDS261/Notes/intro.html" target = "_blank"><i class="fas fa-book-open"></i> Introduction</a> <br> <a href="https://mdsr-book.github.io/mdsr2e/ch-sql.html" target = "_blank"><i class="fas fa-book-open"></i> MDSR2 15</a>',
+  '<a href="https://m158-lin-mod.netlify.app/slides/2022-01-18-reprodGitwrang.html" target = "_blank"><i class="fas fa-desktop"></i> Git + Tidy</a> <br> <a href="https://m158-lin-mod.netlify.app/slides/wu1_ma158_s22.pdf" target = "_blank"><i class="fas fa-pencil-alt"></i> WU 1</a> <br> <a href="https://m158-lin-mod.netlify.app/slides/wu2_ma158_s22.pdf" target = "_blank"><i class="fas fa-pencil-alt"></i> WU 2</a>  <br> <a href = "http://www.rossmanchance.com/applets/2021/regshuffle/regshuffle.htm" target = "_blank"><i class = "fas fa-gamepad"></i> least sq</a>',
+  '<a href="https://happygitwithr.com/" target = "_blank"><i class="fa fa-comments"></i> happygitwithR</a><br><a href = "https://www.openscapes.org/blog/2022/05/27/github-illustrated-series/" target = "_blank"><i class="fa fa-comments"></i>Why Git? + monsters</a>',
+  
+    "Day 2 <br> 1.09.24", 'SQL verbs',
+  "", 
+  '',
+  '',
+  
+  '',
+    "Day 3 <br> 1.10.24", 'Joining',
+  "", 
+  '',
+  '',
+  '',
+  
+    "Day 4 <br> 1.11.24", 'Regular Expressions I',
+  "", 
+  '',
+  '',
+  '',
+
+  
+    "Day 5 <br> 1.12.24", 'Regular Expressions II',
+  "", 
+  '',
+  'NA',
+  '',
+  
+  
+  "Day 6 <br> 1.16.24", 'Creating a DB',
+  "", 
+  '',
+  '',
+  '',
+  
+  
+    "Day 7 <br> 1.17.24", 'Constructing',
+  "", 
+  '',
+  '<a href="https://sds261-sql.netlify.app/project" target = "_blank"><i class="fas fa-pencil-alt"></i> Project</a>',
+  '',
+  
+  "Day 8 <br> 1.18.24", 'Changing',
+  "", 
+  '',
+  '<a href="https://sds261-sql.netlify.app/project" target = "_blank"><i class="fas fa-pencil-alt"></i> Project</a>',
+  '',  
+  
+    "Day 9 <br> 1.19.24", 'Projects',
+  '<a href="https://sds261-sql.netlify.app/project" target = "_blank"><i class="fas fa-pencil-alt"></i> Project</a>', 
+  '',
+  'NA',
+  '') 
+  
+
+```
+
+
+
+```{r}
+#| echo: false
+#| column: screen-inset
+# can use column: page for the entire page
+# can use column: body-outset to bleed outside the center column of text
+schedule %>% 
+  mutate_all(linebreak) %>% # required for linebreaks to work
+  kbl(escape = FALSE, align = c(rep('l',7))) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"),
+                full_width = TRUE) %>%
+  column_spec(1:6,extra_css = "vertical-align:top;")
+```
+
+
+
+

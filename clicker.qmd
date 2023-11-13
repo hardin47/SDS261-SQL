@@ -1,0 +1,53 @@
+---
+
+---
+
+<!-- the two formats are html and revealjs -->
+
+# Clicker Questions
+
+to go with <b><a href = "https://mdsr-book.github.io/mdsr3e/" target = "_blank">Modern Data Science with R, 3rd edition</a></b> by Baumer, Kaplan, and Horton.
+
+```{=html}
+<style>
+.reveal ol ol {
+   list-style-type: lower-alpha;
+}
+</style>
+```
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# figure options
+knitr::opts_chunk$set(warning = FALSE, message = FALSE,
+  fig.width = 10, fig.asp = 0.618, out.width = "90%",
+  fig.retina = 3, dpi = 300, fig.align = "center"
+)
+
+library(tidyverse)
+
+# Make sure to put a space before and after every slide break "---"
+
+```
+
+---
+
+text here
+
+1. Question about databases.[^1]
+
+   (a) Never heard of it
+   (b) Heard of it, but don't know anything about it
+   (c) Know a little about it (or did once)
+   (d) Know something about it
+   (e) Confident about it
+
+[^1]: preferably d or e.  maybe c on some of them.
+
+---
+
+2. Another questions

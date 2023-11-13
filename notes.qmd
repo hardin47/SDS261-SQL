@@ -1,0 +1,17 @@
+---
+title: "Class Notes"
+description: |
+  Daily class notes for Math 150, Methods in Biostatistics, Pomona College
+format: html
+---
+
+
+Class notes can be found at <a href="http://st47s.com/Math150/Notes/" target="_blank">http://st47s.com/Math150/Notes/</a>.
+
+<p>   </p>
+
+
+:::{.column-page}
+<iframe src="https://st47s.com/Math150/Notes/" title="Class Notes for Math 150" width="1000" height="500" data-external="1"></iframe>
+:::
+
