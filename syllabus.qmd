@@ -4,21 +4,17 @@ format: html
 ---
 
 # Data Science, the SQL
-## SDS 261, Januar 2024
+## SDS 261, January 2024
 
-Class: daily 10-11:30am
-Lab: daily (not Fridays) 1:30-3pm
-Office hours: daily 11:30-1:30pm
-
-Jo Hardin  
-jo.hardin@pomona.edu 
-
+Class: daily 10-11:30am  
+Lab: daily (not Fridays) 1:30-3pm  
+Office hours: daily 11:30-1:30pm 
 
 ```{r}
 #| fig.cap: "Artwork by @allison_horst."
 #| fig.alt: A group of personified tables getting together and seemingly very happy to see each other.
-#| preview = TRUE
-#| echo = FALSE
+#| preview: TRUE
+#| echo: FALSE
 knitr::include_graphics("images/tidydata_6.jpg")
 ```
 
@@ -41,9 +37,9 @@ By the end of the semester, students will:
 * **Introduction to SQL**: gain a fundamental understanding of Structured Query Language (SQL), including its history, purpose, and key components.
 
 * **SQL Querying**:
- - Writing SQL Queries: learn how to write basic SQL queries to retrieve data from a single table.
- - Filtering and Sorting Data: be able to use SQL to filter and sort data based on specific criteria.
- - Joining Tables: understand how to perform inner and outer joins to combine data from multiple tables.
+  - Writing SQL Queries: learn how to write basic SQL queries to retrieve data from a single table.
+  - Filtering and Sorting Data: be able to use SQL to filter and sort data based on specific criteria.
+  - Joining Tables: understand how to perform inner and outer joins to combine data from multiple tables.
 
 * **Inserting and Updating Data**: be able to use SQL to insert new records into a table and update existing records. Students will learn how to use SQL to delete records from a table.
 
