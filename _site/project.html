@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -95,8 +61,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -170,108 +134,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="sql-project" class="level1">
 <h1>SQL Project</h1>
+</section>
+<section id="draft" class="level1">
+<h1>DRAFT</h1>
 <section id="building-a-database" class="level2">
 <h2 class="anchored" data-anchor-id="building-a-database">Building a Database</h2>
-<p>The HELP study was a clinical trial for adult inpatients recruited from a detoxification unit. Patients with no primary care physician were randomized to receive a multidisciplinary assessment and a brief motivational intervention or usual care, with the goal of linking them to primary medical care.</p>
-<p>The primary endpoint was whether or not the individual connected to primary care. That is, the “event” of interest is an appointment with a primary care physician.</p>
-<section id="primay-reference" class="level4">
-<h4 class="anchored" data-anchor-id="primay-reference">Primay Reference:</h4>
-<p>Samet JH, Larson MJ, Horton NJ, Doyle K, Winter M, and Saitz R. <a href="https://pubmed.ncbi.nlm.nih.gov/12653820/" target="_blank">Linking alcohol and drug-dependent adults to primary medical care: A randomized controlled trial of a multi-disciplinary health intervention in a detoxification unit</a>. <strong>Addiction</strong>, 2003; 98(4):509-516. (You should be able to access the article through the Claremont Colleges Library after you login.)</p>
-</section>
+<p>build a database using the skills we’ve covered in the two week course.</p>
 <section id="data" class="level3">
 <h3 class="anchored" data-anchor-id="data">Data</h3>
-<p>is comma delimited at <a href="https://pomona.box.com/s/nty3oxpb8db1y763l6uusxtq4gukbcev" target="_blank">https://pomona.box.com/s/nty3oxpb8db1y763l6uusxtq4gukbcev</a></p>
-<p>The data can be loaded in directly from Box using:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>HELPdata <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://pomona.box.com/shared/static/nty3oxpb8db1y763l6uusxtq4gukbcev"</span>,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">na=</span><span class="fu">c</span>(<span class="st">"NA"</span>, <span class="st">""</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Please use the above dataset in your analysis. However, feel free to look at the many variables that are described in the related dataset <code>HELPfull</code> (available in the <strong>mosaic</strong> package). Some things to notice:</p>
+<p>You will need to find your own (large!) data with at least 3 publicly available tables that have keys connecting them. Additionally, the data should have some strings that need parsing.</p>
 <ul>
-<li>The treatment variable (intervention) is called <code>group</code>.</li>
-<li>The primary endpoint is marked by time: <code>dayslink</code> and censoring indicator: <code>linkstatus</code>.</li>
-<li>While there is certainly interest in the intervention, there is room for additional demographic variables to be associated with linking to primary care.</li>
-<li>The goal of the semester project is to create a Cox Proportional Hazard model which uses explanatory variables to model hazard of “event”.</li>
+<li>use the <strong>rvest</strong> package to scrape html data… it will be messy!</li>
 </ul>
 </section>
 <section id="due-dates" class="level3">
 <h3 class="anchored" data-anchor-id="due-dates">Due Dates</h3>
 <ul>
-<li><p><strong>Tuesday, April 18</strong>. Post to Canvas both the R Markdown file and the corresponding pdf document:</p>
+<li><p><strong>Tuesday, January 16</strong>. Email prof with dataset idea for project. Include the following:</p>
 <ul>
-<li>Include the names of the individuals in the group.</li>
-<li>Some sort of EDA (exploratory data analysis). Do not print the data, but do something that indicates you’ve uploaded the data and know what some of the variables are. You might have some summary statistics or a graph. The idea here is to explore the variables, not to run survival curves. What can you learn about the many many variables? How do they relate to one another? What about all the missingness? This is <em>not</em> an extensive assignment. [Again, the question here is not about the response variable, it’s about all the predictor variables. Learn about the dataset!]</li>
-<li>Outline the “something new” part of the assignment. You should indicate who is doing what, what resources each of you will use to learn about your new topic, and a few sentences on what the topic is or how it relates to survival analysis / the analysis at hand. Additionally, for each “new” thing, provide 1-2 sentences describing what will be <strong>challenging</strong> about learning something new.</li>
+<li>Holistic description of the dataset (a few sentences).</li>
+<li>Explanation of keys that link the data tables.</li>
+<li>Description of the observational units and columns in each data table.</li>
+<li>Full reference for data citation.</li>
+<li>Link to the resources.</li>
 </ul></li>
-<li><p>(Optional) <strong>Monday, May 1</strong>. If you would like me to look at / provide feedback for a completed rough draft, you should turn in the completed draft before May 1st. (If you are a graduating senior who would like feedback, please provide me a draft by <strong>Friday, April 28th</strong>.)</p></li>
-<li><p><strong>Tuesday, May 2</strong>. Last day of class, each person / group will present their visualization, and there will be secret ballot voting for the best visualization of the data / model.</p></li>
-<li><p><strong>Tuesday, May 9</strong>. Complete assignment is due (turn in <strong>both</strong> the Rmd and knitted pdf to Canvas). (If you are a graduating senior, the final assignment is due by <strong>Thursday, May 4</strong>.)</p></li>
+<li><p><strong>End of week 2</strong>. We will have some time in class to work on the project.</p></li>
+<li><p><strong>Tuesday, January 23</strong>. Completed project is due.</p></li>
 </ul>
 </section>
 </section>
 <section id="assignment" class="level2">
 <h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
-<p>The analysis should be done in a complete R Markdown file and posted to your Canvas dropbox. The final report should address the following tasks below but should not enumerate the tasks.</p>
 <ol type="1">
-<li><p>Exploratory data analysis. Graphical and numerical summaries of the data (both explanatory and response variables). Do <em>not</em> attach every single graph you try. Instead, choose only a few images that give the reader a sense of the variables and their relationships.</p></li>
-<li><p>Cox PH model. Using model building techniques, choose a subset of variables (including transformations, interactions, etc.) to find the model which produces the best survival information. The team whose model is best<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> on a hold-out sample will earn an additional 5 points on the project.<br>
-In the final write-up, make sure the final model is very clearly specified.<br>
-The Cox PH analysis should include: an interpretation of your final survival model including a discussion of the sign of the coefficients (note: feel free to use interactions) Which variable(s) are in? Which are out? What do you conclude about linking to primary care? Is there anything worth mentioning about how you got to your final model? What can you say about causation? What can you say about generalizing to a larger population?</p></li>
-<li><p>Something new. Each individual in the class will learn a new idea related to survival analysis (see below). The new part will be assessed on your ability to explain the new idea. That is, you must indicate a complete understanding of the topic as well as an adequate use of the method applied to the dataset.</p></li>
-<li><p>A visualization to enter into the competition. The visualization could be of the EDA variety, or it could be based on the model / results. The different visualizations will be presented to the class on the last day of the semester (May 2). The team whose visualization is best (secret ballot by the class) will earn an additional 5 points on the project.</p></li>
-<li><p>The final report which ties it all together should have an introduction, methods, results, discussion. The <a href="https://m150-method-biostat.netlify.app/handout/project_rubric.docx" target="_blank">grading rubric</a> should help you put together the final written project.</p></li>
+<li><p>Input data</p></li>
+<li><p>Describe creation / construction / changing of the DB using DuckDB or MySQL.</p></li>
+<li><p>Some data wrangling in SQL and R (comparison). Should include some joining.</p></li>
+<li><p>Something with regular expressions</p></li>
+<li><p>Some analysis (probably in R). Must include at least one visualization. For fun, you could make a Shiny App (not required).</p></li>
 </ol>
-</section>
-<section id="something-new" class="level2">
-<h2 class="anchored" data-anchor-id="something-new">Something New:</h2>
-<p>Each individual should have some analysis that goes beyond a Cox PH model. For your analysis, you should give details of what is going on, how it is relevant, what are the technical conditions, what are the conclusions, etc. Your analysis should indicate a sense that you understand and that you can communicate the results to a possible client. Some possible topics to investigate include:</p>
-<ul>
-<li>Investigation of the proportional hazards assumption (what does the R function <code>cox.zph()</code> do?)</li>
-<li>Exponential or Weibull PH regression (parametric survival model)</li>
-<li>Deriving / detailing AIC &amp; BIC for model selection on Cox PH</li>
-<li>Power analysis (a simulation?)</li>
-<li>Derivation of the sample size calculation for the log rank test (and application to the data)</li>
-<li>An analysis of the Schoenfeld residuals (<strong>how are they calculated</strong> and why is that calculation relevant?)</li>
-<li>Bootstrapping the survival model (what are the assumptions? what do you conclude?)</li>
-<li>An analysis of possible time dependent covariates (what should you see? what do you see? do transformations help?)</li>
-<li>An analysis / understanding / simulation of the multiple comparisons issues for assessing many different models (or other exploratory hypotheses).</li>
-<li>Andersen-Gill extension of the Cox PH model for time-varying covariates (available in <strong>rms</strong> R package). [Note: A-G isn’t meant to test PH, per se, but rather it allows for variables that are time varying.]</li>
-<li>Another topic related to survival analysis that you find interesting.</li>
-</ul>
-</section>
-<section id="r-thoughts" class="level2">
-<h2 class="anchored" data-anchor-id="r-thoughts">R thoughts</h2>
-<ul>
-<li>Use R Markdown to create a reproducible analysis. Anyone should be able to run your analysis using only the .Rmd file.</li>
-<li>Turn in both .Rmd and .pdf files for your final analysis.</li>
-<li>If you are working in pairs, the project is extended in two ways. 1. You must <em>both</em> be able to work on the files. Ideally, you will share your work via GitHub or other software which tracks changes and coordinates work. 2. You must do <em>two</em> new items (one each).</li>
-<li>Note that the event of interest is “visit to primary care physician.”</li>
-<li>Be as creative as possible trying to think about how you might like to graphically display the data. If you come up with a cool idea for a graph but don’t know how to implement it, <strong>please let me know, and I will write the code for you!!</strong></li>
-<li>Please do not re-code the variables or change the variable names outside of R. You may, however, transform (<code>mutate()</code>) the variables within your R code (that is, for example, if you wanted to divide months by 12 to have years, or square a variable, etc.).</li>
-</ul>
-<section id="assessment" class="level4">
-<h4 class="anchored" data-anchor-id="assessment">Assessment:</h4>
-<ul>
-<li>Your primary assessment will be based on the above items (modeling, understanding of new topic, additional analysis, interpretation).</li>
-<li>Additionally there will be two competitions. Winning either will add 5 points (out of 100) to your score.
-<ul>
-<li>Graphic: the class will vote on who has the best graphic.</li>
-<li>Model: using a holdout sample (I only gave you part of the data), I will assess your final model. The group whose model best describes the holdout sample (as measured by the <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4886856/" target="_blank">c-index</a>) will win the model prize.</li>
-</ul></li>
-</ul>
 
 
 </section>
 </section>
-</section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>measured by the <span class="math inline">\(c\)</span> index<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

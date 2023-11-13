@@ -5,103 +5,48 @@ format: html
 
 # SQL Project
 
+# DRAFT
+
+
 ## Building a Database
-The HELP study was a clinical trial for adult inpatients recruited from a detoxification unit. Patients with no primary care physician were randomized to receive a multidisciplinary assessment and a brief motivational intervention or usual care, with the goal of linking them to primary medical care.
 
-
-The primary endpoint was whether or not the individual connected to primary care.  That is, the "event" of interest is an appointment with a primary care physician.
-
-
-#### Primay Reference:
-Samet JH, Larson MJ, Horton NJ, Doyle K, Winter M, and Saitz R. <a href = "https://pubmed.ncbi.nlm.nih.gov/12653820/" target = "_blank">Linking alcohol and drug-dependent adults to primary medical care: A randomized controlled trial of a multi-disciplinary health intervention in a detoxification unit</a>. **Addiction**, 2003; 98(4):509-516. (You should be able to access the article through the Claremont Colleges Library after you login.)
+build a database using the skills we've covered in the two week course. 
 
 
 ### Data
-is comma delimited at <a href = "https://pomona.box.com/s/nty3oxpb8db1y763l6uusxtq4gukbcev" target = "_blank">https://pomona.box.com/s/nty3oxpb8db1y763l6uusxtq4gukbcev</a>
+You will need to find your own (large!) data with at least 3 publicly available tables that have keys connecting them.  Additionally, the data should have some strings that need parsing.
 
-The data can be loaded in directly from Box using:
-
-```{r}
-#| warning: false
-#| message: false
-
-HELPdata <- readr::read_csv("https://pomona.box.com/shared/static/nty3oxpb8db1y763l6uusxtq4gukbcev",
-                     na=c("NA", ""))
-```
+* use the **rvest** package to scrape html data... it will be messy!
 
 
-Please use the above dataset in your analysis.  However, feel free to look at the many variables that are described in the related dataset `HELPfull` (available in the **mosaic** package).  Some things to notice:
-
-* The treatment variable (intervention) is called `group`.
-* The primary endpoint is marked by time: `dayslink` and censoring indicator: `linkstatus`.
-* While there is certainly interest in the intervention, there is room for additional demographic variables to be associated with linking to primary care.
-* The goal of the semester project is to create a Cox Proportional Hazard model which uses explanatory variables to model hazard of "event".
 
 ### Due Dates
-* **Tuesday, April 18**. Post to Canvas both the R Markdown file and the corresponding pdf document:  
-   * Include the names of the individuals in the group.
-   * Some sort of EDA (exploratory data analysis).  Do not print the data, but do something that indicates you've uploaded the data and know what some of the variables are.  You might have some summary statistics or a graph.  The idea here is to explore the variables, not to run survival curves.  What can you learn about the many many variables?  How do they relate to one another?  What about all the missingness? This is *not* an extensive assignment.  [Again, the question here is not about the response variable, it's about all the predictor variables.  Learn about the dataset!]
-   * Outline the "something new" part of the assignment.  You should indicate who is doing what, what resources each of you will use to learn about your new topic, and a few sentences on what the topic is or how it relates to survival analysis / the analysis at hand.  Additionally, for each "new" thing, provide 1-2 sentences describing what will be **challenging** about learning something new.
+* **Tuesday, January 16**. Email prof with dataset idea for project.  Include the following:
+   * Holistic description of the dataset (a few sentences).
+   * Explanation of keys that link the data tables.
+   * Description of the observational units and columns in each data table. 
+   * Full reference for data citation.
+   * Link to the resources.
 
-* (Optional) **Monday, May 1**. If you would like me to look at / provide feedback for a completed rough draft, you should turn in the completed draft before May 1st. (If you are a graduating senior who would like feedback, please provide me a draft by **Friday, April 28th**.)
+* **End of week 2**. We will have some time in class to work on the project.
 
-* **Tuesday, May 2**. Last day of class, each person / group will present their visualization, and there will be secret ballot voting for the best visualization of the data / model.
+* **Tuesday, January 23**. Completed project is due.
 
-* **Tuesday, May 9**.  Complete assignment is due (turn in **both** the Rmd and knitted pdf to Canvas). (If you are a graduating senior, the final assignment is due by **Thursday, May 4**.)
 
 ## Assignment
-The analysis should be done in a complete R Markdown file and posted to your Canvas dropbox.   The final report should address the following tasks below but should not enumerate the tasks.
 
 
-1. Exploratory data analysis.  Graphical and numerical summaries of the data (both explanatory and response variables).  Do *not* attach every single graph you try.  Instead, choose only a few images that give the reader a sense of the variables and their relationships.
-2. Cox PH model.  Using model building techniques, choose a subset of variables (including transformations, interactions, etc.) to find the model which produces the best survival information.  The team whose model is best^[measured by the $c$ index] on a hold-out sample will earn an additional 5 points on the project.  
-In the final write-up, make sure the final model is very clearly specified.  
-The Cox PH analysis should include: an interpretation of your final survival model including a discussion of the sign of the coefficients (note:  feel free to use interactions)  Which variable(s) are in?  Which are out?  What do you conclude about linking to primary care?  Is there anything worth mentioning about how you got to your final model? What can you say about causation?  What can you say about generalizing to a larger population?
-
-3. Something new.  Each individual in the class will learn a new idea related to survival analysis (see below).   The new part will be assessed on your ability to explain the new idea.  That is, you must indicate a complete understanding of the topic as well as an adequate use of the method applied to the dataset.
-
-4. A visualization to enter into the competition.  The visualization could be of the EDA variety, or it could be based on the model / results.  The different visualizations will be presented to the class on the last day of the semester (May 2).  The team whose visualization is best (secret ballot by the class) will earn an additional 5 points on the project.
-
-5. The final report which ties it all together should have an introduction, methods, results, discussion.  The <a href = "https://m150-method-biostat.netlify.app/handout/project_rubric.docx" target = "_blank">grading rubric</a> should help you put together the final written project.
 
 
-## Something New:
-Each individual should have some analysis that goes beyond a Cox PH model.   For your analysis, you should give details of what is going on, how it is relevant, what are the technical conditions, what are the conclusions, etc.  Your analysis should indicate a sense that you understand and that you can communicate the results to a possible client.  Some possible topics to investigate include:
+1. Input data
 
-* Investigation of the proportional hazards assumption  (what does the R function `cox.zph()` do?)
-* Exponential or Weibull PH regression (parametric survival model)
-* Deriving / detailing AIC & BIC for model selection on Cox PH
-* Power analysis  (a simulation?)
-* Derivation of the sample size calculation for the log rank test (and application to the data)
-* An analysis of the Schoenfeld residuals  (**how are they calculated** and why is that calculation relevant?)
-* Bootstrapping the survival model (what are the assumptions?  what do you conclude?)
-* An analysis of possible time dependent covariates (what should you see? what do you see? do transformations help?)
-* An analysis / understanding / simulation of the multiple comparisons issues for assessing many different models (or other exploratory hypotheses).
-* Andersen-Gill extension of the Cox PH model for time-varying covariates (available in **rms** R package).  [Note: A-G isn't meant to test PH, per se, but rather it allows for variables that are time varying.]
-* Another topic related to survival analysis that you find interesting.
+2. Describe creation / construction / changing of the DB using DuckDB or MySQL.
 
-```{r}
-#| echo: false
-#| eval: false
+3. Some data wrangling in SQL and R (comparison).  Should include some joining.
 
-%\item
-%A description / rationale / derivation of the (early) stopping criteria and why it was used in this study 
-%\item
-%Time to event plot
-```
+4. Something with regular expressions
 
-## R thoughts
-* Use R Markdown to create a reproducible analysis.  Anyone should be able to run your analysis using only the .Rmd file.
-* Turn in both .Rmd and .pdf files for your final analysis.
-* If you are working in pairs, the project is extended in two ways.  1.  You must *both* be able to work on the files.  Ideally, you will share your work via GitHub or other software which tracks changes and coordinates work.  2. You must do *two* new items (one each).
-* Note that the event of interest is "visit to primary care physician."
-* Be as creative as possible trying to think about how you might like to graphically display the data.  If you come up with a cool idea for a graph but don't know how to implement it, **please let me know, and I will write the code for you!!**
-* Please do not re-code the variables or change the variable names outside of R. You may, however, transform (`mutate()`) the variables within your R code (that is, for example, if you wanted to divide months by 12 to have years, or square a variable, etc.).  
+5. Some analysis (probably in R).  Must include at least one visualization.  For fun, you could make a Shiny App (not required).
 
 
-#### Assessment:
-* Your primary assessment will be based on the above items (modeling, understanding of new topic, additional analysis, interpretation).
-* Additionally there will be two competitions.  Winning either will add 5 points (out of 100) to your score.
-   * Graphic:  the class will vote on who has the best graphic.
-   * Model:  using a holdout sample (I only gave you part of the data), I will assess your final model.  The group whose model best describes the holdout sample (as measured by the <a href = "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4886856/" target = "_blank">c-index</a>) will win the model prize.
 
