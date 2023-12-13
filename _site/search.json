@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Schedule",
     "section": "",
-    "text": "Here’s your roadmap for the semester! Each day, follow the general process outlined below:\n\nEnjoy the notes / text \nAttend class, review the worksheet and solutions if you have any questions after working on it during class.\nComplete the Lab assignment ( html &  qmd linked below),  submit the assignment before 10am the following class period.\nDiscuss the reflection questions  and ethics considerations  (see the  class notes) with your classmates and professor.\nThe textbook is  Modern Data Science with R, 3rd edition by Baumer, Kaplan, and Horton.\n\n\n\n\n\n\n\n\n\n\n\n\n\ndate\ntopic\nin class\nin lab\nresources\n\n\n\n\nDay 1\n1.08.24\nstarting +\nR + RStudio +\nSQL + MySQL\n Introduction\n MDSR2 15\n What is a DB?\n WS 1\n Best practices\ndbplyr package\n\n\nDay 2\n1.09.24\nSQL verbs\n\n Lab1-DB-html\n Lab1-DB-qmd\n\n\n\nDay 3\n1.10.24\nJoining\n\n\n\n\n\nDay 4\n1.11.24\nRegular Expressions I\n\n\n\n\n\nDay 5\n1.12.24\nRegular Expressions II\n\n(no lab)\n\n\n\nDay 6\n1.16.24\nCreating a DB\n\nemail prof with dataset idea for project\n\n\n\nDay 7\n1.17.24\nConstructing a DB\n\n\n\n\n\nDay 8\n1.18.24\nChanging a DB\n\n Project\n\n\n\nDay 9\n1.19.24\n Project\n\n(no lab)\n\n\n\n\n\n\n\n\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/"
+    "text": "Here’s your roadmap for the semester! Each day, follow the general process outlined below:\n\nEnjoy the notes / text \nAttend class, review the  worksheet and solutions if you have any questions after working on it during class.\nComplete the Lab assignment ( html &  qmd linked below),  submit the assignment before 10am the following class period.\nDiscuss the reflection questions  and ethics considerations  (see the  class notes) with your classmates and professor.\nThe textbooks are  Modern Data Science with R, 3rd edition by Baumer, Kaplan, and Horton and  R for Data Science, 2nd edition by Wickham, Çetinkaya-Rundel, and Grolemund.\n\n\n\n\n\n\n\n\n\n\n\n\n\ndate\ntopic\nin class\nin lab\nresources\n\n\n\n\nDay 1\n1.08.24\nstarting +\nR + RStudio +\nSQL + MySQL\n Introduction\n  MDSR3 15.1\n RDS2 21.2\n What is a DB?\n WS 1\n\n dbplyr package\n\n\nDay 2\n1.09.24\nSQL verbs\n\n Lab1-DB-html\n Lab1-DB-qmd\n\n\n\nDay 3\n1.10.24\nJoining\n\n\n\n\n\nDay 4\n1.11.24\nRegular Expressions I\n\n\n\n\n\nDay 5\n1.12.24\nRegular Expressions II\n\n(no lab)\n\n\n\nDay 6\n1.16.24\nCreating a DB\n\nemail prof with dataset idea for project\n\n\n\nDay 7\n1.17.24\nConstructing a DB\n\n\n\n\n\nDay 8\n1.18.24\nChanging a DB\n\n Project\n\n\n\nDay 9\n1.19.24\n Project\n\n(no lab)\n\n\n\n\n\n\n\n\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/"
   },
   {
     "objectID": "clicker_study.html",
@@ -187,5 +187,19 @@
     "title": "syllabus",
     "section": "",
     "text": "Class: daily 10-11:30am\nLab: daily (not Fridays) 1:30-3pm\nOffice hours: daily 11:30-1:30pm\n\n\n\n\n\nArtwork by @allison_horst."
+  },
+  {
+    "objectID": "handout/lab2_R_SQL_sds261_j24.html",
+    "href": "handout/lab2_R_SQL_sds261_j24.html",
+    "title": "Lab2 - SQL in R",
+    "section": "",
+    "text": "do something with NA / NULL. see hadley’s comments in the where section. https://r4ds.hadley.nz/databases#where\ndo something with distinct()\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/"
+  },
+  {
+    "objectID": "handout/lab4_joins_sds261_j24.html",
+    "href": "handout/lab4_joins_sds261_j24.html",
+    "title": "Lab4 - joins",
+    "section": "",
+    "text": "according to Ben: Yelp data does not have referential integrity, and you can find reviews written by users who don’t exist and/or about restaurants that aren’t in the other table.\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/"
   }
 ]

@@ -1,5 +1,5 @@
 ---
-title: "Lab1 - working with Databases"
+title: "Lab1 - working with databases"
 author: "your name goes here"
 date: "due 10am Tuesday, January 9, 2024"
 ---

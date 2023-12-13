@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Schedule for SDS 261, Data Science, the SQL, Interterm 2024, Smith College">
+<meta name="author" content="your name goes here">
 
-<title>Data Science, the SQL - Schedule</title>
+<title>Data Science, the SQL - Lab4 - joins</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,25 +24,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -64,11 +64,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-
 
 </head>
 
@@ -80,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a href="https://sds261-sql.netlify.app/" class="navbar-brand navbar-brand-logo">
-    <img src="./images/st47s.png" alt="" class="navbar-logo">
+    <img src="../images/st47s.png" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="https://sds261-sql.netlify.app/">
     <span class="navbar-title">Data Science, the SQL</span>
@@ -93,19 +88,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html" rel="" target="">
+    <a class="nav-link" href="../syllabus.html" rel="" target="">
  <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html" rel="" target="">
+    <a class="nav-link" href="../notes.html" rel="" target="">
  <span class="menu-text">Class Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./clicker_study.html" rel="" target="">
+    <a class="nav-link" href="../clicker_study.html" rel="" target="">
  <span class="menu-text">Clicker Q</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./project.html" rel="" target="">
+    <a class="nav-link" href="../project.html" rel="" target="">
  <span class="menu-text">Final Project</span></a>
   </li>  
 </ul>
@@ -121,23 +116,30 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Schedule</h1>
+<h1 class="title">Lab4 - joins</h1>
 </div>
 
-<div>
-  <div class="description">
-    <p>Schedule for SDS 261, Data Science, the SQL, Interterm 2024, Smith College</p>
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>your name goes here </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Invalid Date</p>
+    </div>
+  </div>
   
     
   </div>
@@ -145,124 +147,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="cell">
-<div class="cell-output-display">
-
-</div>
-</div>
-<p>Here’s your roadmap for the semester! Each day, follow the general process outlined below:</p>
-<ul>
-<li><p>Enjoy the notes / text <i class="fas fa-book-open"></i></p></li>
-<li><p>Attend class, review the <i class="fas fa-pencil-alt"></i> worksheet and solutions if you have any questions after working on it during class.</p></li>
-<li><p>Complete the Lab assignment (<i class="fa-solid fa-code"></i> html &amp; <i class="fa-brands fa-r-project"></i> qmd linked below), <i class="fa-solid fa-paper-plane"></i> submit the assignment before 10am the following class period.</p></li>
-<li><p>Discuss the reflection questions <i class="fas fa-lightbulb" target="_blank"></i> and ethics considerations <i class="fas fa-balance-scale"></i> (see the <i class="fas fa-book-open"></i> class notes) with your classmates and professor.</p></li>
-<li><p>The textbooks are <b> <a href="https://mdsr-book.github.io/mdsr3e/" target="_blank">Modern Data Science with R, 3rd edition</a></b> by Baumer, Kaplan, and Horton and <b> <a href="https://r4ds.hadley.nz/" target="_blank">R for Data Science, 2nd edition</a></b> by Wickham, Çetinkaya-Rundel, and Grolemund.</p></li>
-</ul>
-<div class="cell page-columns page-full">
-<div class="cell-output-display column-body-outset">
-<table class="table table-striped table-hover table-sm small" data-quarto-postprocess="true">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">date</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">topic</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">in class</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">in lab</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">resources</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top;">Day 1<br>
-1.08.24</td>
-<td style="text-align: left; vertical-align: top;">starting +<br>
-R + RStudio +<br>
-SQL + MySQL</td>
-<td style="text-align: left; vertical-align: top;"><i class="fa-solid fa-pen-to-square" aria-label="pen-to-square"></i> <a href="https://st47s.com/SDS261/Notes/intro.html" target="_blank">Introduction</a><br>
-<em></em> <i class="fa-solid fa-book-open" aria-label="book-open"></i> <a href="https://mdsr-book.github.io/mdsr3e/15-sqlI.html#sec-dplyr-sql" target="_blank">MDSR3 15.1</a><br>
-<i class="fa-solid fa-book-open" aria-label="book-open"></i> <a href="https://r4ds.hadley.nz/databases.html#database-basics" target="_blank">RDS2 21.2</a><br>
-<i class="fa-solid fa-desktop" aria-label="desktop"></i> <a href="https://sds261-sql.netlify.app/slides/2024-01-08-db.html" target="_blank">What is a DB?</a><br>
-<i class="fa-solid fa-pencil" aria-label="pencil"></i> <a href="https://sds261-sql.netlify.app/handouts/ws1_sds261_j24.pdf" target="_blank">WS 1</a></td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"><i class="fa-solid fa-comments" aria-label="comments"></i> <a href="https://dbplyr.tidyverse.org/articles/dbplyr.html" target="_blank"><strong>dbplyr</strong> package</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top;">Day 2<br>
-1.09.24</td>
-<td style="text-align: left; vertical-align: top;">SQL verbs</td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"><a href="https://sds261-sql.netlify.app/handouts/lab1_db_sds261_j24.html" target="_blank"><em></em> Lab1-DB-html</a><br>
-<a href="https://sds261-sql.netlify.app/handouts/lab1_db_sds261_j24.qmd" target="_blank"><em></em> Lab1-DB-qmd</a></td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top;">Day 3<br>
-1.10.24</td>
-<td style="text-align: left; vertical-align: top;">Joining</td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top;">Day 4<br>
-1.11.24</td>
-<td style="text-align: left; vertical-align: top;">Regular Expressions I</td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top;">Day 5<br>
-1.12.24</td>
-<td style="text-align: left; vertical-align: top;">Regular Expressions II</td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;">(no lab)</td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top;">Day 6<br>
-1.16.24</td>
-<td style="text-align: left; vertical-align: top;">Creating a DB</td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;">email prof with dataset idea for <a href="https://sds261-sql.netlify.app/project" target="_blank"><em></em>project</a></td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top;">Day 7<br>
-1.17.24</td>
-<td style="text-align: left; vertical-align: top;">Constructing a DB</td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top;">Day 8<br>
-1.18.24</td>
-<td style="text-align: left; vertical-align: top;">Changing a DB</td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"><a href="https://sds261-sql.netlify.app/project" target="_blank"><em></em> Project</a></td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top;">Day 9<br>
-1.19.24</td>
-<td style="text-align: left; vertical-align: top;"><a href="https://sds261-sql.netlify.app/project" target="_blank"><em></em> Project</a></td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;">(no lab)</td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
+<p>according to Ben: Yelp data does not have referential integrity, and you can find reviews written by users who don’t exist and/or about restaurants that aren’t in the other table.</p>
 
 
 
