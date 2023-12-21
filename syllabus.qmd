@@ -26,11 +26,11 @@ knitr::include_graphics("images/tidydata_6.jpg")
 :::{.callout-tip icon=false}
 ## Anonymous Feedback
 
-As someone who is, myself, constantly learning and growing in many ways, I welcome your feedback about the course, the classroom dynamics, or anything else you'd like me to know.  There is a link to an anonymous feedback form on the landing page of our Canvas webpage.  Please provide me with feedback at any time!  
+As someone who is, myself, constantly learning and growing in many ways, I welcome your feedback about the course, the classroom dynamics, or anything else you'd like me to know.  I have emailed you a link to an anonymous feedback form.  Please feel free to provide me with feedback at any time!  
 :::
 
 ## Student Learning Outcomes.
-By the end of the semester, students will:
+By the end of the term, students will:
 
 * **Database Concepts**: be able to explain basic database concepts such as tables, records, fields, and relationships.
 
@@ -41,23 +41,22 @@ By the end of the semester, students will:
   - Filtering and Sorting Data: be able to use SQL to filter and sort data based on specific criteria.
   - Joining Tables: understand how to perform inner and outer joins to combine data from multiple tables.
 
-* **Inserting and Updating Data**: be able to use SQL to insert new records into a table and update existing records. Students will learn how to use SQL to delete records from a table.
+* **Inserting and Updating Data**: be able to use SQL to insert new records into a table and update existing records. Use SQL to delete records from a table.
 
-* **Basics of Regular Expressions**: understand the fundamental concepts of regular expressions.  The will be able to identify and use basic metacharacters for pattern matching to write simple regular expressions for text search and matching.
+* **Basics of Regular Expressions**: understand the fundamental concepts of regular expressions.  Identify and use basic metacharacters for pattern matching to write simple regular expressions for text search and matching.
 
-* **Advanced Patterns and Quantifiers**: be able to apply quantifiers to match patterns of varying lengths.  They will explore alternation for matching multiple patterns and understand and use character classes for efficient matching.
 
 
 ## Inclusion Goals^[adapted from Monica Linden, Brown University]
 
-In an ideal world, science would be objective. However, much of science is subjective and is historically built on a small subset of privileged voices. In this class, we will make an effort to recognize how science (and statistics!) has played a role in both understanding diversity as well as in promoting systems of power and privilege. I acknowledge that there may be both overt and covert biases in the material due to the lens with which it was written, even though the material is primarily of a scientific nature. Integrating a diverse set of experiences is important for a more comprehensive understanding of science. I would like to discuss issues of diversity in statistics as part of the course from time to time.
+In an ideal world, science would be objective. However, much of science is subjective and is historically built on a small subset of privileged voices. In this class, we will make an effort to recognize how science (and data science!) has played a role in both understanding diversity as well as in promoting systems of power and privilege. I acknowledge that there may be both overt and covert biases in the material due to the lens with which it was written, even though the material is primarily of a scientific nature. Integrating a diverse set of experiences is important for a more comprehensive understanding of science. I would like to discuss issues of diversity in statistics as part of the course from time to time.
 
 Please contact me if you have any suggestions to improve the quality of the course materials.
 
 Furthermore, I would like to create a learning environment for my students that supports a diversity of thoughts, perspectives and experiences, and honors your identities (including race, gender, class, sexuality, religion, ability, etc.) To help accomplish this:
 
 * If you have a name and/or set of pronouns that differ from those that appear in your official records, please let me know!
-* If you feel like your performance in the class is being impacted by your experiences outside of class, please don't hesitate to come and talk with me.  You can also relay information to me via your mentors.  I want to be a resource for you. If you prefer to speak with someone outside of the course, the math liaisons, Dean of Students, or QSC staff are all excellent resources.
+* If you feel like your performance in the class is being impacted by your experiences outside of class, please don't hesitate to come and talk with me.  You can also relay information to me via your mentors.  I want to be a resource for you. 
 
 I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please talk to me about it.  As a participant in course discussions, you should also strive to honor the diversity of your classmates.
 
@@ -66,11 +65,12 @@ I (like many people) am still in the process of learning about diverse perspecti
 ##### Text: 
 <b> <a href = "https://mdsr-book.github.io/mdsr3e/" target = "_blank">Modern Data Science with R, 3rd edition</a></b> by Baumer, Kaplan, and Horton.
 
+<b><a href = "https://r4ds.hadley.nz/" target = "_blank">R for Data Science, 2nd edition</a></b> by Wickham, Çetinkaya-Rundel, and Grolemund.
 
 :::{.callout-tip icon=false}
 ## Dates
 
-Final Project due – Tuesday, January 23rd 
+Final Project due Tuesday, January 23rd 
 :::
 
 #### R links:
@@ -90,29 +90,38 @@ Final Project due – Tuesday, January 23rd
    * <a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf" target="_blank">R Markdown</a>
    * <a href="https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf" target="_blank">RStudio IDE</a>
 
+#### SQL links
+
+* W3 schools <a href = "https://www.w3schools.com/sql/sql_intro.asp" target = "_blank">Introduction to SQL</a>
+* <a href = "https://cran.r-project.org/web/views/Databases.html" target = "_blank">R packages</a> for working with databases
+* <a href = "https://dbplyr.tidyverse.org/articles/dbplyr.html" target = "_blank">Introduction to `dbplyr`</a>
+
+#### Regular expression links
+
+* <a href = "https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html" target = "_blank">**stringr** vignette</a>
+* <a href = "https://stringr.tidyverse.org/" target = "_blank">**stringr** package</a>
+* Jenny Bryan's <a href = "https://stat545.com/character-vectors.html" target = "_blank">STAT 545 notes</a>
+* Jenny Bryan's <a href = "http://stat545.com/block022_regular-expression.html" target = "_blank">STAT 545 lab</a>
+* Hadley Wickham's book <a href = "https://r4ds.had.co.nz/strings.html" target = "_blank">R for Data Science</a>
+* <a href = "http://regexpal.com/" target = "_blank">regexpal</a>   
+* <a href = "http://www.regexr.com/" target = "_blank">RegExr</a>
+* <a href = "https://regexone.com/" target = "_balnk">RegexOne</a>
+
+
+
+
+
 #### Using R (through the RStudio IDE)
 
-R will be used for all homework assignments.
-You can use R on the Pomona server: <a href = "https://rstudio.pomona.edu/" target = "_blank">https://rstudio.pomona.edu/</a> (All Pomona students will be able to log in immediately.
-Non-Pomona students need to get Pomona login information.)
+R will be used for many assignments.
+You can use R on the Smith server: <a href = "https://rstudio.smith.edu/" target = "_blank">https://rstudio.smith.edu/</a>.
 
-Alternatively, feel free to download R onto your own computer.
-R is freely available at <a href = "http://www.r-project.org/" target = "_blank">http://www.r-project.org/</a> and is already installed on college computers.
-Additionally, you are required to install RStudio and turn in all R assignments using RMarkdown. <a href = "http://rstudio.org/" target = "_blank">http://rstudio.org/</a>.
-(You can use the LaTeX compiler at:  <a href = "https://yihui.name/tinytex/" target = "_blank">https://yihui.name/tinytex/</a>)
+Alternatively, feel free to download both R and RStudio onto your own computer.
+R is freely available at <a href = "http://www.r-project.org/" target = "_blank">http://www.r-project.org/</a>; RStudio is also free and allows you to turn in all R assignments using Quarto <a href = "http://rstudio.org/" target = "_blank">http://rstudio.org/</a>.
 
+#### GitHub
 
-#### Canvas
-
-This course uses Canvas as the main learning management system. The Canvas login is <a href = "http://canvas.pomona.edu/" target = "_blank">http://canvas.pomona.edu/</a>.
-If you haven't used Canvas before, I recommend bookmarking <a href = "https://community.canvaslms.com/t5/Student-Guide/tkb-p/student" target = "_blank">Canvas Student Guides</a> and <a href = "https://community.canvaslms.com/t5/Video-Guide/tkb-p/videos#student-videos" target = "_blank">Canvas Student Videos</a> for easy reference to tips and tutorials.
-If you run into an issue with Canvas, help is available.
-
-* From anywhere in Canvas, select the Help button, located in the blue Global Navigation menu on the left.
-   - Click on Pomona Service Desk - Canvas Support to report a problem by submitting a service request ticket. Be sure to include "Canvas Issue" in your subject line.
-   - For additional assistance, you can click on Ask Your Instructor or simply send me an email.
-   
-Please be proactive and reach out for help as soon as possible to resolve the issue you are experiencing.
+Assignments will be turned in using GitHub.  See <a href = "https://sds261-sql.netlify.app/syllabus" target = "_blank">instructions for using GitHub</a> on the course website.
 
 ## Important Features
 
@@ -122,5 +131,9 @@ The prerequisite for this class is SDS 192, Introduction to Data Science.
 
 #### Labs:
 
-Labs will take place on most days with the lab write-up due right before the following class period. 
+Labs will take place on most days with the lab write-up due just before the following class period. See <a href = "https://sds261-sql.netlify.app/syllabus" target = "_blank">instructions for using GitHub</a> on the course website for how to turn in assignments.
+
+#### Grading:
+
+The class expectations are that you show up for class and labs and turn in a final project. A successful final project is required to pass the class.  Additionally, you should not miss more than 1 or 2 classes nor should you miss turning in more than 1 or 2 labs.
 

@@ -6,9 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Schedule for SDS 261, Data Science, the SQL, Interterm 2024, Smith College">
+<meta name="author" content="Jo Hardin">
+<meta name="author" content="original content by Ben Wiedermann">
+<meta name="description" content="Huge thanks to Ben Wiedermann at HMC for sharing the following.">
 
-<title>Data Science, the SQL - Schedule</title>
+<title>Data Science, the SQL - Working on assignments with GitHub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,11 +66,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-
 
 </head>
 
@@ -109,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Final Project</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./github.html" rel="" target="">
+    <a class="nav-link active" href="./github.html" rel="" target="" aria-current="page">
  <span class="menu-text">GitHub</span></a>
   </li>  
 </ul>
@@ -129,19 +126,40 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Schedule</h1>
+<h1 class="title">Working on assignments with GitHub</h1>
 </div>
 
 <div>
   <div class="description">
-    <p>Schedule for SDS 261, Data Science, the SQL, Interterm 2024, Smith College</p>
+    <p>Huge thanks to Ben Wiedermann at HMC for sharing the following.</p>
   </div>
 </div>
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliations</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><a href="https://m154-comp-stats.netlify.app/">Jo Hardin</a> </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Pomona College
+          </p>
+      </div>
+      <div class="quarto-title-meta-contents">
+    <p class="author">original content by Ben Wiedermann </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Harvey Mudd College
+          </p>
+      </div>
+    </div>
 
 <div class="quarto-title-meta">
 
-    
+      
   
     
   </div>
@@ -149,126 +167,207 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="cell">
+<section id="working-on-assignments-with-github-and-gradescope" class="level1 page-columns page-full">
+<h1>Working on assignments with GitHub and Gradescope</h1>
+<p>In SDS 261, we will use GitHub to access and submit assignments. Here is the basic structure of how it will work:</p>
+<ol type="1">
+<li>Get the assignment materials from GitHub classroom.</li>
+<li>Clone the repository to any machine you are using.</li>
+<li>Work on the assignment and push back to GitHub.</li>
+</ol>
+<aside>
+<div class="cell" data-hash="github_cache/html/unnamed-chunk-1_eafe4389e88556d518bc723ef6c437d2">
 <div class="cell-output-display">
-
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/git_2x.png" class="img-fluid figure-img" alt="xkcd comic detailing that Git can be pretty complicated." width="330"></p>
+<figcaption class="figure-caption">image credit: https://xkcd.com/1597/,</figcaption>
+</figure>
 </div>
 </div>
-<p>Here’s your roadmap for the semester! Each day, follow the general process outlined below:</p>
+</div>
+</aside>
+<p>The following diagram lays out the process, and the rest of the document provides a more detailed set of instructions.</p>
+<div class="cell" data-hash="github_cache/html/unnamed-chunk-2_4c6e2b8b3bbc924c13569c550f2de207">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/git-workflow-nogradescope.png" class="img-fluid figure-img" alt="Flowchart demonstrating that assignments are recieved from Git, processed on your computer (iteratively with GitHub), and submitted to Gradescope." width="1113"></p>
+<figcaption class="figure-caption">Flowchart of assignment process.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="installing-r-rstudio-git" class="level1 page-columns page-full">
+<h1>Installing R + RStudio + Git</h1>
+<p>Most importantly, please become familiar with <a href="https://happygitwithr.com/" target="_blank">Happy Git and GitHub with R</a>. Happy Git with R is an incredibly user friendly resource which includes help for almost every single thing that might happen when getting started.</p>
+<aside>
+<a href="https://happygitwithr.com/" target="_blank">Happy Git and GitHub with R</a> is your new best friend.
+</aside>
+<ol type="1">
+<li><p>The first step is to install R + RStudio + Git on your machine. (If you are planning to use Smith’s RStudio server, R + RStudio + Git are all three already installed for you.)</p></li>
+<li><p>Create an account on GitHub (if you already have one, use it!).</p></li>
+<li><p>Introduce everyone: R + RStudio (should happen automatically); yourself to GitHub (see <a href="https://happygitwithr.com/" target="_blank">Happy Git and GitHub with R</a>); RStudio + GitHub (see <a href="https://happygitwithr.com/" target="_blank">Happy Git and GitHub with R</a>).</p></li>
+<li><p>Follow the rest of the steps that Jenny Bryan spells out in <a href="https://happygitwithr.com/" target="_blank">Happy Git and GitHub with R</a>. Most likely, you only need to work through step 12. Step 15 is detailed below after you have gotten the assignment from GitHub.</p></li>
+</ol>
+<div class="cell" data-hash="github_cache/html/unnamed-chunk-3_ac317273a607a07687fcbdd9b401205e">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/happygitwithr.png" class="img-fluid figure-img" alt="Screen shot of the Happy Git with R webpage." width="1191"></p>
+<figcaption class="figure-caption">The more you read Happy Git with R, the better your life will be.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="get-the-assignment-materials-from-github-classroom" class="level1 page-columns page-full">
+<h1>Get the assignment materials from GitHub Classroom</h1>
+<p>Each assignment will be provided as a link to GitHub classroom. Click the link. (The link will come to you via an email. If you lose the email, or the email goes to your spam folder, let me know or ask a friend for the link.)</p>
+<aside>
+When you use GitHub classroom for the first time, you’ll be asked to authorize GitHub classroom to access your repositories.
+</aside>
+<p>The lab assignments will be individual assignments. The project will be a paired or an individual assignment. To accept an individual assignment, click the “Accept this assignment” button.</p>
+<p>For all <strong>joint</strong> assignments, you will need to create a team before you can start.</p>
 <ul>
-<li><p>Enjoy the notes / text <i class="fas fa-book-open"></i></p></li>
-<li><p>Attend class, review the <i class="fas fa-pencil-alt"></i> worksheet and solutions if you have any questions after working on it during class.</p></li>
-<li><p>Complete the Lab assignment (<i class="fa-solid fa-code"></i> html &amp; <i class="fa-brands fa-r-project"></i> qmd linked below), <i class="fa-solid fa-paper-plane"></i> submit the assignment before 10am the following class period.</p></li>
-<li><p>Discuss the reflection questions <i class="fas fa-lightbulb" target="_blank"></i> and ethics considerations <i class="fas fa-balance-scale"></i> (see the <i class="fas fa-book-open"></i> class notes) with your classmates and professor.</p></li>
-<li><p>The textbooks are <b> <a href="https://mdsr-book.github.io/mdsr3e/" target="_blank">Modern Data Science with R, 3rd edition</a></b> by Baumer, Kaplan, and Horton and <b> <a href="https://r4ds.hadley.nz/" target="_blank">R for Data Science, 2nd edition</a></b> by Wickham, Çetinkaya-Rundel, and Grolemund.</p></li>
+<li>If you are working with a partner, create a team name that contains both of your GitHub ids. (If you are working by yourself, use your GitHub id as your team name.)</li>
+<li>One partner accepts the assignment and creates the team.</li>
+<li>If you are working with a partner, the person who did <em>not</em> create the team and accept the assignment should now click the GitHub classroom link, find the newly created team, and click the Join button.</li>
 </ul>
-<div class="cell page-columns page-full">
-<div class="cell-output-display column-body-outset">
-<table class="table table-striped table-hover table-sm small" data-quarto-postprocess="true">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">date</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">topic</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">in class</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">in lab</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">resources</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top;">Day 1<br>
-1.08.24</td>
-<td style="text-align: left; vertical-align: top;">starting +<br>
-R + RStudio +<br>
-SQL + MySQL</td>
-<td style="text-align: left; vertical-align: top;"><i class="fa-solid fa-pen-to-square" aria-label="pen-to-square"></i> <a href="https://st47s.com/SDS261/Notes/intro.html" target="_blank">Introduction</a><br>
-<em></em> <i class="fa-solid fa-book-open" aria-label="book-open"></i> <a href="https://mdsr-book.github.io/mdsr3e/15-sqlI.html#sec-dplyr-sql" target="_blank">MDSR3 15.1</a><br>
-<i class="fa-solid fa-book-open" aria-label="book-open"></i> <a href="https://r4ds.hadley.nz/databases.html#database-basics" target="_blank">RDS2 21.2</a><br>
-<i class="fa-solid fa-desktop" aria-label="desktop"></i> <a href="https://sds261-sql.netlify.app/slides/2024-01-08-db.html" target="_blank">What is a DB?</a><br>
-<i class="fa-solid fa-pencil" aria-label="pencil"></i> <a href="https://sds261-sql.netlify.app/handouts/ws1_sds261_j24.pdf" target="_blank">WS 1</a></td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"><i class="fa-solid fa-comments" aria-label="comments"></i> <a href="https://dbplyr.tidyverse.org/articles/dbplyr.html" target="_blank"><strong>dbplyr</strong> package</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top;">Day 2<br>
-1.09.24</td>
-<td style="text-align: left; vertical-align: top;">SQL verbs</td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"><a href="https://sds261-sql.netlify.app/handouts/lab1_db_sds261_j24.html" target="_blank"><em></em> Lab1-DB-html</a><br>
-<a href="https://sds261-sql.netlify.app/handouts/lab1_db_sds261_j24.qmd" target="_blank"><em></em> Lab1-DB-qmd</a></td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top;">Day 3<br>
-1.10.24</td>
-<td style="text-align: left; vertical-align: top;">Joining</td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top;">Day 4<br>
-1.11.24</td>
-<td style="text-align: left; vertical-align: top;">Regular Expressions I</td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top;">Day 5<br>
-1.12.24</td>
-<td style="text-align: left; vertical-align: top;">Regular Expressions II</td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;">(no lab)</td>
-<td style="text-align: left; vertical-align: top;"><i class="fa-solid fa-comments" aria-label="comments"></i> <a href="https://rstudio.github.io/cheatsheets/html/strings.html" target="_blank">reg expr cheat sheet</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top;">Day 6<br>
-1.16.24</td>
-<td style="text-align: left; vertical-align: top;">Creating a DB</td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;">email prof with dataset idea for <a href="https://sds261-sql.netlify.app/project" target="_blank"><em></em>project</a></td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top;">Day 7<br>
-1.17.24</td>
-<td style="text-align: left; vertical-align: top;">Constructing a DB</td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top;">Day 8<br>
-1.18.24</td>
-<td style="text-align: left; vertical-align: top;">Changing a DB</td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;"><a href="https://sds261-sql.netlify.app/project" target="_blank"><em></em> Project</a></td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top;">Day 9<br>
-1.19.24</td>
-<td style="text-align: left; vertical-align: top;"><a href="https://sds261-sql.netlify.app/project" target="_blank"><em></em> Project</a></td>
-<td style="text-align: left; vertical-align: top;"></td>
-<td style="text-align: left; vertical-align: top;">(no lab)</td>
-<td style="text-align: left; vertical-align: top;"></td>
-</tr>
-</tbody>
-</table>
-
-
+<aside>
+⚠ You may need to add a description of the assignment (for example “Lab 2”) to team name. This is because GitHub Classroom does seem to make it easy for some people to work in the same group as a previous assignment while other people form new groups.
+</aside>
+<div class="cell" data-hash="github_cache/html/unnamed-chunk-4_b671c9ac1eed369acc0eff4cea1527a0">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/accept-assignment.png" class="img-fluid figure-img" alt="Screen shot of GitHub showing where to accept the assignment." width="675"></p>
+<figcaption class="figure-caption">Accept the assignment to create a different repository for every assignment.</figcaption>
+</figure>
 </div>
 </div>
+</div>
+<p>The assignment files will be copied as a private repository that you (and your partner, if applicable) that the professor has access to.</p>
+<p>We will call this version, that lives on your personal GitHub account the <em>GitHub fork</em>.</p>
+</section>
+<section id="clone-the-assignment-or-project-repository-on-to-your-own-computers" class="level1 page-columns page-full">
+<h1>Clone the assignment (or project) repository on to your own computer(s)</h1>
+<p>Once your repository has been created, you should clone the code to whatever computer you are working on. Just like a Google Doc, you can work on the files from different machines at different times. Unlike a Google Doc, you’ll have to make sure to open the repo (<code>clone</code> or <code>pull</code> if you’ve already <code>clone</code>d) and save the repo (<code>commit</code> + <code>push</code>) more deliberately.</p>
+<aside>
+<a href="https://happygitwithr.com/" target="_blank">Happy Git and GitHub with R</a> is your new best friend.
+</aside>
+<ol type="1">
+<li>Click on the link for the repository.</li>
+</ol>
+<div class="cell" data-hash="github_cache/html/unnamed-chunk-5_b4c6dac3e1520aa6ee4166690c1cf06b">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/repo-link.png" class="img-fluid figure-img" alt="Screen shot of GitHub showing the new assignment repo." width="794"></p>
+<figcaption class="figure-caption">Clink on the link to your assignment repository to get started.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Click the <code>Clone or download</code> button and copy the URL.</li>
+</ol>
+<div class="cell" data-hash="github_cache/html/unnamed-chunk-6_c6f0c3f9c6b42021bf8c504b564fda29">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/repo-clone.png" class="img-fluid figure-img" alt="Screen shot of GitHub showing the location of the repo URL." width="893"></p>
+<figcaption class="figure-caption">Copy the HTTPS URL, and use it to create a new project in RStudio.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>On the cloning machine (e.g., your own compute or the RStudio server), create a new R project with the URL copied from above. Follow the steps at https://happygitwithr.com/new-github-first.html (section 15.2 New RStudio Project via git clone).</li>
+</ol>
+</section>
+<section id="work-on-the-assignment-push-back-to-github" class="level1 page-columns page-full">
+<h1>Work on the assignment, push back to GitHub</h1>
+<aside>
+⚠ Always start your work session with a pull to the computer you are working on, and end your session with a push back to GitHub.
+</aside>
+<p>All of the GitHub interaction will take place through the RStudio IDE. The two important steps for getting the assignment back to GitHub are:</p>
+<section id="pull" class="level2">
+<h2 class="anchored" data-anchor-id="pull"><code>pull</code></h2>
+<p>If you are working with a colleague or on different machines it is so incredibly important to get in the habit of immediately clicking on <code>pull</code> when you start your work. (If you are working alone on a single machine <code>pull</code> won’t hurt! You’ll just be told that your files are already up to date.)</p>
+<div class="cell" data-hash="github_cache/html/unnamed-chunk-7_2db5c94544710d7fbfac979796013786">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pull.png" class="img-fluid figure-img" alt="Screen shot of how to pull using the Rstudio IDE." width="379"></p>
+<figcaption class="figure-caption">Always pull before you start. pull-work-save-commit-push</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="knit-your-work" class="level2">
+<h2 class="anchored" data-anchor-id="knit-your-work"><code>knit</code> your work</h2>
+<p>Don’t forget to put your name on the assignment. Also, make sure that you knit to pdf. Knit early and often. The more often you knit, the fewer headaches you will have.</p>
+<div class="cell" data-hash="github_cache/html/unnamed-chunk-8_bb998c846e3ac9d892460db1d1f258e4">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/name-knit.png" class="img-fluid figure-img" alt="Screen shot of how to knit using the RStudio IDE." width="903"></p>
+<figcaption class="figure-caption">Always pull before you start. pull-work-knit-commit-push</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="commit-your-work" class="level2">
+<h2 class="anchored" data-anchor-id="commit-your-work"><code>commit</code> your work</h2>
+<p>You don’t need to commit every file, but you do need to commit files that are integral to the analysis (always commit .qmd, .pdf, data files, images that created the pdf, etc.).</p>
+<div class="cell" data-hash="github_cache/html/unnamed-chunk-9_fb5e0967719559effd4a01a97732f23c">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/choose-commit.png" class="img-fluid figure-img" alt="Screen shot of how to commit using the RStudio IDE." width="926"></p>
+<figcaption class="figure-caption">pull-work-knit-commit-push</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="push-your-work-to-github" class="level2">
+<h2 class="anchored" data-anchor-id="push-your-work-to-github"><code>push</code> your work to GitHub</h2>
+<p>It is good practice to use meaningful commit messages to help your future self figure out your past work.</p>
+<div class="cell" data-hash="github_cache/html/unnamed-chunk-10_8711802551d8b4ae14508dd009d6b64d">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/commit-push.png" class="img-fluid figure-img" alt="Screen shot of how to push using the RStudio IDE." width="959"></p>
+<figcaption class="figure-caption">pull-work-knit-commit-push</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="check-your-work-on-github" class="level2">
+<h2 class="anchored" data-anchor-id="check-your-work-on-github">check your work on GitHub</h2>
+<p>To make sure that the work went through, always check your GitHub repo online to confirm any changes you made.</p>
+<div class="cell" data-hash="github_cache/html/unnamed-chunk-11_75cd1fbcc81166d4fd7820091c947ece">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/check-github.png" class="img-fluid figure-img" alt="Screen shot of checking GitHub changes online." width="966"></p>
+<figcaption class="figure-caption">Check that your changes are correct.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>You can submit multiple times before the deadline. Your last submission will be assessed.</p>
+<p>Once assignments are assessed, you will be able to see feedback on GitHub. You can <code>pull</code> assignment feedback back onto your own computer.</p>
 
 
+</section>
+</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -29,6 +29,8 @@ website:
         href: clicker_study.qmd
       - text: "Final Project"
         href: project.qmd
+      - text: "GitHub"
+        href: github.qmd
     logo: images/st47s.png
     logo-href: https://sds261-sql.netlify.app/
   page-footer:

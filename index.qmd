@@ -66,8 +66,8 @@ schedule <- tribble(
     "Day 5 <br> 1.12.24", 'Regular Expressions II',
   '',
   '(no lab)',
-  '',
-  
+  '{{< fa comments >}} <a href = " https://rstudio.github.io/cheatsheets/html/strings.html" target = "_blank">reg expr cheat sheet</a>',
+ 
   
   "Day 6 <br> 1.16.24", 'Creating a DB',
   '',
