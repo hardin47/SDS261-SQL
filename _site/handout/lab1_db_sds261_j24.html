@@ -185,17 +185,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mdsr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Today’s lab will give us some practice working with the different tools we can use to implement SQL code. We haven’t covered much SQL syntax, so the focus will be more on the tools than on writing code. You should, however, be trying to understand the SQL code as you go along.</p>
-<p>The goals for today include:</p>
+<p>Today’s lab will give us some practice working with the different tools we can use to implement <strong>SQL</strong> code. We haven’t covered much <strong>SQL</strong> syntax, so the focus will be more on the tools than on writing code. You should, however, be trying to understand the <strong>SQL</strong> code as you go along.</p>
+<p>The goals for lab 1 include:</p>
 <ul>
 <li>connecting to GitHub / turning in the lab via GitHub.</li>
-<li>comparing / contrasting three different ways to implement SQL queries in RStudio.</li>
-<li>writing SQL queries in DBeaver.</li>
+<li>comparing / contrasting three different ways to implement <strong>SQL</strong> queries in RStudio.</li>
+<li>writing <strong>SQL</strong> queries in DBeaver.</li>
 </ul>
 <section id="advice-for-turning-in-the-assignment" class="level2">
 <h2 class="anchored" data-anchor-id="advice-for-turning-in-the-assignment">Advice for turning in the assignment</h2>
@@ -203,18 +198,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>render early and often. In fact, go ahead and render your .qmd file right now. Maybe set a timer so that you render every 5 minutes. Do <strong>not</strong> wait until you are done with the assignment to render</p></li>
 <li><p>Save the .Rproj file somewhere you can find it. Don’t keep everything in your downloads folder. Maybe make a folder called <code>SDS261</code> or something. That folder could live on your Desktop. Or maybe in your Dropbox.</p></li>
 </ul>
+</section>
+<section id="assignment" class="level2">
+<h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
+<p>Preliminary: You’ll need to create a quarto document. To do so click on: New file -&gt; quarto document.</p>
+<ul>
+<li>The document should be saved in the <strong>R</strong> Project as <code>sds261-lab1-yourlastname-yourfirstname.qmd</code>.</li>
+<li>The yaml at the top of the file should look like this (change the author and date fields):</li>
+</ul>
 <pre><code>---
-title: "Lab1 - working with Databases"
-author: "your name goes here"
-date: "due 10am Tuesday, January 9, 2024"
+title: 'Lab1 - working with Databases'
+author: 'your name goes here'
+date: 'due 10am Tuesday, January 9, 2024'
 execute:
   echo: true
   warning: false
   message: false
 ---</code></pre>
-<p>task 3 ways in R plus in DBeaver</p>
-<p>reflect</p>
-<p>count rows in SQL vs pulling into R</p>
+<p>For much of the assignment, Consider the task of figuring out how many flights came into or flew out of Bradley International Airport (BDL) last year.</p>
+<ol type="1">
+<li>Set up a connection within an <strong>R</strong> chunk:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>con_air <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  RMariaDB<span class="sc">::</span><span class="fu">MariaDB</span>(),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname =</span> <span class="st">"airlines"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">"mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">user =</span> <span class="st">"mdsr_public"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">password =</span> <span class="st">"ImhsmflMDSwR"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Pull in the <code>flights</code> table as a <code>tbl</code> (do <em>not</em> use <code>collect()</code>!). Use <strong>dplyr</strong> commands to calculate the number of flights that flew into or out of BDL in 2012. Then use <code>dplyr::get_query()</code> to output the <strong>SQL</strong> query. (All done inside an <strong>R</strong> chunk.)</li>
+</ol>
+<ol start="3" type="1">
+<li>Again, inside an <strong>R</strong> chunk, use <code>DBI::dbGetQuery()</code> to run the <strong>SQL</strong> code calculated in the previous question.</li>
+</ol>
+<ol start="4" type="1">
+<li>Now, inside a <strong>SQL</strong> chunk, use the <strong>SQL</strong> commands directly (same task: how many flights in and out of BDL in 2012).</li>
+</ol>
+<ol start="5" type="1">
+<li>Rerun all three scenarios, using the <strong>tictoc</strong> <strong>R</strong> package to see which method calculates the desired number most quickly. Below is an example of how to use <strong>tictoc</strong>. For the <strong>SQL</strong> chunk, you’ll need to place <code>tic()</code> in an <strong>R</strong> chunk before the <strong>SQL</strong> chunk and <code>toc()</code> in an <strong>R</strong> chunk after the <strong>SQL</strong> chunk. Write 1-2 sentences describing the results.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tictoc)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>rand_numbers <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000000</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(rand_numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          0%          25%          50%          75%         100% 
+-4.777774005 -0.674942069  0.001347043  0.675316830  4.593204887 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.115 sec elapsed</code></pre>
+</div>
+</div>
+<ul>
+<li>Using <strong>R</strong> on the <code>tbl</code>.</li>
+</ul>
+<ul>
+<li>Using <code>dbGetQuery()</code></li>
+</ul>
+<ul>
+<li>Using <strong>SQL</strong> chunk</li>
+</ul>
+<ol start="6" type="1">
+<li>Now create a <code>tibble</code> (not a <code>tbl</code>) that includes only flights in 2012 either to or from BDL (use <code>collect()</code>). After you have created the <code>tibble</code>, summarize the observations to get the count. Use <strong>tictoc</strong> to evaluate how long the process takes. Write 1-2 sentences describing the results.</li>
+</ol>
+<ol start="7" type="1">
+<li><p>DBeaver</p></li>
+<li><p>Reflect on at least 3 things that you learned during this lab. It could be about technical aspects. It could be about understanding databases. It could be about the difference between <strong>R</strong> and <strong>SQL</strong>. Anything you learned while doing the lab.</p></li>
+</ol>
+<ol start="9" type="1">
+<li>Always a good idea to terminate the <strong>SQL</strong> connection when you are done with it.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con_air)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
@@ -462,7 +524,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
  <br> © Jo Hardin, 2024 -- <a href="mailto: jo.hardin@pomona.edu">jo.hardin@pomona.edu</a> -- <a href="https://hardin47.netlify.app/">https://hardin47.netlify.app/</a> <br> <br>
-Math 150 -- Methods in Biostatistics -- Pomona College, Claremont, CA <br>
+SDS 261 -- Data Science, the SQL -- Smith College, Northamptom, MA <br>
   </li>  
 </ul>
     </div>

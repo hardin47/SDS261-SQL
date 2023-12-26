@@ -462,7 +462,7 @@ Jo Hardin
 <section id="sql-tables-as-tbl" class="slide level2">
 <h2><strong>SQL</strong> tables as <code>tbl</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>carriers <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con_air, <span class="st">"carriers"</span>)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>carriers <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_air, <span class="st">"carriers"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">dim</span>(carriers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA  2</code></pre>
@@ -487,7 +487,7 @@ Jo Hardin
 <p>The function <code>collect()</code> copies a <strong>SQL</strong> table from it’s server location on disk to your local memory location in <strong>R</strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>carriers_tibble <span class="ot">&lt;-</span> carriers <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">collect</span>()</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  dplyr<span class="sc">::</span><span class="fu">collect</span>()</span>
 <span id="cb6-3"><a href="#cb6-3"></a></span>
 <span id="cb6-4"><a href="#cb6-4"></a><span class="fu">dim</span>(carriers_tibble)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -552,8 +552,8 @@ Jo Hardin
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "airports" "carriers" "flights"  "planes"  </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con_air, <span class="st">"flights"</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a>carriers <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con_air, <span class="st">"carriers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>flights <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_air, <span class="st">"flights"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>carriers <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_air, <span class="st">"carriers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="translating-dplyr-code-into-sql-1" class="slide level2">
@@ -579,7 +579,7 @@ Jo Hardin
 <h2>1. Translating <strong>dplyr</strong> code into <strong>SQL</strong></h2>
 <p>Because <code>flights</code> is not actually a <code>data.frame</code> in <strong>R</strong> (but instead a <code>tbl</code> in <strong>SQL</strong>), the work that was done above was actually performed in <strong>SQL</strong>. To see the <strong>SQL</strong> code, we can use the function <code>show_query</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">show_query</span>(yrs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>dplyr<span class="sc">::</span><span class="fu">show_query</span>(yrs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;SQL&gt;
 SELECT MIN(`year`) AS `min_year`, MAX(`year`) AS `max_year`
@@ -597,7 +597,7 @@ FROM `flights`</code></pre>
 <span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2012</span> <span class="sc">&amp;</span> ((origin <span class="sc">==</span> <span class="st">"LAX"</span> <span class="sc">&amp;</span> dest <span class="sc">==</span> <span class="st">"BOS"</span>) <span class="sc">|</span> </span>
 <span id="cb21-3"><a href="#cb21-3"></a>           (origin <span class="sc">==</span> <span class="st">"BOS"</span> <span class="sc">&amp;</span> dest <span class="sc">==</span> <span class="st">"LAX"</span>))) </span>
 <span id="cb21-4"><a href="#cb21-4"></a></span>
-<span id="cb21-5"><a href="#cb21-5"></a><span class="fu">show_query</span>(la_bos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-5"><a href="#cb21-5"></a>dplyr<span class="sc">::</span><span class="fu">show_query</span>(la_bos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;SQL&gt;
 SELECT *
@@ -659,7 +659,7 @@ WHERE (`year` = 2012.0 AND ((`origin` = 'LAX' AND `dest` = 'BOS') OR (`origin` =
 <li>How many flights per year are in the <code>flights</code> table?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">dbGetQuery</span>(con_air, </span>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con_air, </span>
 <span id="cb25-2"><a href="#cb25-2"></a>  <span class="st">"SELECT year, count(*) AS num_flights FROM flights GROUP BY year ORDER BY num_flights;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  year num_flights
@@ -1381,8 +1381,14 @@ num_flights
 </table>
 </div>
 </div>
+</section>
+<section id="good-practice" class="slide level2">
+<h2>Good practice</h2>
+<p>Always a good idea to terminate the <strong>SQL</strong> connection when you are done with it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">dbDisconnect</span>(con_air)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section></section>
-<section>
 <section id="using-sql-in-dbeaver" class="title-slide slide level1 center">
 <h1>Using <strong>SQL</strong> in DBeaver</h1>
 <ul>
@@ -1392,13 +1398,61 @@ num_flights
 <li><p>to use DBeaver, <a href="https://dbeaver.io/download/" target="_blank">download the client</a> onto your computer and open it from your Applications.</p></li>
 </ul>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
 
-<div class="footer footer-default">
+<section>
+<section id="tools-github" class="title-slide slide level1 center">
+<h1>Tools: GitHub</h1>
+<ul>
+<li>Lab assignments are submitted via GitHub</li>
+<li>Follow Jenny Bryan’s advice on how to get GitHub set-up: http://happygitwithr.com/</li>
+<li>Follow course specific advice: https://sds261-sql.netlify.app/github</li>
+</ul>
+</section>
+<section id="steps-for-weekly-homework" class="slide level2">
+<h2>Steps for weekly homework</h2>
+<ol type="1">
+<li>Receive a link to the new assignment (clicking on the link will create a new private repo)<br>
+</li>
+<li>Use R Studio
+<ul>
+<li>New Project, version control, Git<br>
+</li>
+<li>Clone the repo using SSH<br>
+</li>
+</ul></li>
+<li>Create a new file sds261-lab#-lname-fname.qmd. (If the .qmd file already exists, rename the file to sds261-lab#-lname-fname.qmd.)</li>
+<li>Do the assignment
+<ul>
+<li><strong>commit</strong> and <strong>push</strong> after every problem<br>
+</li>
+</ul></li>
+<li>For work done in DBeaver (.sql files), use the same naming convention: sds261-lab#-lname-fname.sql.</li>
+<li>All necessary files <em>must</em> be in the same folder (e.g., data, .sql files, etc.)</li>
+</ol>
+</section></section>
+<section id="a-github-merge-conflict" class="title-slide slide level1 center">
+<h1>A GitHub merge conflict</h1>
+<ul>
+<li><p>On GitHub (on the web) edit the README document and Commit it with a message describing what you did.</p></li>
+<li><p>Then, in RStudio also edit the README document with a different change.</p>
+<ul>
+<li>Commit your changes</li>
+<li>Try to push – you’ll get an error!</li>
+<li>Try pulling</li>
+<li>Resolve the merge conflict and then commit and push</li>
+</ul></li>
+<li><p>As you work in teams you are likely to run into merge conflicts, learning how to resolve them properly will be very important.</p></li>
+</ul>
+</section>
+
+<section id="github" class="title-slide slide level1 center">
+<h1>GitHub</h1>
+
+
+<img data-src="../images/git_xkcd.png" width="500" class="r-stretch"><div class="footer footer-default">
 
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

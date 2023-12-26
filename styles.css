@@ -166,3 +166,16 @@ h1, h2, h3, h4, h5 {
 }
 
 
+/* unilur colors ???? */
+
+div.callout-caution.callout {
+  border-left-color: #d35836 !important;
+}
+
+div.callout-caution.callout-style-default>.callout-header {
+  background-color: #F0EDD1 !important;
+}
+
+div.callout-caution.icon .callout-icon {
+  display: unset !important;
+}

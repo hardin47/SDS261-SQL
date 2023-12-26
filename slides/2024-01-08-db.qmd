@@ -77,7 +77,7 @@ Hadley Wickham discusses how to use Sys.getenv: https://cran.r-project.org/web/p
 ## **SQL** tables as `tbl`
 
 ```{r}
-carriers <- tbl(con_air, "carriers")
+carriers <- dplyr::tbl(con_air, "carriers")
 dim(carriers)
 head(carriers)
 ```
@@ -90,7 +90,7 @@ The function `collect()` copies a **SQL** table from it's server location on dis
 
 ```{r}
 carriers_tibble <- carriers |>
-  collect()
+  dplyr::collect()
 
 dim(carriers_tibble)
 head(carriers_tibble)
@@ -140,8 +140,8 @@ The function `dbListTables()` in the **DBI** package will tell us what tables ex
 
 ```{r}
 DBI::dbListTables(con_air)
-flights <- tbl(con_air, "flights")
-carriers <- tbl(con_air, "carriers")
+flights <- dplyr::tbl(con_air, "flights")
+carriers <- dplyr::tbl(con_air, "carriers")
 ```
 
 
@@ -161,7 +161,7 @@ yrs
 Because `flights` is not actually a `data.frame` in **R** (but instead a `tbl` in **SQL**), the work that was done above was actually performed in **SQL**.  To see the **SQL** code, we can use the function `show_query`.
 
 ```{r}
-show_query(yrs)
+dplyr::show_query(yrs)
 ```
 
 
@@ -175,7 +175,7 @@ la_bos <- flights |>
   filter(year == 2012 & ((origin == "LAX" & dest == "BOS") | 
            (origin == "BOS" & dest == "LAX"))) 
 
-show_query(la_bos)
+dplyr::show_query(la_bos)
 ```
 
 ## 1. Translating **dplyr** code into **SQL**
@@ -201,7 +201,7 @@ DBI::dbGetQuery(con_air,
 * How many flights per year are in the `flights` table?
 
 ```{r}
-dbGetQuery(con_air, 
+DBI::dbGetQuery(con_air, 
   "SELECT year, count(*) AS num_flights FROM flights GROUP BY year ORDER BY num_flights;")
 ```
 
@@ -231,6 +231,13 @@ SELECT year, count(*) AS num_flights
        ORDER BY num_flights;
 ```
 
+## Good practice
+
+Always a good idea to terminate the **SQL** connection when you are done with it.
+
+```{r}
+dbDisconnect(con_air)
+```
 
 # Using **SQL** in DBeaver
 
@@ -243,7 +250,42 @@ SELECT year, count(*) AS num_flights
 * to use DBeaver, <a href = "https://dbeaver.io/download/" target = "_blank">download the client</a> onto your computer and open it from your Applications.
 
 
-## 
+# Tools: GitHub
+
+* Lab assignments are submitted via GitHub 
+* Follow Jenny Bryan's advice on how to get GitHub set-up: http://happygitwithr.com/
+* Follow course specific advice: https://sds261-sql.netlify.app/github
+
+## Steps for weekly homework
+
+1. Receive a link to the new assignment (clicking on the link will create a new private repo)  
+2. Use R Studio  
+     + New Project, version control, Git  
+     + Clone the repo using SSH  
+3. Create a new file sds261-lab#-lname-fname.qmd. (If the .qmd file already exists, rename the file to sds261-lab#-lname-fname.qmd.) 
+4. Do the assignment  
+     + **commit** and **push** after every problem  
+5. For work done in DBeaver (.sql files), use the same naming convention: sds261-lab#-lname-fname.sql.
+5. All necessary files *must* be in the same folder (e.g., data, .sql files, etc.)  
+
+# A GitHub merge conflict
+
+- On GitHub (on the web) edit the README document and Commit it with a message describing what you did.
+
+- Then, in RStudio also edit the README document with a different change.
+     + Commit your changes
+     + Try to push – you’ll get an error!
+     + Try pulling
+     + Resolve the merge conflict and then commit and push
+ 
+- As you work in teams you are likely to run into merge conflicts, learning how to resolve them properly will be very important.
+
+
+# GitHub
+
+```{r, out.width = "500px", echo=FALSE}
+knitr::include_graphics("../images/git_xkcd.png")
+```
 
 
 

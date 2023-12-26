@@ -158,7 +158,7 @@
     "href": "handout/lab1_db_sds261_j24.html",
     "title": "Lab1 - working with Databases",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(DBI)\nlibrary(mdsr)\nToday’s lab will give us some practice working with the different tools we can use to implement SQL code. We haven’t covered much SQL syntax, so the focus will be more on the tools than on writing code. You should, however, be trying to understand the SQL code as you go along.\nThe goals for today include:"
+    "text": "Today’s lab will give us some practice working with the different tools we can use to implement SQL code. We haven’t covered much SQL syntax, so the focus will be more on the tools than on writing code. You should, however, be trying to understand the SQL code as you go along.\nThe goals for lab 1 include:"
   },
   {
     "objectID": "syllabus.html#sds-261-januar-2024",
@@ -291,14 +291,14 @@
     "href": "slides/2024-01-08-db.html#sql-tables-as-tbl",
     "title": "Databases and dbplyr and SQL, oh my!",
     "section": "SQL tables as tbl",
-    "text": "SQL tables as tbl\n\ncarriers &lt;- tbl(con_air, \"carriers\")\ndim(carriers)\n\n[1] NA  2\n\nhead(carriers)\n\n# Source:   SQL [6 x 2]\n# Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]\n  carrier name                         \n  &lt;chr&gt;   &lt;chr&gt;                        \n1 02Q     Titan Airways                \n2 04Q     Tradewind Aviation           \n3 05Q     Comlux Aviation, AG          \n4 06Q     Master Top Linhas Aereas Ltd.\n5 07Q     Flair Airlines Ltd.          \n6 09Q     Swift Air, LLC"
+    "text": "SQL tables as tbl\n\ncarriers &lt;- dplyr::tbl(con_air, \"carriers\")\ndim(carriers)\n\n[1] NA  2\n\nhead(carriers)\n\n# Source:   SQL [6 x 2]\n# Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]\n  carrier name                         \n  &lt;chr&gt;   &lt;chr&gt;                        \n1 02Q     Titan Airways                \n2 04Q     Tradewind Aviation           \n3 05Q     Comlux Aviation, AG          \n4 06Q     Master Top Linhas Aereas Ltd.\n5 07Q     Flair Airlines Ltd.          \n6 09Q     Swift Air, LLC"
   },
   {
     "objectID": "slides/2024-01-08-db.html#sql-tables-as-tibble",
     "href": "slides/2024-01-08-db.html#sql-tables-as-tibble",
     "title": "Databases and dbplyr and SQL, oh my!",
     "section": "SQL tables as tibble",
-    "text": "SQL tables as tibble\nThe function collect() copies a SQL table from it’s server location on disk to your local memory location in R.\n\ncarriers_tibble &lt;- carriers |&gt;\n  collect()\n\ndim(carriers_tibble)\n\n[1] 1610    2\n\nhead(carriers_tibble)\n\n# A tibble: 6 × 2\n  carrier name                         \n  &lt;chr&gt;   &lt;chr&gt;                        \n1 02Q     Titan Airways                \n2 04Q     Tradewind Aviation           \n3 05Q     Comlux Aviation, AG          \n4 06Q     Master Top Linhas Aereas Ltd.\n5 07Q     Flair Airlines Ltd.          \n6 09Q     Swift Air, LLC"
+    "text": "SQL tables as tibble\nThe function collect() copies a SQL table from it’s server location on disk to your local memory location in R.\n\ncarriers_tibble &lt;- carriers |&gt;\n  dplyr::collect()\n\ndim(carriers_tibble)\n\n[1] 1610    2\n\nhead(carriers_tibble)\n\n# A tibble: 6 × 2\n  carrier name                         \n  &lt;chr&gt;   &lt;chr&gt;                        \n1 02Q     Titan Airways                \n2 04Q     Tradewind Aviation           \n3 05Q     Comlux Aviation, AG          \n4 06Q     Master Top Linhas Aereas Ltd.\n5 07Q     Flair Airlines Ltd.          \n6 09Q     Swift Air, LLC"
   },
   {
     "objectID": "slides/2024-01-08-db.html#how-much-space-does-carriers-take-up",
@@ -319,7 +319,7 @@
     "href": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql",
     "title": "Databases and dbplyr and SQL, oh my!",
     "section": "1. Translating dplyr code into SQL",
-    "text": "1. Translating dplyr code into SQL\nThe function dbListTables() in the DBI package will tell us what tables exist in the airlines database.\n\nDBI::dbListTables(con_air)\n\n[1] \"airports\" \"carriers\" \"flights\"  \"planes\"  \n\nflights &lt;- tbl(con_air, \"flights\")\ncarriers &lt;- tbl(con_air, \"carriers\")"
+    "text": "1. Translating dplyr code into SQL\nThe function dbListTables() in the DBI package will tell us what tables exist in the airlines database.\n\nDBI::dbListTables(con_air)\n\n[1] \"airports\" \"carriers\" \"flights\"  \"planes\"  \n\nflights &lt;- dplyr::tbl(con_air, \"flights\")\ncarriers &lt;- dplyr::tbl(con_air, \"carriers\")"
   },
   {
     "objectID": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql-1",
@@ -333,14 +333,14 @@
     "href": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql-2",
     "title": "Databases and dbplyr and SQL, oh my!",
     "section": "1. Translating dplyr code into SQL",
-    "text": "1. Translating dplyr code into SQL\nBecause flights is not actually a data.frame in R (but instead a tbl in SQL), the work that was done above was actually performed in SQL. To see the SQL code, we can use the function show_query.\n\nshow_query(yrs)\n\n&lt;SQL&gt;\nSELECT MIN(`year`) AS `min_year`, MAX(`year`) AS `max_year`\nFROM `flights`"
+    "text": "1. Translating dplyr code into SQL\nBecause flights is not actually a data.frame in R (but instead a tbl in SQL), the work that was done above was actually performed in SQL. To see the SQL code, we can use the function show_query.\n\ndplyr::show_query(yrs)\n\n&lt;SQL&gt;\nSELECT MIN(`year`) AS `min_year`, MAX(`year`) AS `max_year`\nFROM `flights`"
   },
   {
     "objectID": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql-3",
     "href": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql-3",
     "title": "Databases and dbplyr and SQL, oh my!",
     "section": "1. Translating dplyr code into SQL",
-    "text": "1. Translating dplyr code into SQL\n\nCreate a data set containing only flights between LAX and BOS in 2012.\n\n\nla_bos &lt;- flights |&gt;\n  filter(year == 2012 & ((origin == \"LAX\" & dest == \"BOS\") | \n           (origin == \"BOS\" & dest == \"LAX\"))) \n\nshow_query(la_bos)\n\n&lt;SQL&gt;\nSELECT *\nFROM `flights`\nWHERE (`year` = 2012.0 AND ((`origin` = 'LAX' AND `dest` = 'BOS') OR (`origin` = 'BOS' AND `dest` = 'LAX')))"
+    "text": "1. Translating dplyr code into SQL\n\nCreate a data set containing only flights between LAX and BOS in 2012.\n\n\nla_bos &lt;- flights |&gt;\n  filter(year == 2012 & ((origin == \"LAX\" & dest == \"BOS\") | \n           (origin == \"BOS\" & dest == \"LAX\"))) \n\ndplyr::show_query(la_bos)\n\n&lt;SQL&gt;\nSELECT *\nFROM `flights`\nWHERE (`year` = 2012.0 AND ((`origin` = 'LAX' AND `dest` = 'BOS') OR (`origin` = 'BOS' AND `dest` = 'LAX')))"
   },
   {
     "objectID": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql-4",
@@ -389,7 +389,7 @@
     "href": "slides/2024-01-08-db.html#sql-queries-via-the-dbi-package-1",
     "title": "Databases and dbplyr and SQL, oh my!",
     "section": "2. SQL queries via the DBI package",
-    "text": "2. SQL queries via the DBI package\n\nHow many flights per year are in the flights table?\n\n\ndbGetQuery(con_air, \n  \"SELECT year, count(*) AS num_flights FROM flights GROUP BY year ORDER BY num_flights;\")\n\n  year num_flights\n1 2016     5617658\n2 2017     5674621\n3 2015     5819079\n4 2014     5819811\n5 2011     6085281\n6 2012     6096762\n7 2013     6369482\n8 2010     6450117"
+    "text": "2. SQL queries via the DBI package\n\nHow many flights per year are in the flights table?\n\n\nDBI::dbGetQuery(con_air, \n  \"SELECT year, count(*) AS num_flights FROM flights GROUP BY year ORDER BY num_flights;\")\n\n  year num_flights\n1 2016     5617658\n2 2017     5674621\n3 2015     5819079\n4 2014     5819811\n5 2011     6085281\n6 2012     6096762\n7 2013     6369482\n8 2010     6450117"
   },
   {
     "objectID": "slides/2024-01-08-db.html#direct-sql-queries-via-sql-chunks",
@@ -410,7 +410,7 @@
     "href": "handout/lab1_db_sds261_j24.html#advice-for-turning-in-the-assignment",
     "title": "Lab1 - working with Databases",
     "section": "Advice for turning in the assignment",
-    "text": "Advice for turning in the assignment\n\nrender early and often. In fact, go ahead and render your .qmd file right now. Maybe set a timer so that you render every 5 minutes. Do not wait until you are done with the assignment to render\nSave the .Rproj file somewhere you can find it. Don’t keep everything in your downloads folder. Maybe make a folder called SDS261 or something. That folder could live on your Desktop. Or maybe in your Dropbox.\n\n---\ntitle: \"Lab1 - working with Databases\"\nauthor: \"your name goes here\"\ndate: \"due 10am Tuesday, January 9, 2024\"\nexecute:\n  echo: true\n  warning: false\n  message: false\n---\ntask 3 ways in R plus in DBeaver\nreflect\ncount rows in SQL vs pulling into R"
+    "text": "Advice for turning in the assignment\n\nrender early and often. In fact, go ahead and render your .qmd file right now. Maybe set a timer so that you render every 5 minutes. Do not wait until you are done with the assignment to render\nSave the .Rproj file somewhere you can find it. Don’t keep everything in your downloads folder. Maybe make a folder called SDS261 or something. That folder could live on your Desktop. Or maybe in your Dropbox."
   },
   {
     "objectID": "github.html#render-your-work",
@@ -418,5 +418,47 @@
     "title": "Working on assignments with GitHub",
     "section": "render your work",
     "text": "render your work\nDon’t forget to put your name on the assignment. Also, make sure that you render to pdf. Render early and often. The more often you render, the fewer headaches you will have.\n\n\n\n\n\nAlways pull before you start. pull-work-render-commit-push"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#steps-for-weekly-homework",
+    "href": "slides/2024-01-08-db.html#steps-for-weekly-homework",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "Steps for weekly homework",
+    "text": "Steps for weekly homework\n\nReceive a link to the new assignment (clicking on the link will create a new private repo)\n\nUse R Studio\n\nNew Project, version control, Git\n\nClone the repo using SSH\n\n\nCreate a new file sds261-lab#-lname-fname.qmd. (If the .qmd file already exists, rename the file to sds261-lab#-lname-fname.qmd.)\nDo the assignment\n\ncommit and push after every problem\n\n\nFor work done in DBeaver (.sql files), use the same naming convention: sds261-lab#-lname-fname.sql.\nAll necessary files must be in the same folder (e.g., data, .sql files, etc.)"
+  },
+  {
+    "objectID": "handout/lab1_db_sds261_j24.html#assignment",
+    "href": "handout/lab1_db_sds261_j24.html#assignment",
+    "title": "Lab1 - working with Databases",
+    "section": "Assignment",
+    "text": "Assignment\nPreliminary: You’ll need to create a quarto document. To do so click on: New file -&gt; quarto document.\n\nThe document should be saved in the R Project as sds261-lab1-yourlastname-yourfirstname.qmd.\nThe yaml at the top of the file should look like this (change the author and date fields):\n\n---\ntitle: 'Lab1 - working with Databases'\nauthor: 'your name goes here'\ndate: 'due 10am Tuesday, January 9, 2024'\nexecute:\n  echo: true\n  warning: false\n  message: false\n---\nFor much of the assignment, Consider the task of figuring out how many flights came into or flew out of Bradley International Airport (BDL) last year.\n\nSet up a connection within an R chunk:\n\n\ncon_air &lt;- DBI::dbConnect(\n  RMariaDB::MariaDB(),\n  dbname = \"airlines\",\n  host = \"mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com\",\n  user = \"mdsr_public\",\n  password = \"ImhsmflMDSwR\"\n)\n\n\nPull in the flights table as a tbl (do not use collect()!). Use dplyr commands to calculate the number of flights that flew into or out of BDL in 2012. Then use dplyr::get_query() to output the SQL query. (All done inside an R chunk.)\n\n\nAgain, inside an R chunk, use DBI::dbGetQuery() to run the SQL code calculated in the previous question.\n\n\nNow, inside a SQL chunk, use the SQL commands directly (same task: how many flights in and out of BDL in 2012).\n\n\nRerun all three scenarios, using the tictoc R package to see which method calculates the desired number most quickly. Below is an example of how to use tictoc. For the SQL chunk, you’ll need to place tic() in an R chunk before the SQL chunk and toc() in an R chunk after the SQL chunk. Write 1-2 sentences describing the results.\n\n\nlibrary(tictoc)\n\ntic()\nrand_numbers &lt;- rnorm(1000000)\nquantile(rand_numbers)\n\n          0%          25%          50%          75%         100% \n-4.777774005 -0.674942069  0.001347043  0.675316830  4.593204887 \n\ntoc()\n\n0.115 sec elapsed\n\n\n\nUsing R on the tbl.\n\n\nUsing dbGetQuery()\n\n\nUsing SQL chunk\n\n\nNow create a tibble (not a tbl) that includes only flights in 2012 either to or from BDL (use collect()). After you have created the tibble, summarize the observations to get the count. Use tictoc to evaluate how long the process takes. Write 1-2 sentences describing the results.\n\n\nDBeaver\nReflect on at least 3 things that you learned during this lab. It could be about technical aspects. It could be about understanding databases. It could be about the difference between R and SQL. Anything you learned while doing the lab.\n\n\nAlways a good idea to terminate the SQL connection when you are done with it.\n\n\ndbDisconnect(con_air)"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#good-practice",
+    "href": "slides/2024-01-08-db.html#good-practice",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "Good practice",
+    "text": "Good practice\nAlways a good idea to terminate the SQL connection when you are done with it.\n\ndbDisconnect(con_air)"
+  },
+  {
+    "objectID": "handout/lab1_db_sds261_j24_sol.html",
+    "href": "handout/lab1_db_sds261_j24_sol.html",
+    "title": "Lab1 - working with Databases",
+    "section": "",
+    "text": "Solution\n\n\n\n\n\n\nlibrary(tidyverse)\nlibrary(DBI)\nlibrary(RMariaDB)\nlibrary(dbplyr)\nlibrary(mdsr)\nToday’s lab will give us some practice working with the different tools we can use to implement SQL code. We haven’t covered much SQL syntax, so the focus will be more on the tools than on writing code. You should, however, be trying to understand the SQL code as you go along.\nThe goals for lab 1 include:"
+  },
+  {
+    "objectID": "handout/lab1_db_sds261_j24_sol.html#advice-for-turning-in-the-assignment",
+    "href": "handout/lab1_db_sds261_j24_sol.html#advice-for-turning-in-the-assignment",
+    "title": "Lab1 - working with Databases",
+    "section": "Advice for turning in the assignment",
+    "text": "Advice for turning in the assignment\n\nrender early and often. In fact, go ahead and render your .qmd file right now. Maybe set a timer so that you render every 5 minutes. Do not wait until you are done with the assignment to render\nSave the .Rproj file somewhere you can find it. Don’t keep everything in your downloads folder. Maybe make a folder called SDS261 or something. That folder could live on your Desktop. Or maybe in your Dropbox."
+  },
+  {
+    "objectID": "handout/lab1_db_sds261_j24_sol.html#assignment",
+    "href": "handout/lab1_db_sds261_j24_sol.html#assignment",
+    "title": "Lab1 - working with Databases",
+    "section": "Assignment",
+    "text": "Assignment\nPreliminary: You’ll need to create a quarto document. To do so click on: New file -&gt; quarto document.\n\nThe document should be saved in the R Project as sds261-lab1-yourlastname-yourfirstname.qmd.\nThe yaml at the top of the file should look like this (change the author and date fields):\n\n---\ntitle: 'Lab1 - working with Databases'\nauthor: 'your name goes here'\ndate: 'due 10am Tuesday, January 9, 2024'\nexecute:\n  echo: true\n  warning: false\n  message: false\n---\nFor much of the assignment, Consider the task of figuring out how many flights came into or flew out of Bradley International Airport (BDL) last year.\n\nSet up a connection within an R chunk:\n\n\ncon_air &lt;- DBI::dbConnect(\n  RMariaDB::MariaDB(),\n  dbname = \"airlines\",\n  host = \"mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com\",\n  user = \"mdsr_public\",\n  password = \"ImhsmflMDSwR\"\n)\n\n\nPull in the flights table as a tbl (do not use collect()!). Use dplyr commands to calculate the number of flights that flew into or out of BDL in 2012. Then use dplyr::get_query() to output the SQL query. (All done inside an R chunk.)\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights &lt;- tbl(con_air, \"flights\")\nnames(flights)\n\n [1] \"year\"           \"month\"          \"day\"            \"dep_time\"      \n [5] \"sched_dep_time\" \"dep_delay\"      \"arr_time\"       \"sched_arr_time\"\n [9] \"arr_delay\"      \"carrier\"        \"tailnum\"        \"flight\"        \n[13] \"origin\"         \"dest\"           \"air_time\"       \"distance\"      \n[17] \"cancelled\"      \"diverted\"       \"hour\"           \"minute\"        \n[21] \"time_hour\"     \n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nbdl_query &lt;- flights |&gt;\n  filter(year == 2012 & (dest == \"BDL\" | origin == \"BDL\")) |&gt;\n  summarize(count = n())\n\nshow_query(bdl_query)\n\n&lt;SQL&gt;\nSELECT COUNT(*) AS `count`\nFROM `flights`\nWHERE (`year` = 2012.0 AND (`dest` = 'BDL' OR `origin` = 'BDL'))\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nThere were flights to or from BDL in 2012.\n\n\n\n\n\nAgain, inside an R chunk, use DBI::dbGetQuery() to run the SQL code calculated in the previous question.\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nDBI::dbGetQuery(con_air, \"SELECT COUNT(*) AS `count`\nFROM `flights`\nWHERE (`year` = 2012 AND (`dest` = 'BDL' OR `origin` = 'BDL'))\")\n\n  count\n1 41949\n\n\n\n\n\n\nNow, inside a SQL chunk, use the SQL commands directly (same task: how many flights in and out of BDL in 2012).\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n```{sql}\n#| connection: con_air\n#| unilur-solution: true\n\nSELECT COUNT(*) AS `count`\nFROM `flights`\nWHERE (`year` = 2012 AND (`dest` = 'BDL' OR `origin` = 'BDL'))\n```\n\n\n1 records\n\n\ncount\n\n\n\n\n41949\n\n\n\n\n\n\n\n\n\nRerun all three scenarios, using the tictoc R package to see which method calculates the desired number most quickly. Below is an example of how to use tictoc. For the SQL chunk, you’ll need to place tic() in an R chunk before the SQL chunk and toc() in an R chunk after the SQL chunk. Write 1-2 sentences describing the results.\n\n\nlibrary(tictoc)\n\ntic()\nrand_numbers &lt;- rnorm(1000000)\nquantile(rand_numbers)\n\n          0%          25%          50%          75%         100% \n-4.806341090 -0.673045666  0.001494704  0.675842429  4.907468229 \n\ntoc()\n\n0.107 sec elapsed\n\n\n\nUsing R on the tbl.\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ntic()\n\nflights &lt;- tbl(con_air, \"flights\")\n\nflights |&gt;\n  filter(year == 2012 & (dest == \"BDL\" | origin == \"BDL\")) |&gt;\n  summarize(count = n())\n\n# Source:   SQL [1 x 1]\n# Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]\n    count\n  &lt;int64&gt;\n1   41949\n\ntoc()\n\n0.873 sec elapsed\n\n\n\n\n\n\nUsing dbGetQuery()\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ntic()\n\nDBI::dbGetQuery(con_air, \"SELECT COUNT(*) AS `count`\nFROM `flights`\nWHERE (`year` = 2012 AND (`dest` = 'BDL' OR `origin` = 'BDL'))\")\n\n  count\n1 41949\n\ntoc()\n\n0.48 sec elapsed\n\n\n\n\n\n\nUsing SQL chunk\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ntic()\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n```{sql}\n#| connection: con_air\n#| unilur-solution: true\n\nSELECT COUNT(*) AS `count`\nFROM `flights`\nWHERE (`year` = 2012 AND (`dest` = 'BDL' OR `origin` = 'BDL'))\n```\n\n\n1 records\n\n\ncount\n\n\n\n\n41949\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ntoc()\n\n0.738 sec elapsed\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nRunning the SQL code (either directly through a SQL chunk or by using DBI::dbGetQuery()) is faster than when dbplyr is used to translate R code into SQL queries.\n\n\n\n\n\nNow create a tibble (not a tbl) that includes only flights in 2012 either to or from BDL (use collect()). After you have created the tibble, summarize the observations to get the count. Use tictoc to evaluate how long the process takes. Write 1-2 sentences describing the results.\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ntic()\n\nflights_BDL &lt;- flights |&gt;\n  filter(year == 2012 & (dest == \"BDL\" | origin == \"BDL\")) |&gt;\n  collect()\n\nflights_BDL |&gt;\n  summarize(count = n())\n\n# A tibble: 1 × 1\n  count\n  &lt;int&gt;\n1 41949\n\ntoc()\n\n0.969 sec elapsed\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nPulling the table into R as a datafame slows down the calculations quite a bit.\n\n\n\n\n\nDBeaver\nReflect on at least 3 things that you learned during this lab. It could be about technical aspects. It could be about understanding databases. It could be about the difference between R and SQL. Anything you learned while doing the lab.\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\nAlways a good idea to terminate the SQL connection when you are done with it.\n\n\ndbDisconnect(con_air)"
   }
 ]
