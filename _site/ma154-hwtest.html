@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jo Hardin">
+<meta name="dcterms.date" content="2019-09-02">
 
-<title>Data Science, the SQL - syllabus</title>
+<title>Data Science, the SQL - Math 154 - Test HW</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./syllabus.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./syllabus.html" rel="" target="">
  <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
@@ -123,14 +125,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">syllabus</h1>
+<h1 class="title">Math 154 - Test HW</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jo Hardin </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 2, 2019</p>
+    </div>
+  </div>
   
     
   </div>
@@ -138,167 +152,10 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="data-science-the-sql" class="level1">
-<h1>Data Science, the SQL</h1>
-<section id="sds-261-january-2024" class="level2">
-<h2 class="anchored" data-anchor-id="sds-261-january-2024">SDS 261, January 2024</h2>
-<p>Class: daily 10-11:30am<br>
-Lab: daily (not Fridays) 1:30-3pm<br>
-Office hours: daily 11:30-1:30pm</p>
-<div class="cell" data-preview="true">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/tidydata_6.jpg" class="img-fluid figure-img" alt="A group of personified tables getting together and seemingly very happy to see each other." width="2949"></p>
-<figcaption class="figure-caption">Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</span>.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="the-course" class="level2">
-<h2 class="anchored" data-anchor-id="the-course">The course</h2>
-<p><strong>Data Science, the SQL</strong> is a continuation of ideas learned in Foundations of Data Science. The course develops abilities for using SQL databases within the data science pipeline. The core of the course will focus on the why and the how associated with writing SELECT queries in SQL. Additional topics will include subqueries, indexes, keys, and regular expressions. Students will learn how to run SQL queries from both the RStudio IDE as well as from a relational database management system client like MySQL Workbench or DuckDB.</p>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Anonymous Feedback
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>As someone who is, myself, constantly learning and growing in many ways, I welcome your feedback about the course, the classroom dynamics, or anything else you’d like me to know. I have emailed you a link to an anonymous feedback form. Please feel free to provide me with feedback at any time!</p>
-</div>
-</div>
-</section>
-<section id="student-learning-outcomes." class="level2">
-<h2 class="anchored" data-anchor-id="student-learning-outcomes.">Student Learning Outcomes.</h2>
-<p>By the end of the term, students will:</p>
-<ul>
-<li><p><strong>Database Concepts</strong>: be able to explain basic database concepts such as tables, records, fields, and relationships.</p></li>
-<li><p><strong>Introduction to SQL</strong>: gain a fundamental understanding of Structured Query Language (SQL), including its history, purpose, and key components.</p></li>
-<li><p><strong>SQL Querying</strong>:</p>
-<ul>
-<li>Writing SQL Queries: learn how to write basic SQL queries to retrieve data from a single table.</li>
-<li>Filtering and Sorting Data: be able to use SQL to filter and sort data based on specific criteria.</li>
-<li>Joining Tables: understand how to perform inner and outer joins to combine data from multiple tables.</li>
-</ul></li>
-<li><p><strong>Inserting and Updating Data</strong>: be able to use SQL to insert new records into a table and update existing records. Use SQL to delete records from a table.</p></li>
-<li><p><strong>Basics of Regular Expressions</strong>: understand the fundamental concepts of regular expressions. Identify and use basic metacharacters for pattern matching to write simple regular expressions for text search and matching.</p></li>
-</ul>
-</section>
-<section id="inclusion-goals" class="level2">
-<h2 class="anchored" data-anchor-id="inclusion-goals">Inclusion Goals<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
-<p>In an ideal world, science would be objective. However, much of science is subjective and is historically built on a small subset of privileged voices. In this class, we will make an effort to recognize how science (and data science!) has played a role in both understanding diversity as well as in promoting systems of power and privilege. I acknowledge that there may be both overt and covert biases in the material due to the lens with which it was written, even though the material is primarily of a scientific nature. Integrating a diverse set of experiences is important for a more comprehensive understanding of science. I would like to discuss issues of diversity in statistics as part of the course from time to time.</p>
-<p>Please contact me if you have any suggestions to improve the quality of the course materials.</p>
-<p>Furthermore, I would like to create a learning environment for my students that supports a diversity of thoughts, perspectives and experiences, and honors your identities (including race, gender, class, sexuality, religion, ability, etc.) To help accomplish this:</p>
-<ul>
-<li>If you have a name and/or set of pronouns that differ from those that appear in your official records, please let me know!</li>
-<li>If you feel like your performance in the class is being impacted by your experiences outside of class, please don’t hesitate to come and talk with me. You can also relay information to me via your mentors. I want to be a resource for you.</li>
-</ul>
-<p>I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please talk to me about it. As a participant in course discussions, you should also strive to honor the diversity of your classmates.</p>
-</section>
-<section id="technical-details" class="level2">
-<h2 class="anchored" data-anchor-id="technical-details">Technical Details</h2>
-<section id="text" class="level5">
-<h5 class="anchored" data-anchor-id="text">Text:</h5>
-<p><b> <a href="https://mdsr-book.github.io/mdsr3e/" target="_blank">Modern Data Science with R, 3rd edition</a></b> by Baumer, Kaplan, and Horton.</p>
-<p><b><a href="https://r4ds.hadley.nz/" target="_blank">R for Data Science, 2nd edition</a></b> by Wickham, Çetinkaya-Rundel, and Grolemund.</p>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Dates
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Final Project due Tuesday, January 23rd</p>
-</div>
-</div>
-</section>
-<section id="r-links" class="level4">
-<h4 class="anchored" data-anchor-id="r-links">R links:</h4>
-<ul>
-<li><a href="http://cran.r-project.org/web/packages/mosaic/vignettes/V1MinimalR.pdf" target="_blank">Enough R</a></li>
-<li><a href="https://pages.pomona.edu/~jsh04747/courses/RTutorial.pdf" target="_blank">R tutorial</a></li>
-<li>Great tutorials through the <a href="https://ourcodingclub.github.io/tutorials.html" target="_blank">Coding Club</a></li>
-<li>A true beginner’s <a href="https://spielmanlab.github.io/introverse/index.html" target="_blank">introduction to the tidyverse</a>, the <strong>introverse</strong>.</li>
-<li><a href="https://education.rstudio.com/learn/" target="_blank">for a good start</a> to R in general</li>
-<li>A fantastic <a href="https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/" target="_blank">ggplot2 tutorial</a></li>
-<li>Great tutorials through the <a href="https://ourcodingclub.github.io/tutorials/" target="_blank">Coding Club</a></li>
-<li><a href="http://www.rseek.org/" target="_blank">Google for R</a></li>
-<li>some <a href="http://st47s.com/Math150/Notes/rfunc.html" target="_blank">R ideas</a> that I wrote up</li>
-<li>Incredibly helpful <a href="https://www.rstudio.com/resources/cheatsheets/" target="_blank">cheatsheets</a> from RStudio.
-<ul>
-<li><a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf" target="_blank">data wrangling</a></li>
-<li><a href="https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf" target="_blank">ggplot2</a></li>
-<li><a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf" target="_blank">R Markdown</a></li>
-<li><a href="https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf" target="_blank">RStudio IDE</a></li>
-</ul></li>
-</ul>
-</section>
-<section id="sql-links" class="level4">
-<h4 class="anchored" data-anchor-id="sql-links">SQL links</h4>
-<ul>
-<li>W3 schools <a href="https://www.w3schools.com/sql/sql_intro.asp" target="_blank">Introduction to SQL</a></li>
-<li>W3 schools <a href="https://www.w3resource.com/sql-exercises/" target="_blank">SQL Exercises, Practice, Solution</a></li>
-<li><a href="https://cran.r-project.org/web/views/Databases.html" target="_blank">R packages</a> for working with databases</li>
-<li><a href="https://dbplyr.tidyverse.org/articles/dbplyr.html" target="_blank">Introduction to <code>dbplyr</code></a></li>
-</ul>
-</section>
-<section id="regular-expression-links" class="level4">
-<h4 class="anchored" data-anchor-id="regular-expression-links">Regular expression links</h4>
-<ul>
-<li><a href="https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html" target="_blank"><strong>stringr</strong> vignette</a></li>
-<li><a href="https://stringr.tidyverse.org/" target="_blank"><strong>stringr</strong> package</a></li>
-<li>Jenny Bryan et al.’s <a href="https://stat545.com/character-vectors.html" target="_blank">STAT 545 notes</a></li>
-<li>Hadley Wickham’s book <a href="https://r4ds.had.co.nz/strings.html" target="_blank">R for Data Science</a></li>
-<li><a href="http://regexpal.com/" target="_blank">regexpal</a><br>
-</li>
-<li><a href="http://www.regexr.com/" target="_blank">RegExr</a></li>
-<li><a href="https://regexone.com/" target="_balnk">RegexOne</a></li>
-</ul>
-</section>
-<section id="using-r-through-the-rstudio-ide" class="level4">
-<h4 class="anchored" data-anchor-id="using-r-through-the-rstudio-ide">Using R (through the RStudio IDE)</h4>
-<p>R will be used for many assignments. You can use R on the Smith server: <a href="https://rstudio.smith.edu/" target="_blank">https://rstudio.smith.edu/</a>.</p>
-<p>Alternatively, feel free to download both R and RStudio onto your own computer. R is freely available at <a href="http://www.r-project.org/" target="_blank">http://www.r-project.org/</a>; RStudio is also free and allows you to turn in all R assignments using Quarto <a href="http://rstudio.org/" target="_blank">http://rstudio.org/</a>.</p>
-</section>
-<section id="github" class="level4">
-<h4 class="anchored" data-anchor-id="github">GitHub</h4>
-<p>Assignments will be turned in using GitHub. See <a href="https://sds261-sql.netlify.app/syllabus" target="_blank">instructions for using GitHub</a> on the course website.</p>
-</section>
-</section>
-<section id="important-features" class="level2">
-<h2 class="anchored" data-anchor-id="important-features">Important Features</h2>
-<section id="prerequisites" class="level4">
-<h4 class="anchored" data-anchor-id="prerequisites">Prerequisites:</h4>
-<p>The prerequisite for this class is SDS 192, Introduction to Data Science.</p>
-</section>
-<section id="labs" class="level4">
-<h4 class="anchored" data-anchor-id="labs">Labs:</h4>
-<p>Labs will take place on most days with the lab write-up due just before the following class period. See <a href="https://sds261-sql.netlify.app/syllabus" target="_blank">instructions for using GitHub</a> on the course website for how to turn in assignments.</p>
-</section>
-<section id="grading" class="level4">
-<h4 class="anchored" data-anchor-id="grading">Grading:</h4>
-<p>The class expectations are that you show up for class and labs and turn in a final project. A successful final project is required to pass the class. Additionally, you should not miss more than 1 or 2 classes nor should you miss turning in more than 1 or 2 labs.</p>
 
 
-</section>
-</section>
-</section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>adapted from Monica Linden, Brown University<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

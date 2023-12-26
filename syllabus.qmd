@@ -93,6 +93,7 @@ Final Project due Tuesday, January 23rd
 #### SQL links
 
 * W3 schools <a href = "https://www.w3schools.com/sql/sql_intro.asp" target = "_blank">Introduction to SQL</a>
+* W3 schools <a href = "https://www.w3resource.com/sql-exercises/" target = "_blank">SQL Exercises, Practice, Solution</a>
 * <a href = "https://cran.r-project.org/web/views/Databases.html" target = "_blank">R packages</a> for working with databases
 * <a href = "https://dbplyr.tidyverse.org/articles/dbplyr.html" target = "_blank">Introduction to `dbplyr`</a>
 
@@ -100,8 +101,7 @@ Final Project due Tuesday, January 23rd
 
 * <a href = "https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html" target = "_blank">**stringr** vignette</a>
 * <a href = "https://stringr.tidyverse.org/" target = "_blank">**stringr** package</a>
-* Jenny Bryan's <a href = "https://stat545.com/character-vectors.html" target = "_blank">STAT 545 notes</a>
-* Jenny Bryan's <a href = "http://stat545.com/block022_regular-expression.html" target = "_blank">STAT 545 lab</a>
+* Jenny Bryan et al.'s <a href = "https://stat545.com/character-vectors.html" target = "_blank">STAT 545 notes</a>
 * Hadley Wickham's book <a href = "https://r4ds.had.co.nz/strings.html" target = "_blank">R for Data Science</a>
 * <a href = "http://regexpal.com/" target = "_blank">regexpal</a>   
 * <a href = "http://www.regexr.com/" target = "_blank">RegExr</a>

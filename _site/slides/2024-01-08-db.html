@@ -11,7 +11,9 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.450">
 
-  <title>Data Science, the SQL - What is a Database?</title>
+  <meta name="author" content="Jo Hardin">
+  <meta name="dcterms.date" content="2023-01-08">
+  <title>Data Science, the SQL - Databases and dbplyr and SQL, oh my!</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,6 +31,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -319,30 +386,1019 @@
       margin-right: 0; 
     }
   </style>
+  <link href="../site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+  <link href="../site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">What is a Database?</h1>
+  <h1 class="title">Databases and <strong>dbplyr</strong> and <strong>SQL</strong>, oh my!</h1>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Jo Hardin 
+</div>
+</div>
 </div>
 
+  <p class="date">2023-01-08</p>
 </section>
-<section class="slide level2">
+<section>
+<section id="sql-structured-query-language" class="title-slide slide level1 center">
+<h1>SQL (Structured Query Language)</h1>
 
-<p>stuff</p>
 </section>
-<section class="slide level2">
+<section id="what-is-a-database" class="slide level2">
+<h2>What is a database?</h2>
+<ul>
+<li>structured collection of data organized with
+<ul>
+<li>efficient storage</li>
+<li>easy retrieval</li>
+<li>consistent management</li>
+</ul></li>
+<li>data stored in tables which are linked to one another via keys</li>
+</ul>
+</section>
+<section id="tidy-data" class="slide level2">
+<h2>Tidy data</h2>
+<ul>
+<li>data frame (R) or table (SQL)</li>
+<li>columns of variables</li>
+<li>rows of observational units</li>
+</ul>
+</section>
+<section id="differences-between-r-and-sql" class="slide level2">
+<h2>Differences between R and SQL</h2>
+<ul>
+<li>tables in SQL databases can be arbitrarily large
+<ul>
+<li>live in storage, computer’s hard drive (usually remote)</li>
+</ul></li>
+<li>data frames in R
+<ul>
+<li>live in memory (RAM) on your personal computer</li>
+</ul></li>
+<li>tables in a database are linked via a key.</li>
+</ul>
+</section>
+<section id="sql-connection" class="slide level2">
+<h2>SQL connection</h2>
+<p>To set up a <strong>SQL</strong> connection, you need the location of the server (<code>host</code>) as well as a <code>user</code>name and <code>password</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>con_air <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  RMariaDB<span class="sc">::</span><span class="fu">MariaDB</span>(),</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">dbname =</span> <span class="st">"airlines"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">host =</span> <span class="fu">Sys.getenv</span>(<span class="st">"MDSR_HOST"</span>),</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="at">user =</span> <span class="fu">Sys.getenv</span>(<span class="st">"MDSR_USER"</span>),</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="at">password =</span> <span class="fu">Sys.getenv</span>(<span class="st">"MDSR_PWD"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Hadley Wickham discusses how to use Sys.getenv: https://cran.r-project.org/web/packages/httr/vignettes/secrets.html</p>
+</section>
+<section id="sql-tables-as-tbl" class="slide level2">
+<h2><strong>SQL</strong> tables as <code>tbl</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>carriers <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con_air, <span class="st">"carriers"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">dim</span>(carriers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA  2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">head</span>(carriers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Source:   SQL [6 x 2]
+# Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]
+  carrier name                         
+  &lt;chr&gt;   &lt;chr&gt;                        
+1 02Q     Titan Airways                
+2 04Q     Tradewind Aviation           
+3 05Q     Comlux Aviation, AG          
+4 06Q     Master Top Linhas Aereas Ltd.
+5 07Q     Flair Airlines Ltd.          
+6 09Q     Swift Air, LLC               </code></pre>
+</div>
+</div>
+</section>
+<section id="sql-tables-as-tibble" class="slide level2">
+<h2><strong>SQL</strong> tables as <code>tibble</code></h2>
+<p>The function <code>collect()</code> copies a <strong>SQL</strong> table from it’s server location on disk to your local memory location in <strong>R</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>carriers_tibble <span class="ot">&lt;-</span> carriers <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">collect</span>()</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="fu">dim</span>(carriers_tibble)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1610    2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">head</span>(carriers_tibble)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  carrier name                         
+  &lt;chr&gt;   &lt;chr&gt;                        
+1 02Q     Titan Airways                
+2 04Q     Tradewind Aviation           
+3 05Q     Comlux Aviation, AG          
+4 06Q     Master Top Linhas Aereas Ltd.
+5 07Q     Flair Airlines Ltd.          
+6 09Q     Swift Air, LLC               </code></pre>
+</div>
+</div>
+</section>
+<section id="how-much-space-does-carriers-take-up" class="slide level2">
+<h2>How much space does <code>carriers</code> take up?</h2>
+<p>The data frame in <strong>R</strong> takes up 2 orders of magnitude of memory than the table which just points to the object in <strong>SQL</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>carriers <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">object.size</span>() <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">print</span>(<span class="at">units =</span> <span class="st">"Kb"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5.2 Kb</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>carriers_tibble <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">object.size</span>() <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">print</span>(<span class="at">units =</span> <span class="st">"Kb"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>234.8 Kb</code></pre>
+</div>
+</div>
+</section>
+<section id="what-is-sql-structured-query-language" class="slide level2">
+<h2>What is <strong>SQL</strong> (Structured Query Language) ?</h2>
+<ul>
+<li><strong>SQL</strong> is a programming language for working with relational databases.</li>
+<li><strong>SQL</strong> has been around since the 1970s, but has, unfortunately, many different dialects.</li>
+<li>To connect to the Smith and <strong>mdsr</strong> databases (via R and DBeaver), we will use <strong>MySQL</strong>.</li>
+<li>To connect to DuckDB, we will use the dialect native to DuckDB.</li>
+</ul>
+</section></section>
+<section>
+<section id="using-sql-in-rstudio" class="title-slide slide level1 center">
+<h1>Using <strong>SQL</strong> in RStudio</h1>
+<p>We will write <strong>SQL</strong> code in three distinct ways:</p>
+<ol type="1">
+<li>Using the package <strong>dbplyr</strong> <strong>R</strong> will directly translate <strong>dplyr</strong> code into <strong>SQL</strong>.</li>
+<li>Using the <strong>DBI</strong> package, we can send <strong>SQL</strong> queries through an <code>r</code> chunk.</li>
+<li>Using a <code>sql</code> chunk, we can write actual <strong>SQL</strong> code inside a quarto document.</li>
+</ol>
+</section>
+<section id="translating-dplyr-code-into-sql" class="slide level2">
+<h2>1. Translating <strong>dplyr</strong> code into <strong>SQL</strong></h2>
+<p>The function <code>dbListTables()</code> in the <strong>DBI</strong> package will tell us what tables exist in the <strong>airlines</strong> database.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>DBI<span class="sc">::</span><span class="fu">dbListTables</span>(con_air)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "airports" "carriers" "flights"  "planes"  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con_air, <span class="st">"flights"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>carriers <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con_air, <span class="st">"carriers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="translating-dplyr-code-into-sql-1" class="slide level2">
+<h2>1. Translating <strong>dplyr</strong> code into <strong>SQL</strong></h2>
+<ul>
+<li>Over what years is the <code>flights</code> data taken?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>yrs <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">summarize</span>(<span class="at">min_year =</span> <span class="fu">min</span>(year), <span class="at">max_year =</span> <span class="fu">max</span>(year))</span>
+<span id="cb17-3"><a href="#cb17-3"></a></span>
+<span id="cb17-4"><a href="#cb17-4"></a>yrs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Source:   SQL [1 x 2]
+# Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]
+  min_year max_year
+     &lt;int&gt;    &lt;int&gt;
+1     2010     2017</code></pre>
+</div>
+</div>
+</section>
+<section id="translating-dplyr-code-into-sql-2" class="slide level2">
+<h2>1. Translating <strong>dplyr</strong> code into <strong>SQL</strong></h2>
+<p>Because <code>flights</code> is not actually a <code>data.frame</code> in <strong>R</strong> (but instead a <code>tbl</code> in <strong>SQL</strong>), the work that was done above was actually performed in <strong>SQL</strong>. To see the <strong>SQL</strong> code, we can use the function <code>show_query</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">show_query</span>(yrs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;SQL&gt;
+SELECT MIN(`year`) AS `min_year`, MAX(`year`) AS `max_year`
+FROM `flights`</code></pre>
+</div>
+</div>
+</section>
+<section id="translating-dplyr-code-into-sql-3" class="slide level2">
+<h2>1. Translating <strong>dplyr</strong> code into <strong>SQL</strong></h2>
+<ul>
+<li>Create a data set containing only flights between <code>LAX</code> and <code>BOS</code> in 2012.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>la_bos <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2012</span> <span class="sc">&amp;</span> ((origin <span class="sc">==</span> <span class="st">"LAX"</span> <span class="sc">&amp;</span> dest <span class="sc">==</span> <span class="st">"BOS"</span>) <span class="sc">|</span> </span>
+<span id="cb21-3"><a href="#cb21-3"></a>           (origin <span class="sc">==</span> <span class="st">"BOS"</span> <span class="sc">&amp;</span> dest <span class="sc">==</span> <span class="st">"LAX"</span>))) </span>
+<span id="cb21-4"><a href="#cb21-4"></a></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="fu">show_query</span>(la_bos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;SQL&gt;
+SELECT *
+FROM `flights`
+WHERE (`year` = 2012.0 AND ((`origin` = 'LAX' AND `dest` = 'BOS') OR (`origin` = 'BOS' AND `dest` = 'LAX')))</code></pre>
+</div>
+</div>
+</section>
+<section id="translating-dplyr-code-into-sql-4" class="slide level2">
+<h2>1. Translating <strong>dplyr</strong> code into <strong>SQL</strong></h2>
+<ul>
+<li><p><strong>dbplyr</strong> doesn’t translate every <strong>R</strong> command into <strong>SQL</strong>.</p></li>
+<li><p><strong>SQL</strong> is not a statistical software and doesn’t, for example, have a mechanism for creating data visualizations.</p></li>
+<li><p>track which <strong>R</strong> commands are connected to <strong>SQL</strong> at the <a href="https://dbplyr.tidyverse.org/reference/" target="_blank"><strong>dbplyr</strong> reference sheet</a>.</p></li>
+</ul>
+</section>
+<section id="sql-queries-via-the-dbi-package" class="slide level2">
+<h2>2. SQL queries via the <strong>DBI</strong> package</h2>
+<ul>
+<li>Look at the first few rows of the <code>flights</code> data.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con_air,</span>
+<span id="cb23-2"><a href="#cb23-2"></a>                <span class="st">"SELECT * FROM flights LIMIT 8;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  year month day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+1 2010    10   1        1           2100       181      159           2320
+2 2010    10   1        1           1920       281      230           2214
+3 2010    10   1        3           2355         8      339            334
+4 2010    10   1        5           2200       125       41           2249
+5 2010    10   1        7           2245        82      104           2347
+6 2010    10   1        7             10        -3      451            500
+7 2010    10   1        7           2150       137      139           2337
+8 2010    10   1        8             15        -7      538            537
+  arr_delay carrier tailnum flight origin dest air_time distance cancelled
+1       159      XE  N11137   2558    EWR  OMA      162     1133         0
+2       256      B6  N659JB    562    FLL  SWF      131     1119         0
+3         5      B6  N563JB    701    JFK  SJU      196     1597         0
+4       112      XE  N16559   5982    IAD  BNA       82      542         0
+5        77      OO  N908SW   6433    LAX  FAT       37      209         0
+6        -9      AA  N3FRAA    700    LAX  DFW      150     1235         0
+7       122      DL  N347NW   1752    ATL  IAD       70      533         0
+8         1      CO  N73283   1740    SMF  IAH      193     1609         0
+  diverted hour minute           time_hour
+1        0   21      0 2010-10-01 21:00:00
+2        0   19     20 2010-10-01 19:20:00
+3        0   23     55 2010-10-01 23:55:00
+4        0   22      0 2010-10-01 22:00:00
+5        0   22     45 2010-10-01 22:45:00
+6        0    0     10 2010-10-01 00:10:00
+7        0   21     50 2010-10-01 21:50:00
+8        0    0     15 2010-10-01 00:15:00</code></pre>
+</div>
+</div>
+</section>
+<section id="sql-queries-via-the-dbi-package-1" class="slide level2">
+<h2>2. SQL queries via the <strong>DBI</strong> package</h2>
+<ul>
+<li>How many flights per year are in the <code>flights</code> table?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">dbGetQuery</span>(con_air, </span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="st">"SELECT year, count(*) AS num_flights FROM flights GROUP BY year ORDER BY num_flights;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  year num_flights
+1 2016     5617658
+2 2017     5674621
+3 2015     5819079
+4 2014     5819811
+5 2011     6085281
+6 2012     6096762
+7 2013     6369482
+8 2010     6450117</code></pre>
+</div>
+</div>
+</section>
+<section id="direct-sql-queries-via-sql-chunks" class="slide level2">
+<h2>3. Direct <strong>SQL</strong> queries via <code>sql</code> chunks</h2>
+<p><strong>SQL</strong> queries can be written directly inside a <code>sql</code> chunk in RStudio.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1"></a><span class="in">```{sql}</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="co">#| connection: con_air</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a></span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> flights <span class="kw">LIMIT</span> <span class="dv">8</span>;</span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
 
-<p>more stuff</p>
+<table>
+<caption>
+8 records
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:right;">
+month
+</th>
+<th style="text-align:right;">
+day
+</th>
+<th style="text-align:right;">
+dep_time
+</th>
+<th style="text-align:right;">
+sched_dep_time
+</th>
+<th style="text-align:right;">
+dep_delay
+</th>
+<th style="text-align:right;">
+arr_time
+</th>
+<th style="text-align:right;">
+sched_arr_time
+</th>
+<th style="text-align:right;">
+arr_delay
+</th>
+<th style="text-align:left;">
+carrier
+</th>
+<th style="text-align:left;">
+tailnum
+</th>
+<th style="text-align:right;">
+flight
+</th>
+<th style="text-align:left;">
+origin
+</th>
+<th style="text-align:left;">
+dest
+</th>
+<th style="text-align:right;">
+air_time
+</th>
+<th style="text-align:right;">
+distance
+</th>
+<th style="text-align:right;">
+cancelled
+</th>
+<th style="text-align:right;">
+diverted
+</th>
+<th style="text-align:right;">
+hour
+</th>
+<th style="text-align:right;">
+minute
+</th>
+<th style="text-align:left;">
+time_hour
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2100
+</td>
+<td style="text-align:right;">
+181
+</td>
+<td style="text-align:right;">
+159
+</td>
+<td style="text-align:right;">
+2320
+</td>
+<td style="text-align:right;">
+159
+</td>
+<td style="text-align:left;">
+XE
+</td>
+<td style="text-align:left;">
+N11137
+</td>
+<td style="text-align:right;">
+2558
+</td>
+<td style="text-align:left;">
+EWR
+</td>
+<td style="text-align:left;">
+OMA
+</td>
+<td style="text-align:right;">
+162
+</td>
+<td style="text-align:right;">
+1133
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+2010-10-01 21:00:00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1920
+</td>
+<td style="text-align:right;">
+281
+</td>
+<td style="text-align:right;">
+230
+</td>
+<td style="text-align:right;">
+2214
+</td>
+<td style="text-align:right;">
+256
+</td>
+<td style="text-align:left;">
+B6
+</td>
+<td style="text-align:left;">
+N659JB
+</td>
+<td style="text-align:right;">
+562
+</td>
+<td style="text-align:left;">
+FLL
+</td>
+<td style="text-align:left;">
+SWF
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+1119
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+2010-10-01 19:20:00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2355
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+339
+</td>
+<td style="text-align:right;">
+334
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+B6
+</td>
+<td style="text-align:left;">
+N563JB
+</td>
+<td style="text-align:right;">
+701
+</td>
+<td style="text-align:left;">
+JFK
+</td>
+<td style="text-align:left;">
+SJU
+</td>
+<td style="text-align:right;">
+196
+</td>
+<td style="text-align:right;">
+1597
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:left;">
+2010-10-01 23:55:00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2200
+</td>
+<td style="text-align:right;">
+125
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+2249
+</td>
+<td style="text-align:right;">
+112
+</td>
+<td style="text-align:left;">
+XE
+</td>
+<td style="text-align:left;">
+N16559
+</td>
+<td style="text-align:right;">
+5982
+</td>
+<td style="text-align:left;">
+IAD
+</td>
+<td style="text-align:left;">
+BNA
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+542
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+2010-10-01 22:00:00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+2245
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:right;">
+2347
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:left;">
+OO
+</td>
+<td style="text-align:left;">
+N908SW
+</td>
+<td style="text-align:right;">
+6433
+</td>
+<td style="text-align:left;">
+LAX
+</td>
+<td style="text-align:left;">
+FAT
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+209
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+2010-10-01 22:45:00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+-3
+</td>
+<td style="text-align:right;">
+451
+</td>
+<td style="text-align:right;">
+500
+</td>
+<td style="text-align:right;">
+-9
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:left;">
+N3FRAA
+</td>
+<td style="text-align:right;">
+700
+</td>
+<td style="text-align:left;">
+LAX
+</td>
+<td style="text-align:left;">
+DFW
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+1235
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+2010-10-01 00:10:00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+2150
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:right;">
+2337
+</td>
+<td style="text-align:right;">
+122
+</td>
+<td style="text-align:left;">
+DL
+</td>
+<td style="text-align:left;">
+N347NW
+</td>
+<td style="text-align:right;">
+1752
+</td>
+<td style="text-align:left;">
+ATL
+</td>
+<td style="text-align:left;">
+IAD
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+533
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+2010-10-01 21:50:00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+-7
+</td>
+<td style="text-align:right;">
+538
+</td>
+<td style="text-align:right;">
+537
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+CO
+</td>
+<td style="text-align:left;">
+N73283
+</td>
+<td style="text-align:right;">
+1740
+</td>
+<td style="text-align:left;">
+SMF
+</td>
+<td style="text-align:left;">
+IAH
+</td>
+<td style="text-align:right;">
+193
+</td>
+<td style="text-align:right;">
+1609
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+2010-10-01 00:15:00
+</td>
+</tr>
+</tbody>
+
+</table>
+</div>
+</div>
+</section>
+<section id="direct-sql-queries-via-sql-chunks-1" class="slide level2">
+<h2>3. Direct <strong>SQL</strong> queries via <code>sql</code> chunks</h2>
+<p><strong>SQL</strong> queries can be written directly inside a <code>sql</code> chunk in RStudio.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1"></a><span class="in">```{sql}</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="co">#| connection: con_air</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a></span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="kw">SELECT</span> <span class="fu">year</span>, <span class="fu">count</span>(<span class="op">*</span>) <span class="kw">AS</span> num_flights </span>
+<span id="cb28-5"><a href="#cb28-5"></a>       <span class="kw">FROM</span> flights </span>
+<span id="cb28-6"><a href="#cb28-6"></a>       <span class="kw">GROUP</span> <span class="kw">BY</span> <span class="fu">year</span> </span>
+<span id="cb28-7"><a href="#cb28-7"></a>       <span class="kw">ORDER</span> <span class="kw">BY</span> num_flights;</span>
+<span id="cb28-8"><a href="#cb28-8"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+
+<table>
+<caption>
+8 records
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:right;">
+num_flights
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:right;">
+5617658
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+5674621
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:right;">
+5819079
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:right;">
+5819811
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:right;">
+6085281
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:right;">
+6096762
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:right;">
+6369482
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+6450117
+</td>
+</tr>
+</tbody>
+
+</table>
+</div>
+</div>
+</section></section>
+<section>
+<section id="using-sql-in-dbeaver" class="title-slide slide level1 center">
+<h1>Using <strong>SQL</strong> in DBeaver</h1>
+<ul>
+<li><p>DBeaver is a free SQL client that supports MySQL</p></li>
+<li><p>writing <strong>SQL</strong> code in <strong>R</strong> has some benefits (e.g., piping results tables into <strong>ggplot2</strong> for visualizations)</p></li>
+<li><p>using a <strong>SQL</strong> client that is designed for <strong>SQL</strong> queries has benefits as well.</p></li>
+<li><p>to use DBeaver, <a href="https://dbeaver.io/download/" target="_blank">download the client</a> onto your computer and open it from your Applications.</p></li>
+</ul>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
 
 <div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -395,7 +1451,7 @@
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -554,6 +1610,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

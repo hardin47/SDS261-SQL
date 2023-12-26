@@ -14,14 +14,15 @@ library(DBI)
 library(mdsr)
 ```
 
+
 Today's lab will give us some practice working with the different tools we can use to implement SQL code. We haven't covered much SQL syntax, so the focus will be more on the tools than on writing code. You should, however, be trying to understand the SQL code as you go along.
 
 
 The goals for today include:
 
-* connecting to GitHub / turning in the lab via GitHub.
-* comparing / contrasting three different ways to implement SQL queries in RStudio.
-* writing SQL queries in DBeaver.
+* using RStudio in three different ways 
+* creating a histogram representing a sampling distribution (which isn't null)
+* summarizing the hypothesis test in words of the problem
 
 
 ## Advice for turning in the assignment
@@ -49,6 +50,7 @@ task 3 ways in R plus in DBeaver
 reflect
 
 count rows in SQL vs pulling into R
+
 
 
 

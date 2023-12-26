@@ -24,7 +24,7 @@ Here's your roadmap for the semester! Each day, follow the general process outli
 
 -   Complete the Lab assignment (<i class="fa-solid fa-code"></i> html & <i class="fa-brands fa-r-project"></i> qmd linked below), <i class="fa-solid fa-paper-plane"></i> submit the assignment before 10am the following class period.
 
--   Discuss the reflection questions <i class="fas fa-lightbulb" target="_blank"></i> and ethics considerations <i class="fas fa-balance-scale"></i> (see the <i class="fas fa-book-open"></i> class notes) with your classmates and professor.
+-   Discuss the reflection questions <i class="fas fa-lightbulb"></i> and ethics considerations <i class="fas fa-balance-scale"></i> (see the <a href = "https://st47s.com/SDS261/Notes/" target = "_blank"><i class="fas fa-book-open"></i> class notes</a>) with your classmates and professor.
 
 -   The textbooks are <b> <a href = "https://mdsr-book.github.io/mdsr3e/" target = "_blank">Modern Data Science with R, 3rd edition</a></b> by Baumer, Kaplan, and Horton and <b> <a href = "https://r4ds.hadley.nz/" target = "_blank">R for Data Science, 2nd edition</a></b> by Wickham, Çetinkaya-Rundel, and Grolemund.
 
@@ -47,12 +47,12 @@ schedule <- tribble(
   '',
   '{{< fa comments >}} <a href = "https://dbplyr.tidyverse.org/articles/dbplyr.html" target = "_blank"><b>dbplyr</b> package</a>',
   
-    "Day 2 <br> 1.09.24", 'SQL verbs',
+    "Day 2 <br> 1.09.24", 'SQL clauses',
   '',
   '<a href="https://sds261-sql.netlify.app/handouts/lab1_db_sds261_j24.html" target = "_blank"><i class="fas fa-desktop"></i> Lab1-DB-html</a> <br> <a href="https://sds261-sql.netlify.app/handouts/lab1_db_sds261_j24.qmd" target = "_blank"><i class="fas fa-desktop"></i> Lab1-DB-qmd</a>',
   '',
   
-    "Day 3 <br> 1.10.24", 'Joining',
+    "Day 3 <br> 1.10.24", 'Combining tables',
   '',
   '',
   '',

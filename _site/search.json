@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Schedule",
     "section": "",
-    "text": "Here’s your roadmap for the semester! Each day, follow the general process outlined below:\n\nEnjoy the notes / text \nAttend class, review the  worksheet and solutions if you have any questions after working on it during class.\nComplete the Lab assignment ( html &  qmd linked below),  submit the assignment before 10am the following class period.\nDiscuss the reflection questions  and ethics considerations  (see the  class notes) with your classmates and professor.\nThe textbooks are  Modern Data Science with R, 3rd edition by Baumer, Kaplan, and Horton and  R for Data Science, 2nd edition by Wickham, Çetinkaya-Rundel, and Grolemund.\n\n\n\n\n\n\n\n\n\n\n\n\n\ndate\ntopic\nin class\nin lab\nresources\n\n\n\n\nDay 1\n1.08.24\nstarting +\nR + RStudio +\nSQL + MySQL\n Introduction\n  MDSR3 15.1\n RDS2 21.2\n What is a DB?\n WS 1\n\n dbplyr package\n\n\nDay 2\n1.09.24\nSQL verbs\n\n Lab1-DB-html\n Lab1-DB-qmd\n\n\n\nDay 3\n1.10.24\nJoining\n\n\n\n\n\nDay 4\n1.11.24\nRegular Expressions I\n\n\n\n\n\nDay 5\n1.12.24\nRegular Expressions II\n\n(no lab)\n reg expr cheat sheet\n\n\nDay 6\n1.16.24\nCreating a DB\n\nemail prof with dataset idea for project\n\n\n\nDay 7\n1.17.24\nConstructing a DB\n\n\n\n\n\nDay 8\n1.18.24\nChanging a DB\n\n Project\n\n\n\nDay 9\n1.19.24\n Project\n\n(no lab)\n\n\n\n\n\n\n\n\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/"
+    "text": "Here’s your roadmap for the semester! Each day, follow the general process outlined below:\n\nEnjoy the notes / text \nAttend class, review the  worksheet and solutions if you have any questions after working on it during class.\nComplete the Lab assignment ( html &  qmd linked below),  submit the assignment before 10am the following class period.\nDiscuss the reflection questions  and ethics considerations  (see the  class notes) with your classmates and professor.\nThe textbooks are  Modern Data Science with R, 3rd edition by Baumer, Kaplan, and Horton and  R for Data Science, 2nd edition by Wickham, Çetinkaya-Rundel, and Grolemund.\n\n\n\n\n\n\n\n\n\n\n\n\n\ndate\ntopic\nin class\nin lab\nresources\n\n\n\n\nDay 1\n1.08.24\nstarting +\nR + RStudio +\nSQL + MySQL\n Introduction\n  MDSR3 15.1\n RDS2 21.2\n What is a DB?\n WS 1\n\n dbplyr package\n\n\nDay 2\n1.09.24\nSQL clauses\n\n Lab1-DB-html\n Lab1-DB-qmd\n\n\n\nDay 3\n1.10.24\nCombining tables\n\n\n\n\n\nDay 4\n1.11.24\nRegular Expressions I\n\n\n\n\n\nDay 5\n1.12.24\nRegular Expressions II\n\n(no lab)\n reg expr cheat sheet\n\n\nDay 6\n1.16.24\nCreating a DB\n\nemail prof with dataset idea for project\n\n\n\nDay 7\n1.17.24\nConstructing a DB\n\n\n\n\n\nDay 8\n1.18.24\nChanging a DB\n\n Project\n\n\n\nDay 9\n1.19.24\n Project\n\n(no lab)\n\n\n\n\n\n\n\n\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/"
   },
   {
     "objectID": "clicker_study.html",
@@ -18,7 +18,7 @@
     "href": "syllabus.html",
     "title": "syllabus",
     "section": "",
-    "text": "Class: daily 10-11:30am\nLab: daily (not Fridays) 1:30-3pm\nOffice hours: daily 11:30-1:30pm\n\n\n\n\n\nArtwork by @allison_horst.\n\n\n\n\n\n\n\nData Science, the SQL is a continuation of ideas learned in Foundations of Data Science. The course develops abilities for using SQL databases within the data science pipeline. The core of the course will focus on the why and the how associated with writing SELECT queries in SQL. Additional topics will include subqueries, indexes, keys, and regular expressions. Students will learn how to run SQL queries from both the RStudio IDE as well as from a relational database management system client like MySQL Workbench or DuckDB.\n\n\n\n\n\n\nAnonymous Feedback\n\n\n\nAs someone who is, myself, constantly learning and growing in many ways, I welcome your feedback about the course, the classroom dynamics, or anything else you’d like me to know. I have emailed you a link to an anonymous feedback form. Please feel free to provide me with feedback at any time!\n\n\n\n\n\nBy the end of the term, students will:\n\nDatabase Concepts: be able to explain basic database concepts such as tables, records, fields, and relationships.\nIntroduction to SQL: gain a fundamental understanding of Structured Query Language (SQL), including its history, purpose, and key components.\nSQL Querying:\n\nWriting SQL Queries: learn how to write basic SQL queries to retrieve data from a single table.\nFiltering and Sorting Data: be able to use SQL to filter and sort data based on specific criteria.\nJoining Tables: understand how to perform inner and outer joins to combine data from multiple tables.\n\nInserting and Updating Data: be able to use SQL to insert new records into a table and update existing records. Use SQL to delete records from a table.\nBasics of Regular Expressions: understand the fundamental concepts of regular expressions. Identify and use basic metacharacters for pattern matching to write simple regular expressions for text search and matching.\n\n\n\n\nIn an ideal world, science would be objective. However, much of science is subjective and is historically built on a small subset of privileged voices. In this class, we will make an effort to recognize how science (and data science!) has played a role in both understanding diversity as well as in promoting systems of power and privilege. I acknowledge that there may be both overt and covert biases in the material due to the lens with which it was written, even though the material is primarily of a scientific nature. Integrating a diverse set of experiences is important for a more comprehensive understanding of science. I would like to discuss issues of diversity in statistics as part of the course from time to time.\nPlease contact me if you have any suggestions to improve the quality of the course materials.\nFurthermore, I would like to create a learning environment for my students that supports a diversity of thoughts, perspectives and experiences, and honors your identities (including race, gender, class, sexuality, religion, ability, etc.) To help accomplish this:\n\nIf you have a name and/or set of pronouns that differ from those that appear in your official records, please let me know!\nIf you feel like your performance in the class is being impacted by your experiences outside of class, please don’t hesitate to come and talk with me. You can also relay information to me via your mentors. I want to be a resource for you.\n\nI (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please talk to me about it. As a participant in course discussions, you should also strive to honor the diversity of your classmates.\n\n\n\n\n\n Modern Data Science with R, 3rd edition by Baumer, Kaplan, and Horton.\nR for Data Science, 2nd edition by Wickham, Çetinkaya-Rundel, and Grolemund.\n\n\n\n\n\n\nDates\n\n\n\nFinal Project due Tuesday, January 23rd\n\n\n\n\n\n\nEnough R\nR tutorial\nGreat tutorials through the Coding Club\nA true beginner’s introduction to the tidyverse, the introverse.\nfor a good start to R in general\nA fantastic ggplot2 tutorial\nGreat tutorials through the Coding Club\nGoogle for R\nsome R ideas that I wrote up\nIncredibly helpful cheatsheets from RStudio.\n\ndata wrangling\nggplot2\nR Markdown\nRStudio IDE\n\n\n\n\n\n\nW3 schools Introduction to SQL\nR packages for working with databases\nIntroduction to dbplyr\n\n\n\n\n\nstringr vignette\nstringr package\nJenny Bryan’s STAT 545 notes\nJenny Bryan’s STAT 545 lab\nHadley Wickham’s book R for Data Science\nregexpal\n\nRegExr\nRegexOne\n\n\n\n\nR will be used for many assignments. You can use R on the Smith server: https://rstudio.smith.edu/.\nAlternatively, feel free to download both R and RStudio onto your own computer. R is freely available at http://www.r-project.org/; RStudio is also free and allows you to turn in all R assignments using Quarto http://rstudio.org/.\n\n\n\nAssignments will be turned in using GitHub. See instructions for using GitHub on the course website.\n\n\n\n\n\n\nThe prerequisite for this class is SDS 192, Introduction to Data Science.\n\n\n\nLabs will take place on most days with the lab write-up due just before the following class period. See instructions for using GitHub on the course website for how to turn in assignments.\n\n\n\nThe class expectations are that you show up for class and labs and turn in a final project. A successful final project is required to pass the class. Additionally, you should not miss more than 1 or 2 classes nor should you miss turning in more than 1 or 2 labs."
+    "text": "Class: daily 10-11:30am\nLab: daily (not Fridays) 1:30-3pm\nOffice hours: daily 11:30-1:30pm\n\n\n\n\n\nArtwork by @allison_horst.\n\n\n\n\n\n\n\nData Science, the SQL is a continuation of ideas learned in Foundations of Data Science. The course develops abilities for using SQL databases within the data science pipeline. The core of the course will focus on the why and the how associated with writing SELECT queries in SQL. Additional topics will include subqueries, indexes, keys, and regular expressions. Students will learn how to run SQL queries from both the RStudio IDE as well as from a relational database management system client like MySQL Workbench or DuckDB.\n\n\n\n\n\n\nAnonymous Feedback\n\n\n\nAs someone who is, myself, constantly learning and growing in many ways, I welcome your feedback about the course, the classroom dynamics, or anything else you’d like me to know. I have emailed you a link to an anonymous feedback form. Please feel free to provide me with feedback at any time!\n\n\n\n\n\nBy the end of the term, students will:\n\nDatabase Concepts: be able to explain basic database concepts such as tables, records, fields, and relationships.\nIntroduction to SQL: gain a fundamental understanding of Structured Query Language (SQL), including its history, purpose, and key components.\nSQL Querying:\n\nWriting SQL Queries: learn how to write basic SQL queries to retrieve data from a single table.\nFiltering and Sorting Data: be able to use SQL to filter and sort data based on specific criteria.\nJoining Tables: understand how to perform inner and outer joins to combine data from multiple tables.\n\nInserting and Updating Data: be able to use SQL to insert new records into a table and update existing records. Use SQL to delete records from a table.\nBasics of Regular Expressions: understand the fundamental concepts of regular expressions. Identify and use basic metacharacters for pattern matching to write simple regular expressions for text search and matching.\n\n\n\n\nIn an ideal world, science would be objective. However, much of science is subjective and is historically built on a small subset of privileged voices. In this class, we will make an effort to recognize how science (and data science!) has played a role in both understanding diversity as well as in promoting systems of power and privilege. I acknowledge that there may be both overt and covert biases in the material due to the lens with which it was written, even though the material is primarily of a scientific nature. Integrating a diverse set of experiences is important for a more comprehensive understanding of science. I would like to discuss issues of diversity in statistics as part of the course from time to time.\nPlease contact me if you have any suggestions to improve the quality of the course materials.\nFurthermore, I would like to create a learning environment for my students that supports a diversity of thoughts, perspectives and experiences, and honors your identities (including race, gender, class, sexuality, religion, ability, etc.) To help accomplish this:\n\nIf you have a name and/or set of pronouns that differ from those that appear in your official records, please let me know!\nIf you feel like your performance in the class is being impacted by your experiences outside of class, please don’t hesitate to come and talk with me. You can also relay information to me via your mentors. I want to be a resource for you.\n\nI (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please talk to me about it. As a participant in course discussions, you should also strive to honor the diversity of your classmates.\n\n\n\n\n\n Modern Data Science with R, 3rd edition by Baumer, Kaplan, and Horton.\nR for Data Science, 2nd edition by Wickham, Çetinkaya-Rundel, and Grolemund.\n\n\n\n\n\n\nDates\n\n\n\nFinal Project due Tuesday, January 23rd\n\n\n\n\n\n\nEnough R\nR tutorial\nGreat tutorials through the Coding Club\nA true beginner’s introduction to the tidyverse, the introverse.\nfor a good start to R in general\nA fantastic ggplot2 tutorial\nGreat tutorials through the Coding Club\nGoogle for R\nsome R ideas that I wrote up\nIncredibly helpful cheatsheets from RStudio.\n\ndata wrangling\nggplot2\nR Markdown\nRStudio IDE\n\n\n\n\n\n\nW3 schools Introduction to SQL\nW3 schools SQL Exercises, Practice, Solution\nR packages for working with databases\nIntroduction to dbplyr\n\n\n\n\n\nstringr vignette\nstringr package\nJenny Bryan et al.’s STAT 545 notes\nHadley Wickham’s book R for Data Science\nregexpal\n\nRegExr\nRegexOne\n\n\n\n\nR will be used for many assignments. You can use R on the Smith server: https://rstudio.smith.edu/.\nAlternatively, feel free to download both R and RStudio onto your own computer. R is freely available at http://www.r-project.org/; RStudio is also free and allows you to turn in all R assignments using Quarto http://rstudio.org/.\n\n\n\nAssignments will be turned in using GitHub. See instructions for using GitHub on the course website.\n\n\n\n\n\n\nThe prerequisite for this class is SDS 192, Introduction to Data Science.\n\n\n\nLabs will take place on most days with the lab write-up due just before the following class period. See instructions for using GitHub on the course website for how to turn in assignments.\n\n\n\nThe class expectations are that you show up for class and labs and turn in a final project. A successful final project is required to pass the class. Additionally, you should not miss more than 1 or 2 classes nor should you miss turning in more than 1 or 2 labs."
   },
   {
     "objectID": "syllabus.html#math-150-spring-2023",
@@ -53,7 +53,7 @@
     "href": "syllabus.html#technical-details",
     "title": "syllabus",
     "section": "",
-    "text": "Modern Data Science with R, 3rd edition by Baumer, Kaplan, and Horton.\nR for Data Science, 2nd edition by Wickham, Çetinkaya-Rundel, and Grolemund.\n\n\n\n\n\n\nDates\n\n\n\nFinal Project due Tuesday, January 23rd\n\n\n\n\n\n\nEnough R\nR tutorial\nGreat tutorials through the Coding Club\nA true beginner’s introduction to the tidyverse, the introverse.\nfor a good start to R in general\nA fantastic ggplot2 tutorial\nGreat tutorials through the Coding Club\nGoogle for R\nsome R ideas that I wrote up\nIncredibly helpful cheatsheets from RStudio.\n\ndata wrangling\nggplot2\nR Markdown\nRStudio IDE\n\n\n\n\n\n\nW3 schools Introduction to SQL\nR packages for working with databases\nIntroduction to dbplyr\n\n\n\n\n\nstringr vignette\nstringr package\nJenny Bryan’s STAT 545 notes\nJenny Bryan’s STAT 545 lab\nHadley Wickham’s book R for Data Science\nregexpal\n\nRegExr\nRegexOne\n\n\n\n\nR will be used for many assignments. You can use R on the Smith server: https://rstudio.smith.edu/.\nAlternatively, feel free to download both R and RStudio onto your own computer. R is freely available at http://www.r-project.org/; RStudio is also free and allows you to turn in all R assignments using Quarto http://rstudio.org/.\n\n\n\nAssignments will be turned in using GitHub. See instructions for using GitHub on the course website."
+    "text": "Modern Data Science with R, 3rd edition by Baumer, Kaplan, and Horton.\nR for Data Science, 2nd edition by Wickham, Çetinkaya-Rundel, and Grolemund.\n\n\n\n\n\n\nDates\n\n\n\nFinal Project due Tuesday, January 23rd\n\n\n\n\n\n\nEnough R\nR tutorial\nGreat tutorials through the Coding Club\nA true beginner’s introduction to the tidyverse, the introverse.\nfor a good start to R in general\nA fantastic ggplot2 tutorial\nGreat tutorials through the Coding Club\nGoogle for R\nsome R ideas that I wrote up\nIncredibly helpful cheatsheets from RStudio.\n\ndata wrangling\nggplot2\nR Markdown\nRStudio IDE\n\n\n\n\n\n\nW3 schools Introduction to SQL\nW3 schools SQL Exercises, Practice, Solution\nR packages for working with databases\nIntroduction to dbplyr\n\n\n\n\n\nstringr vignette\nstringr package\nJenny Bryan et al.’s STAT 545 notes\nHadley Wickham’s book R for Data Science\nregexpal\n\nRegExr\nRegexOne\n\n\n\n\nR will be used for many assignments. You can use R on the Smith server: https://rstudio.smith.edu/.\nAlternatively, feel free to download both R and RStudio onto your own computer. R is freely available at http://www.r-project.org/; RStudio is also free and allows you to turn in all R assignments using Quarto http://rstudio.org/.\n\n\n\nAssignments will be turned in using GitHub. See instructions for using GitHub on the course website."
   },
   {
     "objectID": "syllabus.html#important-features",
@@ -158,7 +158,7 @@
     "href": "handout/lab1_db_sds261_j24.html",
     "title": "Lab1 - working with Databases",
     "section": "",
-    "text": "info for doing lab1\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/"
+    "text": "library(tidyverse)\nlibrary(DBI)\nlibrary(mdsr)\nToday’s lab will give us some practice working with the different tools we can use to implement SQL code. We haven’t covered much SQL syntax, so the focus will be more on the tools than on writing code. You should, however, be trying to understand the SQL code as you go along.\nThe goals for today include:"
   },
   {
     "objectID": "syllabus.html#sds-261-januar-2024",
@@ -228,14 +228,14 @@
     "href": "github.html#commit-your-work",
     "title": "Working on assignments with GitHub",
     "section": "commit your work",
-    "text": "commit your work\nYou don’t need to commit every file, but you do need to commit files that are integral to the analysis (always commit .qmd, .pdf, data files, images that created the pdf, etc.).\n\n\n\n\n\npull-work-knit-commit-push"
+    "text": "commit your work\nYou don’t need to commit every file, but you do need to commit files that are integral to the analysis (always commit .qmd, .pdf, data files, images that created the pdf, etc.).\n\n\n\n\n\npull-work-render-commit-push"
   },
   {
     "objectID": "github.html#push-your-work-to-github",
     "href": "github.html#push-your-work-to-github",
     "title": "Working on assignments with GitHub",
     "section": "push your work to GitHub",
-    "text": "push your work to GitHub\nIt is good practice to use meaningful commit messages to help your future self figure out your past work.\n\n\n\n\n\npull-work-knit-commit-push"
+    "text": "push your work to GitHub\nIt is good practice to use meaningful commit messages to help your future self figure out your past work.\n\n\n\n\n\npull-work-render-commit-push"
   },
   {
     "objectID": "github.html#check-your-work-on-github",
@@ -257,5 +257,166 @@
     "title": "Project",
     "section": "Technical details",
     "text": "Technical details\n\nYou may work alone or in pairs.\nNarrative must accompany all technical products including code, output tables, visualizations, etc. No naked code or graphs. (Figures and Tables should have captions.)\nThe expectation is that you turn in a reproducible Quarto file and accompanying pdf or html file. If you plan to turn in the project in a different format, please check with the professor in advance.\n\n\nDue Dates\n\nTuesday, January 16. Email prof with dataset details and idea for project. Include the following:\n\nQuestion of interest that you hope to address.\nHolistic description of the dataset(s) (a few sentences).\nDescription of the observational units and columns in each data table.\nFull reference for data citation.\nLink to the resources.\n\nEnd of week 2. We will have some time in class to work on the project.\nTuesday, January 23. Completed project is due."
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#what-is-a-database",
+    "href": "slides/2024-01-08-db.html#what-is-a-database",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "What is a database?",
+    "text": "What is a database?\n\nstructured collection of data organized with\n\nefficient storage\neasy retrieval\nconsistent management\n\ndata stored in tables which are linked to one another via keys"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#tidy-data",
+    "href": "slides/2024-01-08-db.html#tidy-data",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "Tidy data",
+    "text": "Tidy data\n\ndata frame (R) or table (SQL)\ncolumns of variables\nrows of observational units"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#differences-between-r-and-sql",
+    "href": "slides/2024-01-08-db.html#differences-between-r-and-sql",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "Differences between R and SQL",
+    "text": "Differences between R and SQL\n\ntables in SQL databases can be arbitrarily large\n\nlive in storage, computer’s hard drive (usually remote)\n\ndata frames in R\n\nlive in memory (RAM) on your personal computer\n\ntables in a database are linked via a key."
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#sql-connection",
+    "href": "slides/2024-01-08-db.html#sql-connection",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "SQL connection",
+    "text": "SQL connection\nTo set up a SQL connection, you need the location of the server (host) as well as a username and password.\n\ncon_air &lt;- DBI::dbConnect(\n  RMariaDB::MariaDB(),\n  dbname = \"airlines\",\n  host = Sys.getenv(\"MDSR_HOST\"),\n  user = Sys.getenv(\"MDSR_USER\"),\n  password = Sys.getenv(\"MDSR_PWD\")\n)\n\nHadley Wickham discusses how to use Sys.getenv: https://cran.r-project.org/web/packages/httr/vignettes/secrets.html"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#sql-tables-as-tbl",
+    "href": "slides/2024-01-08-db.html#sql-tables-as-tbl",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "SQL tables as tbl",
+    "text": "SQL tables as tbl\n\ncarriers &lt;- tbl(con_air, \"carriers\")\ndim(carriers)\n\n[1] NA  2\n\nhead(carriers)\n\n# Source:   SQL [6 x 2]\n# Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]\n  carrier name                         \n  &lt;chr&gt;   &lt;chr&gt;                        \n1 02Q     Titan Airways                \n2 04Q     Tradewind Aviation           \n3 05Q     Comlux Aviation, AG          \n4 06Q     Master Top Linhas Aereas Ltd.\n5 07Q     Flair Airlines Ltd.          \n6 09Q     Swift Air, LLC"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#sql-tables-as-tibble",
+    "href": "slides/2024-01-08-db.html#sql-tables-as-tibble",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "SQL tables as tibble",
+    "text": "SQL tables as tibble\nThe function collect() copies a SQL table from it’s server location on disk to your local memory location in R.\n\ncarriers_tibble &lt;- carriers |&gt;\n  collect()\n\ndim(carriers_tibble)\n\n[1] 1610    2\n\nhead(carriers_tibble)\n\n# A tibble: 6 × 2\n  carrier name                         \n  &lt;chr&gt;   &lt;chr&gt;                        \n1 02Q     Titan Airways                \n2 04Q     Tradewind Aviation           \n3 05Q     Comlux Aviation, AG          \n4 06Q     Master Top Linhas Aereas Ltd.\n5 07Q     Flair Airlines Ltd.          \n6 09Q     Swift Air, LLC"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#how-much-space-does-carriers-take-up",
+    "href": "slides/2024-01-08-db.html#how-much-space-does-carriers-take-up",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "How much space does carriers take up?",
+    "text": "How much space does carriers take up?\nThe data frame in R takes up 2 orders of magnitude of memory than the table which just points to the object in SQL.\n\ncarriers |&gt;\n  object.size() |&gt;\n  print(units = \"Kb\")\n\n5.2 Kb\n\ncarriers_tibble |&gt;\n  object.size() |&gt;\n  print(units = \"Kb\")\n\n234.8 Kb"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#what-is-sql-structured-query-language",
+    "href": "slides/2024-01-08-db.html#what-is-sql-structured-query-language",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "What is SQL (Structured Query Language) ?",
+    "text": "What is SQL (Structured Query Language) ?\n\nSQL is a programming language for working with relational databases.\nSQL has been around since the 1970s, but has, unfortunately, many different dialects.\nTo connect to the Smith and mdsr databases (via R and DBeaver), we will use MySQL.\nTo connect to DuckDB, we will use the dialect native to DuckDB."
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql",
+    "href": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "1. Translating dplyr code into SQL",
+    "text": "1. Translating dplyr code into SQL\nThe function dbListTables() in the DBI package will tell us what tables exist in the airlines database.\n\nDBI::dbListTables(con_air)\n\n[1] \"airports\" \"carriers\" \"flights\"  \"planes\"  \n\nflights &lt;- tbl(con_air, \"flights\")\ncarriers &lt;- tbl(con_air, \"carriers\")"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql-1",
+    "href": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql-1",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "1. Translating dplyr code into SQL",
+    "text": "1. Translating dplyr code into SQL\n\nOver what years is the flights data taken?\n\n\nyrs &lt;- flights |&gt;\n  summarize(min_year = min(year), max_year = max(year))\n\nyrs\n\n# Source:   SQL [1 x 2]\n# Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]\n  min_year max_year\n     &lt;int&gt;    &lt;int&gt;\n1     2010     2017"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql-2",
+    "href": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql-2",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "1. Translating dplyr code into SQL",
+    "text": "1. Translating dplyr code into SQL\nBecause flights is not actually a data.frame in R (but instead a tbl in SQL), the work that was done above was actually performed in SQL. To see the SQL code, we can use the function show_query.\n\nshow_query(yrs)\n\n&lt;SQL&gt;\nSELECT MIN(`year`) AS `min_year`, MAX(`year`) AS `max_year`\nFROM `flights`"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql-3",
+    "href": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql-3",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "1. Translating dplyr code into SQL",
+    "text": "1. Translating dplyr code into SQL\n\nCreate a data set containing only flights between LAX and BOS in 2012.\n\n\nla_bos &lt;- flights |&gt;\n  filter(year == 2012 & ((origin == \"LAX\" & dest == \"BOS\") | \n           (origin == \"BOS\" & dest == \"LAX\"))) \n\nshow_query(la_bos)\n\n&lt;SQL&gt;\nSELECT *\nFROM `flights`\nWHERE (`year` = 2012.0 AND ((`origin` = 'LAX' AND `dest` = 'BOS') OR (`origin` = 'BOS' AND `dest` = 'LAX')))"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql-4",
+    "href": "slides/2024-01-08-db.html#translating-dplyr-code-into-sql-4",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "1. Translating dplyr code into SQL",
+    "text": "1. Translating dplyr code into SQL\n\ndbplyr doesn’t translate every R command into SQL.\nSQL is not a statistical software and doesn’t, for example, have a mechanism for creating data visualizations.\ntrack which R commands are connected to SQL at the dbplyr reference sheet."
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#sql-queries-through-the-dbi-package",
+    "href": "slides/2024-01-08-db.html#sql-queries-through-the-dbi-package",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "2. SQL queries through the DBI package",
+    "text": "2. SQL queries through the DBI package\n\nLook at the first few rows of the flights data.\n\n\nDBI::dbGetQuery(con_air,\n                \"SELECT * FROM flights LIMIT 8;\")\n\n  year month day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n1 2010    10   1        1           2100       181      159           2320\n2 2010    10   1        1           1920       281      230           2214\n3 2010    10   1        3           2355         8      339            334\n4 2010    10   1        5           2200       125       41           2249\n5 2010    10   1        7           2245        82      104           2347\n6 2010    10   1        7             10        -3      451            500\n7 2010    10   1        7           2150       137      139           2337\n8 2010    10   1        8             15        -7      538            537\n  arr_delay carrier tailnum flight origin dest air_time distance cancelled\n1       159      XE  N11137   2558    EWR  OMA      162     1133         0\n2       256      B6  N659JB    562    FLL  SWF      131     1119         0\n3         5      B6  N563JB    701    JFK  SJU      196     1597         0\n4       112      XE  N16559   5982    IAD  BNA       82      542         0\n5        77      OO  N908SW   6433    LAX  FAT       37      209         0\n6        -9      AA  N3FRAA    700    LAX  DFW      150     1235         0\n7       122      DL  N347NW   1752    ATL  IAD       70      533         0\n8         1      CO  N73283   1740    SMF  IAH      193     1609         0\n  diverted hour minute           time_hour\n1        0   21      0 2010-10-01 21:00:00\n2        0   19     20 2010-10-01 19:20:00\n3        0   23     55 2010-10-01 23:55:00\n4        0   22      0 2010-10-01 22:00:00\n5        0   22     45 2010-10-01 22:45:00\n6        0    0     10 2010-10-01 00:10:00\n7        0   21     50 2010-10-01 21:50:00\n8        0    0     15 2010-10-01 00:15:00"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#sql-queries-through-the-dbi-package-1",
+    "href": "slides/2024-01-08-db.html#sql-queries-through-the-dbi-package-1",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "2. SQL queries through the DBI package",
+    "text": "2. SQL queries through the DBI package\n\nHow many flights per year are in the flights table?\n\n\ndbGetQuery(con_air, \n  \"SELECT year, count(*) AS num_flights FROM flights GROUP BY year ORDER BY num_flights;\")\n\n  year num_flights\n1 2016     5617658\n2 2017     5674621\n3 2015     5819079\n4 2014     5819811\n5 2011     6085281\n6 2012     6096762\n7 2013     6369482\n8 2010     6450117"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#direct-sql-queries-through-a-sql-chunk",
+    "href": "slides/2024-01-08-db.html#direct-sql-queries-through-a-sql-chunk",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "3. Direct SQL queries through a sql chunk",
+    "text": "3. Direct SQL queries through a sql chunk\nSQL queries can be written directly inside a sql chunk in RStudio.\n\n```{sql}\n#| connection: con_air\n\nSELECT * FROM flights LIMIT 8;\n```\n\n\n\n\n8 records\n\n\n\n\nyear\n\n\nmonth\n\n\nday\n\n\ndep_time\n\n\nsched_dep_time\n\n\ndep_delay\n\n\narr_time\n\n\nsched_arr_time\n\n\narr_delay\n\n\ncarrier\n\n\ntailnum\n\n\nflight\n\n\norigin\n\n\ndest\n\n\nair_time\n\n\ndistance\n\n\ncancelled\n\n\ndiverted\n\n\nhour\n\n\nminute\n\n\ntime_hour\n\n\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n1\n\n\n2100\n\n\n181\n\n\n159\n\n\n2320\n\n\n159\n\n\nXE\n\n\nN11137\n\n\n2558\n\n\nEWR\n\n\nOMA\n\n\n162\n\n\n1133\n\n\n0\n\n\n0\n\n\n21\n\n\n0\n\n\n2010-10-01 21:00:00\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n1\n\n\n1920\n\n\n281\n\n\n230\n\n\n2214\n\n\n256\n\n\nB6\n\n\nN659JB\n\n\n562\n\n\nFLL\n\n\nSWF\n\n\n131\n\n\n1119\n\n\n0\n\n\n0\n\n\n19\n\n\n20\n\n\n2010-10-01 19:20:00\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n3\n\n\n2355\n\n\n8\n\n\n339\n\n\n334\n\n\n5\n\n\nB6\n\n\nN563JB\n\n\n701\n\n\nJFK\n\n\nSJU\n\n\n196\n\n\n1597\n\n\n0\n\n\n0\n\n\n23\n\n\n55\n\n\n2010-10-01 23:55:00\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n5\n\n\n2200\n\n\n125\n\n\n41\n\n\n2249\n\n\n112\n\n\nXE\n\n\nN16559\n\n\n5982\n\n\nIAD\n\n\nBNA\n\n\n82\n\n\n542\n\n\n0\n\n\n0\n\n\n22\n\n\n0\n\n\n2010-10-01 22:00:00\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n7\n\n\n2245\n\n\n82\n\n\n104\n\n\n2347\n\n\n77\n\n\nOO\n\n\nN908SW\n\n\n6433\n\n\nLAX\n\n\nFAT\n\n\n37\n\n\n209\n\n\n0\n\n\n0\n\n\n22\n\n\n45\n\n\n2010-10-01 22:45:00\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n7\n\n\n10\n\n\n-3\n\n\n451\n\n\n500\n\n\n-9\n\n\nAA\n\n\nN3FRAA\n\n\n700\n\n\nLAX\n\n\nDFW\n\n\n150\n\n\n1235\n\n\n0\n\n\n0\n\n\n0\n\n\n10\n\n\n2010-10-01 00:10:00\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n7\n\n\n2150\n\n\n137\n\n\n139\n\n\n2337\n\n\n122\n\n\nDL\n\n\nN347NW\n\n\n1752\n\n\nATL\n\n\nIAD\n\n\n70\n\n\n533\n\n\n0\n\n\n0\n\n\n21\n\n\n50\n\n\n2010-10-01 21:50:00\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n8\n\n\n15\n\n\n-7\n\n\n538\n\n\n537\n\n\n1\n\n\nCO\n\n\nN73283\n\n\n1740\n\n\nSMF\n\n\nIAH\n\n\n193\n\n\n1609\n\n\n0\n\n\n0\n\n\n0\n\n\n15\n\n\n2010-10-01 00:15:00"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#direct-sql-queries-through-a-sql-chunk-1",
+    "href": "slides/2024-01-08-db.html#direct-sql-queries-through-a-sql-chunk-1",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "3. Direct SQL queries through a sql chunk",
+    "text": "3. Direct SQL queries through a sql chunk\nSQL queries can be written directly inside a sql chunk in RStudio.\n\n```{sql}\n#| connection: con_air\n\nSELECT year, count(*) AS num_flights \n       FROM flights \n       GROUP BY year \n       ORDER BY num_flights;\n```\n\n\n\n\n8 records\n\n\n\n\nyear\n\n\nnum_flights\n\n\n\n\n\n\n2016\n\n\n5617658\n\n\n\n\n2017\n\n\n5674621\n\n\n\n\n2015\n\n\n5819079\n\n\n\n\n2014\n\n\n5819811\n\n\n\n\n2011\n\n\n6085281\n\n\n\n\n2012\n\n\n6096762\n\n\n\n\n2013\n\n\n6369482\n\n\n\n\n2010\n\n\n6450117"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#sql-queries-via-the-dbi-package",
+    "href": "slides/2024-01-08-db.html#sql-queries-via-the-dbi-package",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "2. SQL queries via the DBI package",
+    "text": "2. SQL queries via the DBI package\n\nLook at the first few rows of the flights data.\n\n\nDBI::dbGetQuery(con_air,\n                \"SELECT * FROM flights LIMIT 8;\")\n\n  year month day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n1 2010    10   1        1           2100       181      159           2320\n2 2010    10   1        1           1920       281      230           2214\n3 2010    10   1        3           2355         8      339            334\n4 2010    10   1        5           2200       125       41           2249\n5 2010    10   1        7           2245        82      104           2347\n6 2010    10   1        7             10        -3      451            500\n7 2010    10   1        7           2150       137      139           2337\n8 2010    10   1        8             15        -7      538            537\n  arr_delay carrier tailnum flight origin dest air_time distance cancelled\n1       159      XE  N11137   2558    EWR  OMA      162     1133         0\n2       256      B6  N659JB    562    FLL  SWF      131     1119         0\n3         5      B6  N563JB    701    JFK  SJU      196     1597         0\n4       112      XE  N16559   5982    IAD  BNA       82      542         0\n5        77      OO  N908SW   6433    LAX  FAT       37      209         0\n6        -9      AA  N3FRAA    700    LAX  DFW      150     1235         0\n7       122      DL  N347NW   1752    ATL  IAD       70      533         0\n8         1      CO  N73283   1740    SMF  IAH      193     1609         0\n  diverted hour minute           time_hour\n1        0   21      0 2010-10-01 21:00:00\n2        0   19     20 2010-10-01 19:20:00\n3        0   23     55 2010-10-01 23:55:00\n4        0   22      0 2010-10-01 22:00:00\n5        0   22     45 2010-10-01 22:45:00\n6        0    0     10 2010-10-01 00:10:00\n7        0   21     50 2010-10-01 21:50:00\n8        0    0     15 2010-10-01 00:15:00"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#sql-queries-via-the-dbi-package-1",
+    "href": "slides/2024-01-08-db.html#sql-queries-via-the-dbi-package-1",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "2. SQL queries via the DBI package",
+    "text": "2. SQL queries via the DBI package\n\nHow many flights per year are in the flights table?\n\n\ndbGetQuery(con_air, \n  \"SELECT year, count(*) AS num_flights FROM flights GROUP BY year ORDER BY num_flights;\")\n\n  year num_flights\n1 2016     5617658\n2 2017     5674621\n3 2015     5819079\n4 2014     5819811\n5 2011     6085281\n6 2012     6096762\n7 2013     6369482\n8 2010     6450117"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#direct-sql-queries-via-sql-chunks",
+    "href": "slides/2024-01-08-db.html#direct-sql-queries-via-sql-chunks",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "3. Direct SQL queries via sql chunks",
+    "text": "3. Direct SQL queries via sql chunks\nSQL queries can be written directly inside a sql chunk in RStudio.\n\n```{sql}\n#| connection: con_air\n\nSELECT * FROM flights LIMIT 8;\n```\n\n\n\n\n8 records\n\n\n\n\nyear\n\n\nmonth\n\n\nday\n\n\ndep_time\n\n\nsched_dep_time\n\n\ndep_delay\n\n\narr_time\n\n\nsched_arr_time\n\n\narr_delay\n\n\ncarrier\n\n\ntailnum\n\n\nflight\n\n\norigin\n\n\ndest\n\n\nair_time\n\n\ndistance\n\n\ncancelled\n\n\ndiverted\n\n\nhour\n\n\nminute\n\n\ntime_hour\n\n\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n1\n\n\n2100\n\n\n181\n\n\n159\n\n\n2320\n\n\n159\n\n\nXE\n\n\nN11137\n\n\n2558\n\n\nEWR\n\n\nOMA\n\n\n162\n\n\n1133\n\n\n0\n\n\n0\n\n\n21\n\n\n0\n\n\n2010-10-01 21:00:00\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n1\n\n\n1920\n\n\n281\n\n\n230\n\n\n2214\n\n\n256\n\n\nB6\n\n\nN659JB\n\n\n562\n\n\nFLL\n\n\nSWF\n\n\n131\n\n\n1119\n\n\n0\n\n\n0\n\n\n19\n\n\n20\n\n\n2010-10-01 19:20:00\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n3\n\n\n2355\n\n\n8\n\n\n339\n\n\n334\n\n\n5\n\n\nB6\n\n\nN563JB\n\n\n701\n\n\nJFK\n\n\nSJU\n\n\n196\n\n\n1597\n\n\n0\n\n\n0\n\n\n23\n\n\n55\n\n\n2010-10-01 23:55:00\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n5\n\n\n2200\n\n\n125\n\n\n41\n\n\n2249\n\n\n112\n\n\nXE\n\n\nN16559\n\n\n5982\n\n\nIAD\n\n\nBNA\n\n\n82\n\n\n542\n\n\n0\n\n\n0\n\n\n22\n\n\n0\n\n\n2010-10-01 22:00:00\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n7\n\n\n2245\n\n\n82\n\n\n104\n\n\n2347\n\n\n77\n\n\nOO\n\n\nN908SW\n\n\n6433\n\n\nLAX\n\n\nFAT\n\n\n37\n\n\n209\n\n\n0\n\n\n0\n\n\n22\n\n\n45\n\n\n2010-10-01 22:45:00\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n7\n\n\n10\n\n\n-3\n\n\n451\n\n\n500\n\n\n-9\n\n\nAA\n\n\nN3FRAA\n\n\n700\n\n\nLAX\n\n\nDFW\n\n\n150\n\n\n1235\n\n\n0\n\n\n0\n\n\n0\n\n\n10\n\n\n2010-10-01 00:10:00\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n7\n\n\n2150\n\n\n137\n\n\n139\n\n\n2337\n\n\n122\n\n\nDL\n\n\nN347NW\n\n\n1752\n\n\nATL\n\n\nIAD\n\n\n70\n\n\n533\n\n\n0\n\n\n0\n\n\n21\n\n\n50\n\n\n2010-10-01 21:50:00\n\n\n\n\n2010\n\n\n10\n\n\n1\n\n\n8\n\n\n15\n\n\n-7\n\n\n538\n\n\n537\n\n\n1\n\n\nCO\n\n\nN73283\n\n\n1740\n\n\nSMF\n\n\nIAH\n\n\n193\n\n\n1609\n\n\n0\n\n\n0\n\n\n0\n\n\n15\n\n\n2010-10-01 00:15:00"
+  },
+  {
+    "objectID": "slides/2024-01-08-db.html#direct-sql-queries-via-sql-chunks-1",
+    "href": "slides/2024-01-08-db.html#direct-sql-queries-via-sql-chunks-1",
+    "title": "Databases and dbplyr and SQL, oh my!",
+    "section": "3. Direct SQL queries via sql chunks",
+    "text": "3. Direct SQL queries via sql chunks\nSQL queries can be written directly inside a sql chunk in RStudio.\n\n```{sql}\n#| connection: con_air\n\nSELECT year, count(*) AS num_flights \n       FROM flights \n       GROUP BY year \n       ORDER BY num_flights;\n```\n\n\n\n\n8 records\n\n\n\n\nyear\n\n\nnum_flights\n\n\n\n\n\n\n2016\n\n\n5617658\n\n\n\n\n2017\n\n\n5674621\n\n\n\n\n2015\n\n\n5819079\n\n\n\n\n2014\n\n\n5819811\n\n\n\n\n2011\n\n\n6085281\n\n\n\n\n2012\n\n\n6096762\n\n\n\n\n2013\n\n\n6369482\n\n\n\n\n2010\n\n\n6450117"
+  },
+  {
+    "objectID": "handout/lab1_db_sds261_j24.html#advice-for-turning-in-the-assignment",
+    "href": "handout/lab1_db_sds261_j24.html#advice-for-turning-in-the-assignment",
+    "title": "Lab1 - working with Databases",
+    "section": "Advice for turning in the assignment",
+    "text": "Advice for turning in the assignment\n\nrender early and often. In fact, go ahead and render your .qmd file right now. Maybe set a timer so that you render every 5 minutes. Do not wait until you are done with the assignment to render\nSave the .Rproj file somewhere you can find it. Don’t keep everything in your downloads folder. Maybe make a folder called SDS261 or something. That folder could live on your Desktop. Or maybe in your Dropbox.\n\n---\ntitle: \"Lab1 - working with Databases\"\nauthor: \"your name goes here\"\ndate: \"due 10am Tuesday, January 9, 2024\"\nexecute:\n  echo: true\n  warning: false\n  message: false\n---\ntask 3 ways in R plus in DBeaver\nreflect\ncount rows in SQL vs pulling into R"
+  },
+  {
+    "objectID": "github.html#render-your-work",
+    "href": "github.html#render-your-work",
+    "title": "Working on assignments with GitHub",
+    "section": "render your work",
+    "text": "render your work\nDon’t forget to put your name on the assignment. Also, make sure that you render to pdf. Render early and often. The more often you render, the fewer headaches you will have.\n\n\n\n\n\nAlways pull before you start. pull-work-render-commit-push"
   }
 ]
