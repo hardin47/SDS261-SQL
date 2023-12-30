@@ -43,7 +43,7 @@ quarto add quarto-ext/fontawesome
 schedule <- tribble(
   ~`date`, ~topic, ~`in class`, ~`in lab`, ~resources,
   "Day 1 <br> 1.08.24", 'starting + <br> R + RStudio + <br> SQL + MySQL', 
-  '{{< fa pen-to-square >}} <a href="https://st47s.com/SDS261/Notes/intro.html" target = "_blank">Introduction</a> <br> <i class="fas fa-book-open"></i> {{< fa book-open >}} <a href="https://mdsr-book.github.io/mdsr3e/15-sqlI.html#sec-dplyr-sql" target = "_blank"> MDSR3 15.1</a> <br> {{< fa book-open >}} <a href="https://r4ds.hadley.nz/databases.html#database-basics" target = "_blank"> RDS2 21.2</a> <br> {{< fa desktop >}} <a href="https://sds261-sql.netlify.app/slides/2024-01-08-db.html" target = "_blank"> What is a DB?</a> <br> {{< fa pencil >}} <a href="https://sds261-sql.netlify.app/handouts/ws1_sds261_j24.pdf" target = "_blank">WS 1</a>',
+  '{{< fa pen-to-square >}} <a href="https://st47s.com/SDS261/Notes/p1-intro-to-sql.html" target = "_blank">Introduction</a> <br> <i class="fas fa-book-open"></i> {{< fa book-open >}} <a href="https://mdsr-book.github.io/mdsr3e/15-sqlI.html#sec-dplyr-sql" target = "_blank"> MDSR3 15.1</a> <br> {{< fa book-open >}} <a href="https://r4ds.hadley.nz/databases.html#database-basics" target = "_blank"> RDS2 21.2</a> <br> {{< fa desktop >}} <a href="https://sds261-sql.netlify.app/slides/2024-01-08-db.html" target = "_blank"> What is a DB?</a> <br> {{< fa pencil >}} <a href="https://sds261-sql.netlify.app/handouts/ws1_sds261_j24.pdf" target = "_blank">WS 1</a>',
   '',
   '{{< fa comments >}} <a href = "https://dbplyr.tidyverse.org/articles/dbplyr.html" target = "_blank"><b>dbplyr</b> package</a>',
   

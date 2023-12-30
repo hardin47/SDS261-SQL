@@ -1,0 +1,506 @@
+---
+title: SQL clauses
+author: "Jo Hardin"
+date: "January 9, 2023"
+format:
+  revealjs:
+    slide-number: true
+    show-slide-number: all
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+
+```{r}
+#| include: false
+
+source("../_common.R")
+fontawesome::fa_html_dependency()
+```
+
+
+# Today's example
+
+## NYC Taxis
+
+Consider a database of taxi rides from the <a href = "https://en.wikipedia.org/wiki/Yellow_Cab_Company" target = "_blank">Yellow Cab</a> company in NYC in March of 2014.
+
+```{r}
+#| label: fig-hosp-db
+#| out.width: 90%
+#| fig-cap: "image credit: Mariordo (Mario Roberto Durán Ortiz), CC BY-SA 3.0"
+#| fig-alt: Image of yellow taxis in downtown New York City.
+#| echo: false
+knitr::include_graphics("../images/nyc_taxis.jpg")
+```
+
+## Establishing a SQL connection
+
+```{r}
+con_taxi <- DBI::dbConnect(
+  RMariaDB::MariaDB(),
+  dbname = "nyctaxi",
+  host = Sys.getenv("MDSR_HOST"),
+  user = Sys.getenv("MDSR_USER"),
+  password = Sys.getenv("MDSR_PWD")
+)
+```
+
+
+## SHOW TABLES
+
+There is only one table in the `nyctaxi` database.  It is called `yellow_old`.
+
+```{sql}
+#| connection: con_taxi
+#| echo: fenced
+
+SHOW TABLES;
+```
+
+## DESCRIBE tables {.scrollable}
+
+Still using a `{sql}` chunk.  The `DESCRIBE` command shows the 18 field names (variables) in the `yellow_old` table.  Some of the variables are characters (`text`) and some are numeric (either `double` or `bigint`)
+
+```{sql}
+#| connection: con_taxi
+
+DESCRIBE yellow_old;
+```
+
+# **SQL** clauses
+
+## Order of clauses
+
+Queries in **SQL** start with the `SELECT` keyword and consist of several clauses, which must be written in the following order:
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* `SELECT` 
+* `FROM` 
+* `JOIN` 
+* `WHERE` 
+:::
+
+::: {.column width="50%"}
+* `GROUP BY` 
+* `HAVING` 
+* `ORDER BY` 
+* `LIMIT`
+:::
+
+::::
+
+The clauses are similar to data wrangling verbs in **R**.
+
+
+## SELECT ... FROM
+
+* start with a `SELECT`, include a corresponding `FROM` 
+* columns may be specified or `*` returns every column
+
+The shortest **SQL** query is the following `SELECT` command.  Do not run this command!!! The `yellow_old` table has 15 million rows, and we do not want to look at them simultaneously.
+
+```{r}
+#| eval: false
+
+DO NOT RUN:  SELECT * FROM yellow_old;
+```
+
+## SELECT ... FROM {.scrollable}
+
+Much better for big tables:
+
+```{sql}
+#| connection: con_taxi
+
+SELECT * FROM yellow_old LIMIT 0, 14;
+
+```
+
+
+
+## SELECT ... FROM
+
+How do we know how many taxi rides are recorded?  Two different ways of counting the rows:
+
+```{sql}
+#| connection: con_taxi
+
+SELECT COUNT(*), sum(1) FROM yellow_old LIMIT 0, 14;
+
+```
+
+Yikes, more than 15 million taxi rides! 
+
+## SELECT ... FROM
+
+What is the length of a taxi ride (in time)?  ... unfortunately, `pickup_datetime` and `dropoff_datetime` are saved as character strings insted of in DateTime format.
+
+
+```{sql}
+#| connection: con_taxi
+
+SELECT
+      pickup_datetime, dropoff_datetime,
+      STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T") AS pickup,
+      STR_TO_DATE(dropoff_datetime, "%Y-%m-%d %T") AS dropoff
+   FROM yellow_old
+   LIMIT 0, 10;
+```
+
+
+## SELECT ... FROM
+
+Why can't we find the difference between the new two time variables?
+
+```{sql}
+#| connection: con_taxi
+#| error: true
+
+SELECT
+      pickup_datetime, dropoff_datetime,
+      STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T") AS pickup,
+      STR_TO_DATE(dropoff_datetime, "%Y-%m-%d %T") AS dropoff.
+      TIMEDIFF(pickup, dropoff) AS length_time
+   FROM yellow_old
+   LIMIT 0, 10;
+```
+
+
+## SELECT ... FROM
+
+Solution 1:  two layers of `SELECT`  
+
+   * first `SELECT` (i.e., inside) layer creates the new variables
+   * second `SELECT` (i.e., outside) layer subtracts the two times
+
+```{sql}
+#| connection: con_taxi
+
+SELECT 
+   pickup,
+   dropoff, 
+   TIMEDIFF(pickup, dropoff) AS length_time 
+FROM (
+   SELECT
+      STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T") AS pickup,
+      STR_TO_DATE(dropoff_datetime, "%Y-%m-%d %T") AS dropoff
+   FROM yellow_old)
+   AS subquery_table
+LIMIT 0, 20;
+```
+
+## SELECT ... FROM
+
+Solution 2: apply the `STR_TO_DATE()` function inside the `TIMEDIFF()` function 
+
+```{sql}
+#| connection: con_taxi
+
+SELECT 
+   pickup_datetime,
+   dropoff_datetime, 
+   TIMEDIFF(STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T"), 
+            STR_TO_DATE(dropoff_datetime, "%Y-%m-%d %T")) AS length_time 
+FROM yellow_old
+LIMIT 0, 20;
+```
+
+
+## Important note:
+
+There is a distinction between clauses that operate on the *variables of the original table* versus those that operate on the *variables of the results set*.  
+
+`pickup_datetime` and `dropoff_datetime` are columns in the *original table* - they are written to disk on the **SQL** server.  
+
+`pickup`, `dropoff`, and `length_time` exist only in the *results set*, which is passed from the server (**SQL** server) to the client (e.g., **RStudio** or **DBeaver**) and is not written to disk.
+
+
+## WHERE
+
+The `WHERE` clause is analogous to the `filter()` function in **dplyr**.  However, keep in mind that there are two **SQL** commands that resemble the **dplyr** `filter()` function. `WHERE` operates on the original data in the table and `HAVING` operates on the result set. 
+
+## WHERE {.scrollable}
+
+What was the fare for those taxi rides where the `tip_amount` was more than $10 and the person used cash?
+
+Note that in **SQL** the equality logical is `=` and in **R** the equality logical is `==`.
+
+```{sql}
+#| connection: con_taxi
+
+SELECT payment_type, fare_amount, tip_amount, total_amount
+FROM yellow_old
+WHERE tip_amount > 10
+   AND payment_type = "CSH"
+LIMIT 0, 10;
+
+```
+
+
+## WHERE
+
+`BETWEEN` can be used to specify a range of values for a numeric value.
+
+```{sql}
+#| connection: con_taxi
+
+SELECT payment_type, fare_amount, tip_amount, total_amount
+FROM yellow_old
+WHERE tip_amount BETWEEN 10 and 12
+   AND payment_type = "CSH"
+LIMIT 0, 10;
+
+```
+
+## WHERE
+
+`IN` is similar to the **dplyr** `%in%` function which specifies distinct values for the variable.
+
+
+```{sql}
+#| connection: con_taxi
+
+SELECT payment_type, fare_amount, tip_amount, total_amount
+FROM yellow_old
+WHERE tip_amount IN (10, 12)
+   AND payment_type = "CSH"
+LIMIT 0, 10;
+
+```
+
+## WHERE
+
+`AND` takes precedent over `OR` in the order of operations, when there are no parentheses.  
+
+```{sql}
+#| connection: con_taxi
+
+SELECT payment_type, fare_amount, tip_amount, total_amount
+FROM yellow_old
+WHERE tip_amount BETWEEN 10 and 12 OR 
+      total_amount BETWEEN 100 and 112 AND 
+      payment_type = "CSH"
+LIMIT 0, 10;
+```
+
+
+## WHERE
+
+Parentheses take precent over `AND` and `OR`.
+
+```{sql}
+#| connection: con_taxi
+
+SELECT payment_type, fare_amount, tip_amount, total_amount
+FROM yellow_old
+WHERE (tip_amount BETWEEN 10 and 12 OR 
+      total_amount BETWEEN 100 and 112 ) AND 
+      payment_type = "CSH"
+LIMIT 0, 10;
+```
+
+
+
+
+
+## GROUP BY
+
+The `GROUP BY` clause will direct **SQL** to carry out the query separately for each category in the grouped variable.  
+
+* aggregate functions include `COUNT()`, `SUM()`, `MAX()`, `MIN()`, and `AVG()`.
+
+
+```{sql}
+#| connection: con_taxi
+
+SELECT COUNT(*) AS num_transactions, 
+       sum(1) as num_transactions_also,
+       payment_type 
+FROM yellow_old
+WHERE tip_amount BETWEEN 10 and 20
+GROUP BY payment_type;
+```
+
+## GROUP BY
+
+For those people who tipped between $10 and $20, what was the lowest and highest fare for each of the types of payments?
+
+
+```{sql}
+#| connection: con_taxi
+
+SELECT COUNT(*) AS num_transactions, 
+       MIN(fare_amount) AS lowest_fare,
+       MAX(fare_amount) AS highest_fare,
+       payment_type 
+FROM yellow_old
+WHERE tip_amount BETWEEN 10 and 20
+GROUP BY payment_type;
+```
+
+
+## GROUP BY
+
+`GROUP BY` will work applied to multiple columns.  
+
+What is `wday`?
+
+
+```{sql}
+#| connection: con_taxi
+
+SELECT COUNT(*) AS num_transactions, 
+       MIN(fare_amount) AS lowest_fare,
+       MAX(fare_amount) AS highest_fare,
+       payment_type,
+       DAYNAME(STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T")) AS wday
+FROM yellow_old
+GROUP BY payment_type, wday;
+```
+
+
+## ORDER BY
+
+`ORDER BY` allows us to look at interesting aspects of the data by sorting the data.
+
+```{sql}
+#| connection: con_taxi
+
+SELECT COUNT(*) AS num_transactions, 
+       MIN(fare_amount) AS lowest_fare,
+       MAX(fare_amount) AS highest_fare,
+       payment_type,
+       DAYNAME(STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T")) AS wday
+FROM yellow_old
+GROUP BY payment_type, wday
+ORDER BY lowest_fare ASC;
+```
+
+WHAT?!?!!  How in the world was one of the fares -$612.40?
+
+
+## ORDER BY
+
+```{sql}
+#| connection: con_taxi
+
+SELECT COUNT(*) AS num_transactions, 
+       MIN(fare_amount) AS lowest_fare,
+       MAX(fare_amount) AS highest_fare,
+       payment_type,
+       DAYNAME(STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T")) AS wday
+FROM yellow_old
+GROUP BY payment_type, wday
+ORDER BY highest_fare DESC;
+```
+
+$950 is a lot to pay for a cab ride!  But in NYC, I'd believe it.
+
+## ORDER BY
+
+```{sql}
+#| connection: con_taxi
+
+SELECT COUNT(*) AS num_transactions, 
+       MIN(fare_amount) AS lowest_fare,
+       MAX(fare_amount) AS highest_fare,
+       payment_type,
+       DAYNAME(STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T")) AS wday
+FROM yellow_old
+GROUP BY payment_type, wday
+ORDER BY wday, payment_type;
+```
+
+
+## ORDER BY
+
+::: {.callout-tip appearance="minimal"}
+
+Note that both `GROUP BY` and `ORDER BY` evaluate the data after it has been retrieved.  Therefore, the functions operate on the *results set*, not the original rows of the data. 
+:::
+
+We are able to `GROUP BY` and `ORDER BY` on the new variables we had created, `wday`.
+
+## HAVING
+
+Recall that `WHERE` acts only on the original data.  If we are interested in rides that took place on `Friday`, we need to use the derived variable `wday` instead of the raw variable `pickup_datetime`.  Fortunately, `HAVING` works on the results set.  
+
+## HAVING
+
+```{sql}
+#| connection: con_taxi
+
+SELECT COUNT(*) AS num_transactions, 
+       MIN(fare_amount) AS lowest_fare,
+       MAX(fare_amount) AS highest_fare,
+       payment_type,
+       DAYNAME(STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T")) AS wday
+FROM yellow_old
+GROUP BY payment_type, wday
+HAVING wday = 'Friday';
+```
+
+## HAVING
+
+While it worked out quite well for us that `HAVING` was able to filter the data based on the results set, the use of `HAVING` was quite onerous because the entire data set was considered before the filter was applied.  That is, if the filter can be done on the original data using `WHERE`, the query will be much faster and more efficient.
+
+Note: `HAVING` requires a `GROUP BY` clause.  And the variable(s) used in `HAVING` must also be part of the `GROUP BY` clause.
+
+
+## LIMIT
+
+`LIMIT` truncates the query to specified rows. 
+
+```{sql}
+#| connection: con_taxi
+
+SELECT * FROM yellow_old LIMIT 15428118, 15428128;
+
+```
+
+
+## Saving **SQL** queries as **R** objects
+
+If you are working in **R** to run **SQL** commands, you may want to use the query output for further analysis or visualizations. 
+
+* use `#|output.var: "name_of_variable"` inside the `{sql}` chunk. 
+* `name_of_variable` will then be available to be used in the R environment.
+
+
+```{sql}
+#| connection: con_taxi
+#| label: new-table
+#| output.var: "new_table"
+#| echo: fenced
+
+SELECT *, DAYNAME(STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T")) AS wday
+FROM yellow_old 
+LIMIT 0, 1000;
+```
+
+## Saving **SQL** queries as **R** objects
+
+```{r}
+#| echo: fenced
+
+new_table |>
+  drop_na(wday) |>
+  ggplot(aes(x = fare_amount, y = tip_amount, color = wday)) + 
+  geom_point() 
+```
+
+
+
+## Good practice
+
+Always a good idea to terminate the **SQL** connection when you are done with it.
+
+```{r}
+dbDisconnect(con_taxi)
+```

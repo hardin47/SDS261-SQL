@@ -1,12 +1,11 @@
----
-
----
 
 <!-- the two formats are html and revealjs -->
 
 # Clicker Questions
 
-to go with <b><a href = "https://mdsr-book.github.io/mdsr3e/" target = "_blank">Modern Data Science with R, 3rd edition</a></b> by Baumer, Kaplan, and Horton.
+to go with <b><a href = "https://mdsr-book.github.io/mdsr3e/" target = "_blank">Modern Data Science with R, 3rd edition</a></b> by Baumer, Kaplan, and Horton.  
+
+Many questions taken directly from <a href = "https://www.w3schools.com/quiztest/quiztest.asp?qtest=SQL" target = "_blank">w3schools SQL quiz</a>.
 
 ```{=html}
 <style>
@@ -36,10 +35,7 @@ library(tidyverse)
 
 ---
 
-text here
-
 1. Question about databases.[^1]
-
    (a) Never heard of it
    (b) Heard of it, but don't know anything about it
    (c) Know a little about it (or did once)
@@ -50,11 +46,257 @@ text here
 
 ---
 
-2. Another question
+2. What does SQL stand for?[^2]
+   (a) Structured Query Language
+   (b) Strong Question Language
+   (c) Structured Question Language
 
-https://quizlet.com/397790892/sql-assignment-01-lessons-1-7-flash-cards/
+[^2]: a. Structured Query Language
+   
+---
+
+
+3. Which SQL clause is used to extract data from a database?[^3]
+   (a) OPEN
+   (b) EXTRACT
+   (c) SELECT
+   (d) GET
+
+[^3]: c. SELECT
 
 ---
+
+4. With SQL, how to you retrieve a column named "FirstName" from a table named "Persons"?[^4]
+   (a) SELECT Persons.FirstName
+   (b) EXTRACT FIRSTNAME FROM Persons
+   (c) SELECT FirstName FROM Persons
+   (d) SELECT "FirstName" FROM "Persons"
+
+[^4]: c. SELECT FirstName FROM Persons
+
+---
+
+5. With SQL, how do you select all the columns from a table named "Persons"?[^5]
+   (a) SELECT Persons
+   (b) SELECT * FROM Persons
+   (c) SELECT [all] FROM Persons
+   (d) SELECT *.Persons
+
+[^5]: b. SELECT * FROM Persons
+
+---
+
+6. With SQL, how can you return the number of records in the "Persons" table?[^6]
+   (a) SELECT COLUMNS(*) FROM Persons
+   (b) SELECT COUNT(*) FROM Persons
+   (c) SELECT NO(*) FROM Persons
+   (d) SELECT LEN(*) FROM Persons
+
+[^6]: b. SELECT COUNT(*) FROM Persons
+
+---
+
+7. With SQL, how do you select all the records from a table named "Persons" where the value of the column "FirstName" is "Peter"?[^7]
+   (a) SELECT * FROM Persons WHERE FirstName<>'Peter'
+   (b) SELECT * FROM Persons WHERE FirstName = 'Peter'
+   (c) SELECT * FROM Persons WHERE FirstName == 'Peter'
+   (d) SELECT [all] FROM Persons WHERE FirstName LIKE 'Peter'
+   (e) SELECT [all] FROM Persons WHERE FirstName='Peter'
+   
+[^7]: b. SELECT * FROM Persons WHERE FirstName = 'Peter'
+
+---
+
+8. With SQL, how do you select all the records from a table named "Persons" where the "FirstName" is "Peter" and the "LastName" is "Jackson"?[^8]
+   (a) SELECT FirstName = 'Peter', LastName = 'Jackson' FROM Persons
+   (b) SELECT * FROM Persons WHERE FirstName <> 'Peter' AND LastName <> 'Jackson'
+   (c) SELECT * FROM Persons WHERE FirstName = 'Peter' AND LastName = 'Jackson'
+   (d) SELECT * FROM Persons WHERE FirstName == 'Peter' AND LastName == 'Jackson'
+
+[^8]: c. SELECT * FROM Persons WHERE FirstName = 'Peter' AND LastName = 'Jackson'
+
+---
+
+9. Which operator selects values within a range?[^9]
+   (a) BEWTEEN
+   (b) WITHIN
+   (c) RANGE
+
+[^9]: a. BEWTEEN
+
+---
+
+10. With SQL, how do you select all the records from a table named "Persons" where the "LastName" is alphabetically between (and including) "Hansen" and "Pettersen"?[^10]
+    (a) SELECT LastName>'Hansen' AND LastName<'Pettersen' FROM Persons
+    (b) SELECT * FROM Persons WHERE LastName BETWEEN 'Hansen' AND 'Pettersen'
+    (c) SELECT * FROM Persons WHERE LastName>'Hansen' AND LastName<'Pettersen'
+
+[^10]: b. SELECT * FROM Persons WHERE LastName BETWEEN 'Hansen' AND 'Pettersen'
+
+---
+
+11. Which SQL statement returns only different values?[^11]
+    (a) SELECT UNIQUE
+    (b) SELECT DISTINCT
+    (c) SELECT DIFFERENT
+
+[^11]: b. SELECT DISTINCT
+
+---
+
+12. Which SQL keyword is used to sort the result-set?[^12]
+    (a) ORDER BY
+    (b) ORDER
+    (c) SORT
+    (d) SORT BY
+ 
+[^12]: a. ORDER BY
+
+---
+
+13. With SQL, how can you return all the records from a table named "Persons" sorted descending by "FirstName"?[^13]
+    (a) SELECT * FROM Persons ORDER FirstName DESC
+    (b) SELECT * FROM Persons SORT 'FirstName' DESC
+    (c) SELECT * FROM Persons ORDER BY FirstName DESC
+    (d) SELECT * FROM Persons SORT BY 'FirstName' DESC
+
+[^13]: c. SELECT * FROM Persons ORDER BY FirstName DESC
+
+---
+
+14. The OR operator displays a record if ANY conditions listed are true. The AND operator displays a record if ALL of the conditions listed are true.[^14]
+    (a) TRUE
+    (b) FALSE 
+
+[^14]: a. TRUE
+
+
+---
+
+15. In order to SELECT the records with foods that are either green or yellow fruit:[^15] 
+    (a) ... WHERE type = 'fruit' AND color = 'yellow' OR color = 'green'  
+    (b) ... WHERE (type = 'fruit' AND color = 'yellow') OR color = 'green'  
+    (c) ... WHERE type = 'fruit' AND (color = 'yellow' OR color = 'green')  
+    (d) ... WHERE type = 'fruit' AND color = 'yellow' AND color = 'green'  
+    (e) ... WHERE type = 'fruit' AND (color = 'yellow' AND color = 'green') 
+   
+[^15]: c. ... WHERE type = 'fruit' AND (color = 'yellow' OR color = 'green') 
+
+---
+
+16. What is the most common type of join?[^16]  
+    (a) INNER JOIN
+    (b) JOINED TABLE
+    (c) INSIDE JOIN
+    (d) JOINED
+
+[^16]: a. INNER JOIN
+
+---
+
+17. Which operator is used to search for a specified pattern in a column?[^17]
+    (a) LIKE
+    (b) GET
+    (c) FROM
+
+[^17]: a. LIKE
+
+---
+
+18. With SQL, how do you select all the records from a table named "Persons" where the value of the column "FirstName" starts with an "a"?[^18]
+    (a) SELECT * FROM Persons WHERE FirstName LIKE 'a%'
+    (b) SELECT * FROM Persons WHERE FirstName = '%a%'
+    (c) SELECT * FROM Persons WHERE FirstName LIKE '%a'
+    (c) SELECT * FROM Persons WHERE FirstName = 'a'
+
+[^18]: a. SELECT * FROM Persons WHERE FirstName LIKE 'a%'
+
+---
+
+19. Which SQL statement is used to create a database table called 'Customers'?[^19]
+    (a) CREATE DATABASE TAB Customers
+    (b) CREATE TABLE Customers
+    (c) CREATE DATABASE TABLE Customers
+    (d) CREATE DB Customers
+
+[^19]: b. CREATE TABLE Customers
+
+---
+
+20. Which SQL statement updates data in a database?[^20]
+    (a) SAVE AS 
+    (b) MODIFY
+    (c) SAVE
+    (d) UPDATE
+
+[^20]: d. UPDATE
+
+---
+
+21. Which SQL statement deletes data from a database?[^21]
+    (a) REMOVE
+    (b) DELETE
+    (c) COLLAPSE
+
+[^21]: b. DELETE
+
+---
+
+22. The NOT NULL constraint enforces a column to not accept NULL values.[^22]
+    (a) FALSE
+    (b) TRUE
+
+[^22]: b. TRUE
+
+---
+
+23. Which SQL statement inserts new data in a database?[^23]
+    (a) ADD RECORD
+    (b) INSERT INTO
+    (c) ADD NEW
+    (d) INSERT NEW 
+ 
+[^23]: b. INSERT INTO
+
+---
+
+24. With SQL, how can you insert a new record into the "Persons" table?[^24]
+    (a) INSERT INTO Persons VALUES ('Jimmy', 'Jackson')
+    (b) INSERT ('Jimmy', 'Jacskon') INTO Persons
+    (c) INSERT VALUES ('Jimmy', 'Jackson') INTO Persons
+
+[^24]: a. INSERT INTO Persons VALUES ('Jimmy', 'Jackson')
+
+---
+
+25. With SQL, how can you insert "Olsen" as the "LastName" in the "Persons" table?[^25]
+    (a) INSERT INTO Persons (LastName) VALUES ('Olsen')
+    (b) INSERT INTO Persons ('Olsen) INTO LastName
+    (c) INSERT ('Olsen') INTO Persons (LastName)
+ 
+[^25]: a. INSERT INTO Persons (LastName) VALUES ('Olsen')
+
+---
+
+26. How can you change "Hansen" into "Nilsen" in the "LastName" column in the Persons table?[^26]
+    (a) MODIFY Persons SET LastName='Nilsen' WHERE LastName='Hansen'
+    (b) UPDATE Persons SET LastName='Hansen' INTO LastName='Nilsen'
+    (c) MODIFY Persons SET LastName='Hansen' INTO LastName='Nilsen'
+    (d) UPDATE Persons SET LastName='Nilsen' WHERE LastName='Hansen' 
+
+[^26]: d. UPDATE Persons SET LastName='Nilsen' WHERE LastName='Hansen' 
+
+---
+
+27. With SQL, how can you delete the records where the "FirstName" is "Peter" in the Persons Table?[^27]
+    (a) DELETE FROM Persons WHERE FirstName='Peter'
+    (b) DELETE FirstName='Peter' FROM Persons
+    (c) DELETE ROW FirstName='Peter' FROM Persons
+
+[^27]: a. DELETE FROM Persons WHERE FirstName='Peter'
+
+---
+
 
 
 

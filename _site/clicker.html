@@ -123,21 +123,19 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<hr>
-<hr>
 <!-- the two formats are html and revealjs -->
 <section id="clicker-questions" class="level1">
 <h1>Clicker Questions</h1>
 <p>to go with <b><a href="https://mdsr-book.github.io/mdsr3e/" target="_blank">Modern Data Science with R, 3rd edition</a></b> by Baumer, Kaplan, and Horton.</p>
+<p>Many questions taken directly from <a href="https://www.w3schools.com/quiztest/quiztest.asp?qtest=SQL" target="_blank">w3schools SQL quiz</a>.</p>
 <style>
 .reveal ol ol {
    list-style-type: lower-alpha;
 }
 </style>
 <hr>
-<p>text here</p>
 <ol type="1">
-<li><p>Question about databases.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<li>Question about databases.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
 <ol type="a">
 <li>Never heard of it</li>
 <li>Heard of it, but don’t know anything about it</li>
@@ -148,9 +146,257 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <hr>
 <ol start="2" type="1">
-<li>Another question</li>
+<li>What does SQL stand for?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>
+<ol type="a">
+<li>Structured Query Language</li>
+<li>Strong Question Language</li>
+<li>Structured Question Language</li>
+</ol></li>
 </ol>
-<p>https://quizlet.com/397790892/sql-assignment-01-lessons-1-7-flash-cards/</p>
+<hr>
+<ol start="3" type="1">
+<li>Which SQL clause is used to extract data from a database?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>
+<ol type="a">
+<li>OPEN</li>
+<li>EXTRACT</li>
+<li>SELECT</li>
+<li>GET</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="4" type="1">
+<li>With SQL, how to you retrieve a column named “FirstName” from a table named “Persons”?<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>
+<ol type="a">
+<li>SELECT Persons.FirstName</li>
+<li>EXTRACT FIRSTNAME FROM Persons</li>
+<li>SELECT FirstName FROM Persons</li>
+<li>SELECT “FirstName” FROM “Persons”</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="5" type="1">
+<li>With SQL, how do you select all the columns from a table named “Persons”?<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>
+<ol type="a">
+<li>SELECT Persons</li>
+<li>SELECT * FROM Persons</li>
+<li>SELECT [all] FROM Persons</li>
+<li>SELECT *.Persons</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="6" type="1">
+<li>With SQL, how can you return the number of records in the “Persons” table?<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>
+<ol type="a">
+<li>SELECT COLUMNS(*) FROM Persons</li>
+<li>SELECT COUNT(*) FROM Persons</li>
+<li>SELECT NO(*) FROM Persons</li>
+<li>SELECT LEN(*) FROM Persons</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="7" type="1">
+<li>With SQL, how do you select all the records from a table named “Persons” where the value of the column “FirstName” is “Peter”?<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>
+<ol type="a">
+<li>SELECT * FROM Persons WHERE FirstName&lt;&gt;‘Peter’</li>
+<li>SELECT * FROM Persons WHERE FirstName = ‘Peter’</li>
+<li>SELECT * FROM Persons WHERE FirstName == ‘Peter’</li>
+<li>SELECT [all] FROM Persons WHERE FirstName LIKE ‘Peter’</li>
+<li>SELECT [all] FROM Persons WHERE FirstName=‘Peter’</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="8" type="1">
+<li>With SQL, how do you select all the records from a table named “Persons” where the “FirstName” is “Peter” and the “LastName” is “Jackson”?<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>
+<ol type="a">
+<li>SELECT FirstName = ‘Peter’, LastName = ‘Jackson’ FROM Persons</li>
+<li>SELECT * FROM Persons WHERE FirstName &lt;&gt; ‘Peter’ AND LastName &lt;&gt; ‘Jackson’</li>
+<li>SELECT * FROM Persons WHERE FirstName = ‘Peter’ AND LastName = ‘Jackson’</li>
+<li>SELECT * FROM Persons WHERE FirstName == ‘Peter’ AND LastName == ‘Jackson’</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="9" type="1">
+<li>Which operator selects values within a range?<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>
+<ol type="a">
+<li>BEWTEEN</li>
+<li>WITHIN</li>
+<li>RANGE</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="10" type="1">
+<li>With SQL, how do you select all the records from a table named “Persons” where the “LastName” is alphabetically between (and including) “Hansen” and “Pettersen”?<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>
+<ol type="a">
+<li>SELECT LastName&gt;‘Hansen’ AND LastName&lt;‘Pettersen’ FROM Persons</li>
+<li>SELECT * FROM Persons WHERE LastName BETWEEN ‘Hansen’ AND ‘Pettersen’</li>
+<li>SELECT * FROM Persons WHERE LastName&gt;‘Hansen’ AND LastName&lt;‘Pettersen’</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="11" type="1">
+<li>Which SQL statement returns only different values?<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>
+<ol type="a">
+<li>SELECT UNIQUE</li>
+<li>SELECT DISTINCT</li>
+<li>SELECT DIFFERENT</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="12" type="1">
+<li>Which SQL keyword is used to sort the result-set?<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>
+<ol type="a">
+<li>ORDER BY</li>
+<li>ORDER</li>
+<li>SORT</li>
+<li>SORT BY</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="13" type="1">
+<li>With SQL, how can you return all the records from a table named “Persons” sorted descending by “FirstName”?<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>
+<ol type="a">
+<li>SELECT * FROM Persons ORDER FirstName DESC</li>
+<li>SELECT * FROM Persons SORT ‘FirstName’ DESC</li>
+<li>SELECT * FROM Persons ORDER BY FirstName DESC</li>
+<li>SELECT * FROM Persons SORT BY ‘FirstName’ DESC</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="14" type="1">
+<li>The OR operator displays a record if ANY conditions listed are true. The AND operator displays a record if ALL of the conditions listed are true.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>
+<ol type="a">
+<li>TRUE</li>
+<li>FALSE</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="15" type="1">
+<li>In order to SELECT the records with foods that are either green or yellow fruit:<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>
+<ol type="a">
+<li>… WHERE type = ‘fruit’ AND color = ‘yellow’ OR color = ‘green’<br>
+</li>
+<li>… WHERE (type = ‘fruit’ AND color = ‘yellow’) OR color = ‘green’<br>
+</li>
+<li>… WHERE type = ‘fruit’ AND (color = ‘yellow’ OR color = ‘green’)<br>
+</li>
+<li>… WHERE type = ‘fruit’ AND color = ‘yellow’ AND color = ‘green’<br>
+</li>
+<li>… WHERE type = ‘fruit’ AND (color = ‘yellow’ AND color = ‘green’)</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="16" type="1">
+<li>What is the most common type of join?<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>
+<ol type="a">
+<li>INNER JOIN</li>
+<li>JOINED TABLE</li>
+<li>INSIDE JOIN</li>
+<li>JOINED</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="17" type="1">
+<li>Which operator is used to search for a specified pattern in a column?<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>
+<ol type="a">
+<li>LIKE</li>
+<li>GET</li>
+<li>FROM</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="18" type="1">
+<li>With SQL, how do you select all the records from a table named “Persons” where the value of the column “FirstName” starts with an “a”?<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>
+<ol type="a">
+<li>SELECT * FROM Persons WHERE FirstName LIKE ‘a%’</li>
+<li>SELECT * FROM Persons WHERE FirstName = ‘%a%’</li>
+<li>SELECT * FROM Persons WHERE FirstName LIKE ‘%a’</li>
+<li>SELECT * FROM Persons WHERE FirstName = ‘a’</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="19" type="1">
+<li>Which SQL statement is used to create a database table called ‘Customers’?<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a>
+<ol type="a">
+<li>CREATE DATABASE TAB Customers</li>
+<li>CREATE TABLE Customers</li>
+<li>CREATE DATABASE TABLE Customers</li>
+<li>CREATE DB Customers</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="20" type="1">
+<li>Which SQL statement updates data in a database?<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>
+<ol type="a">
+<li>SAVE AS</li>
+<li>MODIFY</li>
+<li>SAVE</li>
+<li>UPDATE</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="21" type="1">
+<li>Which SQL statement deletes data from a database?<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a>
+<ol type="a">
+<li>REMOVE</li>
+<li>DELETE</li>
+<li>COLLAPSE</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="22" type="1">
+<li>The NOT NULL constraint enforces a column to not accept NULL values.<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a>
+<ol type="a">
+<li>FALSE</li>
+<li>TRUE</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="23" type="1">
+<li>Which SQL statement inserts new data in a database?<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>
+<ol type="a">
+<li>ADD RECORD</li>
+<li>INSERT INTO</li>
+<li>ADD NEW</li>
+<li>INSERT NEW</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="24" type="1">
+<li>With SQL, how can you insert a new record into the “Persons” table?<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a>
+<ol type="a">
+<li>INSERT INTO Persons VALUES (‘Jimmy’, ‘Jackson’)</li>
+<li>INSERT (‘Jimmy’, ‘Jacskon’) INTO Persons</li>
+<li>INSERT VALUES (‘Jimmy’, ‘Jackson’) INTO Persons</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="25" type="1">
+<li>With SQL, how can you insert “Olsen” as the “LastName” in the “Persons” table?<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a>
+<ol type="a">
+<li>INSERT INTO Persons (LastName) VALUES (‘Olsen’)</li>
+<li>INSERT INTO Persons (’Olsen) INTO LastName</li>
+<li>INSERT (‘Olsen’) INTO Persons (LastName)</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="26" type="1">
+<li>How can you change “Hansen” into “Nilsen” in the “LastName” column in the Persons table?<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a>
+<ol type="a">
+<li>MODIFY Persons SET LastName=‘Nilsen’ WHERE LastName=‘Hansen’</li>
+<li>UPDATE Persons SET LastName=‘Hansen’ INTO LastName=‘Nilsen’</li>
+<li>MODIFY Persons SET LastName=‘Hansen’ INTO LastName=‘Nilsen’</li>
+<li>UPDATE Persons SET LastName=‘Nilsen’ WHERE LastName=‘Hansen’</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="27" type="1">
+<li>With SQL, how can you delete the records where the “FirstName” is “Peter” in the Persons Table?<a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a>
+<ol type="a">
+<li>DELETE FROM Persons WHERE FirstName=‘Peter’</li>
+<li>DELETE FirstName=‘Peter’ FROM Persons</li>
+<li>DELETE ROW FirstName=‘Peter’ FROM Persons</li>
+</ol></li>
+</ol>
 <hr>
 
 
@@ -161,6 +407,110 @@ ul.task-list li input[type="checkbox"] {
 
 <ol>
 <li id="fn1"><p>preferably d or e. maybe c on some of them.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><ol type="a">
+<li>Structured Query Language</li>
+</ol>
+<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn3"><ol start="3" type="a">
+<li>SELECT</li>
+</ol>
+<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn4"><ol start="3" type="a">
+<li>SELECT FirstName FROM Persons</li>
+</ol>
+<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn5"><ol start="2" type="a">
+<li>SELECT * FROM Persons</li>
+</ol>
+<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn6"><ol start="2" type="a">
+<li>SELECT COUNT(*) FROM Persons</li>
+</ol>
+<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn7"><ol start="2" type="a">
+<li>SELECT * FROM Persons WHERE FirstName = ‘Peter’</li>
+</ol>
+<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn8"><ol start="3" type="a">
+<li>SELECT * FROM Persons WHERE FirstName = ‘Peter’ AND LastName = ‘Jackson’</li>
+</ol>
+<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn9"><ol type="a">
+<li>BEWTEEN</li>
+</ol>
+<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn10"><ol start="2" type="a">
+<li>SELECT * FROM Persons WHERE LastName BETWEEN ‘Hansen’ AND ‘Pettersen’</li>
+</ol>
+<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn11"><ol start="2" type="a">
+<li>SELECT DISTINCT</li>
+</ol>
+<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn12"><ol type="a">
+<li>ORDER BY</li>
+</ol>
+<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn13"><ol start="3" type="a">
+<li>SELECT * FROM Persons ORDER BY FirstName DESC</li>
+</ol>
+<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn14"><ol type="a">
+<li>TRUE</li>
+</ol>
+<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn15"><ol start="3" type="a">
+<li>… WHERE type = ‘fruit’ AND (color = ‘yellow’ OR color = ‘green’)</li>
+</ol>
+<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn16"><ol type="a">
+<li>INNER JOIN</li>
+</ol>
+<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn17"><ol type="a">
+<li>LIKE</li>
+</ol>
+<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn18"><ol type="a">
+<li>SELECT * FROM Persons WHERE FirstName LIKE ‘a%’</li>
+</ol>
+<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn19"><ol start="2" type="a">
+<li>CREATE TABLE Customers</li>
+</ol>
+<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn20"><ol start="4" type="a">
+<li>UPDATE</li>
+</ol>
+<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn21"><ol start="2" type="a">
+<li>DELETE</li>
+</ol>
+<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn22"><ol start="2" type="a">
+<li>TRUE</li>
+</ol>
+<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn23"><ol start="2" type="a">
+<li>INSERT INTO</li>
+</ol>
+<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn24"><ol type="a">
+<li>INSERT INTO Persons VALUES (‘Jimmy’, ‘Jackson’)</li>
+</ol>
+<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn25"><ol type="a">
+<li>INSERT INTO Persons (LastName) VALUES (‘Olsen’)</li>
+</ol>
+<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn26"><ol start="4" type="a">
+<li>UPDATE Persons SET LastName=‘Nilsen’ WHERE LastName=‘Hansen’</li>
+</ol>
+<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn27"><ol type="a">
+<li>DELETE FROM Persons WHERE FirstName=‘Peter’</li>
+</ol>
+<a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></li>
 </ol>
 </section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -405,7 +755,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
  <br> © Jo Hardin, 2024 -- <a href="mailto: jo.hardin@pomona.edu">jo.hardin@pomona.edu</a> -- <a href="https://hardin47.netlify.app/">https://hardin47.netlify.app/</a> <br> <br>
-Math 150 -- Methods in Biostatistics -- Pomona College, Claremont, CA <br>
+SDS 261 -- Data Science, the SQL -- Smith College, Northamptom, MA <br>
   </li>  
 </ul>
     </div>
