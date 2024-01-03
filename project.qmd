@@ -26,28 +26,30 @@ The topics above are meant to direct the project productively.  They are not mea
 
 Expanding on the topics above to get you started...
 
-#### **SQL** queries {-}
+#### 1. **SQL** queries {-}
 
 Throughout the course, we've seen a few different databases.  There are more available in the **R** **mdsr** package, and you also have access to some additional **MySQL** server databases through Smith.  Additionally, the professor has access to a **MySQL** server that contains all of the <a href = "https://openpolicing.stanford.edu/data/" target = "_blank">Stanford Open Policing data</a>, and you are welcome to work with it (just ask for login information).  So many interesting questions to consider!
 
-#### Regular expressions {-}
+#### 2. Regular expressions {-}
 
-You might think about web scraping to retrieve data (probably using the **rvest** R package).  For example, you might scrape every <a href = "https://en.wikipedia.org/wiki/List_of_songs_by_Taylor_Swift" target = "_blank">Taylor Swift song</a> and use regular expressions to format the information in a way that allows easy question asking.
+You might think about web scraping to retrieve data (probably using the **rvest** R package).  For example, you might scrape details about every <a href = "https://en.wikipedia.org/wiki/List_of_songs_by_Taylor_Swift" target = "_blank">Taylor Swift song</a> and use regular expressions to format the information in a way that allows easy question asking.
 
 Or you might find a <a href = "https://www.kaggle.com/datasets/julqka/gilmore-girls-lines" target = "_blank">dataset on the Gilmore Girls</a> and scrape IMDb to match the ratings for each episode.
 
-#### Creating **SQL** database
+#### 3. Creating **SQL** database
 
-You can use any of a variety of platforms to create a **SQL** database.  As in the class notes, you can create a database using **DuckDB**.  Alternatively, you can use Smith's **MySQL** server.  Or, you can use **SQLite** to create a database (in a similar way to **DuckDB**).
+You can use any of a variety of platforms to create a **SQL** database.  As in the class notes and labs, you can create a database using **DuckDB**.  Alternatively, you can use Smith's **MySQL** server.  Or, you can use **SQLite** to create a database (in a similar way to **DuckDB**).
 
 For example, you might create a database using the Saturday Night Live data and update all of the files with more recent episodes.  
 
 Or you might look for a TidyTuesday dataset to upload.  For example, consider <a href = "https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-01-31" target = "_blank">data on cats in the UK</a> which references similar datasets in the US, Australia, and New Zealand.
 
+If you are creating a new **SQL** database, make sure that your database has three or more tables that link to one another.
+
 ## Technical details
 
 * You may work alone or in pairs.
-* Narrative must accompany all technical products including code, output tables, visualizations, etc.  No naked code or graphs.  (Figures and Tables should have captions.)
+* There must be a narrative to accompany all technical products including code, output tables, visualizations, etc.  No naked code or graphs.  (Figures and Tables should have captions.)
 * The expectation is that you turn in a reproducible Quarto file and accompanying pdf or html file.  If you plan to turn in the project in a different format, please check with the professor in advance.
 
 

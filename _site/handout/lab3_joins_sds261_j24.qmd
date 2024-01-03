@@ -1,0 +1,28 @@
+---
+title: "Lab 3 - SQL joins"
+author: "your name goes here"
+date: "due 10am Tuesday, January 16, 2024"
+format: 
+  unilur-html: default
+  unilur-html+solution:
+    output-file: lab3_joins_sds261_j24_sol.html
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| unilur-solution: true
+
+library(tidyverse)
+library(DBI)
+library(RMariaDB)
+library(dbplyr)
+library(mdsr)
+```
+
+
+according to Ben:  Yelp data does not have referential integrity, and you can find reviews written by users who don't exist and/or about restaurants that aren't in the other table. 
+
+

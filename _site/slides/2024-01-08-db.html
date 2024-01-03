@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Jo Hardin">
-  <meta name="dcterms.date" content="2023-01-08">
+  <meta name="dcterms.date" content="2024-01-08">
   <title>Data Science, the SQL - Databases and dbplyr and SQL, oh my!</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -404,11 +404,11 @@ Jo Hardin
 </div>
 </div>
 
-  <p class="date">2023-01-08</p>
+  <p class="date">2024-01-08</p>
 </section>
 <section>
 <section id="sql-structured-query-language" class="title-slide slide level1 center">
-<h1>SQL (Structured Query Language)</h1>
+<h1><strong>SQL</strong> (Structured Query Language)</h1>
 
 </section>
 <section id="what-is-a-database" class="slide level2">
@@ -432,21 +432,31 @@ Jo Hardin
 </ul>
 </section>
 <section id="differences-between-r-and-sql" class="slide level2">
-<h2>Differences between R and SQL</h2>
+<h2>Differences between <strong>R</strong> and <strong>SQL</strong></h2>
 <ul>
-<li>tables in SQL databases can be arbitrarily large
+<li>tables in <strong>SQL</strong> databases can be arbitrarily large
 <ul>
 <li>live in storage, computer’s hard drive (usually remote)</li>
 </ul></li>
-<li>data frames in R
+<li>data frames in <strong>R</strong>
 <ul>
 <li>live in memory (RAM) on your personal computer</li>
 </ul></li>
 <li>tables in a database are linked via a key.</li>
 </ul>
+</section></section>
+<section>
+<section id="todays-example" class="title-slide slide level1 center">
+<h1>Today’s example</h1>
+
 </section>
+<section id="the-airlines-database" class="slide level2">
+<h2>The <code>airlines</code> database</h2>
+<p>Consider a database of US flights between 2010 and 2017. The flights are downloaded from the <a href="https://www.transtats.bts.gov/Homepage.asp" target="_blank">Bureau of Transportation Statistics</a>, US Department of Transportation. The database is a superset of the <code>nycflights13</code> <strong>R</strong> package that tracks only flights in and out of airports serving New York City in 2013.</p>
+
+<img data-src="../images/airport-terminal.jpg" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
 <section id="sql-connection" class="slide level2">
-<h2>SQL connection</h2>
+<h2><strong>SQL</strong> connection</h2>
 <p>To set up a <strong>SQL</strong> connection, you need the location of the server (<code>host</code>) as well as a <code>user</code>name and <code>password</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>con_air <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(</span>
@@ -509,7 +519,7 @@ Jo Hardin
 </section>
 <section id="how-much-space-does-carriers-take-up" class="slide level2">
 <h2>How much space does <code>carriers</code> take up?</h2>
-<p>The data frame in <strong>R</strong> takes up 2 orders of magnitude of memory than the table which just points to the object in <strong>SQL</strong>.</p>
+<p>The data frame in <strong>R</strong> takes up 2 orders of magnitude of memory more than the table which just points to the object in <strong>SQL</strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>carriers <span class="sc">|&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">object.size</span>() <span class="sc">|&gt;</span></span>
@@ -530,8 +540,8 @@ Jo Hardin
 <ul>
 <li><strong>SQL</strong> is a programming language for working with relational databases.</li>
 <li><strong>SQL</strong> has been around since the 1970s, but has, unfortunately, many different dialects.</li>
-<li>To connect to the Smith and <strong>mdsr</strong> databases (via R and DBeaver), we will use <strong>MySQL</strong>.</li>
-<li>To connect to DuckDB, we will use the dialect native to DuckDB.</li>
+<li>To connect to the Smith and <strong>mdsr</strong> databases (via <strong>R</strong> and <strong>DBeaver</strong>), we will use <strong>MySQL</strong>.</li>
+<li>To connect to <strong>DuckDB</strong>, we will use the dialect native to <strong>DuckDB</strong>.</li>
 </ul>
 </section></section>
 <section>
@@ -615,7 +625,7 @@ WHERE (`year` = 2012.0 AND ((`origin` = 'LAX' AND `dest` = 'BOS') OR (`origin` =
 </ul>
 </section>
 <section id="sql-queries-via-the-dbi-package" class="slide level2">
-<h2>2. SQL queries via the <strong>DBI</strong> package</h2>
+<h2>2. <strong>SQL</strong> queries via the <strong>DBI</strong> package</h2>
 <ul>
 <li>Look at the first few rows of the <code>flights</code> data.</li>
 </ul>
@@ -654,7 +664,7 @@ WHERE (`year` = 2012.0 AND ((`origin` = 'LAX' AND `dest` = 'BOS') OR (`origin` =
 </div>
 </section>
 <section id="sql-queries-via-the-dbi-package-1" class="slide level2">
-<h2>2. SQL queries via the <strong>DBI</strong> package</h2>
+<h2>2. <strong>SQL</strong> queries via the <strong>DBI</strong> package</h2>
 <ul>
 <li>How many flights per year are in the <code>flights</code> table?</li>
 </ul>
@@ -674,7 +684,7 @@ WHERE (`year` = 2012.0 AND ((`origin` = 'LAX' AND `dest` = 'BOS') OR (`origin` =
 </div>
 </div>
 </section>
-<section id="direct-sql-queries-via-sql-chunks" class="slide level2">
+<section id="direct-sql-queries-via-sql-chunks" class="slide level2 scrollable">
 <h2>3. Direct <strong>SQL</strong> queries via <code>sql</code> chunks</h2>
 <p><strong>SQL</strong> queries can be written directly inside a <code>sql</code> chunk in RStudio.</p>
 <div class="cell">
@@ -1283,7 +1293,7 @@ IAH
 </div>
 </div>
 </section>
-<section id="direct-sql-queries-via-sql-chunks-1" class="slide level2">
+<section id="direct-sql-queries-via-sql-chunks-1" class="slide level2 scrollable">
 <h2>3. Direct <strong>SQL</strong> queries via <code>sql</code> chunks</h2>
 <p><strong>SQL</strong> queries can be written directly inside a <code>sql</code> chunk in RStudio.</p>
 <div class="cell">
@@ -1390,12 +1400,12 @@ num_flights
 </div>
 </section></section>
 <section id="using-sql-in-dbeaver" class="title-slide slide level1 center">
-<h1>Using <strong>SQL</strong> in DBeaver</h1>
+<h1>Using <strong>SQL</strong> in <strong>DBeaver</strong></h1>
 <ul>
-<li><p>DBeaver is a free SQL client that supports MySQL</p></li>
+<li><p><strong>DBeaver</strong> is a free <strong>SQL</strong> client that supports MySQL</p></li>
 <li><p>writing <strong>SQL</strong> code in <strong>R</strong> has some benefits (e.g., piping results tables into <strong>ggplot2</strong> for visualizations)</p></li>
 <li><p>using a <strong>SQL</strong> client that is designed for <strong>SQL</strong> queries has benefits as well.</p></li>
-<li><p>to use DBeaver, <a href="https://dbeaver.io/download/" target="_blank">download the client</a> onto your computer and open it from your Applications.</p></li>
+<li><p>to use <strong>DBeaver</strong>, <a href="https://dbeaver.io/download/" target="_blank">download the client</a> onto your computer and open it from your Applications.</p></li>
 </ul>
 </section>
 
@@ -1408,12 +1418,12 @@ num_flights
 <li>Follow course specific advice: https://sds261-sql.netlify.app/github</li>
 </ul>
 </section>
-<section id="steps-for-weekly-homework" class="slide level2">
+<section id="steps-for-weekly-homework" class="slide level2 scrollable">
 <h2>Steps for weekly homework</h2>
 <ol type="1">
 <li>Receive a link to the new assignment (clicking on the link will create a new private repo)<br>
 </li>
-<li>Use R Studio
+<li>Use RStudio
 <ul>
 <li>New Project, version control, Git<br>
 </li>
@@ -1426,11 +1436,11 @@ num_flights
 <li><strong>commit</strong> and <strong>push</strong> after every problem<br>
 </li>
 </ul></li>
-<li>For work done in DBeaver (.sql files), use the same naming convention: sds261-lab#-lname-fname.sql.</li>
+<li>For work done in <strong>DBeaver</strong> (.sql files), use the same naming convention: sds261-lab#-lname-fname.sql.</li>
 <li>All necessary files <em>must</em> be in the same folder (e.g., data, .sql files, etc.)</li>
 </ol>
 </section></section>
-<section id="a-github-merge-conflict" class="title-slide slide level1 center">
+<section id="a-github-merge-conflict" class="title-slide slide level1 scrollable center">
 <h1>A GitHub merge conflict</h1>
 <ul>
 <li><p>On GitHub (on the web) edit the README document and Commit it with a message describing what you did.</p></li>

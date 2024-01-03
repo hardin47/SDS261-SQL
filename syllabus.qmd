@@ -40,6 +40,8 @@ By the end of the term, students will:
   - Writing SQL Queries: learn how to write basic SQL queries to retrieve data from a single table.
   - Filtering and Sorting Data: be able to use SQL to filter and sort data based on specific criteria.
   - Joining Tables: understand how to perform inner and outer joins to combine data from multiple tables.
+  
+* **Creating Tables**: be able to create a SQL database with multiple tables that link to one another using **DuckDB**.
 
 * **Inserting and Updating Data**: be able to use SQL to insert new records into a table and update existing records. Use SQL to delete records from a table.
 

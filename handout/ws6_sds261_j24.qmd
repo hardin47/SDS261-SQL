@@ -1,0 +1,34 @@
+---
+title: "Worksheet 6 - creating databases"
+author: "Jo Hardin"
+date: "January 16, 2023"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(DBI)
+```
+
+
+
+Your Name: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_   
+
+
+Names of people you worked with:  \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_   
+
+* Don't introduce yourself.  Name the people in front of you and behind you. Tell your partner what you did this weekend.
+
+* In the last year, have you had a somewhat extended conversation (maybe over lunch or coffee, maybe in an office hour) with one of your professors which was not directly related to a class that you were taking with them?
+
+
+\medskip
+\medskip
+
+**Task:**
+

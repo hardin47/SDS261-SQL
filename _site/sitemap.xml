@@ -2,15 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sds261-sql.netlify.app/index.html</loc>
-    <lastmod>2023-12-26T23:26:30.690Z</lastmod>
+    <lastmod>2024-01-03T22:37:21.010Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/clicker_study.html</loc>
-    <lastmod>2023-12-30T18:55:20.884Z</lastmod>
+    <lastmod>2024-01-03T21:23:22.586Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/syllabus.html</loc>
-    <lastmod>2023-12-26T23:20:57.738Z</lastmod>
+    <lastmod>2024-01-03T22:21:57.503Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/notes.html</loc>
@@ -18,27 +18,27 @@
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/clicker.html</loc>
-    <lastmod>2023-12-30T18:55:18.843Z</lastmod>
+    <lastmod>2024-01-03T21:23:17.700Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/clicker_slides.html</loc>
-    <lastmod>2023-12-30T18:55:07.212Z</lastmod>
+    <lastmod>2024-01-03T21:22:57.372Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/project.html</loc>
-    <lastmod>2023-12-21T01:05:15.767Z</lastmod>
+    <lastmod>2024-01-03T21:09:12.280Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/slides/2024-01-08-db.html</loc>
-    <lastmod>2023-12-26T15:54:33.939Z</lastmod>
+    <lastmod>2024-01-03T22:22:54.048Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/handout/lab1_db_sds261_j24.html</loc>
-    <lastmod>2023-12-26T23:54:43.648Z</lastmod>
+    <lastmod>2024-01-03T21:08:12.004Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/handout/lab4_regexp_sds261_j24.html</loc>
-    <lastmod>2023-11-13T22:18:30.718Z</lastmod>
+    <lastmod>2024-01-03T04:19:56.787Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/handout/lab2_R_SQL_sds261_j24.html</loc>
@@ -54,10 +54,46 @@
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/handout/lab1_db_sds261_j24_sol.html</loc>
-    <lastmod>2023-12-26T23:54:43.587Z</lastmod>
+    <lastmod>2024-01-03T21:08:11.966Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/slides/2024-01-09-clauses.html</loc>
-    <lastmod>2023-12-30T00:09:08.241Z</lastmod>
+    <lastmod>2024-01-03T22:19:33.672Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sds261-sql.netlify.app/handout/ws4_sds261_j24.html</loc>
+    <lastmod>2024-01-01T23:49:21.343Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sds261-sql.netlify.app/handout/lab2_clauses_sds261_j24.html</loc>
+    <lastmod>2024-01-03T21:08:31.537Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sds261-sql.netlify.app/handout/lab3_joins_sds261_j24.html</loc>
+    <lastmod>2024-01-03T21:08:45.017Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sds261-sql.netlify.app/slides/2024-01-11-regex1.html</loc>
+    <lastmod>2024-01-03T22:23:12.050Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sds261-sql.netlify.app/slides/2024-01-12-regex2.html</loc>
+    <lastmod>2024-01-03T22:23:46.808Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sds261-sql.netlify.app/handout/lab4_regex_sds261_j24.html</loc>
+    <lastmod>2024-01-03T20:57:31.020Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sds261-sql.netlify.app/handout/ws1_sds261_j24.html</loc>
+    <lastmod>2024-01-03T22:25:52.282Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sds261-sql.netlify.app/handout/lab2_clauses_sds261_j24_sol.html</loc>
+    <lastmod>2024-01-03T21:08:31.501Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sds261-sql.netlify.app/handout/lab3_joins_sds261_j24_sol.html</loc>
+    <lastmod>2024-01-03T21:08:44.982Z</lastmod>
   </url>
 </urlset>

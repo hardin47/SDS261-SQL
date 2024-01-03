@@ -1,9 +1,0 @@
----
-title: "Lab 4 - regular expressions"
-author: "your name goes here"
----
-
-
-do something with chatgpt.  ask chat gpt how to answer the question. then ask using SQL then ask using stringr.
-
-

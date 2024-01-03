@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -285,8 +319,87 @@ ul.task-list li input[type="checkbox"] {
 </ol></li>
 </ol>
 <hr>
+<p>look at exercises: https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/block022_regular-expression.md</p>
+<p>which reg expr matches all countries with “ee”</p>
+<p>countries with “i” or “t” and ends in “land”; has “ee”; continents with “o”</p>
+<p>can use flights data for cities with particular names</p>
+<hr>
+<ol start="17" type="1">
+<li><code>grep("q[^u]", very.large.word.list)</code> would not match which of the following?<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>
+<ol type="a">
+<li>Iraqi</li>
+<li>Iraqian</li>
+<li>Iraq</li>
+<li>zaqqun (tree that “springs out of the bottom of Hell”, in the Quran)</li>
+<li>Qantas (the Australian airline)</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="17" type="1">
+<li>Which of the following regex would match to both “grey” and “gray”?<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>
+<ol type="a">
+<li>“gr[ae]y”</li>
+<li>“gr(a|e)y”</li>
+<li>“gray | grey”</li>
+<li>“gr[a|e]y”</li>
+<li>some / all of the above – which ones?</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="17" type="1">
+<li>What will the result be for the following code?<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>
+<ol type="a">
+<li>10</li>
+<li>1</li>
+<li>0</li>
+<li>NA</li>
+</ol></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="st">"My dog is 10 years old"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<ol start="17" type="1">
+<li>What will the result be for the following code?<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a>
+<ol type="a">
+<li>.</li>
+<li>Episode 2: The pie whisperer. (4 August 2015)</li>
+<li>Episode</li>
+<li>E</li>
+</ol></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="st">"Episode 2: The pie whisperer. (4 August 2015)"</span>, <span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<ol start="17" type="1">
+<li>What will the result be for the following code?<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>
+<ol type="a">
+<li>.</li>
+<li>Episode 2: The pie whisperer. (4 August 2015)</li>
+<li>Episode</li>
+<li>E</li>
+</ol></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="st">"Episode 2: The pie whisperer. (4 August 2015)"</span>, <span class="st">".+"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<ol start="17" type="1">
+<li>What will the result be for the following code?<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a>
+<ol type="a">
+<li>.</li>
+<li>Episode 2: The pie whisperer. (4 August 2015)</li>
+<li>Episode</li>
+<li>E</li>
+</ol></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="st">"Episode 2: The pie whisperer. (4 August 2015)"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
 <ol start="16" type="1">
-<li>What is the most common type of join?<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>
+<li>What is the most common type of join?<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a>
 <ol type="a">
 <li>INNER JOIN</li>
 <li>JOINED TABLE</li>
@@ -296,7 +409,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <hr>
 <ol start="17" type="1">
-<li>Which operator is used to search for a specified pattern in a column?<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>
+<li>Which operator is used to search for a specified pattern in a column?<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>
 <ol type="a">
 <li>LIKE</li>
 <li>GET</li>
@@ -305,7 +418,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <hr>
 <ol start="18" type="1">
-<li>With SQL, how do you select all the records from a table named “Persons” where the value of the column “FirstName” starts with an “a”?<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>
+<li>With SQL, how do you select all the records from a table named “Persons” where the value of the column “FirstName” starts with an “a”?<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a>
 <ol type="a">
 <li>SELECT * FROM Persons WHERE FirstName LIKE ‘a%’</li>
 <li>SELECT * FROM Persons WHERE FirstName = ‘%a%’</li>
@@ -315,7 +428,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <hr>
 <ol start="19" type="1">
-<li>Which SQL statement is used to create a database table called ‘Customers’?<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a>
+<li>Which SQL statement is used to create a database table called ‘Customers’?<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a>
 <ol type="a">
 <li>CREATE DATABASE TAB Customers</li>
 <li>CREATE TABLE Customers</li>
@@ -325,7 +438,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <hr>
 <ol start="20" type="1">
-<li>Which SQL statement updates data in a database?<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>
+<li>Which SQL statement updates data in a database?<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a>
 <ol type="a">
 <li>SAVE AS</li>
 <li>MODIFY</li>
@@ -335,7 +448,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <hr>
 <ol start="21" type="1">
-<li>Which SQL statement deletes data from a database?<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a>
+<li>Which SQL statement deletes data from a database?<a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a>
 <ol type="a">
 <li>REMOVE</li>
 <li>DELETE</li>
@@ -344,7 +457,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <hr>
 <ol start="22" type="1">
-<li>The NOT NULL constraint enforces a column to not accept NULL values.<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a>
+<li>The NOT NULL constraint enforces a column to not accept NULL values.<a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a>
 <ol type="a">
 <li>FALSE</li>
 <li>TRUE</li>
@@ -352,7 +465,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <hr>
 <ol start="23" type="1">
-<li>Which SQL statement inserts new data in a database?<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>
+<li>Which SQL statement inserts new data in a database?<a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a>
 <ol type="a">
 <li>ADD RECORD</li>
 <li>INSERT INTO</li>
@@ -362,7 +475,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <hr>
 <ol start="24" type="1">
-<li>With SQL, how can you insert a new record into the “Persons” table?<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a>
+<li>With SQL, how can you insert a new record into the “Persons” table?<a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a>
 <ol type="a">
 <li>INSERT INTO Persons VALUES (‘Jimmy’, ‘Jackson’)</li>
 <li>INSERT (‘Jimmy’, ‘Jacskon’) INTO Persons</li>
@@ -371,7 +484,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <hr>
 <ol start="25" type="1">
-<li>With SQL, how can you insert “Olsen” as the “LastName” in the “Persons” table?<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a>
+<li>With SQL, how can you insert “Olsen” as the “LastName” in the “Persons” table?<a href="#fn31" class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a>
 <ol type="a">
 <li>INSERT INTO Persons (LastName) VALUES (‘Olsen’)</li>
 <li>INSERT INTO Persons (’Olsen) INTO LastName</li>
@@ -380,7 +493,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <hr>
 <ol start="26" type="1">
-<li>How can you change “Hansen” into “Nilsen” in the “LastName” column in the Persons table?<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a>
+<li>How can you change “Hansen” into “Nilsen” in the “LastName” column in the Persons table?<a href="#fn32" class="footnote-ref" id="fnref32" role="doc-noteref"><sup>32</sup></a>
 <ol type="a">
 <li>MODIFY Persons SET LastName=‘Nilsen’ WHERE LastName=‘Hansen’</li>
 <li>UPDATE Persons SET LastName=‘Hansen’ INTO LastName=‘Nilsen’</li>
@@ -390,7 +503,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <hr>
 <ol start="27" type="1">
-<li>With SQL, how can you delete the records where the “FirstName” is “Peter” in the Persons Table?<a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a>
+<li>With SQL, how can you delete the records where the “FirstName” is “Peter” in the Persons Table?<a href="#fn33" class="footnote-ref" id="fnref33" role="doc-noteref"><sup>33</sup></a>
 <ol type="a">
 <li>DELETE FROM Persons WHERE FirstName=‘Peter’</li>
 <li>DELETE FirstName=‘Peter’ FROM Persons</li>
@@ -464,7 +577,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></li>
 <li id="fn16"><ol type="a">
-<li>INNER JOIN</li>
+<li>LIKE</li>
 </ol>
 <a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></li>
 <li id="fn17"><ol type="a">
@@ -472,45 +585,69 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></li>
 <li id="fn18"><ol type="a">
-<li>SELECT * FROM Persons WHERE FirstName LIKE ‘a%’</li>
+<li>LIKE</li>
 </ol>
 <a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn19"><ol start="2" type="a">
-<li>CREATE TABLE Customers</li>
+<li id="fn19"><ol type="a">
+<li>LIKE</li>
 </ol>
 <a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn20"><ol start="4" type="a">
-<li>UPDATE</li>
+<li id="fn20"><ol type="a">
+<li>LIKE</li>
 </ol>
 <a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn21"><ol start="2" type="a">
-<li>DELETE</li>
+<li id="fn21"><ol type="a">
+<li>LIKE</li>
 </ol>
 <a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn22"><ol start="2" type="a">
-<li>TRUE</li>
+<li id="fn22"><ol type="a">
+<li>INNER JOIN</li>
 </ol>
 <a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn23"><ol start="2" type="a">
-<li>INSERT INTO</li>
+<li id="fn23"><ol type="a">
+<li>LIKE</li>
 </ol>
 <a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></li>
 <li id="fn24"><ol type="a">
-<li>INSERT INTO Persons VALUES (‘Jimmy’, ‘Jackson’)</li>
+<li>SELECT * FROM Persons WHERE FirstName LIKE ‘a%’</li>
 </ol>
 <a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn25"><ol type="a">
-<li>INSERT INTO Persons (LastName) VALUES (‘Olsen’)</li>
+<li id="fn25"><ol start="2" type="a">
+<li>CREATE TABLE Customers</li>
 </ol>
 <a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></li>
 <li id="fn26"><ol start="4" type="a">
-<li>UPDATE Persons SET LastName=‘Nilsen’ WHERE LastName=‘Hansen’</li>
+<li>UPDATE</li>
 </ol>
 <a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn27"><ol type="a">
-<li>DELETE FROM Persons WHERE FirstName=‘Peter’</li>
+<li id="fn27"><ol start="2" type="a">
+<li>DELETE</li>
 </ol>
 <a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn28"><ol start="2" type="a">
+<li>TRUE</li>
+</ol>
+<a href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn29"><ol start="2" type="a">
+<li>INSERT INTO</li>
+</ol>
+<a href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn30"><ol type="a">
+<li>INSERT INTO Persons VALUES (‘Jimmy’, ‘Jackson’)</li>
+</ol>
+<a href="#fnref30" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn31"><ol type="a">
+<li>INSERT INTO Persons (LastName) VALUES (‘Olsen’)</li>
+</ol>
+<a href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn32"><ol start="4" type="a">
+<li>UPDATE Persons SET LastName=‘Nilsen’ WHERE LastName=‘Hansen’</li>
+</ol>
+<a href="#fnref32" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn33"><ol type="a">
+<li>DELETE FROM Persons WHERE FirstName=‘Peter’</li>
+</ol>
+<a href="#fnref33" class="footnote-back" role="doc-backlink">↩︎</a></li>
 </ol>
 </section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
