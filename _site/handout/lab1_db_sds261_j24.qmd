@@ -1,7 +1,7 @@
 ---
 title: "Lab 1 - working with Databases"
 author: "your name goes here"
-date: "due 10am Tuesday, January 9, 2024"
+date: "Tuesday, January 8, 2024"
 format: 
   unilur-html: default
   unilur-html+solution:
@@ -50,7 +50,7 @@ Preliminary:  You'll need to create a quarto document.  To do so click on: New f
 
 ```
 ---
-title: 'Lab1 - working with Databases'
+title: 'Lab 1 - working with Databases'
 author: 'your name goes here'
 date: 'due 10am Tuesday, January 9, 2024'
 execute:
@@ -164,7 +164,7 @@ flights |>
 toc()
 ```
 
-* Using `dbGetQuery()`
+* Using `dbGetQuery()`.
 
 ```{r}
 #| unilur-solution: true
@@ -178,7 +178,7 @@ WHERE (`year` = 2012 AND (`dest` = 'BDL' OR `origin` = 'BDL'))")
 toc()
 ```
 
-* Using **SQL** chunk
+* Using **SQL** chunk.
 
 
 ```{r}
@@ -235,14 +235,14 @@ toc()
 Pulling the table into R as a datafame slows down the calculations quite a bit.
 ```
 
-7. DBeaver: open DBeaver from your applications.  Following the instructions in the <a href = "https://st47s.com/SDS261/Notes/02-sql-in-R.html#dbeaver" target = "_blank">DBeaver online notes</a>, set up a connection to the **mdsr** **SQL** server. Create a file called `lab1-sds261-yourlastname-yourfirstname.sql` and **SAVE THE FILE in the lab1 R Project folder**. Run the same **SQL** code as above. Did you get the same result?  Where there any adjustments to the SQL code from above?  Explain in a few sentences.
+7. DBeaver: open DBeaver from your applications.  Following the instructions in the <a href = "https://st47s.com/SDS261/Notes/02-sql-in-R.html#dbeaver" target = "_blank">DBeaver online notes</a>, set up a connection to the **mdsr** **SQL** server. Create a file called `lab1-sds261-yourlastname-yourfirstname.sql` and **SAVE THE FILE in the lab1 R Project folder**. Run the same **SQL** code as above. Did you get the same result?  Were there any adjustments to the SQL code from above?  Explain in a few sentences.
 
 ```{block}
 #| unilur-solution: true
 
 Yes, there were still 41,949 flights to and from BDL in 2012.  Whew!  It would have been very odd if there had been a different number because the database itself hasn't changed at all, we are just sending the query using a different client.
 
-I needed to remove the back ticks from the table and variable names.  R uses the backticks, but DBeaver does not.  Good to remember.
+I needed to remove the back ticks from the table and variable names.  R uses backticks but DBeaver does not.  Good to remember.
 
 I had set up my connection to the entire **mdsr** database, so I needed to add the line `USE airlines;` to the top of my **SQL** query so that it would be able to find the `flights` table.  I could have also specified where `flights` lives using:  `... FROM airlines.flights...`.
 ```
@@ -251,6 +251,12 @@ I had set up my connection to the entire **mdsr** database, so I needed to add t
 
 ```{block}
 #| unilur-solution: true
+
+* there are different ways to run the same SQL commands
+* some approaches are more efficient than other approaches
+* the RStudio IDE is flexible in that it allows both R and SQL code
+* DBeaver is a more typical SQL client in that many lines of SQL code can be written simultaneously, and the SQL connection says in tact for the entire set of queries.
+* the airlines database has a ginormous about of information which exists in four tables: airports, carriers, flights, and planes
 
 ```
 
@@ -261,6 +267,6 @@ dbDisconnect(con_air)
 ```
 
 
-10. render - commit - push to GitHub.  You should push three files, those with extensions .qmd, .html, and .sql. In a browser, look at your GitHub website to make sure that all three files were successfully pushed to the correct repo.
+10. render - commit - push to GitHub.  You should push three files, those with extensions .qmd, .html, and .sql. In a browser, look at your GitHub website to make sure that all three files were successfully pushed to the correct repo (yours for lab1).
 
 

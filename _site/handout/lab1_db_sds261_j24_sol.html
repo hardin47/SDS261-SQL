@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="your name goes here">
+<meta name="dcterms.date" content="2024-01-08">
 
 <title>Data Science, the SQL - Lab 1 - working with Databases</title>
 <style>
@@ -176,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Invalid Date</p>
+      <p class="date">January 8, 2024</p>
     </div>
   </div>
   
@@ -230,7 +231,7 @@ Solution
 <li>The yaml at the top of the file should look like this (change the author and date fields):</li>
 </ul>
 <pre><code>---
-title: 'Lab1 - working with Databases'
+title: 'Lab 1 - working with Databases'
 author: 'your name goes here'
 date: 'due 10am Tuesday, January 9, 2024'
 execute:
@@ -443,12 +444,12 @@ Solution
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>rand_numbers <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000000</span>)</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(rand_numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           0%           25%           50%           75%          100% 
--4.6740095136 -0.6749125714  0.0003569681  0.6761574977  4.8925430082 </code></pre>
+<pre><code>          0%          25%          50%          75%         100% 
+-4.499639773 -0.675803342 -0.001570957  0.674899244  4.756685846 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.109 sec elapsed</code></pre>
+<pre><code>0.103 sec elapsed</code></pre>
 </div>
 </div>
 <ul>
@@ -483,14 +484,14 @@ Solution
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>6.481 sec elapsed</code></pre>
+<pre><code>8.611 sec elapsed</code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 <ul>
-<li>Using <code>dbGetQuery()</code></li>
+<li>Using <code>dbGetQuery()</code>.</li>
 </ul>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
@@ -516,14 +517,14 @@ Solution
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>6.019 sec elapsed</code></pre>
+<pre><code>5.928 sec elapsed</code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 <ul>
-<li>Using <strong>SQL</strong> chunk</li>
+<li>Using <strong>SQL</strong> chunk.</li>
 </ul>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
@@ -598,7 +599,7 @@ Solution
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>6.123 sec elapsed</code></pre>
+<pre><code>5.754 sec elapsed</code></pre>
 </div>
 </div>
 </div>
@@ -654,7 +655,7 @@ Solution
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>6.122 sec elapsed</code></pre>
+<pre><code>5.681 sec elapsed</code></pre>
 </div>
 </div>
 </div>
@@ -679,7 +680,7 @@ Solution
 </div>
 </div>
 <ol start="7" type="1">
-<li>DBeaver: open DBeaver from your applications. Following the instructions in the <a href="https://st47s.com/SDS261/Notes/02-sql-in-R.html#dbeaver" target="_blank">DBeaver online notes</a>, set up a connection to the <strong>mdsr</strong> <strong>SQL</strong> server. Create a file called <code>lab1-sds261-yourlastname-yourfirstname.sql</code> and <strong>SAVE THE FILE in the lab1 R Project folder</strong>. Run the same <strong>SQL</strong> code as above. Did you get the same result? Where there any adjustments to the SQL code from above? Explain in a few sentences.</li>
+<li>DBeaver: open DBeaver from your applications. Following the instructions in the <a href="https://st47s.com/SDS261/Notes/02-sql-in-R.html#dbeaver" target="_blank">DBeaver online notes</a>, set up a connection to the <strong>mdsr</strong> <strong>SQL</strong> server. Create a file called <code>lab1-sds261-yourlastname-yourfirstname.sql</code> and <strong>SAVE THE FILE in the lab1 R Project folder</strong>. Run the same <strong>SQL</strong> code as above. Did you get the same result? Were there any adjustments to the SQL code from above? Explain in a few sentences.</li>
 </ol>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
@@ -695,7 +696,7 @@ Solution
 <div class="callout-body-container callout-body">
 <div class="cell">
 <p>Yes, there were still 41,949 flights to and from BDL in 2012. Whew! It would have been very odd if there had been a different number because the database itself hasn’t changed at all, we are just sending the query using a different client.</p>
-<p>I needed to remove the back ticks from the table and variable names. R uses the backticks, but DBeaver does not. Good to remember.</p>
+<p>I needed to remove the back ticks from the table and variable names. R uses backticks but DBeaver does not. Good to remember.</p>
 <p>I had set up my connection to the entire <strong>mdsr</strong> database, so I needed to add the line <code>USE airlines;</code> to the top of my <strong>SQL</strong> query so that it would be able to find the <code>flights</code> table. I could have also specified where <code>flights</code> lives using: <code>... FROM airlines.flights...</code>.</p>
 </div>
 </div>
@@ -716,7 +717,15 @@ Solution
 </div>
 <div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<div class="cell">
+<ul>
+<li>there are different ways to run the same SQL commands</li>
+<li>some approaches are more efficient than other approaches</li>
+<li>the RStudio IDE is flexible in that it allows both R and SQL code</li>
+<li>DBeaver is a more typical SQL client in that many lines of SQL code can be written simultaneously, and the SQL connection says in tact for the entire set of queries.</li>
+<li>the airlines database has a ginormous about of information which exists in four tables: airports, carriers, flights, and planes</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -727,7 +736,7 @@ Solution
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con_air)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="10" type="1">
-<li>render - commit - push to GitHub. You should push three files, those with extensions .qmd, .html, and .sql. In a browser, look at your GitHub website to make sure that all three files were successfully pushed to the correct repo.</li>
+<li>render - commit - push to GitHub. You should push three files, those with extensions .qmd, .html, and .sql. In a browser, look at your GitHub website to make sure that all three files were successfully pushed to the correct repo (yours for lab1).</li>
 </ol>
 
 

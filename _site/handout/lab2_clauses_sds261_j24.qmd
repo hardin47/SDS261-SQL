@@ -16,6 +16,18 @@ do something with NA / NULL. see hadley's comments in the where section. https:/
 
 do something with distinct()
 
+Approach: 
+What do you want?	
+the movies.
+Which tables and for what?
+movies for the movie name
+Conditions?
+The movies must be sci-fi movies
+The categories need to be ordered by the investment ratio
+Anything else?
+Semicolon
+
+
 ```{r}
 #| unilur-solution: true
 

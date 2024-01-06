@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="your name goes here">
+<meta name="dcterms.date" content="2024-01-08">
 
 <title>Data Science, the SQL - Lab 1 - working with Databases</title>
 <style>
@@ -175,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Invalid Date</p>
+      <p class="date">January 8, 2024</p>
     </div>
   </div>
   
@@ -207,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>The yaml at the top of the file should look like this (change the author and date fields):</li>
 </ul>
 <pre><code>---
-title: 'Lab1 - working with Databases'
+title: 'Lab 1 - working with Databases'
 author: 'your name goes here'
 date: 'due 10am Tuesday, January 9, 2024'
 execute:
@@ -247,28 +248,28 @@ execute:
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>rand_numbers <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000000</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(rand_numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           0%           25%           50%           75%          100% 
--4.6740095136 -0.6749125714  0.0003569681  0.6761574977  4.8925430082 </code></pre>
+<pre><code>          0%          25%          50%          75%         100% 
+-4.499639773 -0.675803342 -0.001570957  0.674899244  4.756685846 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.109 sec elapsed</code></pre>
+<pre><code>0.103 sec elapsed</code></pre>
 </div>
 </div>
 <ul>
 <li>Using <strong>R</strong> on the <code>tbl</code>.</li>
 </ul>
 <ul>
-<li>Using <code>dbGetQuery()</code></li>
+<li>Using <code>dbGetQuery()</code>.</li>
 </ul>
 <ul>
-<li>Using <strong>SQL</strong> chunk</li>
+<li>Using <strong>SQL</strong> chunk.</li>
 </ul>
 <ol start="6" type="1">
 <li>Now create a <code>tibble</code> (not a <code>tbl</code>) that includes only flights in 2012 either to or from BDL (use <code>collect()</code>). After you have created the <code>tibble</code>, summarize the observations to get the count. Use <strong>tictoc</strong> to evaluate how long the process takes. Write 1-2 sentences describing the results.</li>
 </ol>
 <ol start="7" type="1">
-<li>DBeaver: open DBeaver from your applications. Following the instructions in the <a href="https://st47s.com/SDS261/Notes/02-sql-in-R.html#dbeaver" target="_blank">DBeaver online notes</a>, set up a connection to the <strong>mdsr</strong> <strong>SQL</strong> server. Create a file called <code>lab1-sds261-yourlastname-yourfirstname.sql</code> and <strong>SAVE THE FILE in the lab1 R Project folder</strong>. Run the same <strong>SQL</strong> code as above. Did you get the same result? Where there any adjustments to the SQL code from above? Explain in a few sentences.</li>
+<li>DBeaver: open DBeaver from your applications. Following the instructions in the <a href="https://st47s.com/SDS261/Notes/02-sql-in-R.html#dbeaver" target="_blank">DBeaver online notes</a>, set up a connection to the <strong>mdsr</strong> <strong>SQL</strong> server. Create a file called <code>lab1-sds261-yourlastname-yourfirstname.sql</code> and <strong>SAVE THE FILE in the lab1 R Project folder</strong>. Run the same <strong>SQL</strong> code as above. Did you get the same result? Were there any adjustments to the SQL code from above? Explain in a few sentences.</li>
 </ol>
 <ol start="8" type="1">
 <li>Reflect on at least 3 things that you learned during this lab. It could be about technical aspects. It could be about understanding databases. It could be about the difference between <strong>R</strong> and <strong>SQL</strong>. Anything you learned while doing the lab.</li>
@@ -280,7 +281,7 @@ execute:
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con_air)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="10" type="1">
-<li>render - commit - push to GitHub. You should push three files, those with extensions .qmd, .html, and .sql. In a browser, look at your GitHub website to make sure that all three files were successfully pushed to the correct repo.</li>
+<li>render - commit - push to GitHub. You should push three files, those with extensions .qmd, .html, and .sql. In a browser, look at your GitHub website to make sure that all three files were successfully pushed to the correct repo (yours for lab1).</li>
 </ol>
 
 
