@@ -406,9 +406,21 @@ Jo Hardin
 
   <p class="date">2024-01-08</p>
 </section>
+<section id="course-logistics" class="title-slide slide level1 center">
+<h1>Course logistics</h1>
+<p>https://sds261-sql.netlify.app/</p>
+<ul>
+<li>syllabus</li>
+<li>class notes</li>
+<li>clicker questions</li>
+<li>project</li>
+<li>getting started with GitHub</li>
+</ul>
+</section>
+
 <section>
-<section id="sql-structured-query-language" class="title-slide slide level1 center">
-<h1><strong>SQL</strong> (Structured Query Language)</h1>
+<section id="sqlstructured-query-language" class="title-slide slide level1 center">
+<h1><strong>SQL</strong>:Structured Query Language</h1>
 
 </section>
 <section id="what-is-a-database" class="slide level2">
@@ -469,15 +481,24 @@ Jo Hardin
 </div>
 <p>Hadley Wickham discusses how to use Sys.getenv: https://cran.r-project.org/web/packages/httr/vignettes/secrets.html</p>
 </section>
+<section id="tables-in-airlines-database" class="slide level2">
+<h2>Tables in <code>airlines</code> database</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>DBI<span class="sc">::</span><span class="fu">dbListTables</span>(con_air)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "airports" "carriers" "flights"  "planes"  </code></pre>
+</div>
+</div>
+</section>
 <section id="sql-tables-as-tbl" class="slide level2">
 <h2><strong>SQL</strong> tables as <code>tbl</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>carriers <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_air, <span class="st">"carriers"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">dim</span>(carriers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>carriers <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_air, <span class="st">"carriers"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">dim</span>(carriers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA  2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">head</span>(carriers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">head</span>(carriers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [6 x 2]
 # Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]
@@ -496,14 +517,14 @@ Jo Hardin
 <h2><strong>SQL</strong> tables as <code>tibble</code></h2>
 <p>The function <code>collect()</code> copies a <strong>SQL</strong> table from it’s server location on disk to your local memory location in <strong>R</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>carriers_tibble <span class="ot">&lt;-</span> carriers <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  dplyr<span class="sc">::</span><span class="fu">collect</span>()</span>
-<span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="fu">dim</span>(carriers_tibble)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>carriers_tibble <span class="ot">&lt;-</span> carriers <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  dplyr<span class="sc">::</span><span class="fu">collect</span>()</span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="fu">dim</span>(carriers_tibble)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1610    2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">head</span>(carriers_tibble)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">head</span>(carriers_tibble)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   carrier name                         
@@ -521,22 +542,22 @@ Jo Hardin
 <h2>How much space does <code>carriers</code> take up?</h2>
 <p>The data frame in <strong>R</strong> takes up 2 orders of magnitude of memory more than the table which just points to the object in <strong>SQL</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>carriers <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">object.size</span>() <span class="sc">|&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">print</span>(<span class="at">units =</span> <span class="st">"Kb"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>carriers <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">object.size</span>() <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">print</span>(<span class="at">units =</span> <span class="st">"Kb"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>5.2 Kb</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>carriers_tibble <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">object.size</span>() <span class="sc">|&gt;</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">print</span>(<span class="at">units =</span> <span class="st">"Kb"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>carriers_tibble <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">object.size</span>() <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">print</span>(<span class="at">units =</span> <span class="st">"Kb"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>234.8 Kb</code></pre>
 </div>
 </div>
 </section>
-<section id="what-is-sql-structured-query-language" class="slide level2">
-<h2>What is <strong>SQL</strong> (Structured Query Language) ?</h2>
+<section id="what-is-sql" class="slide level2">
+<h2>What is <strong>SQL</strong>?</h2>
 <ul>
 <li><strong>SQL</strong> is a programming language for working with relational databases.</li>
 <li><strong>SQL</strong> has been around since the 1970s, but has, unfortunately, many different dialects.</li>
@@ -558,12 +579,12 @@ Jo Hardin
 <h2>1. Translating <strong>dplyr</strong> code into <strong>SQL</strong></h2>
 <p>The function <code>dbListTables()</code> in the <strong>DBI</strong> package will tell us what tables exist in the <strong>airlines</strong> database.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>DBI<span class="sc">::</span><span class="fu">dbListTables</span>(con_air)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>DBI<span class="sc">::</span><span class="fu">dbListTables</span>(con_air)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "airports" "carriers" "flights"  "planes"  </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>flights <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_air, <span class="st">"flights"</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a>carriers <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_air, <span class="st">"carriers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>flights <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_air, <span class="st">"flights"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>carriers <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con_air, <span class="st">"carriers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="translating-dplyr-code-into-sql-1" class="slide level2">
@@ -572,10 +593,10 @@ Jo Hardin
 <li>Over what years is the <code>flights</code> data taken?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>yrs <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">summarize</span>(<span class="at">min_year =</span> <span class="fu">min</span>(year), <span class="at">max_year =</span> <span class="fu">max</span>(year))</span>
-<span id="cb17-3"><a href="#cb17-3"></a></span>
-<span id="cb17-4"><a href="#cb17-4"></a>yrs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>yrs <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">summarize</span>(<span class="at">min_year =</span> <span class="fu">min</span>(year), <span class="at">max_year =</span> <span class="fu">max</span>(year))</span>
+<span id="cb19-3"><a href="#cb19-3"></a></span>
+<span id="cb19-4"><a href="#cb19-4"></a>yrs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [1 x 2]
 # Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]
@@ -589,7 +610,7 @@ Jo Hardin
 <h2>1. Translating <strong>dplyr</strong> code into <strong>SQL</strong></h2>
 <p>Because <code>flights</code> is not actually a <code>data.frame</code> in <strong>R</strong> (but instead a <code>tbl</code> in <strong>SQL</strong>), the work that was done above was actually performed in <strong>SQL</strong>. To see the <strong>SQL</strong> code, we can use the function <code>show_query</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>dplyr<span class="sc">::</span><span class="fu">show_query</span>(yrs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>dplyr<span class="sc">::</span><span class="fu">show_query</span>(yrs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;SQL&gt;
 SELECT MIN(`year`) AS `min_year`, MAX(`year`) AS `max_year`
@@ -603,11 +624,11 @@ FROM `flights`</code></pre>
 <li>Create a data set containing only flights between <code>LAX</code> and <code>BOS</code> in 2012.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>la_bos <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2012</span> <span class="sc">&amp;</span> ((origin <span class="sc">==</span> <span class="st">"LAX"</span> <span class="sc">&amp;</span> dest <span class="sc">==</span> <span class="st">"BOS"</span>) <span class="sc">|</span> </span>
-<span id="cb21-3"><a href="#cb21-3"></a>           (origin <span class="sc">==</span> <span class="st">"BOS"</span> <span class="sc">&amp;</span> dest <span class="sc">==</span> <span class="st">"LAX"</span>))) </span>
-<span id="cb21-4"><a href="#cb21-4"></a></span>
-<span id="cb21-5"><a href="#cb21-5"></a>dplyr<span class="sc">::</span><span class="fu">show_query</span>(la_bos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>la_bos <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2012</span> <span class="sc">&amp;</span> ((origin <span class="sc">==</span> <span class="st">"LAX"</span> <span class="sc">&amp;</span> dest <span class="sc">==</span> <span class="st">"BOS"</span>) <span class="sc">|</span> </span>
+<span id="cb23-3"><a href="#cb23-3"></a>           (origin <span class="sc">==</span> <span class="st">"BOS"</span> <span class="sc">&amp;</span> dest <span class="sc">==</span> <span class="st">"LAX"</span>))) </span>
+<span id="cb23-4"><a href="#cb23-4"></a></span>
+<span id="cb23-5"><a href="#cb23-5"></a>dplyr<span class="sc">::</span><span class="fu">show_query</span>(la_bos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;SQL&gt;
 SELECT *
@@ -630,8 +651,8 @@ WHERE (`year` = 2012.0 AND ((`origin` = 'LAX' AND `dest` = 'BOS') OR (`origin` =
 <li>Look at the first few rows of the <code>flights</code> data.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con_air,</span>
-<span id="cb23-2"><a href="#cb23-2"></a>                <span class="st">"SELECT * FROM flights LIMIT 8;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con_air,</span>
+<span id="cb25-2"><a href="#cb25-2"></a>                <span class="st">"SELECT * FROM flights LIMIT 8;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  year month day dep_time sched_dep_time dep_delay arr_time sched_arr_time
 1 2010    10   1        1           2100       181      159           2320
@@ -669,8 +690,8 @@ WHERE (`year` = 2012.0 AND ((`origin` = 'LAX' AND `dest` = 'BOS') OR (`origin` =
 <li>How many flights per year are in the <code>flights</code> table?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con_air, </span>
-<span id="cb25-2"><a href="#cb25-2"></a>  <span class="st">"SELECT year, count(*) AS num_flights FROM flights GROUP BY year ORDER BY num_flights;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con_air, </span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="st">"SELECT year, count(*) AS num_flights FROM flights GROUP BY year ORDER BY num_flights;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  year num_flights
 1 2016     5617658
@@ -688,11 +709,11 @@ WHERE (`year` = 2012.0 AND ((`origin` = 'LAX' AND `dest` = 'BOS') OR (`origin` =
 <h2>3. Direct <strong>SQL</strong> queries via <code>sql</code> chunks</h2>
 <p><strong>SQL</strong> queries can be written directly inside a <code>sql</code> chunk in RStudio.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1"></a><span class="in">```{sql}</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a><span class="co">#| connection: con_air</span></span>
-<span id="cb27-3"><a href="#cb27-3"></a></span>
-<span id="cb27-4"><a href="#cb27-4"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> flights <span class="kw">LIMIT</span> <span class="dv">8</span>;</span>
-<span id="cb27-5"><a href="#cb27-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1"></a><span class="in">```{sql}</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="co">#| connection: con_air</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> flights <span class="kw">LIMIT</span> <span class="dv">8</span>;</span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -1297,14 +1318,14 @@ IAH
 <h2>3. Direct <strong>SQL</strong> queries via <code>sql</code> chunks</h2>
 <p><strong>SQL</strong> queries can be written directly inside a <code>sql</code> chunk in RStudio.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1"></a><span class="in">```{sql}</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="co">#| connection: con_air</span></span>
-<span id="cb28-3"><a href="#cb28-3"></a></span>
-<span id="cb28-4"><a href="#cb28-4"></a><span class="kw">SELECT</span> <span class="fu">year</span>, <span class="fu">count</span>(<span class="op">*</span>) <span class="kw">AS</span> num_flights </span>
-<span id="cb28-5"><a href="#cb28-5"></a>       <span class="kw">FROM</span> flights </span>
-<span id="cb28-6"><a href="#cb28-6"></a>       <span class="kw">GROUP</span> <span class="kw">BY</span> <span class="fu">year</span> </span>
-<span id="cb28-7"><a href="#cb28-7"></a>       <span class="kw">ORDER</span> <span class="kw">BY</span> num_flights;</span>
-<span id="cb28-8"><a href="#cb28-8"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1"></a><span class="in">```{sql}</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="co">#| connection: con_air</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="kw">SELECT</span> <span class="fu">year</span>, <span class="fu">count</span>(<span class="op">*</span>) <span class="kw">AS</span> num_flights </span>
+<span id="cb30-5"><a href="#cb30-5"></a>       <span class="kw">FROM</span> flights </span>
+<span id="cb30-6"><a href="#cb30-6"></a>       <span class="kw">GROUP</span> <span class="kw">BY</span> <span class="fu">year</span> </span>
+<span id="cb30-7"><a href="#cb30-7"></a>       <span class="kw">ORDER</span> <span class="kw">BY</span> num_flights;</span>
+<span id="cb30-8"><a href="#cb30-8"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -1396,7 +1417,7 @@ num_flights
 <h2>Good practice</h2>
 <p>Always a good idea to terminate the <strong>SQL</strong> connection when you are done with it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">dbDisconnect</span>(con_air)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">dbDisconnect</span>(con_air)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section id="using-sql-in-dbeaver" class="title-slide slide level1 center">
@@ -1439,9 +1460,9 @@ num_flights
 <li>For work done in <strong>DBeaver</strong> (.sql files), use the same naming convention: sds261-lab#-lname-fname.sql.</li>
 <li>All necessary files <em>must</em> be in the same folder (e.g., data, .sql files, etc.)</li>
 </ol>
-</section></section>
-<section id="a-github-merge-conflict" class="title-slide slide level1 scrollable center">
-<h1>A GitHub merge conflict</h1>
+</section>
+<section id="a-github-merge-conflict" class="slide level2 scrollable">
+<h2>A GitHub merge conflict</h2>
 <ul>
 <li><p>On GitHub (on the web) edit the README document and Commit it with a message describing what you did.</p></li>
 <li><p>Then, in RStudio also edit the README document with a different change.</p>
@@ -1453,8 +1474,7 @@ num_flights
 </ul></li>
 <li><p>As you work in teams you are likely to run into merge conflicts, learning how to resolve them properly will be very important.</p></li>
 </ul>
-</section>
-
+</section></section>
 <section id="github" class="title-slide slide level1 center">
 <h1>GitHub</h1>
 

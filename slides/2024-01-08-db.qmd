@@ -20,8 +20,17 @@ source("../_common.R")
 fontawesome::fa_html_dependency()
 ```
 
+# Course logistics
 
-# **SQL** (Structured Query Language)
+https://sds261-sql.netlify.app/
+
+* syllabus
+* class notes
+* clicker questions
+* project
+* getting started with GitHub
+
+# **SQL**:\n Structured Query Language
 
 ## What is a database?
 
@@ -86,6 +95,14 @@ con_air <- DBI::dbConnect(
 Hadley Wickham discusses how to use Sys.getenv: https://cran.r-project.org/web/packages/httr/vignettes/secrets.html
 
 
+## Tables in `airlines` database
+
+
+```{r}
+DBI::dbListTables(con_air)
+```
+
+
 
 
 ## **SQL** tables as `tbl`
@@ -129,7 +146,7 @@ carriers_tibble |>
 
 
 
-## What is **SQL** (Structured Query Language) ?
+## What is **SQL**?
 
 * **SQL** is a programming language for working with relational databases.
 * **SQL** has been around since the 1970s, but has, unfortunately, many different dialects.
@@ -282,7 +299,7 @@ dbDisconnect(con_air)
 5. For work done in **DBeaver** (.sql files), use the same naming convention: sds261-lab#-lname-fname.sql.
 5. All necessary files *must* be in the same folder (e.g., data, .sql files, etc.)  
 
-# A GitHub merge conflict {.scrollable}
+## A GitHub merge conflict {.scrollable}
 
 - On GitHub (on the web) edit the README document and Commit it with a message describing what you did.
 

@@ -35,35 +35,69 @@ library(tidyverse)
 
 ---
 
-1. Question about databases.[^1]
-   (a) Never heard of it
-   (b) Heard of it, but don't know anything about it
-   (c) Know a little about it (or did once)
-   (d) Know something about it
-   (e) Confident about it
+1. What is a SQL server?.[^1]
+   (a) A relational database management system.
+   (b) A software whose main purpose is to store and retrieve data.
+   (c) A highly secure server and does not allow any database file manipulation during execution.
+   (d) All of the above.
 
-[^1]: preferably d or e.  maybe c on some of them.
+[^1]: a. A relational database management system.
+
 
 ---
 
-2. What does SQL stand for?[^2]
-   (a) Structured Query Language
-   (b) Strong Question Language
-   (c) Structured Question Language
+2. When was SQL created?[^2]
+   (a) 1960s
+   (b) 1970s
+   (c) 1980s
+   (d) 1990s
+   (e) 2000s
 
-[^2]: a. Structured Query Language
+[^2]: b. The first versions were created in the 1970s and called SEQUEL (Structured English QUEry Language).  c. SQL came about in particular systems in the 1980s.
    
 ---
 
+3. What type of databases is SQL designed for?[^3]
 
-3. Which SQL clause is used to extract data from a database?[^3]
+   (a) hierarchical database management systems.
+   (b) network database management systems.
+   (c) object-oriented database management systems.
+   (d) relational database management systems.
+
+[^3]: d. relational database management systems.
+
+---
+
+4. Which is bigger:[^4]
+   (a) computer's hard drive / storage
+   (b) computer's memory / RAM
+
+[^4]: a. computer's hard drive / storage
+
+---
+
+5. Where are each stored?[^5]
+   (a) SQL `tbl` and R `tibble` both in storage
+   (b) SQL `tbl` and R `tibble` both in memory
+   (c) SQL `tbl` in storage and R `tibble` in memory
+   (d) SQL `tbl` in memory and R `tibble` in storage
+   
+[^5]: c. SQL `tbl` in storage and R `tibble` in memory
+
+---
+
+6. Which SQL clause is used to extract data from a database?[^6]
    (a) OPEN
    (b) EXTRACT
    (c) SELECT
    (d) GET
 
-[^3]: c. SELECT
+[^6]: c. SELECT
 
+---
+
+<!--add these https://www.javaguides.net/2023/07/sql-quiz.html
+https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 ---
 
 4. With SQL, how to you retrieve a column named "FirstName" from a table named "Persons"?[^4]
