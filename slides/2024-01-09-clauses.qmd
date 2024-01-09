@@ -139,7 +139,7 @@ Yikes, more than 15 million taxi rides!
 
 ## SELECT ... FROM
 
-What is the length of a taxi ride (in time)?  ... unfortunately, `pickup_datetime` and `dropoff_datetime` are saved as character strings insted of in DateTime format.
+What is the length of a taxi ride (in time)?  ... unfortunately, `pickup_datetime` and `dropoff_datetime` are saved as character strings instead of in DateTime format.
 
 
 ```{sql}
@@ -165,7 +165,7 @@ Why can't we find the difference between the new two time variables?
 SELECT
       pickup_datetime, dropoff_datetime,
       STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T") AS pickup,
-      STR_TO_DATE(dropoff_datetime, "%Y-%m-%d %T") AS dropoff.
+      STR_TO_DATE(dropoff_datetime, "%Y-%m-%d %T") AS dropoff,
       TIMEDIFF(pickup, dropoff) AS length_time
    FROM yellow_old
    LIMIT 0, 10;
@@ -220,6 +220,30 @@ There is a distinction between clauses that operate on the *variables of the ori
 
 `pickup`, `dropoff`, and `length_time` exist only in the *results set*, which is passed from the server (**SQL** server) to the client (e.g., **RStudio** or **DBeaver**) and is not written to disk.
 
+## SELECT DISTINCT {.scrollable}
+
+Returns only unique rows.
+
+```{sql}
+#| connection: con_taxi
+
+SELECT DISTINCT payment_type
+FROM yellow_old
+LIMIT 0, 20;
+```
+
+```{sql}
+#| connection: con_taxi
+
+SELECT DISTINCT vendor_id, payment_type
+FROM yellow_old
+LIMIT 0, 20;
+```
+In case you are curious: 
+
+* `VTS` is Verifone Transportation Systems and `CMT` is Mobile Knowledge Systems
+Inc.
+* `CRD` is credit card; `CSH` is cash; `NOC` is no charge; `DIS` is dispute
 
 ## WHERE
 
@@ -292,7 +316,7 @@ LIMIT 0, 10;
 
 ## WHERE
 
-Parentheses take precent over `AND` and `OR`.
+Parentheses take precedent over `AND` and `OR`.
 
 ```{sql}
 #| connection: con_taxi
@@ -306,7 +330,27 @@ LIMIT 0, 10;
 ```
 
 
+## WHERE
 
+`IS NULL` not `= NULL` (because `NULL` indicates *unknown*)
+
+```{sql}
+#| connection: con_taxi
+
+SELECT payment_type, fare_amount, tip_amount, total_amount
+FROM yellow_old
+WHERE payment_type IS NULL
+LIMIT 0, 10;
+```
+
+```{sql}
+#| connection: con_taxi
+
+SELECT payment_type, fare_amount, tip_amount, total_amount
+FROM yellow_old
+WHERE payment_type = NULL
+LIMIT 0, 10;
+```
 
 
 ## GROUP BY

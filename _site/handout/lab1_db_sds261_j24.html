@@ -230,7 +230,7 @@ execute:
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
-<li>Pull in the <code>flights</code> table as a <code>tbl</code> (do <em>not</em> use <code>collect()</code>!). Use <strong>dplyr</strong> commands to calculate the number of flights that flew into or out of BDL in 2012. Then use <code>dplyr::get_query()</code> to output the <strong>SQL</strong> query. (All done inside an <strong>R</strong> chunk.)</li>
+<li>Pull in the <code>flights</code> table as a <code>tbl</code> (do <em>not</em> use <code>collect()</code>!). Use <strong>dplyr</strong> commands to calculate the number of flights that flew into or out of BDL in 2012. Then use <code>dplyr::show_query()</code> to output the <strong>SQL</strong> query. (All done inside an <strong>R</strong> chunk.)</li>
 </ol>
 <ol start="3" type="1">
 <li>Again, inside an <strong>R</strong> chunk, use <code>DBI::dbGetQuery()</code> to run the <strong>SQL</strong> code calculated in the previous question.</li>
@@ -248,12 +248,12 @@ execute:
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>rand_numbers <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000000</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(rand_numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          0%          25%          50%          75%         100% 
--4.499639773 -0.675803342 -0.001570957  0.674899244  4.756685846 </code></pre>
+<pre><code>           0%           25%           50%           75%          100% 
+-4.4718698739 -0.6742577366 -0.0005853292  0.6737201363  4.8331131146 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.103 sec elapsed</code></pre>
+<pre><code>0.097 sec elapsed</code></pre>
 </div>
 </div>
 <ul>

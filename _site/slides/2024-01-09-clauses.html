@@ -1367,7 +1367,7 @@ sum(1)
 </section>
 <section id="select-from-3" class="slide level2">
 <h2>SELECT … FROM</h2>
-<p>What is the length of a taxi ride (in time)? … unfortunately, <code>pickup_datetime</code> and <code>dropoff_datetime</code> are saved as character strings insted of in DateTime format.</p>
+<p>What is the length of a taxi ride (in time)? … unfortunately, <code>pickup_datetime</code> and <code>dropoff_datetime</code> are saved as character strings instead of in DateTime format.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">SELECT</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>      pickup_datetime, dropoff_datetime,</span>
@@ -1547,15 +1547,12 @@ dropoff
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">SELECT</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>      pickup_datetime, dropoff_datetime,</span>
 <span id="cb8-3"><a href="#cb8-3"></a>      STR_TO_DATE(pickup_datetime, <span class="ot">"%Y-%m-%d %T"</span>) <span class="kw">AS</span> pickup,</span>
-<span id="cb8-4"><a href="#cb8-4"></a>      STR_TO_DATE(dropoff_datetime, <span class="ot">"%Y-%m-%d %T"</span>) <span class="kw">AS</span> dropoff.</span>
+<span id="cb8-4"><a href="#cb8-4"></a>      STR_TO_DATE(dropoff_datetime, <span class="ot">"%Y-%m-%d %T"</span>) <span class="kw">AS</span> dropoff,</span>
 <span id="cb8-5"><a href="#cb8-5"></a>      TIMEDIFF(pickup, dropoff) <span class="kw">AS</span> length_time</span>
 <span id="cb8-6"><a href="#cb8-6"></a>   <span class="kw">FROM</span> yellow_old</span>
 <span id="cb8-7"><a href="#cb8-7"></a>   <span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.
-      TIMEDIFF(pickup, dropoff) AS length_time
-   FROM yellow_old
-   LIMIT 0, ' at line 4 [1064]</code></pre>
+<pre><code>Error: Unknown column 'pickup' in 'field list' [1054]</code></pre>
 </div>
 </div>
 </section>
@@ -1861,6 +1858,155 @@ length_time
 <p><code>pickup_datetime</code> and <code>dropoff_datetime</code> are columns in the <em>original table</em> - they are written to disk on the <strong>SQL</strong> server.</p>
 <p><code>pickup</code>, <code>dropoff</code>, and <code>length_time</code> exist only in the <em>results set</em>, which is passed from the server (<strong>SQL</strong> server) to the client (e.g., <strong>RStudio</strong> or <strong>DBeaver</strong>) and is not written to disk.</p>
 </section>
+<section id="select-distinct" class="slide level2 scrollable">
+<h2>SELECT DISTINCT</h2>
+<p>Returns only unique rows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> payment_type</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">20</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+
+<table>
+<caption>
+6 records
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+payment_type
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CRD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CSH
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NOC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DIS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UNK
+</td>
+</tr>
+</tbody>
+
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> vendor_id, payment_type</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">20</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+
+<table>
+<caption>
+8 records
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+vendor_id
+</th>
+<th style="text-align:left;">
+payment_type
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CMT
+</td>
+<td style="text-align:left;">
+CRD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CMT
+</td>
+<td style="text-align:left;">
+CSH
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CMT
+</td>
+<td style="text-align:left;">
+NOC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CMT
+</td>
+<td style="text-align:left;">
+DIS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VTS
+</td>
+<td style="text-align:left;">
+CRD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VTS
+</td>
+<td style="text-align:left;">
+CSH
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VTS
+</td>
+<td style="text-align:left;">
+UNK
+</td>
+</tr>
+</tbody>
+
+</table>
+</div>
+</div>
+<p>In case you are curious:</p>
+<ul>
+<li><code>VTS</code> is Verifone Transportation Systems and <code>CMT</code> is Mobile Knowledge Systems Inc.</li>
+<li><code>CRD</code> is credit card; <code>CSH</code> is cash; <code>NOC</code> is no charge; <code>DIS</code> is dispute</li>
+</ul>
+</section>
 <section id="where" class="slide level2">
 <h2>WHERE</h2>
 <p>The <code>WHERE</code> clause is analogous to the <code>filter()</code> function in <strong>dplyr</strong>. However, keep in mind that there are two <strong>SQL</strong> commands that resemble the <strong>dplyr</strong> <code>filter()</code> function. <code>WHERE</code> operates on the original data in the table and <code>HAVING</code> operates on the result set.</p>
@@ -1870,11 +2016,11 @@ length_time
 <p>What was the fare for those taxi rides where the <code>tip_amount</code> was more than $10 and the person used cash?</p>
 <p>Note that in <strong>SQL</strong> the equality logical is <code>=</code> and in <strong>R</strong> the equality logical is <code>==</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">SELECT</span> payment_type, fare_amount, tip_amount, total_amount</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="kw">FROM</span> yellow_old</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="kw">WHERE</span> tip_amount <span class="op">&gt;</span> <span class="dv">10</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a>   <span class="kw">AND</span> payment_type <span class="op">=</span> <span class="ot">"CSH"</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">SELECT</span> payment_type, fare_amount, tip_amount, total_amount</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="kw">WHERE</span> tip_amount <span class="op">&gt;</span> <span class="dv">10</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a>   <span class="kw">AND</span> payment_type <span class="op">=</span> <span class="ot">"CSH"</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -2048,11 +2194,11 @@ CSH
 <h2>WHERE</h2>
 <p><code>BETWEEN</code> can be used to specify a range of values for a numeric value.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">SELECT</span> payment_type, fare_amount, tip_amount, total_amount</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="kw">FROM</span> yellow_old</span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="kw">WHERE</span> tip_amount <span class="kw">BETWEEN</span> <span class="dv">10</span> <span class="kw">and</span> <span class="dv">12</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>   <span class="kw">AND</span> payment_type <span class="op">=</span> <span class="ot">"CSH"</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">SELECT</span> payment_type, fare_amount, tip_amount, total_amount</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="kw">WHERE</span> tip_amount <span class="kw">BETWEEN</span> <span class="dv">10</span> <span class="kw">and</span> <span class="dv">12</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>   <span class="kw">AND</span> payment_type <span class="op">=</span> <span class="ot">"CSH"</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -2226,11 +2372,11 @@ CSH
 <h2>WHERE</h2>
 <p><code>IN</code> is similar to the <strong>dplyr</strong> <code>%in%</code> function which specifies distinct values for the variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">SELECT</span> payment_type, fare_amount, tip_amount, total_amount</span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="kw">FROM</span> yellow_old</span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="kw">WHERE</span> tip_amount <span class="kw">IN</span> (<span class="dv">10</span>, <span class="dv">12</span>)</span>
-<span id="cb14-4"><a href="#cb14-4"></a>   <span class="kw">AND</span> payment_type <span class="op">=</span> <span class="ot">"CSH"</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">SELECT</span> payment_type, fare_amount, tip_amount, total_amount</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="kw">WHERE</span> tip_amount <span class="kw">IN</span> (<span class="dv">10</span>, <span class="dv">12</span>)</span>
+<span id="cb16-4"><a href="#cb16-4"></a>   <span class="kw">AND</span> payment_type <span class="op">=</span> <span class="ot">"CSH"</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -2404,12 +2550,12 @@ CSH
 <h2>WHERE</h2>
 <p><code>AND</code> takes precedent over <code>OR</code> in the order of operations, when there are no parentheses.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">SELECT</span> payment_type, fare_amount, tip_amount, total_amount</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="kw">FROM</span> yellow_old</span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="kw">WHERE</span> tip_amount <span class="kw">BETWEEN</span> <span class="dv">10</span> <span class="kw">and</span> <span class="dv">12</span> <span class="kw">OR</span> </span>
-<span id="cb15-4"><a href="#cb15-4"></a>      total_amount <span class="kw">BETWEEN</span> <span class="dv">100</span> <span class="kw">and</span> <span class="dv">112</span> <span class="kw">AND</span> </span>
-<span id="cb15-5"><a href="#cb15-5"></a>      payment_type <span class="op">=</span> <span class="ot">"CSH"</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">SELECT</span> payment_type, fare_amount, tip_amount, total_amount</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="kw">WHERE</span> tip_amount <span class="kw">BETWEEN</span> <span class="dv">10</span> <span class="kw">and</span> <span class="dv">12</span> <span class="kw">OR</span> </span>
+<span id="cb17-4"><a href="#cb17-4"></a>      total_amount <span class="kw">BETWEEN</span> <span class="dv">100</span> <span class="kw">and</span> <span class="dv">112</span> <span class="kw">AND</span> </span>
+<span id="cb17-5"><a href="#cb17-5"></a>      payment_type <span class="op">=</span> <span class="ot">"CSH"</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -2581,14 +2727,14 @@ CRD
 </section>
 <section id="where-5" class="slide level2">
 <h2>WHERE</h2>
-<p>Parentheses take precent over <code>AND</code> and <code>OR</code>.</p>
+<p>Parentheses take precedent over <code>AND</code> and <code>OR</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">SELECT</span> payment_type, fare_amount, tip_amount, total_amount</span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="kw">FROM</span> yellow_old</span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="kw">WHERE</span> (tip_amount <span class="kw">BETWEEN</span> <span class="dv">10</span> <span class="kw">and</span> <span class="dv">12</span> <span class="kw">OR</span> </span>
-<span id="cb16-4"><a href="#cb16-4"></a>      total_amount <span class="kw">BETWEEN</span> <span class="dv">100</span> <span class="kw">and</span> <span class="dv">112</span> ) <span class="kw">AND</span> </span>
-<span id="cb16-5"><a href="#cb16-5"></a>      payment_type <span class="op">=</span> <span class="ot">"CSH"</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">SELECT</span> payment_type, fare_amount, tip_amount, total_amount</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="kw">WHERE</span> (tip_amount <span class="kw">BETWEEN</span> <span class="dv">10</span> <span class="kw">and</span> <span class="dv">12</span> <span class="kw">OR</span> </span>
+<span id="cb18-4"><a href="#cb18-4"></a>      total_amount <span class="kw">BETWEEN</span> <span class="dv">100</span> <span class="kw">and</span> <span class="dv">112</span> ) <span class="kw">AND</span> </span>
+<span id="cb18-5"><a href="#cb18-5"></a>      payment_type <span class="op">=</span> <span class="ot">"CSH"</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -2758,6 +2904,88 @@ CSH
 </div>
 </div>
 </section>
+<section id="where-6" class="slide level2">
+<h2>WHERE</h2>
+<p><code>IS NULL</code> not <code>= NULL</code> (because <code>NULL</code> indicates <em>unknown</em>)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">SELECT</span> payment_type, fare_amount, tip_amount, total_amount</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="kw">WHERE</span> payment_type <span class="kw">IS</span> <span class="kw">NULL</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+
+<table>
+<caption>
+1 records
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+payment_type
+</th>
+<th style="text-align:right;">
+fare_amount
+</th>
+<th style="text-align:right;">
+tip_amount
+</th>
+<th style="text-align:right;">
+total_amount
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+</tbody>
+
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">SELECT</span> payment_type, fare_amount, tip_amount, total_amount</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="kw">WHERE</span> payment_type <span class="op">=</span> <span class="kw">NULL</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+
+<table>
+<caption>
+0 records
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+payment_type
+</th>
+<th style="text-align:right;">
+fare_amount
+</th>
+<th style="text-align:right;">
+tip_amount
+</th>
+<th style="text-align:right;">
+total_amount
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+</tr>
+</tbody>
+
+</table>
+</div>
+</div>
+</section>
 <section id="group-by" class="slide level2">
 <h2>GROUP BY</h2>
 <p>The <code>GROUP BY</code> clause will direct <strong>SQL</strong> to carry out the query separately for each category in the grouped variable.</p>
@@ -2765,12 +2993,12 @@ CSH
 <li>aggregate functions include <code>COUNT()</code>, <code>SUM()</code>, <code>MAX()</code>, <code>MIN()</code>, and <code>AVG()</code>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
-<span id="cb17-2"><a href="#cb17-2"></a>       <span class="fu">sum</span>(<span class="dv">1</span>) <span class="kw">as</span> num_transactions_also,</span>
-<span id="cb17-3"><a href="#cb17-3"></a>       payment_type </span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="kw">FROM</span> yellow_old</span>
-<span id="cb17-5"><a href="#cb17-5"></a><span class="kw">WHERE</span> tip_amount <span class="kw">BETWEEN</span> <span class="dv">10</span> <span class="kw">and</span> <span class="dv">20</span></span>
-<span id="cb17-6"><a href="#cb17-6"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
+<span id="cb21-2"><a href="#cb21-2"></a>       <span class="fu">sum</span>(<span class="dv">1</span>) <span class="kw">as</span> num_transactions_also,</span>
+<span id="cb21-3"><a href="#cb21-3"></a>       payment_type </span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="kw">WHERE</span> tip_amount <span class="kw">BETWEEN</span> <span class="dv">10</span> <span class="kw">and</span> <span class="dv">20</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -2856,13 +3084,13 @@ UNK
 <h2>GROUP BY</h2>
 <p>For those people who tipped between $10 and $20, what was the lowest and highest fare for each of the types of payments?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
-<span id="cb18-2"><a href="#cb18-2"></a>       <span class="fu">MIN</span>(fare_amount) <span class="kw">AS</span> lowest_fare,</span>
-<span id="cb18-3"><a href="#cb18-3"></a>       <span class="fu">MAX</span>(fare_amount) <span class="kw">AS</span> highest_fare,</span>
-<span id="cb18-4"><a href="#cb18-4"></a>       payment_type </span>
-<span id="cb18-5"><a href="#cb18-5"></a><span class="kw">FROM</span> yellow_old</span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="kw">WHERE</span> tip_amount <span class="kw">BETWEEN</span> <span class="dv">10</span> <span class="kw">and</span> <span class="dv">20</span></span>
-<span id="cb18-7"><a href="#cb18-7"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
+<span id="cb22-2"><a href="#cb22-2"></a>       <span class="fu">MIN</span>(fare_amount) <span class="kw">AS</span> lowest_fare,</span>
+<span id="cb22-3"><a href="#cb22-3"></a>       <span class="fu">MAX</span>(fare_amount) <span class="kw">AS</span> highest_fare,</span>
+<span id="cb22-4"><a href="#cb22-4"></a>       payment_type </span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb22-6"><a href="#cb22-6"></a><span class="kw">WHERE</span> tip_amount <span class="kw">BETWEEN</span> <span class="dv">10</span> <span class="kw">and</span> <span class="dv">20</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -2967,13 +3195,13 @@ UNK
 <p><code>GROUP BY</code> will work applied to multiple columns.</p>
 <p>What is <code>wday</code>?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
-<span id="cb19-2"><a href="#cb19-2"></a>       <span class="fu">MIN</span>(fare_amount) <span class="kw">AS</span> lowest_fare,</span>
-<span id="cb19-3"><a href="#cb19-3"></a>       <span class="fu">MAX</span>(fare_amount) <span class="kw">AS</span> highest_fare,</span>
-<span id="cb19-4"><a href="#cb19-4"></a>       payment_type,</span>
-<span id="cb19-5"><a href="#cb19-5"></a>       DAYNAME(STR_TO_DATE(pickup_datetime, <span class="ot">"%Y-%m-%d %T"</span>)) <span class="kw">AS</span> wday</span>
-<span id="cb19-6"><a href="#cb19-6"></a><span class="kw">FROM</span> yellow_old</span>
-<span id="cb19-7"><a href="#cb19-7"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type, wday;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
+<span id="cb23-2"><a href="#cb23-2"></a>       <span class="fu">MIN</span>(fare_amount) <span class="kw">AS</span> lowest_fare,</span>
+<span id="cb23-3"><a href="#cb23-3"></a>       <span class="fu">MAX</span>(fare_amount) <span class="kw">AS</span> highest_fare,</span>
+<span id="cb23-4"><a href="#cb23-4"></a>       payment_type,</span>
+<span id="cb23-5"><a href="#cb23-5"></a>       DAYNAME(STR_TO_DATE(pickup_datetime, <span class="ot">"%Y-%m-%d %T"</span>)) <span class="kw">AS</span> wday</span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb23-7"><a href="#cb23-7"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type, wday;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -3176,14 +3404,14 @@ Monday
 <h2>ORDER BY</h2>
 <p><code>ORDER BY</code> allows us to look at interesting aspects of the data by sorting the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
-<span id="cb20-2"><a href="#cb20-2"></a>       <span class="fu">MIN</span>(fare_amount) <span class="kw">AS</span> lowest_fare,</span>
-<span id="cb20-3"><a href="#cb20-3"></a>       <span class="fu">MAX</span>(fare_amount) <span class="kw">AS</span> highest_fare,</span>
-<span id="cb20-4"><a href="#cb20-4"></a>       payment_type,</span>
-<span id="cb20-5"><a href="#cb20-5"></a>       DAYNAME(STR_TO_DATE(pickup_datetime, <span class="ot">"%Y-%m-%d %T"</span>)) <span class="kw">AS</span> wday</span>
-<span id="cb20-6"><a href="#cb20-6"></a><span class="kw">FROM</span> yellow_old</span>
-<span id="cb20-7"><a href="#cb20-7"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type, wday</span>
-<span id="cb20-8"><a href="#cb20-8"></a><span class="kw">ORDER</span> <span class="kw">BY</span> lowest_fare <span class="kw">ASC</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
+<span id="cb24-2"><a href="#cb24-2"></a>       <span class="fu">MIN</span>(fare_amount) <span class="kw">AS</span> lowest_fare,</span>
+<span id="cb24-3"><a href="#cb24-3"></a>       <span class="fu">MAX</span>(fare_amount) <span class="kw">AS</span> highest_fare,</span>
+<span id="cb24-4"><a href="#cb24-4"></a>       payment_type,</span>
+<span id="cb24-5"><a href="#cb24-5"></a>       DAYNAME(STR_TO_DATE(pickup_datetime, <span class="ot">"%Y-%m-%d %T"</span>)) <span class="kw">AS</span> wday</span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type, wday</span>
+<span id="cb24-8"><a href="#cb24-8"></a><span class="kw">ORDER</span> <span class="kw">BY</span> lowest_fare <span class="kw">ASC</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -3386,14 +3614,14 @@ Friday
 <section id="order-by-1" class="slide level2">
 <h2>ORDER BY</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
-<span id="cb21-2"><a href="#cb21-2"></a>       <span class="fu">MIN</span>(fare_amount) <span class="kw">AS</span> lowest_fare,</span>
-<span id="cb21-3"><a href="#cb21-3"></a>       <span class="fu">MAX</span>(fare_amount) <span class="kw">AS</span> highest_fare,</span>
-<span id="cb21-4"><a href="#cb21-4"></a>       payment_type,</span>
-<span id="cb21-5"><a href="#cb21-5"></a>       DAYNAME(STR_TO_DATE(pickup_datetime, <span class="ot">"%Y-%m-%d %T"</span>)) <span class="kw">AS</span> wday</span>
-<span id="cb21-6"><a href="#cb21-6"></a><span class="kw">FROM</span> yellow_old</span>
-<span id="cb21-7"><a href="#cb21-7"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type, wday</span>
-<span id="cb21-8"><a href="#cb21-8"></a><span class="kw">ORDER</span> <span class="kw">BY</span> highest_fare <span class="kw">DESC</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
+<span id="cb25-2"><a href="#cb25-2"></a>       <span class="fu">MIN</span>(fare_amount) <span class="kw">AS</span> lowest_fare,</span>
+<span id="cb25-3"><a href="#cb25-3"></a>       <span class="fu">MAX</span>(fare_amount) <span class="kw">AS</span> highest_fare,</span>
+<span id="cb25-4"><a href="#cb25-4"></a>       payment_type,</span>
+<span id="cb25-5"><a href="#cb25-5"></a>       DAYNAME(STR_TO_DATE(pickup_datetime, <span class="ot">"%Y-%m-%d %T"</span>)) <span class="kw">AS</span> wday</span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type, wday</span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="kw">ORDER</span> <span class="kw">BY</span> highest_fare <span class="kw">DESC</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -3600,14 +3828,14 @@ Friday
 <section id="order-by-2" class="slide level2">
 <h2>ORDER BY</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
-<span id="cb22-2"><a href="#cb22-2"></a>       <span class="fu">MIN</span>(fare_amount) <span class="kw">AS</span> lowest_fare,</span>
-<span id="cb22-3"><a href="#cb22-3"></a>       <span class="fu">MAX</span>(fare_amount) <span class="kw">AS</span> highest_fare,</span>
-<span id="cb22-4"><a href="#cb22-4"></a>       payment_type,</span>
-<span id="cb22-5"><a href="#cb22-5"></a>       DAYNAME(STR_TO_DATE(pickup_datetime, <span class="ot">"%Y-%m-%d %T"</span>)) <span class="kw">AS</span> wday</span>
-<span id="cb22-6"><a href="#cb22-6"></a><span class="kw">FROM</span> yellow_old</span>
-<span id="cb22-7"><a href="#cb22-7"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type, wday</span>
-<span id="cb22-8"><a href="#cb22-8"></a><span class="kw">ORDER</span> <span class="kw">BY</span> wday, payment_type;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
+<span id="cb26-2"><a href="#cb26-2"></a>       <span class="fu">MIN</span>(fare_amount) <span class="kw">AS</span> lowest_fare,</span>
+<span id="cb26-3"><a href="#cb26-3"></a>       <span class="fu">MAX</span>(fare_amount) <span class="kw">AS</span> highest_fare,</span>
+<span id="cb26-4"><a href="#cb26-4"></a>       payment_type,</span>
+<span id="cb26-5"><a href="#cb26-5"></a>       DAYNAME(STR_TO_DATE(pickup_datetime, <span class="ot">"%Y-%m-%d %T"</span>)) <span class="kw">AS</span> wday</span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type, wday</span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="kw">ORDER</span> <span class="kw">BY</span> wday, payment_type;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -3824,14 +4052,14 @@ Monday
 <section id="having-1" class="slide level2">
 <h2>HAVING</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
-<span id="cb23-2"><a href="#cb23-2"></a>       <span class="fu">MIN</span>(fare_amount) <span class="kw">AS</span> lowest_fare,</span>
-<span id="cb23-3"><a href="#cb23-3"></a>       <span class="fu">MAX</span>(fare_amount) <span class="kw">AS</span> highest_fare,</span>
-<span id="cb23-4"><a href="#cb23-4"></a>       payment_type,</span>
-<span id="cb23-5"><a href="#cb23-5"></a>       DAYNAME(STR_TO_DATE(pickup_datetime, <span class="ot">"%Y-%m-%d %T"</span>)) <span class="kw">AS</span> wday</span>
-<span id="cb23-6"><a href="#cb23-6"></a><span class="kw">FROM</span> yellow_old</span>
-<span id="cb23-7"><a href="#cb23-7"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type, wday</span>
-<span id="cb23-8"><a href="#cb23-8"></a><span class="kw">HAVING</span> wday <span class="op">=</span> <span class="st">'Friday'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb27-1"><a href="#cb27-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
+<span id="cb27-2"><a href="#cb27-2"></a>       <span class="fu">MIN</span>(fare_amount) <span class="kw">AS</span> lowest_fare,</span>
+<span id="cb27-3"><a href="#cb27-3"></a>       <span class="fu">MAX</span>(fare_amount) <span class="kw">AS</span> highest_fare,</span>
+<span id="cb27-4"><a href="#cb27-4"></a>       payment_type,</span>
+<span id="cb27-5"><a href="#cb27-5"></a>       DAYNAME(STR_TO_DATE(pickup_datetime, <span class="ot">"%Y-%m-%d %T"</span>)) <span class="kw">AS</span> wday</span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb27-7"><a href="#cb27-7"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type, wday</span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="kw">HAVING</span> wday <span class="op">=</span> <span class="st">'Friday'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -3958,7 +4186,7 @@ Friday
 <h2>LIMIT</h2>
 <p><code>LIMIT</code> truncates the query to specified rows.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> yellow_old <span class="kw">LIMIT</span> <span class="dv">15428118</span>, <span class="dv">15428128</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> yellow_old <span class="kw">LIMIT</span> <span class="dv">15428118</span>, <span class="dv">15428128</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -4598,34 +4826,34 @@ CRD
 <li><code>name_of_variable</code> will then be available to be used in the R environment.</li>
 </ul>
 <div class="cell" data-output.var="new_table">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1"></a><span class="in">```{sql}</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="co">#| connection: con_taxi</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a><span class="co">#| label: new-table</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a><span class="co">#| output.var: "new_table"</span></span>
-<span id="cb25-5"><a href="#cb25-5"></a></span>
-<span id="cb25-6"><a href="#cb25-6"></a><span class="kw">SELECT</span> <span class="op">*</span>, <span class="fu">DAYNAME</span>(STR_TO_DATE(pickup_datetime, <span class="st">"%Y-%m-%d %T"</span>)) <span class="kw">AS</span> wday</span>
-<span id="cb25-7"><a href="#cb25-7"></a><span class="kw">FROM</span> yellow_old </span>
-<span id="cb25-8"><a href="#cb25-8"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">1000</span>;</span>
-<span id="cb25-9"><a href="#cb25-9"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1"></a><span class="in">```{sql}</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="co">#| connection: con_taxi</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="co">#| label: new-table</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="co">#| output.var: "new_table"</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a></span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="kw">SELECT</span> <span class="op">*</span>, <span class="fu">DAYNAME</span>(STR_TO_DATE(pickup_datetime, <span class="st">"%Y-%m-%d %T"</span>)) <span class="kw">AS</span> wday</span>
+<span id="cb29-7"><a href="#cb29-7"></a><span class="kw">FROM</span> yellow_old </span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">1000</span>;</span>
+<span id="cb29-9"><a href="#cb29-9"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="saving-sql-queries-as-r-objects-1" class="slide level2">
 <h2>Saving <strong>SQL</strong> queries as <strong>R</strong> objects</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>new_table <span class="sc">|&gt;</span></span>
-<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">drop_na</span>(wday) <span class="sc">|&gt;</span></span>
-<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> fare_amount, <span class="at">y =</span> tip_amount, <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
-<span id="cb26-5"><a href="#cb26-5"></a>  <span class="fu">geom_point</span>() </span>
-<span id="cb26-6"><a href="#cb26-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1"></a><span class="in">```{r}</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>new_table <span class="sc">|&gt;</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">drop_na</span>(wday) <span class="sc">|&gt;</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> fare_amount, <span class="at">y =</span> tip_amount, <span class="at">color =</span> wday)) <span class="sc">+</span> </span>
+<span id="cb30-5"><a href="#cb30-5"></a>  <span class="fu">geom_point</span>() </span>
+<span id="cb30-6"><a href="#cb30-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="2024-01-09-clauses_files/figure-revealjs/unnamed-chunk-27-1.png" style="width:90.0%" class="r-stretch"></section>
+<img data-src="2024-01-09-clauses_files/figure-revealjs/unnamed-chunk-31-1.png" style="width:90.0%" class="r-stretch"></section>
 <section id="good-practice" class="slide level2">
 <h2>Good practice</h2>
 <p>Always a good idea to terminate the <strong>SQL</strong> connection when you are done with it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">dbDisconnect</span>(con_taxi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">dbDisconnect</span>(con_taxi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <div class="footer footer-default">

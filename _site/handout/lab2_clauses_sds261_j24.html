@@ -185,20 +185,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>do something with NA / NULL. see hadley’s comments in the where section. https://r4ds.hadley.nz/databases#where</p>
-<p>do something with distinct()</p>
-<p>Approach: What do you want?<br>
-the movies. Which tables and for what? movies for the movie name Conditions? The movies must be sci-fi movies The categories need to be ordered by the investment ratio Anything else? Semicolon</p>
-<p>Today’s lab will provide practice working with <strong>SQL</strong> clauses in <strong>DBeaver</strong>.</p>
+<p>Today’s lab will provide practice working with <strong>SQL</strong> clauses in <strong>DBeaver</strong>. Don’t forget the importance of the <a href="https://st47s.com/SDS261/Notes/03-sql-verbs.html" target="_blank">order of the <strong>SQL</strong> clauses</a>.</p>
 <p>The goals for lab 2 include:</p>
 <ul>
-<li>Working with clauses in SQL</li>
-<li>In particular, understanding each of SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY, and LIMIT</li>
+<li>working with clauses in <strong>SQL</strong>.</li>
+<li>understanding each of <code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, <code>GROUP BY</code>, <code>HAVING</code>, <code>ORDER BY</code>, and <code>LIMIT</code>.</li>
+<li>practicing running <strong>SQL</strong> queries in a <strong>SQL</strong> client, <strong>DBeaver</strong>.</li>
 </ul>
 <section id="advice-for-turning-in-the-assignment" class="level2">
 <h2 class="anchored" data-anchor-id="advice-for-turning-in-the-assignment">Advice for turning in the assignment</h2>
 <ul>
-<li><p>render early and often. In fact, go ahead and render your .qmd file right now. Maybe set a timer so that you render every 5 minutes. Do <strong>not</strong> wait until you are done with the assignment to render</p></li>
+<li><p>Be sure to indicate (in the .sql file) which problem is being answered with which <strong>SQL</strong> code. Use the following syntax to comment within a .sql file: <code>/* here is where comments go */</code>. Indeed, feel free to <em>copy the question</em> into the .sql file so that you have it for your own records.</p></li>
 <li><p>save the .Rproj file somewhere you can find it. Don’t keep everything in your downloads folder. Maybe make a folder called <code>SDS261</code> or something. That folder could live on your Desktop. Or maybe in your Dropbox.</p></li>
 <li><p>The <strong>SQL</strong> document should be saved in the <strong>R</strong> Project as <code>lab2-sds261-yourlastname-yourfirstname.sql</code>. You will have to navigate to the <strong>R</strong> Project to save the <strong>DBeaver</strong> file in the correct place.</p></li>
 <li><p>Connect to the <code>nyctaxi</code> database, which contains the <code>yellow_old</code> table.</p></li>
@@ -206,12 +203,19 @@ the movies. Which tables and for what? movies for the movie name Conditions? The
 </section>
 <section id="assignment" class="level2">
 <h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
-<p>Fill in the query below to select the tailnum and year columns from the planes table. For safety, we are only going to return the first 5 rows.</p>
-<p>Using the MIN() function, find the oldest date of manufacture (year) in the planes table.</p>
-<p>Using WHERE, find the tailnum of the oldest plane in the planes table.</p>
-<p>Modify the above code to find the newest manufacturing date, and calculate the number of planes which share the newest manufacturing date. You can use SUM(1) or COUNT(…) to count rows.</p>
-<p>Which airport had the highest average arrival delay time in 2010?</p>
-<p>How many domestic flights came into or flew out of Bradley Airport (BDL) in 2012?</p>
+<ol type="1">
+<li><p>Select the <code>trip_distance</code> and <code>total_amount</code> columns from the <code>yellow_old</code> table. For safety (i.e., not crashing your computer), only return the first 5 rows.</p></li>
+<li><p>Using the <code>AVG()</code> function, find the average total amount paid in the <code>yellow_old</code> table.</p></li>
+</ol>
+<ol start="3" type="1">
+<li><p>Which type of payment had the highest <code>total_amount</code>? How much was it?</p></li>
+<li><p>How many taxi trips happened on each day of the week?</p></li>
+<li><p>Which day of the week had the longest <code>trip_distance</code>?</p></li>
+<li><p>How many different <code>rate_code</code>s are given in the dataset?</p></li>
+</ol>
+<ol start="7" type="1">
+<li>Find the average <code>total_amount</code> for weekend rides. (Hint: you will need to use <code>HAVING</code>, and it might be slow.)</li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con_taxi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>

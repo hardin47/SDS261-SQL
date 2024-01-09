@@ -12,22 +12,6 @@ execute:
   message: false
 ---
 
-do something with NA / NULL. see hadley's comments in the where section. https://r4ds.hadley.nz/databases#where
-
-do something with distinct()
-
-Approach: 
-What do you want?	
-the movies.
-Which tables and for what?
-movies for the movie name
-Conditions?
-The movies must be sci-fi movies
-The categories need to be ordered by the investment ratio
-Anything else?
-Semicolon
-
-
 ```{r}
 #| unilur-solution: true
 
@@ -38,18 +22,19 @@ library(dbplyr)
 library(mdsr)
 ```
 
-Today's lab will provide practice working with **SQL** clauses in **DBeaver**.
+Today's lab will provide practice working with **SQL** clauses in **DBeaver**.  Don't forget the importance of the <a href = "https://st47s.com/SDS261/Notes/03-sql-verbs.html" target = "_blank">order of the **SQL** clauses</a>. 
 
 The goals for lab 2 include:
 
-* Working with clauses in SQL
-* In particular, understanding each of SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY, and LIMIT
+* working with clauses in **SQL**.
+* understanding each of `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `ORDER BY`, and `LIMIT`.
+* practicing running **SQL** queries in a **SQL** client, **DBeaver**.
 
 
 
 ## Advice for turning in the assignment
 
-* render early and often.  In fact, go ahead and render your .qmd file right now.  Maybe set a timer so that you render every 5 minutes.  Do **not** wait until you are done with the assignment to render
+* Be sure to indicate (in the .sql file) which problem is being answered with which **SQL** code.  Use the following syntax to comment within a .sql file: `/* here is where comments go */`.  Indeed, feel free to *copy the question* into the .sql file so that you have it for your own records.
 
 * save the .Rproj file somewhere you can find it.  Don't keep everything in your downloads folder.  Maybe make a folder called `SDS261` or something.  That folder could live on your Desktop.  Or maybe in your Dropbox.  
 
@@ -72,17 +57,50 @@ con_taxi <- DBI::dbConnect(
 
 ##  Assignment
 
-Fill in the query below to select the tailnum and year columns from the planes table. For safety, we are only going to return the first 5 rows.
+1. Select the `trip_distance` and `total_amount` columns from the `yellow_old` table. For safety (i.e., not crashing your computer), only return the first 5 rows.
 
-Using the MIN() function, find the oldest date of manufacture (year) in the planes table.
+2. Using the `AVG()` function, find the average total amount paid in the `yellow_old` table.
 
-Using WHERE, find the tailnum of the oldest plane in the planes table.
+```{sql}
+#| connection: con_taxi
+#| unilur-solution: true
 
-Modify the above code to find the newest manufacturing date, and calculate the number of planes which share the newest manufacturing date. You can use SUM(1) or COUNT(...) to count rows.
+SELECT AVG(total_amount)
+FROM yellow_old
+LIMIT 0, 5;
+```
 
-Which airport had the highest average arrival delay time in 2010? 
+3. Which type of payment had the highest `total_amount`?  How much was it?
 
-How many domestic flights came into or flew out of Bradley Airport (BDL) in 2012?
+4. How many taxi trips happened on each day of the week?
+
+5. Which day of the week had the longest `trip_distance`?
+
+6. How many different `rate_code`s are given in the dataset?
+
+```{sql}
+#| connection: con_taxi
+#| unilur-solution: true
+
+/*use distinct*/
+```
+
+7. Find the average `total_amount` for weekend rides. (Hint: you will need to use `HAVING`, and it might be slow.)
+
+```{block}
+#| unilur-solution: true
+
+Approach: 
+What do you want?	
+the movies.
+Which tables and for what?
+movies for the movie name
+Conditions?
+The movies must be sci-fi movies
+The categories need to be ordered by the investment ratio
+Anything else?
+Semicolon
+```
 
 
 

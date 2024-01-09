@@ -74,7 +74,7 @@ con_air <- DBI::dbConnect(
 )
 ```
 
-2. Pull in the `flights` table as a `tbl` (do *not* use `collect()`!).  Use **dplyr** commands to calculate the number of flights that flew into or out of BDL in 2012.  Then use `dplyr::get_query()` to output the **SQL** query.  (All done inside an **R** chunk.)
+2. Pull in the `flights` table as a `tbl` (do *not* use `collect()`!).  Use **dplyr** commands to calculate the number of flights that flew into or out of BDL in 2012.  Then use `dplyr::show_query()` to output the **SQL** query.  (All done inside an **R** chunk.)
 
 ```{r}
 #| unilur-solution: true
@@ -232,7 +232,7 @@ toc()
 ```{block}
 #| unilur-solution: true
 
-Pulling the table into R as a datafame slows down the calculations quite a bit.
+Pulling the table into R as a dataframe slows down the calculations quite a bit.
 ```
 
 7. DBeaver: open DBeaver from your applications.  Following the instructions in the <a href = "https://st47s.com/SDS261/Notes/02-sql-in-R.html#dbeaver" target = "_blank">DBeaver online notes</a>, set up a connection to the **mdsr** **SQL** server. Create a file called `lab1-sds261-yourlastname-yourfirstname.sql` and **SAVE THE FILE in the lab1 R Project folder**. Run the same **SQL** code as above. Did you get the same result?  Were there any adjustments to the SQL code from above?  Explain in a few sentences.
