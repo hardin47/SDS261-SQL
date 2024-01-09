@@ -140,7 +140,7 @@ ORDER BY long_trip DESC;
 ```{block}
 #| unilur-solution: true
 
-Unsurprisingly, the most rides were on the weekends.  Monday is a close third, possibly a reflection of how hard it is to get out of bed on Monday mornings.
+Holy cow, one of the trips is 5,005,013 miles!  That can't be right!??!
 ```
 
 6. How many different `rate_code`s are given in the dataset?
