@@ -7,6 +7,9 @@ to go with <b><a href = "https://mdsr-book.github.io/mdsr3e/" target = "_blank">
 
 Many questions taken directly from <a href = "https://www.w3schools.com/quiztest/quiztest.asp?qtest=SQL" target = "_blank">w3schools SQL quiz</a>.
 
+<!--add these https://www.javaguides.net/2023/07/sql-quiz.html and
+https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
+
 ```{=html}
 <style>
 .reveal ol ol {
@@ -96,138 +99,133 @@ library(tidyverse)
 
 ---
 
-<!--add these https://www.javaguides.net/2023/07/sql-quiz.html
-https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
----
-
-4. With SQL, how to you retrieve a column named "FirstName" from a table named "Persons"?[^4]
+7. With SQL, how to you retrieve a column named "FirstName" from a table named "Persons"?[^7]
    (a) SELECT Persons.FirstName
    (b) EXTRACT FIRSTNAME FROM Persons
    (c) SELECT FirstName FROM Persons
    (d) SELECT "FirstName" FROM "Persons"
 
-[^4]: c. SELECT FirstName FROM Persons
+[^7]: c. SELECT FirstName FROM Persons
 
 ---
 
-5. With SQL, how do you select all the columns from a table named "Persons"?[^5]
+8. With SQL, how do you select all the columns from a table named "Persons"?[^8]
    (a) SELECT Persons
    (b) SELECT * FROM Persons
    (c) SELECT [all] FROM Persons
    (d) SELECT *.Persons
 
-[^5]: b. SELECT * FROM Persons
+[^8]: b. SELECT * FROM Persons
 
 ---
 
-6. With SQL, how can you return the number of records in the "Persons" table?[^6]
+9. With SQL, how can you return the number of records in the "Persons" table?[^9]
    (a) SELECT COLUMNS(*) FROM Persons
    (b) SELECT COUNT(*) FROM Persons
    (c) SELECT NO(*) FROM Persons
    (d) SELECT LEN(*) FROM Persons
 
-[^6]: b. SELECT COUNT(*) FROM Persons
+[^9]: b. SELECT COUNT(*) FROM Persons
 
 ---
 
-7. With SQL, how do you select all the records from a table named "Persons" where the value of the column "FirstName" is "Peter"?[^7]
+10. With SQL, how do you select all the records from a table named "Persons" where the value of the column "FirstName" is "Peter"?[^10]
    (a) SELECT * FROM Persons WHERE FirstName<>'Peter'
    (b) SELECT * FROM Persons WHERE FirstName = 'Peter'
    (c) SELECT * FROM Persons WHERE FirstName == 'Peter'
    (d) SELECT [all] FROM Persons WHERE FirstName LIKE 'Peter'
    (e) SELECT [all] FROM Persons WHERE FirstName='Peter'
    
-[^7]: b. SELECT * FROM Persons WHERE FirstName = 'Peter'
+[^10]: b. SELECT * FROM Persons WHERE FirstName = 'Peter'
 
 ---
 
-8. With SQL, how do you select all the records from a table named "Persons" where the "FirstName" is "Peter" and the "LastName" is "Jackson"?[^8]
+11. With SQL, how do you select all the records from a table named "Persons" where the "FirstName" is "Peter" and the "LastName" is "Jackson"?[^11]
    (a) SELECT FirstName = 'Peter', LastName = 'Jackson' FROM Persons
    (b) SELECT * FROM Persons WHERE FirstName <> 'Peter' AND LastName <> 'Jackson'
    (c) SELECT * FROM Persons WHERE FirstName = 'Peter' AND LastName = 'Jackson'
    (d) SELECT * FROM Persons WHERE FirstName == 'Peter' AND LastName == 'Jackson'
 
-[^8]: c. SELECT * FROM Persons WHERE FirstName = 'Peter' AND LastName = 'Jackson'
+[^11]: c. SELECT * FROM Persons WHERE FirstName = 'Peter' AND LastName = 'Jackson'
 
 ---
 
-9. Which operator selects values within a range?[^9]
+12. Which operator selects values within a range?[^12]
    (a) BEWTEEN
    (b) WITHIN
    (c) RANGE
 
-[^9]: a. BEWTEEN
+[^12]: a. BEWTEEN
 
 ---
 
-10. With SQL, how do you select all the records from a table named "Persons" where the "LastName" is alphabetically between (and including) "Hansen" and "Pettersen"?[^10]
+13. With SQL, how do you select all the records from a table named "Persons" where the "LastName" is alphabetically between (and including) "Hansen" and "Pettersen"?[^13]
     (a) SELECT LastName>'Hansen' AND LastName<'Pettersen' FROM Persons
     (b) SELECT * FROM Persons WHERE LastName BETWEEN 'Hansen' AND 'Pettersen'
     (c) SELECT * FROM Persons WHERE LastName>'Hansen' AND LastName<'Pettersen'
 
-[^10]: b. SELECT * FROM Persons WHERE LastName BETWEEN 'Hansen' AND 'Pettersen'
+[^13]: b. SELECT * FROM Persons WHERE LastName BETWEEN 'Hansen' AND 'Pettersen'
 
 ---
 
-11. Which SQL statement returns only different values?[^11]
+14. Which SQL statement returns only different values?[^14]
     (a) SELECT UNIQUE
     (b) SELECT DISTINCT
     (c) SELECT DIFFERENT
 
-[^11]: b. SELECT DISTINCT
+[^14]: b. SELECT DISTINCT
 
 ---
 
-12. Which SQL keyword is used to sort the result-set?[^12]
+15. Which SQL keyword is used to sort the result-set?[^15]
     (a) ORDER BY
     (b) ORDER
     (c) SORT
     (d) SORT BY
  
-[^12]: a. ORDER BY
+[^15]: a. ORDER BY
 
 ---
 
-13. With SQL, how can you return all the records from a table named "Persons" sorted descending by "FirstName"?[^13]
+16. With SQL, how can you return all the records from a table named "Persons" sorted descending by "FirstName"?[^16]
     (a) SELECT * FROM Persons ORDER FirstName DESC
     (b) SELECT * FROM Persons SORT 'FirstName' DESC
     (c) SELECT * FROM Persons ORDER BY FirstName DESC
     (d) SELECT * FROM Persons SORT BY 'FirstName' DESC
 
-[^13]: c. SELECT * FROM Persons ORDER BY FirstName DESC
+[^16]: c. SELECT * FROM Persons ORDER BY FirstName DESC
 
 ---
 
-14. The OR operator displays a record if ANY conditions listed are true. The AND operator displays a record if ALL of the conditions listed are true.[^14]
+17. The OR operator displays a record if ANY conditions listed are true. The AND operator displays a record if ALL of the conditions listed are true.[^17]
     (a) TRUE
     (b) FALSE 
 
-[^14]: a. TRUE
-
+[^17]: a. TRUE
 
 ---
 
-15. In order to SELECT the records with foods that are either green or yellow fruit:[^15] 
+18. In order to SELECT the records with foods that are either green or yellow fruit:[^18] 
     (a) ... WHERE type = 'fruit' AND color = 'yellow' OR color = 'green'  
     (b) ... WHERE (type = 'fruit' AND color = 'yellow') OR color = 'green'  
     (c) ... WHERE type = 'fruit' AND (color = 'yellow' OR color = 'green')  
     (d) ... WHERE type = 'fruit' AND color = 'yellow' AND color = 'green'  
     (e) ... WHERE type = 'fruit' AND (color = 'yellow' AND color = 'green') 
    
-[^15]: c. ... WHERE type = 'fruit' AND (color = 'yellow' OR color = 'green') 
+[^18]: c. ... WHERE type = 'fruit' AND (color = 'yellow' OR color = 'green') 
 
 
 ---
 
-look at exercises: https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/block022_regular-expression.md
+<!--look at exercises: https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/block022_regular-expression.md
 
 which reg expr matches all countries with "ee"
 
 countries with "i" or "t" and ends in "land"; has "ee"; continents with "o"
 
-can use flights data for cities with particular names
+can use flights data for cities with particular names-->
 
----
+
 
 17. `grep("q[^u]", very.large.word.list)` would not match which of the following?[^17]
     (a) Iraqi

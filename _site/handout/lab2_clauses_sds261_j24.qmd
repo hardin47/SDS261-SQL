@@ -40,7 +40,7 @@ The goals for lab 2 include:
 
 * The **SQL** document should be saved in the **R** Project as `lab2-sds261-yourlastname-yourfirstname.sql`.  You will have to navigate to the **R** Project to save the **DBeaver** file in the correct place.
 
-* Connect to the `nyctaxi` database, which contains the `yellow_old` table.
+* Connect to the `nyctaxi` database, which contains the `yellow_old` table.  See README file (or lab 1) for connection details.
 
 ```{r}
 #| echo: false
@@ -48,18 +48,30 @@ The goals for lab 2 include:
 con_taxi <- DBI::dbConnect(
   RMariaDB::MariaDB(),
   dbname = "nyctaxi",
-  host = "mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com",
-  user = "mdsr_public",
-  password = "ImhsmflMDSwR"
+  host = Sys.getenv("MDSR_HOST"),
+  user = Sys.getenv("MDSR_USER"),
+  password = Sys.getenv("MDSR_PWD")
 )
 ```
 
 
 ##  Assignment
 
+
+
 1. Select the `trip_distance` and `total_amount` columns from the `yellow_old` table. For safety (i.e., not crashing your computer), only return the first 5 rows.
 
-2. Using the `AVG()` function, find the average total amount paid in the `yellow_old` table.
+```{sql}
+#| connection: con_taxi
+#| unilur-solution: true
+
+SELECT trip_distance, total_amount
+FROM yellow_old
+LIMIT 0, 5;
+```
+
+
+2. Using the `AVG()` function, find the average `total_amount` paid in the `yellow_old` table.
 
 ```{sql}
 #| connection: con_taxi
@@ -69,12 +81,67 @@ SELECT AVG(total_amount)
 FROM yellow_old
 LIMIT 0, 5;
 ```
+```{block}
+#| unilur-solution: true
 
-3. Which type of payment had the highest `total_amount`?  How much was it?
+The average total fare was \$14.76
+```
 
-4. How many taxi trips happened on each day of the week?
+3. Which type of `payment_type` had the highest `total_amount`?  How much was it?
 
-5. Which day of the week had the longest `trip_distance`?
+```{sql}
+#| connection: con_taxi
+#| unilur-solution: true
+
+SELECT MAX(total_amount), payment_type
+FROM yellow_old
+GROUP BY payment_type
+LIMIT 0, 5;
+```
+
+```{block}
+#| unilur-solution: true
+
+The highest total amount was a cash payment for \$1007.51.  Yikes, that's a big bill for a taxi ride.  Note that the second highest payment was \$950.30 for a *no charge* ride.  How does that happen?
+```
+
+4. How many taxi trips happened on each day of the week?  Sort your results so that the day of the week with the fewest rides is at the top of the output.
+
+```{sql}
+#| connection: con_taxi
+#| unilur-solution: true
+
+SELECT COUNT(*) AS num_transactions, 
+       DAYNAME(STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T")) AS wday
+FROM yellow_old
+GROUP BY wday
+ORDER BY num_transactions;
+```
+
+```{block}
+#| unilur-solution: true
+
+Unsurprisingly, the most rides were on the weekends.  Monday is a close third, possibly a reflection of how hard it is to get out of bed on Monday mornings.
+```
+
+5. Which day of the week had the longest `trip_distance`?  Sort the results to have the day of the week with the longest rides at the top of the output. 
+
+```{sql}
+#| connection: con_taxi
+#| unilur-solution: true
+
+SELECT MAX(trip_distance) AS long_trip, 
+       DAYNAME(STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T")) AS wday
+FROM yellow_old
+GROUP BY wday
+ORDER BY long_trip DESC;
+```
+
+```{block}
+#| unilur-solution: true
+
+Unsurprisingly, the most rides were on the weekends.  Monday is a close third, possibly a reflection of how hard it is to get out of bed on Monday mornings.
+```
 
 6. How many different `rate_code`s are given in the dataset?
 
@@ -82,15 +149,64 @@ LIMIT 0, 5;
 #| connection: con_taxi
 #| unilur-solution: true
 
-/*use distinct*/
+SELECT DISTINCT COUNT(*) AS num_code, rate_code
+FROM yellow_old
+GROUP BY rate_code
+ORDER BY num_code DESC
+LIMIT 0, 20;
 ```
+```{sql}
+#| connection: con_taxi
+#| unilur-solution: true
 
-7. Find the average `total_amount` for weekend rides. (Hint: you will need to use `HAVING`, and it might be slow.)
+SELECT DISTINCT rate_code
+FROM yellow_old
+LIMIT 0, 20;
+```
 
 ```{block}
 #| unilur-solution: true
 
-Approach: 
+There are 11 different rate codes. Unfortunately, I don't know what all the rate codes mean.
+```
+
+7. Start with the following lines of query:
+
+```{sql}
+#| connection: con_taxi
+#| eval: false
+
+SELECT AVG(trip_distance) AS avg_trip, 
+       DAYNAME(STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T")) AS wday
+```
+
+* Can you use `WHERE` to subset only Saturday and Sunday to find the average trip distance across the weekend?  Why or why not?
+* Can you use `HAVING` to subset only Saturday and Sunday to find the average trip distance across the weekend?  Why or why not?
+
+
+```{sql}
+#| connection: con_taxi
+#| unilur-solution: true
+
+SELECT AVG(trip_distance) AS avg_trip, 
+       DAYNAME(STR_TO_DATE(pickup_datetime, "%Y-%m-%d %T")) AS wday
+FROM yellow_old
+GROUP BY wday
+HAVING wday = "Saturday" | wday = "Sunday"
+LIMIT 0,8;
+```
+
+```{block}
+#| unilur-solution: true
+
+Neither `WHERE` nor `HAVING` can be used with this query to find the average trip distance across the weekend days.
+
+`WHERE` cannot be used because `wday` is not in the original dataset. `WHERE` works on the original data.
+
+`HAVING` cannot be used because the average has already been taken across the groups, so there isn't any way to go back and re-calculate the average across Saturday and Sunday.  `HAVING` works on the results set.
+```
+
+<!--Approach: 
 What do you want?	
 the movies.
 Which tables and for what?
@@ -99,8 +215,7 @@ Conditions?
 The movies must be sci-fi movies
 The categories need to be ordered by the investment ratio
 Anything else?
-Semicolon
-```
+Semicolon-->
 
 
 

@@ -353,7 +353,7 @@ LIMIT 0, 10;
 ```
 
 
-## GROUP BY
+## GROUP BY {.scrollable}
 
 The `GROUP BY` clause will direct **SQL** to carry out the query separately for each category in the grouped variable.  
 

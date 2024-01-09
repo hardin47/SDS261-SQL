@@ -62,15 +62,17 @@ execute:
 
 For much of the assignment, Consider the task of figuring out how many flights came into or flew out of Bradley International Airport (BDL) last year.
 
-1. Set up a connection within an **R** chunk:
+1. Set up a connection within an **R** chunk.  See the README file.
 
 ```{r}
+#| unilur-solution: true
+#| 
 con_air <- DBI::dbConnect(
   RMariaDB::MariaDB(),
   dbname = "airlines",
-  host = "mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com",
-  user = "mdsr_public",
-  password = "ImhsmflMDSwR"
+  host = Sys.getenv("MDSR_HOST"),
+  user = Sys.getenv("MDSR_USER"),
+  password = Sys.getenv("MDSR_PWD")
 )
 ```
 
