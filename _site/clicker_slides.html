@@ -397,13 +397,13 @@
    list-style-type: lower-alpha;
 }
 </style>
-<!-- the two formats are html and revealjs -->
 </section>
 <section>
 <section id="clicker-questions" class="title-slide slide level1 center">
 <h1>Clicker Questions</h1>
 <p>to go with <b><a href="https://mdsr-book.github.io/mdsr3e/" target="_blank">Modern Data Science with R, 3rd edition</a></b> by Baumer, Kaplan, and Horton.</p>
 <p>Many questions taken directly from <a href="https://www.w3schools.com/quiztest/quiztest.asp?qtest=SQL" target="_blank">w3schools SQL quiz</a>.</p>
+<!-- the two formats are html and revealjs -->
 <!--add these https://www.javaguides.net/2023/07/sql-quiz.html and
 https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 <style>
@@ -440,7 +440,7 @@ https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 <section class="slide level2">
 
 <ol start="3" type="1">
-<li><p>What type of databases is SQL designed for?<a href="#/footnotes" class="footnote-ref" id="fnref3" role="doc-noteref" data-footnote-href="#/fn3" onclick=""><sup>3</sup></a></p>
+<li>What type of databases is SQL designed for?<a href="#/footnotes" class="footnote-ref" id="fnref3" role="doc-noteref" data-footnote-href="#/fn3" onclick=""><sup>3</sup></a>
 <ol type="a">
 <li>hierarchical database management systems.</li>
 <li>network database management systems.</li>
@@ -488,10 +488,10 @@ https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 <ol start="7" type="1">
 <li>With SQL, how to you retrieve a column named “FirstName” from a table named “Persons”?<a href="#/footnotes" class="footnote-ref" id="fnref7" role="doc-noteref" data-footnote-href="#/fn7" onclick=""><sup>7</sup></a>
 <ol type="a">
-<li>SELECT Persons.FirstName</li>
+<li><code>SELECT</code> Persons.FirstName</li>
 <li>EXTRACT FIRSTNAME FROM Persons</li>
-<li>SELECT FirstName FROM Persons</li>
-<li>SELECT “FirstName” FROM “Persons”</li>
+<li><code>SELECT</code> FirstName FROM Persons</li>
+<li><code>SELECT</code> “FirstName” FROM “Persons”</li>
 </ol></li>
 </ol>
 <aside></aside></section>
@@ -500,10 +500,10 @@ https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 <ol start="8" type="1">
 <li>With SQL, how do you select all the columns from a table named “Persons”?<a href="#/footnotes" class="footnote-ref" id="fnref8" role="doc-noteref" data-footnote-href="#/fn8" onclick=""><sup>8</sup></a>
 <ol type="a">
-<li>SELECT Persons</li>
-<li>SELECT * FROM Persons</li>
-<li>SELECT [all] FROM Persons</li>
-<li>SELECT *.Persons</li>
+<li><code>SELECT</code> Persons</li>
+<li><code>SELECT</code> * FROM Persons</li>
+<li><code>SELECT</code> [all] FROM Persons</li>
+<li><code>SELECT</code> *.Persons</li>
 </ol></li>
 </ol>
 <aside></aside></section>
@@ -512,10 +512,10 @@ https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 <ol start="9" type="1">
 <li>With SQL, how can you return the number of records in the “Persons” table?<a href="#/footnotes" class="footnote-ref" id="fnref9" role="doc-noteref" data-footnote-href="#/fn9" onclick=""><sup>9</sup></a>
 <ol type="a">
-<li>SELECT COLUMNS(*) FROM Persons</li>
-<li>SELECT COUNT(*) FROM Persons</li>
-<li>SELECT NO(*) FROM Persons</li>
-<li>SELECT LEN(*) FROM Persons</li>
+<li><code>SELECT</code> COLUMNS(*) FROM Persons</li>
+<li><code>SELECT</code> COUNT(*) FROM Persons</li>
+<li><code>SELECT</code> NO(*) FROM Persons</li>
+<li><code>SELECT</code> LEN(*) FROM Persons</li>
 </ol></li>
 </ol>
 <aside></aside></section>
@@ -525,11 +525,11 @@ https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 <li>With SQL, how do you select all the records from a table named “Persons” where the value of the column “FirstName” is “Peter”?<a href="#/footnotes" class="footnote-ref" id="fnref10" role="doc-noteref" data-footnote-href="#/fn10" onclick=""><sup>10</sup></a></li>
 </ol>
 <ol type="a">
-<li>SELECT * FROM Persons WHERE FirstName &lt;&gt; ‘Peter’</li>
-<li>SELECT * FROM Persons WHERE FirstName = ‘Peter’</li>
-<li>SELECT * FROM Persons WHERE FirstName == ‘Peter’</li>
-<li>SELECT [all] FROM Persons WHERE FirstName LIKE ‘Peter’</li>
-<li>SELECT [all] FROM Persons WHERE FirstName = ‘Peter’</li>
+<li><code>SELECT</code> * FROM Persons WHERE FirstName &lt;&gt; ‘Peter’</li>
+<li><code>SELECT</code> * FROM Persons WHERE FirstName = ‘Peter’</li>
+<li><code>SELECT</code> * FROM Persons WHERE FirstName == ‘Peter’</li>
+<li><code>SELECT</code> [all] FROM Persons WHERE FirstName LIKE ‘Peter’</li>
+<li><code>SELECT</code> [all] FROM Persons WHERE FirstName = ‘Peter’</li>
 </ol>
 <aside></aside></section>
 <section class="slide level2">
@@ -538,10 +538,10 @@ https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 <li>With SQL, how do you select all the records from a table named “Persons” where the “FirstName” is “Peter” and the “LastName” is “Jackson”?<a href="#/footnotes" class="footnote-ref" id="fnref11" role="doc-noteref" data-footnote-href="#/fn11" onclick=""><sup>11</sup></a></li>
 </ol>
 <ol type="a">
-<li>SELECT FirstName = ‘Peter’, LastName = ‘Jackson’ FROM Persons</li>
-<li>SELECT * FROM Persons WHERE FirstName &lt;&gt; ‘Peter’ AND LastName &lt;&gt; ‘Jackson’</li>
-<li>SELECT * FROM Persons WHERE FirstName = ‘Peter’ AND LastName = ‘Jackson’</li>
-<li>SELECT * FROM Persons WHERE FirstName == ‘Peter’ AND LastName == ‘Jackson’</li>
+<li><code>SELECT</code> FirstName = ‘Peter’, LastName = ‘Jackson’ FROM Persons</li>
+<li><code>SELECT</code> * FROM Persons WHERE FirstName &lt;&gt; ‘Peter’ AND LastName &lt;&gt; ‘Jackson’</li>
+<li><code>SELECT</code> * FROM Persons WHERE FirstName = ‘Peter’ AND LastName = ‘Jackson’</li>
+<li><code>SELECT</code> * FROM Persons WHERE FirstName == ‘Peter’ AND LastName == ‘Jackson’</li>
 </ol>
 <aside></aside></section>
 <section class="slide level2">
@@ -560,9 +560,9 @@ https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 <ol start="13" type="1">
 <li>With SQL, how do you select all the records from a table named “Persons” where the “LastName” is alphabetically between (and including) “Hansen” and “Pettersen”?<a href="#/footnotes" class="footnote-ref" id="fnref13" role="doc-noteref" data-footnote-href="#/fn13" onclick=""><sup>13</sup></a>
 <ol type="a">
-<li>SELECT LastName &gt; ‘Hansen’ AND LastName &lt; ‘Pettersen’ FROM Persons</li>
-<li>SELECT * FROM Persons WHERE LastName BETWEEN ‘Hansen’ AND ‘Pettersen’</li>
-<li>SELECT * FROM Persons WHERE LastName &gt; ‘Hansen’ AND LastName &lt; ‘Pettersen’</li>
+<li><code>SELECT</code> LastName &gt; ‘Hansen’ AND LastName &lt; ‘Pettersen’ FROM Persons</li>
+<li><code>SELECT</code> * FROM Persons WHERE LastName BETWEEN ‘Hansen’ AND ‘Pettersen’</li>
+<li><code>SELECT</code> * FROM Persons WHERE LastName &gt; ‘Hansen’ AND LastName &lt; ‘Pettersen’</li>
 </ol></li>
 </ol>
 <aside></aside></section>
@@ -571,9 +571,9 @@ https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 <ol start="14" type="1">
 <li>Which SQL statement returns only different values?<a href="#/footnotes" class="footnote-ref" id="fnref14" role="doc-noteref" data-footnote-href="#/fn14" onclick=""><sup>14</sup></a>
 <ol type="a">
-<li>SELECT UNIQUE</li>
-<li>SELECT DISTINCT</li>
-<li>SELECT DIFFERENT</li>
+<li><code>SELECT</code> UNIQUE</li>
+<li><code>SELECT</code> DISTINCT</li>
+<li><code>SELECT</code> DIFFERENT</li>
 </ol></li>
 </ol>
 <aside></aside></section>
@@ -594,10 +594,10 @@ https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 <ol start="16" type="1">
 <li>With SQL, how can you return all the records from a table named “Persons” sorted descending by “FirstName”?<a href="#/footnotes" class="footnote-ref" id="fnref16" role="doc-noteref" data-footnote-href="#/fn16" onclick=""><sup>16</sup></a>
 <ol type="a">
-<li>SELECT * FROM Persons ORDER FirstName DESC</li>
-<li>SELECT * FROM Persons SORT ‘FirstName’ DESC</li>
-<li>SELECT * FROM Persons ORDER BY FirstName DESC</li>
-<li>SELECT * FROM Persons SORT BY ‘FirstName’ DESC</li>
+<li><code>SELECT</code> * FROM Persons ORDER FirstName DESC</li>
+<li><code>SELECT</code> * FROM Persons SORT ‘FirstName’ DESC</li>
+<li><code>SELECT</code> * FROM Persons ORDER BY FirstName DESC</li>
+<li><code>SELECT</code> * FROM Persons SORT BY ‘FirstName’ DESC</li>
 </ol></li>
 </ol>
 <aside></aside></section>
@@ -614,7 +614,7 @@ https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 <section class="slide level2">
 
 <ol start="18" type="1">
-<li>In order to SELECT the records with foods that are either green or yellow fruit:<a href="#/footnotes" class="footnote-ref" id="fnref18" role="doc-noteref" data-footnote-href="#/fn18" onclick=""><sup>18</sup></a>
+<li>In order to <code>SELECT</code> the records with foods that are either green or yellow fruit:<a href="#/footnotes" class="footnote-ref" id="fnref18" role="doc-noteref" data-footnote-href="#/fn18" onclick=""><sup>18</sup></a>
 <ol type="a">
 <li>… WHERE type = ‘fruit’ AND color = ‘yellow’ OR color = ‘green’<br>
 </li>
@@ -643,7 +643,7 @@ https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 <section class="slide level2">
 
 <ol start="20" type="1">
-<li>What is the purpose of the UNION operator in SQL?<a href="#/footnotes" class="footnote-ref" id="fnref20" role="doc-noteref" data-footnote-href="#/fn20" onclick=""><sup>20</sup></a>
+<li>What is the purpose of the <code>UNION</code> operator in SQL?<a href="#/footnotes" class="footnote-ref" id="fnref20" role="doc-noteref" data-footnote-href="#/fn20" onclick=""><sup>20</sup></a>
 <ol type="a">
 <li>it combines the results of two or more <code>SELECT</code> statements.</li>
 <li>it performs a pattern match on a string.</li>
@@ -659,7 +659,7 @@ https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 <ol type="a">
 <li>it retrieves the maximum value in a column.</li>
 <li>it combines rows from two or more tables based on a related column.</li>
-<li>it filters the rows returned by the SELECT statement.</li>
+<li>it filters the rows returned by the <code>SELECT</code> statement.</li>
 <li>it performs a pattern match on a string.</li>
 </ol></li>
 </ol>
@@ -690,6 +690,70 @@ https://testbook.com/objective-questions/mcq-on-sql--5eea6a0939140f30f369da8c-->
 <aside></aside></section>
 <section class="slide level2">
 
+<ol start="24" type="1">
+<li>Who is removed in a <code>RIGHT JOIN</code>?<a href="#/footnotes" class="footnote-ref" id="fnref24" role="doc-noteref" data-footnote-href="#/fn24" onclick=""><sup>24</sup></a>
+<ol type="a">
+<li>Mick</li>
+<li>John</li>
+<li>Paul</li>
+<li>Keith</li>
+</ol></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="clicker_slides_files/figure-revealjs/unnamed-chunk-2-1.png" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<aside></aside></section>
+<section class="slide level2">
+
+<ol start="25" type="1">
+<li>Which variables are removed in a <code>RIGHT JOIN</code>?<a href="#/footnotes" class="footnote-ref" id="fnref25" role="doc-noteref" data-footnote-href="#/fn25" onclick=""><sup>25</sup></a>
+<ol type="a">
+<li>name</li>
+<li>band</li>
+<li>plays</li>
+<li>none of them</li>
+</ol></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="clicker_slides_files/figure-revealjs/unnamed-chunk-3-1.png" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<aside></aside></section>
+<section class="slide level2">
+
+<ol start="26" type="1">
+<li>In <strong>SQL</strong>, what happens to Mick’s “plays” variables in a <code>FULLL JOIN</code>?<a href="#/footnotes" class="footnote-ref" id="fnref26" role="doc-noteref" data-footnote-href="#/fn26" onclick=""><sup>26</sup></a>
+<ol type="a">
+<li>Mick is removed</li>
+<li>guitar</li>
+<li>bass</li>
+<li>NA</li>
+<li>NULL</li>
+</ol></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="clicker_slides_files/figure-revealjs/unnamed-chunk-4-1.png" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<aside></aside></section>
+<section class="slide level2">
+
 <!--look at exercises: https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/block022_regular-expression.md
 
 which reg expr matches all countries with "ee"
@@ -698,7 +762,7 @@ countries with "i" or "t" and ends in "land"; has "ee"; continents with "o"
 
 can use flights data for cities with particular names-->
 <ol start="17" type="1">
-<li><code>grep("q[^u]", very.large.word.list)</code> would not match which of the following?<a href="#/footnotes" class="footnote-ref" id="fnref24" role="doc-noteref" data-footnote-href="#/fn24" onclick=""><sup>24</sup></a>
+<li><code>grep("q[^u]", very.large.word.list)</code> would not match which of the following?<a href="#/footnotes" class="footnote-ref" id="fnref27" role="doc-noteref" data-footnote-href="#/fn27" onclick=""><sup>27</sup></a>
 <ol type="a">
 <li>Iraqi</li>
 <li>Iraqian</li>
@@ -711,7 +775,7 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="17" type="1">
-<li>Which of the following regex would match to both “grey” and “gray”?<a href="#/footnotes" class="footnote-ref" id="fnref25" role="doc-noteref" data-footnote-href="#/fn25" onclick=""><sup>25</sup></a>
+<li>Which of the following regex would match to both “grey” and “gray”?<a href="#/footnotes" class="footnote-ref" id="fnref28" role="doc-noteref" data-footnote-href="#/fn28" onclick=""><sup>28</sup></a>
 <ol type="a">
 <li>“gr[ae]y”</li>
 <li>“gr(a|e)y”</li>
@@ -724,7 +788,7 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="17" type="1">
-<li>What will the result be for the following code?<a href="#/footnotes" class="footnote-ref" id="fnref26" role="doc-noteref" data-footnote-href="#/fn26" onclick=""><sup>26</sup></a>
+<li>What will the result be for the following code?<a href="#/footnotes" class="footnote-ref" id="fnref29" role="doc-noteref" data-footnote-href="#/fn29" onclick=""><sup>29</sup></a>
 <ol type="a">
 <li>10</li>
 <li>1</li>
@@ -739,7 +803,7 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="17" type="1">
-<li>What will the result be for the following code?<a href="#/footnotes" class="footnote-ref" id="fnref27" role="doc-noteref" data-footnote-href="#/fn27" onclick=""><sup>27</sup></a>
+<li>What will the result be for the following code?<a href="#/footnotes" class="footnote-ref" id="fnref30" role="doc-noteref" data-footnote-href="#/fn30" onclick=""><sup>30</sup></a>
 <ol type="a">
 <li>.</li>
 <li>Episode 2: The pie whisperer. (4 August 2015)</li>
@@ -754,7 +818,7 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="17" type="1">
-<li>What will the result be for the following code?<a href="#/footnotes" class="footnote-ref" id="fnref28" role="doc-noteref" data-footnote-href="#/fn28" onclick=""><sup>28</sup></a>
+<li>What will the result be for the following code?<a href="#/footnotes" class="footnote-ref" id="fnref31" role="doc-noteref" data-footnote-href="#/fn31" onclick=""><sup>31</sup></a>
 <ol type="a">
 <li>.</li>
 <li>Episode 2: The pie whisperer. (4 August 2015)</li>
@@ -769,7 +833,7 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="17" type="1">
-<li>What will the result be for the following code?<a href="#/footnotes" class="footnote-ref" id="fnref29" role="doc-noteref" data-footnote-href="#/fn29" onclick=""><sup>29</sup></a>
+<li>What will the result be for the following code?<a href="#/footnotes" class="footnote-ref" id="fnref32" role="doc-noteref" data-footnote-href="#/fn32" onclick=""><sup>32</sup></a>
 <ol type="a">
 <li>.</li>
 <li>Episode 2: The pie whisperer. (4 August 2015)</li>
@@ -784,7 +848,7 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="17" type="1">
-<li>Which operator is used to search for a specified pattern in a column?<a href="#/footnotes" class="footnote-ref" id="fnref30" role="doc-noteref" data-footnote-href="#/fn30" onclick=""><sup>30</sup></a>
+<li>Which operator is used to search for a specified pattern in a column?<a href="#/footnotes" class="footnote-ref" id="fnref33" role="doc-noteref" data-footnote-href="#/fn33" onclick=""><sup>33</sup></a>
 <ol type="a">
 <li>LIKE</li>
 <li>GET</li>
@@ -795,19 +859,19 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="18" type="1">
-<li>With <strong>SQL</strong>, how do you select all the records from a table named “Persons” where the value of the column “FirstName” starts with an “a”?<a href="#/footnotes" class="footnote-ref" id="fnref31" role="doc-noteref" data-footnote-href="#/fn31" onclick=""><sup>31</sup></a>
+<li>With <strong>SQL</strong>, how do you select all the records from a table named “Persons” where the value of the column “FirstName” starts with an “a”?<a href="#/footnotes" class="footnote-ref" id="fnref34" role="doc-noteref" data-footnote-href="#/fn34" onclick=""><sup>34</sup></a>
 <ol type="a">
-<li>SELECT * FROM Persons WHERE FirstName LIKE ‘a%’</li>
-<li>SELECT * FROM Persons WHERE FirstName = ‘%a%’</li>
-<li>SELECT * FROM Persons WHERE FirstName LIKE ‘%a’</li>
-<li>SELECT * FROM Persons WHERE FirstName = ‘a’</li>
+<li><code>SELECT</code> * FROM Persons WHERE FirstName LIKE ‘a%’</li>
+<li><code>SELECT</code> * FROM Persons WHERE FirstName = ‘%a%’</li>
+<li><code>SELECT</code> * FROM Persons WHERE FirstName LIKE ‘%a’</li>
+<li><code>SELECT</code> * FROM Persons WHERE FirstName = ‘a’</li>
 </ol></li>
 </ol>
 <aside></aside></section>
 <section class="slide level2">
 
 <ol start="19" type="1">
-<li>Which SQL statement is used to create a database table called ‘Customers’?<a href="#/footnotes" class="footnote-ref" id="fnref32" role="doc-noteref" data-footnote-href="#/fn32" onclick=""><sup>32</sup></a>
+<li>Which SQL statement is used to create a database table called ‘Customers’?<a href="#/footnotes" class="footnote-ref" id="fnref35" role="doc-noteref" data-footnote-href="#/fn35" onclick=""><sup>35</sup></a>
 <ol type="a">
 <li>CREATE DATABASE TAB Customers</li>
 <li>CREATE TABLE Customers</li>
@@ -819,7 +883,7 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="20" type="1">
-<li>Which <strong>SQL</strong> statement updates data in a database?<a href="#/footnotes" class="footnote-ref" id="fnref33" role="doc-noteref" data-footnote-href="#/fn33" onclick=""><sup>33</sup></a>
+<li>Which <strong>SQL</strong> statement updates data in a database?<a href="#/footnotes" class="footnote-ref" id="fnref36" role="doc-noteref" data-footnote-href="#/fn36" onclick=""><sup>36</sup></a>
 <ol type="a">
 <li>SAVE AS</li>
 <li>MODIFY</li>
@@ -831,7 +895,7 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="21" type="1">
-<li>Which <strong>SQL</strong> statement deletes data from a database?<a href="#/footnotes" class="footnote-ref" id="fnref34" role="doc-noteref" data-footnote-href="#/fn34" onclick=""><sup>34</sup></a>
+<li>Which <strong>SQL</strong> statement deletes data from a database?<a href="#/footnotes" class="footnote-ref" id="fnref37" role="doc-noteref" data-footnote-href="#/fn37" onclick=""><sup>37</sup></a>
 <ol type="a">
 <li>REMOVE</li>
 <li>DELETE</li>
@@ -842,7 +906,7 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="22" type="1">
-<li>The NOT NULL constraint enforces a column to not accept NULL values.<a href="#/footnotes" class="footnote-ref" id="fnref35" role="doc-noteref" data-footnote-href="#/fn35" onclick=""><sup>35</sup></a>
+<li>The NOT NULL constraint enforces a column to not accept NULL values.<a href="#/footnotes" class="footnote-ref" id="fnref38" role="doc-noteref" data-footnote-href="#/fn38" onclick=""><sup>38</sup></a>
 <ol type="a">
 <li>FALSE</li>
 <li>TRUE</li>
@@ -852,7 +916,7 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="23" type="1">
-<li>Which <strong>SQL</strong> statement inserts new data in a database?<a href="#/footnotes" class="footnote-ref" id="fnref36" role="doc-noteref" data-footnote-href="#/fn36" onclick=""><sup>36</sup></a>
+<li>Which <strong>SQL</strong> statement inserts new data in a database?<a href="#/footnotes" class="footnote-ref" id="fnref39" role="doc-noteref" data-footnote-href="#/fn39" onclick=""><sup>39</sup></a>
 <ol type="a">
 <li>ADD RECORD</li>
 <li>INSERT INTO</li>
@@ -864,7 +928,7 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="24" type="1">
-<li>With <strong>SQL</strong>, how can you insert a new record into the “Persons” table?<a href="#/footnotes" class="footnote-ref" id="fnref37" role="doc-noteref" data-footnote-href="#/fn37" onclick=""><sup>37</sup></a>
+<li>With <strong>SQL</strong>, how can you insert a new record into the “Persons” table?<a href="#/footnotes" class="footnote-ref" id="fnref40" role="doc-noteref" data-footnote-href="#/fn40" onclick=""><sup>40</sup></a>
 <ol type="a">
 <li>INSERT INTO Persons VALUES (‘Jimmy’, ‘Jackson’)</li>
 <li>INSERT (‘Jimmy’, ‘Jacskon’) INTO Persons</li>
@@ -875,7 +939,7 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="25" type="1">
-<li>With <strong>SQL</strong>, how can you insert “Olsen” as the “LastName” in the “Persons” table?<a href="#/footnotes" class="footnote-ref" id="fnref38" role="doc-noteref" data-footnote-href="#/fn38" onclick=""><sup>38</sup></a>
+<li>With <strong>SQL</strong>, how can you insert “Olsen” as the “LastName” in the “Persons” table?<a href="#/footnotes" class="footnote-ref" id="fnref41" role="doc-noteref" data-footnote-href="#/fn41" onclick=""><sup>41</sup></a>
 <ol type="a">
 <li>INSERT INTO Persons (LastName) VALUES (‘Olsen’)</li>
 <li>INSERT INTO Persons (’Olsen) INTO LastName</li>
@@ -886,7 +950,7 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="26" type="1">
-<li>How can you change “Hansen” into “Nilsen” in the “LastName” column in the Persons table?<a href="#/footnotes" class="footnote-ref" id="fnref39" role="doc-noteref" data-footnote-href="#/fn39" onclick=""><sup>39</sup></a>
+<li>How can you change “Hansen” into “Nilsen” in the “LastName” column in the Persons table?<a href="#/footnotes" class="footnote-ref" id="fnref42" role="doc-noteref" data-footnote-href="#/fn42" onclick=""><sup>42</sup></a>
 <ol type="a">
 <li>MODIFY Persons SET LastName=‘Nilsen’ WHERE LastName=‘Hansen’</li>
 <li>UPDATE Persons SET LastName=‘Hansen’ INTO LastName=‘Nilsen’</li>
@@ -898,7 +962,7 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="27" type="1">
-<li>With <strong>SQL</strong>, how can you delete the records where the “FirstName” is “Peter” in the Persons Table?<a href="#/footnotes" class="footnote-ref" id="fnref40" role="doc-noteref" data-footnote-href="#/fn40" onclick=""><sup>40</sup></a>
+<li>With <strong>SQL</strong>, how can you delete the records where the “FirstName” is “Peter” in the Persons Table?<a href="#/footnotes" class="footnote-ref" id="fnref43" role="doc-noteref" data-footnote-href="#/fn43" onclick=""><sup>43</sup></a>
 <ol type="a">
 <li>DELETE FROM Persons WHERE FirstName=‘Peter’</li>
 <li>DELETE FirstName=‘Peter’ FROM Persons</li>
@@ -941,23 +1005,23 @@ can use flights data for cities with particular names-->
 </ol>
 </li>
 <li id="fn7"><ol start="3" type="a">
-<li>SELECT FirstName FROM Persons</li>
+<li><code>SELECT</code> FirstName FROM Persons</li>
 </ol>
 </li>
 <li id="fn8"><ol start="2" type="a">
-<li>SELECT * FROM Persons</li>
+<li><code>SELECT</code> * FROM Persons</li>
 </ol>
 </li>
 <li id="fn9"><ol start="2" type="a">
-<li>SELECT COUNT(*) FROM Persons</li>
+<li><code>SELECT</code> COUNT(*) FROM Persons</li>
 </ol>
 </li>
 <li id="fn10"><ol start="2" type="a">
-<li>SELECT * FROM Persons WHERE FirstName = ‘Peter’</li>
+<li><code>SELECT</code> * FROM Persons WHERE FirstName = ‘Peter’</li>
 </ol>
 </li>
 <li id="fn11"><ol start="3" type="a">
-<li>SELECT * FROM Persons WHERE FirstName = ‘Peter’ AND LastName = ‘Jackson’</li>
+<li><code>SELECT</code> * FROM Persons WHERE FirstName = ‘Peter’ AND LastName = ‘Jackson’</li>
 </ol>
 </li>
 <li id="fn12"><ol type="a">
@@ -965,11 +1029,11 @@ can use flights data for cities with particular names-->
 </ol>
 </li>
 <li id="fn13"><ol start="2" type="a">
-<li>SELECT * FROM Persons WHERE LastName BETWEEN ‘Hansen’ AND ‘Pettersen’</li>
+<li><code>SELECT</code> * FROM Persons WHERE LastName BETWEEN ‘Hansen’ AND ‘Pettersen’</li>
 </ol>
 </li>
 <li id="fn14"><ol start="2" type="a">
-<li>SELECT DISTINCT</li>
+<li><code>SELECT</code> DISTINCT</li>
 </ol>
 </li>
 <li id="fn15"><ol type="a">
@@ -977,7 +1041,7 @@ can use flights data for cities with particular names-->
 </ol>
 </li>
 <li id="fn16"><ol start="3" type="a">
-<li>SELECT * FROM Persons ORDER BY FirstName DESC</li>
+<li><code>SELECT</code> * FROM Persons ORDER BY FirstName DESC</li>
 </ol>
 </li>
 <li id="fn17"><ol type="a">
@@ -985,7 +1049,7 @@ can use flights data for cities with particular names-->
 </ol>
 </li>
 <li id="fn18"><ol type="a">
-<li>SELECT * FROM Persons WHERE FirstName LIKE ‘a%’</li>
+<li><code>SELECT</code> * FROM Persons WHERE FirstName LIKE ‘a%’</li>
 </ol>
 </li>
 <li id="fn19"><ol start="2" type="a">
@@ -1009,15 +1073,15 @@ can use flights data for cities with particular names-->
 </ol>
 </li>
 <li id="fn24"><ol type="a">
-<li>LIKE</li>
+<li>INSERT INTO Persons VALUES (‘Jimmy’, ‘Jackson’)</li>
 </ol>
 </li>
 <li id="fn25"><ol type="a">
-<li>LIKE</li>
+<li>INSERT INTO Persons (LastName) VALUES (‘Olsen’)</li>
 </ol>
 </li>
-<li id="fn26"><ol type="a">
-<li>LIKE</li>
+<li id="fn26"><ol start="4" type="a">
+<li>UPDATE Persons SET LastName=‘Nilsen’ WHERE LastName=‘Hansen’</li>
 </ol>
 </li>
 <li id="fn27"><ol type="a">
@@ -1037,42 +1101,54 @@ can use flights data for cities with particular names-->
 </ol>
 </li>
 <li id="fn31"><ol type="a">
-<li>SELECT * FROM Persons WHERE FirstName LIKE ‘a%’</li>
+<li>LIKE</li>
 </ol>
 </li>
-<li id="fn32"><ol start="2" type="a">
-<li>CREATE TABLE Customers</li>
+<li id="fn32"><ol type="a">
+<li>LIKE</li>
 </ol>
 </li>
-<li id="fn33"><ol start="4" type="a">
-<li>UPDATE</li>
+<li id="fn33"><ol type="a">
+<li>LIKE</li>
 </ol>
 </li>
-<li id="fn34"><ol start="2" type="a">
-<li>DELETE</li>
+<li id="fn34"><ol type="a">
+<li><code>SELECT</code> * FROM Persons WHERE FirstName LIKE ‘a%’</li>
 </ol>
 </li>
 <li id="fn35"><ol start="2" type="a">
+<li>CREATE TABLE Customers</li>
+</ol>
+</li>
+<li id="fn36"><ol start="4" type="a">
+<li>UPDATE</li>
+</ol>
+</li>
+<li id="fn37"><ol start="2" type="a">
+<li>DELETE</li>
+</ol>
+</li>
+<li id="fn38"><ol start="2" type="a">
 <li>TRUE</li>
 </ol>
 </li>
-<li id="fn36"><ol start="2" type="a">
+<li id="fn39"><ol start="2" type="a">
 <li>INSERT INTO</li>
 </ol>
 </li>
-<li id="fn37"><ol type="a">
+<li id="fn40"><ol type="a">
 <li>INSERT INTO Persons VALUES (‘Jimmy’, ‘Jackson’)</li>
 </ol>
 </li>
-<li id="fn38"><ol type="a">
+<li id="fn41"><ol type="a">
 <li>INSERT INTO Persons (LastName) VALUES (‘Olsen’)</li>
 </ol>
 </li>
-<li id="fn39"><ol start="4" type="a">
+<li id="fn42"><ol start="4" type="a">
 <li>UPDATE Persons SET LastName=‘Nilsen’ WHERE LastName=‘Hansen’</li>
 </ol>
 </li>
-<li id="fn40"><ol type="a">
+<li id="fn43"><ol type="a">
 <li>DELETE FROM Persons WHERE FirstName=‘Peter’</li>
 </ol>
 </li>
