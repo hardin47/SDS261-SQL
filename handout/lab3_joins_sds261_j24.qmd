@@ -37,11 +37,7 @@ con_yelp <- DBI::dbConnect(
 )
 ```
 
-```{sql}
-#| connection: con_yelp
 
-SHOW TABLES;
-```
 
 Today's lab will provide practice working with **SQL** clauses in **DBeaver**.  Don't forget the importance of the <a href = "https://st47s.com/SDS261/Notes/03-sql-verbs.html" target = "_blank">order of the **SQL** clauses</a>. 
 
@@ -63,6 +59,12 @@ The goals for lab 3 include:
 
 * Connect to the `yelp` database, which contains the `businesses`, `reviews`, and `users` tables.  See README file (or lab 1) for connection details.
 
+
+```{sql}
+#| connection: con_yelp
+
+SHOW TABLES;
+```
 
 ##  Assignment
 

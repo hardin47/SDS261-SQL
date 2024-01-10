@@ -858,7 +858,7 @@
     "href": "handout/lab3_joins_sds261_j24.html",
     "title": "Lab 3 - SQL joins",
     "section": "",
-    "text": "SHOW TABLES;\n\n\n3 records\n\n\nTables_in_yelp\n\n\n\n\nbusinesses\n\n\nreviews\n\n\nusers\nToday’s lab will provide practice working with SQL clauses in DBeaver. Don’t forget the importance of the order of the SQL clauses.\nThe goals for lab 3 include:"
+    "text": "Today’s lab will provide practice working with SQL clauses in DBeaver. Don’t forget the importance of the order of the SQL clauses.\nThe goals for lab 3 include:"
   },
   {
     "objectID": "slides/2024-01-11-regex1.html#regular-expressions",
@@ -1565,7 +1565,7 @@
     "href": "handout/lab3_joins_sds261_j24.html#advice-for-turning-in-the-assignment",
     "title": "Lab 3 - SQL joins",
     "section": "Advice for turning in the assignment",
-    "text": "Advice for turning in the assignment\n\nBe sure to indicate (in the .sql file) which problem is being answered with which SQL code. Use the following syntax to comment within a .sql file: /* here is where comments go */. Indeed, feel free to copy the question into the .sql file so that you have it for your own records.\nsave the .Rproj file somewhere you can find it. Don’t keep everything in your downloads folder. Maybe make a folder called SDS261 or something. That folder could live on your Desktop. Or maybe in your Dropbox.\nThe SQL document should be saved in the R Project as lab3-sds261-yourlastname-yourfirstname.sql. You will have to navigate to the R Project to save the DBeaver file in the correct place.\nConnect to the yelp database, which contains the businesses, reviews, and users tables. See README file (or lab 1) for connection details."
+    "text": "Advice for turning in the assignment\n\nBe sure to indicate (in the .sql file) which problem is being answered with which SQL code. Use the following syntax to comment within a .sql file: /* here is where comments go */. Indeed, feel free to copy the question into the .sql file so that you have it for your own records.\nsave the .Rproj file somewhere you can find it. Don’t keep everything in your downloads folder. Maybe make a folder called SDS261 or something. That folder could live on your Desktop. Or maybe in your Dropbox.\nThe SQL document should be saved in the R Project as lab3-sds261-yourlastname-yourfirstname.sql. You will have to navigate to the R Project to save the DBeaver file in the correct place.\nConnect to the yelp database, which contains the businesses, reviews, and users tables. See README file (or lab 1) for connection details.\n\n\nSHOW TABLES;\n\n\n3 records\n\n\nTables_in_yelp\n\n\n\n\nbusinesses\n\n\nreviews\n\n\nusers"
   },
   {
     "objectID": "handout/lab3_joins_sds261_j24.html#assignment",
