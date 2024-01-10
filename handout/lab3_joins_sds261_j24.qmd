@@ -1,7 +1,7 @@
 ---
 title: "Lab 3 - SQL joins"
 author: "your name goes here"
-date: "due 10am Tuesday, January 16, 2024"
+date: "due 10am Thursday, January 11, 2024"
 format: 
   unilur-html: default
   unilur-html+solution:
@@ -24,8 +24,182 @@ library(mdsr)
 ```
 
 
-according to Ben:  Yelp data does not have referential integrity, and you can find reviews written by users who don't exist and/or about restaurants that aren't in the other table. 
 
+```{r}
+#| echo: false
+
+con_yelp <- DBI::dbConnect(
+  RMariaDB::MariaDB(),
+  dbname = "yelp",
+  host = Sys.getenv("SMITH_HOST"),
+  user = Sys.getenv("SMITH_USER"),
+  password = Sys.getenv("SMITH_PWD")
+)
+```
+
+```{sql}
+#| connection: con_yelp
+
+SHOW TABLES;
+```
+
+
+1. For each of the three tables in the `yelp` database, identify the number of records and the variables.  (That means, write at least a sentence for each table.)
+
+```{sql}
+#| connection: con_yelp
+#| unilur-solution: true
+
+SELECT * FROM businesses LIMIT 0, 5;
+```
+
+```{sql}
+#| connection: con_yelp
+#| unilur-solution: true
+
+SELECT * FROM reviews LIMIT 0, 5;
+```
+
+```{sql}
+#| connection: con_yelp
+#| unilur-solution: true
+
+SELECT * FROM users LIMIT 0, 5;
+```
+
+```{sql}
+#| connection: con_yelp
+#| unilur-solution: true
+
+SELECT COUNT(*) FROM businesses;
+```
+
+```{sql}
+#| connection: con_yelp
+#| unilur-solution: true
+
+SELECT COUNT(*) FROM reviews;
+```
+
+```{sql}
+#| connection: con_yelp
+#| unilur-solution: true
+
+SELECT COUNT(*) FROM users;
+```
+
+```{block}
+#| unilur-solution: true
+
+businesses: 11,537 records with variables of id, name, stars, open, review_count, city, longitude, latitude
+
+reviews: 229,907 records with variables of business_id, user_id, stars
+
+users: 43,873 records with variables of user_id, name, average_stars, review_count
+
+```
+
+2. Find the user with the most reviews.  What is the person's name, and how many reviews did they make?
+
+```{sql}
+#| connection: con_yelp
+#| unilur-solution: true
+
+SELECT user_id, name, average_stars, review_count
+FROM users
+ORDER BY review_count DESC
+LIMIT 0, 5;
+```
+
+
+```{block}
+#| unilur-solution: true
+
+Kim has the most reviews (5,807 reviews!) with an average rating of 3.77 stars.
+```
+
+3. What cities are represented in the businesses table?  Find out by querying the number of businesses per city.  Use `LIMIT` to start, just in case there are hundreds of cities.  Write down a few of the city names.  Do you notice anything interesting?
+
+```{sql}
+#| connection: con_yelp
+#| unilur-solution: true
+
+SELECT COUNT(*), city
+FROM businesses
+GROUP BY city
+ORDER BY city
+LIMIT 0, 100;
+```
+
+
+```{block}
+#| unilur-solution: true
+
+There appear to be cities in Phoenix as well as in Pheonix (??).  And a few of the city names include the AZ to indicate that they are in Arizona.  Before really working with the data, we would want to clean up the city names.
+```
+
+
+4. Find the businesses in "Carefree" (a city in Arizona).  Write down the names of a few of the businesses.
+
+```{sql}
+#| connection: con_yelp
+#| unilur-solution: true
+
+SELECT id, name, stars, open, review_count, city
+FROM businesses
+WHERE city = "Carefree"
+LIMIT 0, 50;
+```
+
+5. Count the number of records resulting when the query connects the `users` with the `reviews` using a `JOIN`.  How many records are there?  What does that tell you about the two tables?
+
+```{sql}
+#| connection: con_yelp
+#| unilur-solution: true
+
+SELECT COUNT(*)
+FROM users
+JOIN reviews ON users.user_id = reviews.user_id
+LIMIT 0, 100;
+```
+
+```{block}
+#| unilur-solution: true
+
+Because there are fewer records in the join, we know that some reviews were done by users that are not in the `users` table. 
+```
+
+
+
+6. How many users wrote reviews in the `reviews` table but do not exist in the `users` table.  Hint: use a `RIGHT JOIN` to keep all the reviews, and then look for the rows where the `user_id` from the `users` table `IS NULL`.
+
+```{sql}
+#| connection: con_yelp
+#| unilur-solution: true
+
+SELECT DISTINCT reviews.user_id
+FROM users
+RIGHT JOIN reviews ON users.user_id = reviews.user_id
+WHERE users.user_id IS NULL;
+```
+
+
+```{block}
+#| unilur-solution: true
+
+There are 10 users who wrote 14,028 reviews and who are not in the users table.
+```
+
+7. Write a query to ask a question that you think is interesting.  Provide both the question (in words) as well as the SQL code and results.
+
+
+## Best practice
+
+It is always a good idea to terminate the **SQL** connection when you are done with it.
+
+```{r}
+DBI::dbDisconnect(con_yelp)
+```
 
 
 

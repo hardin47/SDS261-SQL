@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -151,9 +185,60 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>according to Ben: Yelp data does not have referential integrity, and you can find reviews written by users who don’t exist and/or about restaurants that aren’t in the other table.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>3 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tables_in_yelp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">businesses</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">reviews</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">users</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ol type="1">
+<li>For each of the three tables in the <code>yelp</code> database, identify the number of records and the variables. (That means, write at least a sentence for each table.)</li>
+</ol>
+<ol start="2" type="1">
+<li>Find the user with the most reviews. What is the person’s name, and how many reviews did they make?</li>
+</ol>
+<ol start="3" type="1">
+<li>What cities are represented in the businesses table? Find out by querying the number of businesses per city. Use <code>LIMIT</code> to start, just in case there are hundreds of cities. Write down a few of the city names. Do you notice anything interesting?</li>
+</ol>
+<ol start="4" type="1">
+<li>Find the businesses in “Carefree” (a city in Arizona). Write down the names of a few of the businesses.</li>
+</ol>
+<ol start="5" type="1">
+<li>Count the number of records resulting when the query connects the <code>users</code> with the <code>reviews</code> using a <code>JOIN</code>. How many records are there? What does that tell you about the two tables?</li>
+</ol>
+<ol start="6" type="1">
+<li>How many users wrote reviews in the <code>reviews</code> table but do not exist in the <code>users</code> table. Hint: use a <code>RIGHT JOIN</code> to keep all the reviews, and then look for the rows where the <code>user_id</code> from the <code>users</code> table <code>IS NULL</code>.</li>
+</ol>
+<ol start="7" type="1">
+<li>Write a query to ask a question that you think is interesting. Provide both the question (in words) as well as the SQL code and results.</li>
+</ol>
+<section id="best-practice" class="level2">
+<h2 class="anchored" data-anchor-id="best-practice">Best practice</h2>
+<p>It is always a good idea to terminate the <strong>SQL</strong> connection when you are done with it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>DBI<span class="sc">::</span><span class="fu">dbDisconnect</span>(con_yelp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

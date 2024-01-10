@@ -208,9 +208,834 @@ Solution
 </div>
 </div>
 </div>
-<p>according to Ben: Yelp data does not have referential integrity, and you can find reviews written by users who don’t exist and/or about restaurants that aren’t in the other table.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>3 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tables_in_yelp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">businesses</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">reviews</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">users</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ol type="1">
+<li>For each of the three tables in the <code>yelp</code> database, identify the number of records and the variables. (That means, write at least a sentence for each table.)</li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> businesses <span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">5</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>5 records</caption>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 27%">
+<col style="width: 5%">
+<col style="width: 4%">
+<col style="width: 12%">
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">stars</th>
+<th style="text-align: left;">open</th>
+<th style="text-align: right;">review_count</th>
+<th style="text-align: left;">city</th>
+<th style="text-align: right;">longitude</th>
+<th style="text-align: right;">latitude</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">rncjoVoEFUJGCUoC1JgnUA</td>
+<td style="text-align: left;">Peoria Income Tax Service</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Peoria</td>
+<td style="text-align: right;">-112.2416</td>
+<td style="text-align: right;">33.58187</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0FNFSzCFP_rGUoJx8W7tJg</td>
+<td style="text-align: left;">Bike Doctor</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Phoenix</td>
+<td style="text-align: right;">-112.1059</td>
+<td style="text-align: right;">33.60405</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3f_lyB6vFK48ukH6ScvLHg</td>
+<td style="text-align: left;">Valley Permaculture Alliance</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Phoenix</td>
+<td style="text-align: right;">-112.0739</td>
+<td style="text-align: right;">33.46053</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">usAsSV36QmUej8–yvN-dg</td>
+<td style="text-align: left;">Food City</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Phoenix</td>
+<td style="text-align: right;">-112.0854</td>
+<td style="text-align: right;">33.39221</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PzOqRohWw7F7YEPBz6AubA</td>
+<td style="text-align: left;">Hot Bagels &amp; Deli</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">Glendale Az</td>
+<td style="text-align: right;">-112.2003</td>
+<td style="text-align: right;">33.71280</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> reviews <span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">5</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>5 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">business_id</th>
+<th style="text-align: left;">user_id</th>
+<th style="text-align: right;">stars</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">9yKzy9PApeiPPOUJEtnvkg</td>
+<td style="text-align: left;">rLtl8ZkDX5vH5nAx9C3q5Q</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ZRJwVLyzEJq1VAihDhYiow</td>
+<td style="text-align: left;">0a2KyEL0d3Yb1V6aivbIuQ</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6oRAC4uyJCsJl1X0WZpVSA</td>
+<td style="text-align: left;">0hT2KtfLiobPvh6cDC8JQg</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_1QQZuf4zZOyFCvXc0o6Vg</td>
+<td style="text-align: left;">uZetl9T0NcROGOyFfughhg</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6ozycU1RpktNG2-1BroVtw</td>
+<td style="text-align: left;">vYmM4KTsC8ZfQBg-j5MWkw</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> users <span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">5</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>5 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">user_id</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">average_stars</th>
+<th style="text-align: right;">review_count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CR2y7yEm4X035ZMzrTtN9Q</td>
+<td style="text-align: left;">Jim</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_9GXoHhdxc30ujPaQwh6Ew</td>
+<td style="text-align: left;">Kelle</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">8mM-nqxjg6pT04kwcjMbsw</td>
+<td style="text-align: left;">Stephanie</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ch6CdTR2IVaVANr-RglMOg</td>
+<td style="text-align: left;">T</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NZrLmHRyiHmyT1JrfzkCOA</td>
+<td style="text-align: left;">Beth</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> businesses;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>1 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">COUNT(*)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">11537</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> reviews;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>1 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">COUNT(*)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">229907</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> users;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>1 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">COUNT(*)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">43873</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<p>businesses: 11,537 records with variables of id, name, stars, open, review_count, city, longitude, latitude</p>
+<p>reviews: 229,907 records with variables of business_id, user_id, stars</p>
+<p>users: 43,873 records with variables of user_id, name, average_stars, review_count</p>
+</div>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Find the user with the most reviews. What is the person’s name, and how many reviews did they make?</li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> user_id, name, average_stars, review_count</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> users</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> review_count <span class="kw">DESC</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">5</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>5 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">user_id</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">average_stars</th>
+<th style="text-align: right;">review_count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AIVQg9enGug5woxehjmlGg</td>
+<td style="text-align: left;">Kim</td>
+<td style="text-align: right;">3.77</td>
+<td style="text-align: right;">5807</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6HBnx7fTfFlpWyez_P55xA</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: right;">3.63</td>
+<td style="text-align: right;">2848</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7FuLnS_-b79GG-33mwLaMg</td>
+<td style="text-align: left;">Andrew</td>
+<td style="text-align: right;">3.64</td>
+<td style="text-align: right;">2810</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lxZSVeJz6KEBW1nlA3JKJg</td>
+<td style="text-align: left;">Shiho</td>
+<td style="text-align: right;">3.84</td>
+<td style="text-align: right;">2760</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">qbfQRHLvZk5WSkKY0l_lMw</td>
+<td style="text-align: left;">Stephy</td>
+<td style="text-align: right;">3.87</td>
+<td style="text-align: right;">2587</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<p>Kim has the most reviews (5,807 reviews!) with an average rating of 3.77 stars.</p>
+</div>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>What cities are represented in the businesses table? Find out by querying the number of businesses per city. Use <code>LIMIT</code> to start, just in case there are hundreds of cities. Write down a few of the city names. Do you notice anything interesting?</li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>), city</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> businesses</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> city</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> city</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">100</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">COUNT(*)</th>
+<th style="text-align: left;">city</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Ahwatukee</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">34</td>
+<td style="text-align: left;">Anthem</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">46</td>
+<td style="text-align: left;">Apache Junction</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">129</td>
+<td style="text-align: left;">Avondale</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">31</td>
+<td style="text-align: left;">Buckeye</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">Carefree</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">48</td>
+<td style="text-align: left;">Casa Grande</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">65</td>
+<td style="text-align: left;">Cave Creek</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">865</td>
+<td style="text-align: left;">Chandler</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Charleston</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<p>There appear to be cities in Phoenix as well as in Pheonix (??). And a few of the city names include the AZ to indicate that they are in Arizona. Before really working with the data, we would want to clean up the city names.</p>
+</div>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Find the businesses in “Carefree” (a city in Arizona). Write down the names of a few of the businesses.</li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">id</span>, name, stars, <span class="kw">open</span>, review_count, city</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> businesses</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> city <span class="op">=</span> <span class="ot">"Carefree"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">50</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>Displaying records 1 - 10</caption>
+<colgroup>
+<col style="width: 22%">
+<col style="width: 44%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 12%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">stars</th>
+<th style="text-align: left;">open</th>
+<th style="text-align: right;">review_count</th>
+<th style="text-align: left;">city</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">K0v87iFgB3sXSzw6e-BJ5w</td>
+<td style="text-align: left;">AZ Wine Company</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Carefree</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nZ0mUQEdez-CHrykD2nNLA</td>
+<td style="text-align: left;">Carefree Resort &amp; Conference Center</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: left;">Carefree</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c4FLMLP7hMnAbSiW2o_o3A</td>
+<td style="text-align: left;">Saguaro Grille</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Carefree</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QygMZmPO8A6OaJYO2a0pnw</td>
+<td style="text-align: left;">Studio C Hair Salon</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Carefree</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Z85BGr-jnEWvoI4xAnoh3g</td>
+<td style="text-align: left;">Lowe’s Home Improvement Warehouse of Phoenix</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Carefree</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SahvCnFp3OvUVZIAYCyckw</td>
+<td style="text-align: left;">34 Easy St</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Carefree</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">jdStuaC_1leN_DNGcQ0yEw</td>
+<td style="text-align: left;">Latilla</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Carefree</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AwUMl0PT3mdkPS7huzEUYQ</td>
+<td style="text-align: left;">Balloon Festival</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Carefree</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MHPXDXVE_cUYodfPhkadeQ</td>
+<td style="text-align: left;">Black Mountain Coffee Shop</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">Carefree</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OvlAlAkiyyCILkq-TylBWg</td>
+<td style="text-align: left;">The Sundial Cafe</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Carefree</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Count the number of records resulting when the query connects the <code>users</code> with the <code>reviews</code> using a <code>JOIN</code>. How many records are there? What does that tell you about the two tables?</li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> users</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> reviews <span class="kw">ON</span> users.user_id <span class="op">=</span> reviews.user_id</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">100</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>1 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">COUNT(*)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">215879</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<p>Because there are fewer records in the join, we know that some reviews were done by users that are not in the <code>users</code> table.</p>
+</div>
+</div>
+</div>
+</div>
+<ol start="6" type="1">
+<li>How many users wrote reviews in the <code>reviews</code> table but do not exist in the <code>users</code> table. Hint: use a <code>RIGHT JOIN</code> to keep all the reviews, and then look for the rows where the <code>user_id</code> from the <code>users</code> table <code>IS NULL</code>.</li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> reviews.user_id</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> users</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RIGHT</span> <span class="kw">JOIN</span> reviews <span class="kw">ON</span> users.user_id <span class="op">=</span> reviews.user_id</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> users.user_id <span class="kw">IS</span> <span class="kw">NULL</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">user_id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">-0b8gEy62r6bHDaaCHWyVA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-4gBNDCEv6qTm55abgHxCQ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-7LfdqX286W8zJ01ljY_SQ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-80hvfhwF2PdPWitXOGLng</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-896HwNelQJLFZUqW81Hsw</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-AOinMZ5MAIVqqfWO5UPTg</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-c9CcJX1miuOGaHQuY2oWA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-F8z6JmU5-601IC0QFtJLA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-FiCSCiO6FJf38UG-4SsDg</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-fVuUmA8BbcgU7j3gqlvAQ</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<p>There are 10 users who wrote 14,028 reviews and who are not in the users table.</p>
+</div>
+</div>
+</div>
+</div>
+<ol start="7" type="1">
+<li>Write a query to ask a question that you think is interesting. Provide both the question (in words) as well as the SQL code and results.</li>
+</ol>
+<section id="best-practice" class="level2">
+<h2 class="anchored" data-anchor-id="best-practice">Best practice</h2>
+<p>It is always a good idea to terminate the <strong>SQL</strong> connection when you are done with it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>DBI<span class="sc">::</span><span class="fu">dbDisconnect</span>(con_yelp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

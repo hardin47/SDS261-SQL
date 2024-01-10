@@ -38,7 +38,7 @@ library(tidyverse)
 
 ---
 
-1. What is a SQL server?.[^1]
+1. What is a **SQL** server?.[^1]
    (a) A relational database management system.
    (b) A software whose main purpose is to store and retrieve data.
    (c) A highly secure server and does not allow any database file manipulation during execution.
@@ -217,6 +217,57 @@ library(tidyverse)
 
 ---
 
+19. What is the purpose of a `JOIN`?[^19]  
+    (a) it filters the rows returned by the `SELECT` statement.
+    (b) it specifies the columns to be retrieved.
+    (c) it combines rows from two or more tables based on a related column.
+    (d) it orders the results in ascending or descending order.
+
+[^19]: c. it combines rows from two or more tables based on a related column.
+
+---
+
+20. What is the purpose of the UNION operator in SQL?[^20]
+    (a) it combines the results of two or more `SELECT` statements. 
+    (b) it performs a pattern match on a string.
+    (c) it retrieves the maximum value in a column.
+    (d) it filters the rows returned by the `SELECT` statement.
+
+[^20]: a. it combines the results of two or more `SELECT` statements.
+
+---
+
+21. What is the purpose of the `INNER JOIN` in SQL?[^21]
+    (a) it retrieves the maximum value in a column.
+    (b) it combines rows from two or more tables based on a related column. 
+    (c) it filters the rows returned by the SELECT statement.
+    (d) it performs a pattern match on a string.
+
+[^21]: b. it combines rows from two or more tables based on a related column.
+
+---
+
+22. What is the purpose of the `LEFT JOIN` in SQL?[^22]
+    (a) it combines rows from two or more tables based on a related column.
+    (b) it retrieves the maximum value in a column.
+    (c) it filters the rows returned by the `SELECT` statement. 
+    (d) it performs a pattern match on a string.
+
+[^22]: a. it combines rows from two or more tables based on a related column.
+
+---
+
+23. `RIGHT JOIN` keeps all the rows in ...?[^23]  
+    (a) the first table.
+    (b) the second table.
+    (c) both tables.
+    (d) neither table
+
+[^19]: a. the first table
+
+---
+
+
 <!--look at exercises: https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/block022_regular-expression.md
 
 which reg expr matches all countries with "ee"
@@ -316,16 +367,6 @@ str_extract("Episode 2: The pie whisperer. (4 August 2015)", "\\.")
 
 ---
 
-16. What is the most common type of join?[^16]  
-    (a) INNER JOIN
-    (b) JOINED TABLE
-    (c) INSIDE JOIN
-    (d) JOINED
-
-[^16]: a. INNER JOIN
-
----
-
 17. Which operator is used to search for a specified pattern in a column?[^17]
     (a) LIKE
     (b) GET
@@ -335,7 +376,7 @@ str_extract("Episode 2: The pie whisperer. (4 August 2015)", "\\.")
 
 ---
 
-18. With SQL, how do you select all the records from a table named "Persons" where the value of the column "FirstName" starts with an "a"?[^18]
+18. With **SQL**, how do you select all the records from a table named "Persons" where the value of the column "FirstName" starts with an "a"?[^18]
     (a) SELECT * FROM Persons WHERE FirstName LIKE 'a%'
     (b) SELECT * FROM Persons WHERE FirstName = '%a%'
     (c) SELECT * FROM Persons WHERE FirstName LIKE '%a'
@@ -355,7 +396,7 @@ str_extract("Episode 2: The pie whisperer. (4 August 2015)", "\\.")
 
 ---
 
-20. Which SQL statement updates data in a database?[^20]
+20. Which **SQL** statement updates data in a database?[^20]
     (a) SAVE AS 
     (b) MODIFY
     (c) SAVE
@@ -365,7 +406,7 @@ str_extract("Episode 2: The pie whisperer. (4 August 2015)", "\\.")
 
 ---
 
-21. Which SQL statement deletes data from a database?[^21]
+21. Which **SQL** statement deletes data from a database?[^21]
     (a) REMOVE
     (b) DELETE
     (c) COLLAPSE
@@ -382,7 +423,7 @@ str_extract("Episode 2: The pie whisperer. (4 August 2015)", "\\.")
 
 ---
 
-23. Which SQL statement inserts new data in a database?[^23]
+23. Which **SQL** statement inserts new data in a database?[^23]
     (a) ADD RECORD
     (b) INSERT INTO
     (c) ADD NEW
@@ -392,7 +433,7 @@ str_extract("Episode 2: The pie whisperer. (4 August 2015)", "\\.")
 
 ---
 
-24. With SQL, how can you insert a new record into the "Persons" table?[^24]
+24. With **SQL**, how can you insert a new record into the "Persons" table?[^24]
     (a) INSERT INTO Persons VALUES ('Jimmy', 'Jackson')
     (b) INSERT ('Jimmy', 'Jacskon') INTO Persons
     (c) INSERT VALUES ('Jimmy', 'Jackson') INTO Persons
@@ -401,7 +442,7 @@ str_extract("Episode 2: The pie whisperer. (4 August 2015)", "\\.")
 
 ---
 
-25. With SQL, how can you insert "Olsen" as the "LastName" in the "Persons" table?[^25]
+25. With **SQL**, how can you insert "Olsen" as the "LastName" in the "Persons" table?[^25]
     (a) INSERT INTO Persons (LastName) VALUES ('Olsen')
     (b) INSERT INTO Persons ('Olsen) INTO LastName
     (c) INSERT ('Olsen') INTO Persons (LastName)
@@ -420,7 +461,7 @@ str_extract("Episode 2: The pie whisperer. (4 August 2015)", "\\.")
 
 ---
 
-27. With SQL, how can you delete the records where the "FirstName" is "Peter" in the Persons Table?[^27]
+27. With **SQL**, how can you delete the records where the "FirstName" is "Peter" in the Persons Table?[^27]
     (a) DELETE FROM Persons WHERE FirstName='Peter'
     (b) DELETE FirstName='Peter' FROM Persons
     (c) DELETE ROW FirstName='Peter' FROM Persons
