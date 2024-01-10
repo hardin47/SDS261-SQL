@@ -263,11 +263,34 @@ library(tidyverse)
     (c) both tables.
     (d) neither table
 
-[^19]: a. the first table
+[^23]: a. the first table
 
 ---
 
+24. Who is removed in a `RIGHT JOIN`?[^24]
+    (a) Mick
+    (b) John
+    (c) Paul
+    (d) Keith
+ 
+```{r}
+#| echo: false
+library(cowplot)
+library(ggpubr)
 
+fig1_path <- "images/members.jpg"
+fig2_path <- "images/instruments.jpg"
+
+fig1 <- ggdraw() + draw_image(fig1_path)
+fig2 <- ggdraw() + draw_image(fig2_path)
+
+ggarrange(fig1, fig2, ncol = 2)
+```
+
+[^24]: a. the first table
+ 
+
+---
 <!--look at exercises: https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/block022_regular-expression.md
 
 which reg expr matches all countries with "ee"
