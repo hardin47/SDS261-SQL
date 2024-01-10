@@ -43,6 +43,29 @@ con_yelp <- DBI::dbConnect(
 SHOW TABLES;
 ```
 
+Today's lab will provide practice working with **SQL** clauses in **DBeaver**.  Don't forget the importance of the <a href = "https://st47s.com/SDS261/Notes/03-sql-verbs.html" target = "_blank">order of the **SQL** clauses</a>. 
+
+The goals for lab 3 include:
+
+* additional working with clauses in **SQL**.
+* understanding each of `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `ORDER BY`, and `LIMIT`.
+* practicing running **SQL** queries in a **SQL** client, **DBeaver**.
+* `JOIN`ing tables
+
+
+## Advice for turning in the assignment
+
+* Be sure to indicate (in the .sql file) which problem is being answered with which **SQL** code.  Use the following syntax to comment within a .sql file: `/* here is where comments go */`.  Indeed, feel free to *copy the question* into the .sql file so that you have it for your own records.
+
+* save the .Rproj file somewhere you can find it.  Don't keep everything in your downloads folder.  Maybe make a folder called `SDS261` or something.  That folder could live on your Desktop.  Or maybe in your Dropbox.  
+
+* The **SQL** document should be saved in the **R** Project as `lab3-sds261-yourlastname-yourfirstname.sql`.  You will have to navigate to the **R** Project to save the **DBeaver** file in the correct place.
+
+* Connect to the `yelp` database, which contains the `businesses`, `reviews`, and `users` tables.  See README file (or lab 1) for connection details.
+
+
+##  Assignment
+
 
 1. For each of the three tables in the `yelp` database, identify the number of records and the variables.  (That means, write at least a sentence for each table.)
 

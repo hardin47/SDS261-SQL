@@ -209,6 +209,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+<p>Today’s lab will provide practice working with <strong>SQL</strong> clauses in <strong>DBeaver</strong>. Don’t forget the importance of the <a href="https://st47s.com/SDS261/Notes/03-sql-verbs.html" target="_blank">order of the <strong>SQL</strong> clauses</a>.</p>
+<p>The goals for lab 3 include:</p>
+<ul>
+<li>additional working with clauses in <strong>SQL</strong>.</li>
+<li>understanding each of <code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, <code>GROUP BY</code>, <code>HAVING</code>, <code>ORDER BY</code>, and <code>LIMIT</code>.</li>
+<li>practicing running <strong>SQL</strong> queries in a <strong>SQL</strong> client, <strong>DBeaver</strong>.</li>
+<li><code>JOIN</code>ing tables</li>
+</ul>
+<section id="advice-for-turning-in-the-assignment" class="level2">
+<h2 class="anchored" data-anchor-id="advice-for-turning-in-the-assignment">Advice for turning in the assignment</h2>
+<ul>
+<li><p>Be sure to indicate (in the .sql file) which problem is being answered with which <strong>SQL</strong> code. Use the following syntax to comment within a .sql file: <code>/* here is where comments go */</code>. Indeed, feel free to <em>copy the question</em> into the .sql file so that you have it for your own records.</p></li>
+<li><p>save the .Rproj file somewhere you can find it. Don’t keep everything in your downloads folder. Maybe make a folder called <code>SDS261</code> or something. That folder could live on your Desktop. Or maybe in your Dropbox.</p></li>
+<li><p>The <strong>SQL</strong> document should be saved in the <strong>R</strong> Project as <code>lab3-sds261-yourlastname-yourfirstname.sql</code>. You will have to navigate to the <strong>R</strong> Project to save the <strong>DBeaver</strong> file in the correct place.</p></li>
+<li><p>Connect to the <code>yelp</code> database, which contains the <code>businesses</code>, <code>reviews</code>, and <code>users</code> tables. See README file (or lab 1) for connection details.</p></li>
+</ul>
+</section>
+<section id="assignment" class="level2">
+<h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
 <ol type="1">
 <li>For each of the three tables in the <code>yelp</code> database, identify the number of records and the variables. (That means, write at least a sentence for each table.)</li>
 </ol>
@@ -230,6 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="7" type="1">
 <li>Write a query to ask a question that you think is interesting. Provide both the question (in words) as well as the SQL code and results.</li>
 </ol>
+</section>
 <section id="best-practice" class="level2">
 <h2 class="anchored" data-anchor-id="best-practice">Best practice</h2>
 <p>It is always a good idea to terminate the <strong>SQL</strong> connection when you are done with it.</p>
