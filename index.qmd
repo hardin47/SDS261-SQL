@@ -58,13 +58,13 @@ schedule <- tribble(
   '',
   
     "Day 4 <br> 1.11.24", 'Regular Expressions I',
-  '{{< fa book-open >}} <a href="https://st47s.com/SDS261/Notes/07-regex.html" target = "_blank">regex I</a> <br> <i class="fas fa-book-open"></i> {{< fa book-open >}} <a href="https://mdsr-book.github.io/mdsr3e/19-text.html" target = "_blank"> MDSR 19</a> <br> {{< fa book-open >}} <a href="https://r4ds.hadley.nz/regexps" target = "_blank"> R4DS 15</a> <br> {{< fa desktop >}} <a href="https://sds261-sql.netlify.app/slides/2024-01-11-regex1.html" target = "_blank"> regex I</a> <br> {{< fa pencil >}} <a href="" target = "_blank">WS 4</a>',
-  '{{< fa code >}} <a href="" target = "_blank">Lab 4</a>',
+  '{{< fa book-open >}} <a href="https://st47s.com/SDS261/Notes/07-regex.html" target = "_blank">regex I</a> <br> <i class="fas fa-book-open"></i> {{< fa book-open >}} <a href="https://mdsr-book.github.io/mdsr3e/19-text.html" target = "_blank"> MDSR 19</a> <br> {{< fa book-open >}} <a href="https://r4ds.hadley.nz/regexps" target = "_blank"> R4DS 15</a> <br> {{< fa desktop >}} <a href="https://sds261-sql.netlify.app/slides/2024-01-11-regex1.html" target = "_blank"> regex I</a> <br> {{< fa pencil >}} <a href="https://sds261-sql.netlify.app/handout/ws4_sds261_j24.pdf" target = "_blank">WS 4</a>',
+  '{{< fa code >}} <a href="https://sds261-sql.netlify.app/handout/lab4_regex_sds261_j24.html" target = "_blank">Lab 4</a>',
   '',
 
   
     "Day 5 <br> 1.12.24", 'Regular Expressions II',
-  '{{< fa book-open >}} <a href="https://st47s.com/SDS261/Notes/07-regex.html" target = "_blank">regex II</a> <br> <i class="fas fa-book-open"></i> {{< fa book-open >}} <a href="https://mdsr-book.github.io/mdsr3e/19-text.html" target = "_blank"> MDSR 19</a> <br> {{< fa book-open >}} <a href="https://r4ds.hadley.nz/regexps" target = "_blank"> R4DS 15</a> <br> {{< fa desktop >}} <a href="https://sds261-sql.netlify.app/slides/2024-01-12-regex2.html" target = "_blank"> regex II</a> <br> {{< fa pencil >}} <a href="" target = "_blank">WS 5</a>',
+  '{{< fa book-open >}} <a href="https://st47s.com/SDS261/Notes/07-regex.html" target = "_blank">regex II</a> <br> <i class="fas fa-book-open"></i> {{< fa book-open >}} <a href="https://mdsr-book.github.io/mdsr3e/19-text.html" target = "_blank"> MDSR 19</a> <br> {{< fa book-open >}} <a href="https://r4ds.hadley.nz/regexps" target = "_blank"> R4DS 15</a> <br> {{< fa desktop >}} <a href="https://sds261-sql.netlify.app/slides/2024-01-12-regex2.html" target = "_blank"> regex II</a> <br> {{< fa pencil >}} <a href="https://sds261-sql.netlify.app/handout/ws5_sds261_j24.pdf" target = "_blank">WS 5</a>',
   '(no lab)',
   '{{< fa comments >}} <a href = " https://rstudio.github.io/cheatsheets/html/strings.html" target = "_blank">reg expr cheat sheet</a>',
  

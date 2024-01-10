@@ -652,33 +652,44 @@ Jo Hardin
 <section>
 <section id="some-examples" class="title-slide slide level1 center">
 <h1>Some examples</h1>
-<p>I have found that the best way to truly understand regular expressions is to work through as many examples as possible (actually, maybe this is true about learning anything new!). For the following examples, try to figure out the solution on your own before looking at the footnote which contains the solution.</p>
+<p>More examples for practice!</p>
 </section>
-<h3 id="proper-times-and-dates">Proper times and dates</h3>
+<section id="proper-times-and-dates" class="slide level2">
+<h2>Proper times and dates</h2>
 <ul>
 <li>Match dates like 01/15/24 and also like 01.15.24 and like 01-15-24.</li>
 </ul>
-<h3 id="proper-times-and-dates-1">Proper times and dates</h3>
+</section>
+<section id="proper-times-and-dates-1" class="slide level2">
+<h2>Proper times and dates</h2>
 <ul>
 <li>Match dates like 01/15/24 and also like 01.15.24 and like 01-15-24.</li>
 </ul>
 <p>“\d\d.\d\d.\d\d” will work, but it will also match 123456.</p>
 <p>It is better to replace the dot with the characters of interest: “\d\d[/.\-]\d\d[/.\-]\d\d”. Remember that a dot inside a character class is just a dot.</p>
-<h3 id="proper-times-and-dates-2">Proper times and dates</h3>
+</section>
+<section id="proper-times-and-dates-2" class="slide level2">
+<h2>Proper times and dates</h2>
 <ul>
 <li>Match a time of day such as “9:17 am” or “12:30 pm”. Require that the time be a valid time (not “99:99 pm”). Assume no leading zeros (i.e., “09:17 am”).</li>
 </ul>
-<h3 id="proper-times-and-dates-3">Proper times and dates</h3>
+</section>
+<section id="proper-times-and-dates-3" class="slide level2">
+<h2>Proper times and dates</h2>
 <ul>
 <li>Match a time of day such as “9:17 am” or “12:30 pm”. Require that the time be a valid time (not “99:99 pm”). Assume no leading zeros (i.e., “09:17 am”).</li>
 </ul>
 <p>“(1[012]|[1-9]):[0-5][0-9] (am|pm)”</p>
-<h3 id="alternation-operator">Alternation operator</h3>
+</section>
+<section id="alternation-operator" class="slide level2">
+<h2>Alternation operator</h2>
 <p>The “or” operator, <code>|</code> has the lowest precedence and parentheses have the highest precedence, which means that parentheses get evaluated before “or”.</p>
 <ul>
 <li>What is the difference between “\bMary|Jane|Sue\b” and “\b(Mary|Jane|Sue)\b”?</li>
 </ul>
-<h3 id="alternation-operator-1">Alternation operator</h3>
+</section>
+<section id="alternation-operator-1" class="slide level2">
+<h2>Alternation operator</h2>
 <p>The “or” operator, <code>|</code> has the lowest precedence and parentheses have the highest precedence, which means that parentheses get evaluated before “or”.</p>
 <ul>
 <li>What is the difference between “\bMary|Jane|Sue\b” and “\b(Mary|Jane|Sue)\b”?</li>
@@ -687,7 +698,8 @@ Jo Hardin
 
 <div class="footer footer-default">
 
-</div></section>
+</div>
+</section></section>
     </div>
   </div>
 

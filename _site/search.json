@@ -1573,5 +1573,47 @@
     "title": "Lab 3 - SQL joins",
     "section": "Assignment",
     "text": "Assignment\n\nFor each of the three tables in the yelp database, identify the number of records and the variables. (That means, write at least a sentence for each table.)\n\n\nFind the user with the most reviews. What is the person’s name, and how many reviews did they make?\n\n\nWhat cities are represented in the businesses table? Find out by querying the number of businesses per city. Use LIMIT to start, just in case there are hundreds of cities. Write down a few of the city names. Do you notice anything interesting?\n\n\nFind the businesses in “Carefree” (a city in Arizona). Write down the names of a few of the businesses.\n\n\nCount the number of records resulting when the query connects the users with the reviews using a JOIN. How many records are there? What does that tell you about the two tables?\n\n\nHow many users wrote reviews in the reviews table but do not exist in the users table. Hint: use a RIGHT JOIN to keep all the reviews, and then look for the rows where the user_id from the users table IS NULL.\n\n\nWrite a query to ask a question that you think is interesting. Provide both the question (in words) as well as the SQL code and results."
+  },
+  {
+    "objectID": "slides/2024-01-11-regex1.html#proper-times-and-dates",
+    "href": "slides/2024-01-11-regex1.html#proper-times-and-dates",
+    "title": "Regular Expressions I",
+    "section": "Proper times and dates",
+    "text": "Proper times and dates\n\nMatch dates like 01/15/24 and also like 01.15.24 and like 01-15-24."
+  },
+  {
+    "objectID": "slides/2024-01-11-regex1.html#proper-times-and-dates-1",
+    "href": "slides/2024-01-11-regex1.html#proper-times-and-dates-1",
+    "title": "Regular Expressions I",
+    "section": "Proper times and dates",
+    "text": "Proper times and dates\n\nMatch dates like 01/15/24 and also like 01.15.24 and like 01-15-24.\n\n“\\d\\d.\\d\\d.\\d\\d” will work, but it will also match 123456.\nIt is better to replace the dot with the characters of interest: “\\d\\d[/.\\-]\\d\\d[/.\\-]\\d\\d”. Remember that a dot inside a character class is just a dot."
+  },
+  {
+    "objectID": "slides/2024-01-11-regex1.html#proper-times-and-dates-2",
+    "href": "slides/2024-01-11-regex1.html#proper-times-and-dates-2",
+    "title": "Regular Expressions I",
+    "section": "Proper times and dates",
+    "text": "Proper times and dates\n\nMatch a time of day such as “9:17 am” or “12:30 pm”. Require that the time be a valid time (not “99:99 pm”). Assume no leading zeros (i.e., “09:17 am”)."
+  },
+  {
+    "objectID": "slides/2024-01-11-regex1.html#proper-times-and-dates-3",
+    "href": "slides/2024-01-11-regex1.html#proper-times-and-dates-3",
+    "title": "Regular Expressions I",
+    "section": "Proper times and dates",
+    "text": "Proper times and dates\n\nMatch a time of day such as “9:17 am” or “12:30 pm”. Require that the time be a valid time (not “99:99 pm”). Assume no leading zeros (i.e., “09:17 am”).\n\n“(1[012]|[1-9]):[0-5][0-9] (am|pm)”"
+  },
+  {
+    "objectID": "slides/2024-01-11-regex1.html#alternation-operator",
+    "href": "slides/2024-01-11-regex1.html#alternation-operator",
+    "title": "Regular Expressions I",
+    "section": "Alternation operator",
+    "text": "Alternation operator\nThe “or” operator, | has the lowest precedence and parentheses have the highest precedence, which means that parentheses get evaluated before “or”.\n\nWhat is the difference between “\\bMary|Jane|Sue\\b” and “\\b(Mary|Jane|Sue)\\b”?"
+  },
+  {
+    "objectID": "slides/2024-01-11-regex1.html#alternation-operator-1",
+    "href": "slides/2024-01-11-regex1.html#alternation-operator-1",
+    "title": "Regular Expressions I",
+    "section": "Alternation operator",
+    "text": "Alternation operator\nThe “or” operator, | has the lowest precedence and parentheses have the highest precedence, which means that parentheses get evaluated before “or”.\n\nWhat is the difference between “\\bMary|Jane|Sue\\b” and “\\b(Mary|Jane|Sue)\\b”?\n\nIn the former, the regex will search for “\\bMary” or “Jane” or “Sue\\b”. In the latter, the regex will search for “\\bMary\\b or”\\bJane\\b” or “\\bSue\\b”. That is, Janet will match the former but not the latter."
   }
 ]
