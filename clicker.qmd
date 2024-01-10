@@ -130,11 +130,11 @@ library(tidyverse)
 ---
 
 10. With SQL, how do you select all the records from a table named "Persons" where the value of the column "FirstName" is "Peter"?[^10]
-   (a) SELECT * FROM Persons WHERE FirstName<>'Peter'
+   (a) SELECT * FROM Persons WHERE FirstName <> 'Peter'
    (b) SELECT * FROM Persons WHERE FirstName = 'Peter'
    (c) SELECT * FROM Persons WHERE FirstName == 'Peter'
    (d) SELECT [all] FROM Persons WHERE FirstName LIKE 'Peter'
-   (e) SELECT [all] FROM Persons WHERE FirstName='Peter'
+   (e) SELECT [all] FROM Persons WHERE FirstName = 'Peter'
    
 [^10]: b. SELECT * FROM Persons WHERE FirstName = 'Peter'
 
@@ -151,18 +151,18 @@ library(tidyverse)
 ---
 
 12. Which operator selects values within a range?[^12]
-   (a) BEWTEEN
-   (b) WITHIN
-   (c) RANGE
+    (a) BEWTEEN
+    (b) WITHIN
+    (c) RANGE
 
 [^12]: a. BEWTEEN
 
 ---
 
 13. With SQL, how do you select all the records from a table named "Persons" where the "LastName" is alphabetically between (and including) "Hansen" and "Pettersen"?[^13]
-    (a) SELECT LastName>'Hansen' AND LastName<'Pettersen' FROM Persons
+    (a) SELECT LastName > 'Hansen' AND LastName < 'Pettersen' FROM Persons
     (b) SELECT * FROM Persons WHERE LastName BETWEEN 'Hansen' AND 'Pettersen'
-    (c) SELECT * FROM Persons WHERE LastName>'Hansen' AND LastName<'Pettersen'
+    (c) SELECT * FROM Persons WHERE LastName > 'Hansen' AND LastName < 'Pettersen'
 
 [^13]: b. SELECT * FROM Persons WHERE LastName BETWEEN 'Hansen' AND 'Pettersen'
 

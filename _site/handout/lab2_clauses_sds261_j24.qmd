@@ -149,25 +149,29 @@ Holy cow, one of the trips is 5,005,013 miles!  That can't be right!??!
 #| connection: con_taxi
 #| unilur-solution: true
 
-SELECT DISTINCT COUNT(*) AS num_code, rate_code
-FROM yellow_old
-GROUP BY rate_code
-ORDER BY num_code DESC
-LIMIT 0, 20;
-```
-```{sql}
-#| connection: con_taxi
-#| unilur-solution: true
-
 SELECT DISTINCT rate_code
 FROM yellow_old
 LIMIT 0, 20;
 ```
 
+```{sql}
+#| connection: con_taxi
+#| unilur-solution: true
+
+SELECT COUNT(*) AS num_code, rate_code
+FROM yellow_old
+GROUP BY rate_code
+ORDER BY num_code DESC
+LIMIT 0, 20;
+```
+
+
 ```{block}
 #| unilur-solution: true
 
-There are 11 different rate codes. Unfortunately, I don't know what all the rate codes mean.
+There are 11 different rate codes. Rate codes are different because the taxi charges you a different rate if, for example, you go to JFK or go very far away.
+
+The second solution not only gave rate codes, but also the number of transactions for each rate code.
 ```
 
 7. Start with the following lines of query:

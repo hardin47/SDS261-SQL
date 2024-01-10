@@ -1332,7 +1332,7 @@ CRD
 <h2>SELECT … FROM</h2>
 <p>How do we know how many taxi rides are recorded? Two different ways of counting the rows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>), <span class="fu">sum</span>(<span class="dv">1</span>) <span class="kw">FROM</span> yellow_old <span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">14</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>), <span class="fu">SUM</span>(<span class="dv">1</span>) <span class="kw">FROM</span> yellow_old <span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">14</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -1345,7 +1345,7 @@ CRD
 COUNT(*)
 </th>
 <th style="text-align:right;">
-sum(1)
+SUM(1)
 </th>
 </tr>
 </thead>
@@ -1556,7 +1556,7 @@ dropoff
 </div>
 </div>
 </section>
-<section id="select-from-5" class="slide level2">
+<section id="select-from-5" class="slide level2 scrollable">
 <h2>SELECT … FROM</h2>
 <p>Solution 1: two layers of <code>SELECT</code></p>
 <ul>
@@ -1708,7 +1708,7 @@ length_time
 </div>
 </div>
 </section>
-<section id="select-from-6" class="slide level2">
+<section id="select-from-6" class="slide level2 scrollable">
 <h2>SELECT … FROM</h2>
 <p>Solution 2: apply the <code>STR_TO_DATE()</code> function inside the <code>TIMEDIFF()</code> function</p>
 <div class="cell">
@@ -2192,7 +2192,7 @@ CSH
 </section>
 <section id="where-2" class="slide level2">
 <h2>WHERE</h2>
-<p><code>BETWEEN</code> can be used to specify a range of values for a numeric value.</p>
+<p><code>BETWEEN</code> can be used to specify a range of values for a numeric value. <code>BETWEEN</code> is inclusive.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">SELECT</span> payment_type, fare_amount, tip_amount, total_amount</span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="kw">FROM</span> yellow_old</span>
@@ -2994,11 +2994,12 @@ total_amount
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
-<span id="cb21-2"><a href="#cb21-2"></a>       <span class="fu">sum</span>(<span class="dv">1</span>) <span class="kw">as</span> num_transactions_also,</span>
-<span id="cb21-3"><a href="#cb21-3"></a>       payment_type </span>
-<span id="cb21-4"><a href="#cb21-4"></a><span class="kw">FROM</span> yellow_old</span>
-<span id="cb21-5"><a href="#cb21-5"></a><span class="kw">WHERE</span> tip_amount <span class="kw">BETWEEN</span> <span class="dv">10</span> <span class="kw">and</span> <span class="dv">20</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-2"><a href="#cb21-2"></a>       <span class="fu">SUM</span>(<span class="dv">1</span>) <span class="kw">AS</span> num_transactions_also,</span>
+<span id="cb21-3"><a href="#cb21-3"></a>       <span class="fu">SUM</span>(<span class="dv">2</span>) <span class="kw">AS</span> double_transactions,</span>
+<span id="cb21-4"><a href="#cb21-4"></a>       payment_type </span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="kw">FROM</span> yellow_old</span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="kw">WHERE</span> tip_amount <span class="kw">BETWEEN</span> <span class="dv">10</span> <span class="kw">and</span> <span class="dv">20</span></span>
+<span id="cb21-7"><a href="#cb21-7"></a><span class="kw">GROUP</span> <span class="kw">BY</span> payment_type;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -3013,6 +3014,9 @@ num_transactions
 <th style="text-align:right;">
 num_transactions_also
 </th>
+<th style="text-align:right;">
+double_transactions
+</th>
 <th style="text-align:left;">
 payment_type
 </th>
@@ -3026,6 +3030,9 @@ payment_type
 <td style="text-align:right;">
 213872
 </td>
+<td style="text-align:right;">
+427744
+</td>
 <td style="text-align:left;">
 CRD
 </td>
@@ -3036,6 +3043,9 @@ CRD
 </td>
 <td style="text-align:right;">
 78
+</td>
+<td style="text-align:right;">
+156
 </td>
 <td style="text-align:left;">
 CSH
@@ -3048,6 +3058,9 @@ CSH
 <td style="text-align:right;">
 3
 </td>
+<td style="text-align:right;">
+6
+</td>
 <td style="text-align:left;">
 DIS
 </td>
@@ -3059,6 +3072,9 @@ DIS
 <td style="text-align:right;">
 7
 </td>
+<td style="text-align:right;">
+14
+</td>
 <td style="text-align:left;">
 NOC
 </td>
@@ -3069,6 +3085,9 @@ NOC
 </td>
 <td style="text-align:right;">
 609
+</td>
+<td style="text-align:right;">
+1218
 </td>
 <td style="text-align:left;">
 UNK
@@ -3190,7 +3209,7 @@ UNK
 </div>
 </div>
 </section>
-<section id="group-by-2" class="slide level2">
+<section id="group-by-2" class="slide level2 scrollable">
 <h2>GROUP BY</h2>
 <p><code>GROUP BY</code> will work applied to multiple columns.</p>
 <p>What is <code>wday</code>?</p>
@@ -3400,7 +3419,7 @@ Monday
 </div>
 </div>
 </section>
-<section id="order-by" class="slide level2">
+<section id="order-by" class="slide level2 scrollable">
 <h2>ORDER BY</h2>
 <p><code>ORDER BY</code> allows us to look at interesting aspects of the data by sorting the data.</p>
 <div class="cell">
@@ -3611,7 +3630,7 @@ Friday
 </div>
 <p>WHAT?!?!! How in the world was one of the fares -$612.40?</p>
 </section>
-<section id="order-by-1" class="slide level2">
+<section id="order-by-1" class="slide level2 scrollable">
 <h2>ORDER BY</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
@@ -3825,7 +3844,7 @@ Friday
 </div>
 <p>$950 is a lot to pay for a cab ride! But in NYC, I’d believe it.</p>
 </section>
-<section id="order-by-2" class="slide level2">
+<section id="order-by-2" class="slide level2 scrollable">
 <h2>ORDER BY</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_transactions, </span>
@@ -4182,11 +4201,12 @@ Friday
 <p>While it worked out quite well for us that <code>HAVING</code> was able to filter the data based on the results set, the use of <code>HAVING</code> was quite onerous because the entire data set was considered before the filter was applied. That is, if the filter can be done on the original data using <code>WHERE</code>, the query will be much faster and more efficient.</p>
 <p>Note: <code>HAVING</code> requires a <code>GROUP BY</code> clause. And the variable(s) used in <code>HAVING</code> must also be part of the <code>GROUP BY</code> clause.</p>
 </section>
-<section id="limit" class="slide level2">
+<section id="limit" class="slide level2 scrollable">
 <h2>LIMIT</h2>
-<p><code>LIMIT</code> truncates the query to specified rows.</p>
+<p><code>LIMIT</code> truncates the query to specified rows. The first number is the offset (i.e., the number of rows to skip), the second number is the (maximum) number of rows to return. Here, we return rows 15428119 through 15428128.</p>
+<p>The first number is optional.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> yellow_old <span class="kw">LIMIT</span> <span class="dv">15428118</span>, <span class="dv">15428128</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> yellow_old <span class="kw">LIMIT</span> <span class="dv">15428118</span>, <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 
 <table>
@@ -4818,7 +4838,7 @@ CRD
 </div>
 </div>
 </section>
-<section id="saving-sql-queries-as-r-objects" class="slide level2">
+<section id="saving-sql-queries-as-r-objects" class="slide level2 scrollable">
 <h2>Saving <strong>SQL</strong> queries as <strong>R</strong> objects</h2>
 <p>If you are working in <strong>R</strong> to run <strong>SQL</strong> commands, you may want to use the query output for further analysis or visualizations.</p>
 <ul>
@@ -4837,7 +4857,7 @@ CRD
 <span id="cb29-9"><a href="#cb29-9"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="saving-sql-queries-as-r-objects-1" class="slide level2">
+<section id="saving-sql-queries-as-r-objects-1" class="slide level2 scrollable">
 <h2>Saving <strong>SQL</strong> queries as <strong>R</strong> objects</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1"></a><span class="in">```{r}</span></span>

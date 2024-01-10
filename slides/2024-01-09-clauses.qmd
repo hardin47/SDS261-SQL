@@ -131,7 +131,7 @@ How do we know how many taxi rides are recorded?  Two different ways of counting
 ```{sql}
 #| connection: con_taxi
 
-SELECT COUNT(*), sum(1) FROM yellow_old LIMIT 0, 14;
+SELECT COUNT(*), SUM(1) FROM yellow_old LIMIT 0, 14;
 
 ```
 
@@ -172,7 +172,7 @@ SELECT
 ```
 
 
-## SELECT ... FROM
+## SELECT ... FROM {.scrollable}
 
 Solution 1:  two layers of `SELECT`  
 
@@ -195,7 +195,7 @@ FROM (
 LIMIT 0, 20;
 ```
 
-## SELECT ... FROM
+## SELECT ... FROM {.scrollable}
 
 Solution 2: apply the `STR_TO_DATE()` function inside the `TIMEDIFF()` function 
 
@@ -269,7 +269,7 @@ LIMIT 0, 10;
 
 ## WHERE
 
-`BETWEEN` can be used to specify a range of values for a numeric value.
+`BETWEEN` can be used to specify a range of values for a numeric value.  `BETWEEN` is inclusive.
 
 ```{sql}
 #| connection: con_taxi
@@ -364,7 +364,8 @@ The `GROUP BY` clause will direct **SQL** to carry out the query separately for 
 #| connection: con_taxi
 
 SELECT COUNT(*) AS num_transactions, 
-       sum(1) as num_transactions_also,
+       SUM(1) AS num_transactions_also,
+       SUM(2) AS double_transactions,
        payment_type 
 FROM yellow_old
 WHERE tip_amount BETWEEN 10 and 20
@@ -389,7 +390,7 @@ GROUP BY payment_type;
 ```
 
 
-## GROUP BY
+## GROUP BY {.scrollable}
 
 `GROUP BY` will work applied to multiple columns.  
 
@@ -409,7 +410,7 @@ GROUP BY payment_type, wday;
 ```
 
 
-## ORDER BY
+## ORDER BY {.scrollable}
 
 `ORDER BY` allows us to look at interesting aspects of the data by sorting the data.
 
@@ -429,7 +430,7 @@ ORDER BY lowest_fare ASC;
 WHAT?!?!!  How in the world was one of the fares -$612.40?
 
 
-## ORDER BY
+## ORDER BY {.scrollable}
 
 ```{sql}
 #| connection: con_taxi
@@ -446,7 +447,7 @@ ORDER BY highest_fare DESC;
 
 $950 is a lot to pay for a cab ride!  But in NYC, I'd believe it.
 
-## ORDER BY
+## ORDER BY {.scrollable}
 
 ```{sql}
 #| connection: con_taxi
@@ -497,19 +498,21 @@ While it worked out quite well for us that `HAVING` was able to filter the data 
 Note: `HAVING` requires a `GROUP BY` clause.  And the variable(s) used in `HAVING` must also be part of the `GROUP BY` clause.
 
 
-## LIMIT
+## LIMIT {.scrollable}
 
-`LIMIT` truncates the query to specified rows. 
+`LIMIT` truncates the query to specified rows.  The first number is the offset (i.e., the number of rows to skip), the second number is the (maximum) number of rows to return.  Here, we return rows 15428119 through 15428128.
+
+The first number is optional.
 
 ```{sql}
 #| connection: con_taxi
 
-SELECT * FROM yellow_old LIMIT 15428118, 15428128;
+SELECT * FROM yellow_old LIMIT 15428118, 10;
 
 ```
 
 
-## Saving **SQL** queries as **R** objects
+## Saving **SQL** queries as **R** objects  {.scrollable}
 
 If you are working in **R** to run **SQL** commands, you may want to use the query output for further analysis or visualizations. 
 
@@ -528,7 +531,7 @@ FROM yellow_old
 LIMIT 0, 1000;
 ```
 
-## Saving **SQL** queries as **R** objects
+## Saving **SQL** queries as **R** objects  {.scrollable}
 
 ```{r}
 #| echo: fenced
