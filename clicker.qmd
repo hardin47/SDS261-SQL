@@ -291,7 +291,7 @@ ggarrange(fig1, fig2, ncol = 2)
 
 ---
 
-25. Which variables are removed in a `RIGHT JOIN`?[^25]
+25. Which variable(s) are removed in a `RIGHT JOIN`?[^25]
     (a) name
     (b) band
     (c) plays
@@ -318,7 +318,7 @@ ggarrange(fig1, fig2, ncol = 2)
 
 ---
 
-26. In **SQL**, what happens to Mick's "plays" variables in a `FULLL JOIN`?[^26]
+26. In **SQL**, what happens to Mick's "plays" variables in a `FULL JOIN`?[^26]
     (a) Mick is removed
     (b) guitar
     (c) bass
@@ -327,7 +327,7 @@ ggarrange(fig1, fig2, ncol = 2)
 
 ```{r}
 #| echo: false
-#| out-width: 50%
+#| out-width: 40%
 
 library(cowplot)
 library(ggpubr)

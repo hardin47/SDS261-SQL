@@ -57,7 +57,7 @@ The goals for lab 3 include:
 
 * The **SQL** document should be saved in the **R** Project as `lab3-sds261-yourlastname-yourfirstname.sql`.  You will have to navigate to the **R** Project to save the **DBeaver** file in the correct place.
 
-* Connect to the `yelp` database, which contains the `businesses`, `reviews`, and `users` tables.  See README file (or lab 1) for connection details.
+* Connect to the `yelp` database, which contains the `businesses`, `reviews`, and `users` tables.  See README file for connection details.
 
 
 ```{sql}
