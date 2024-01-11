@@ -355,30 +355,30 @@ countries with "i" or "t" and ends in "land"; has "ee"; continents with "o"
 can use flights data for cities with particular names-->
 
 
-17. `grep("q[^u]", very.large.word.list)` would not match which of the following?[^17]
+27. `grep("q[^u]", very.large.word.list)` would not match which of the following?[^27]
     (a) Iraqi
     (b) Iraqian
     (c) Iraq
     (d) zaqqun (tree that "springs out of the bottom of Hell", in the Quran)
     (e) Qantas (the Australian airline)
     
-[^17]: neither c. nor e. would match.
+[^27]: neither c. nor e. would match. Inside the bracket `[^u]` matches anything other than a "u".
 
 ---
 
-17. Which of the following regex would match to both "grey" and "gray"?[^17]
+28. Which of the following regex would match to both "grey" and "gray"?[^28]
     (a) "gr[ae]y"
     (b) "gr(a|e)y"
     (c) "gray | grey"
     (d) "gr[a|e]y"
     (e) some / all of the above -- which ones?
 
-[^17]: e. all of the above. Inside a character class `|` is a normal character and would therefore match "grey" and "gray" and "gr|y".  Which is not what we want, but would work to match both "grey" and "gray".
+[^28]: e. all of the above. Inside a character class `|` is a normal character and would therefore match "grey" and "gray" and "gr|y".  Which is not what we want, but would work to match both "grey" and "gray".
 
 
 ---
 
-17. What will the result be for the following code?[^17]  
+29. What will the result be for the following code?[^29]  
     (a) 10
     (b) 1
     (c) 0
@@ -390,12 +390,12 @@ can use flights data for cities with particular names-->
 str_extract("My dog is 10 years old", "\\d")
 ``` 
     
-[^17]: b. 1 (because `\d` matches only a single digit).
+[^29]: b. 1 (because `\d` matches only a single digit).
 
 
 ---
 
-17. What will the result be for the following code?[^17]
+30. What will the result be for the following code?[^30]
     (a) .
     (b) Episode 2: The pie whisperer. (4 August 2015)
     (c) Episode
@@ -407,11 +407,11 @@ str_extract("My dog is 10 years old", "\\d")
 str_extract("Episode 2: The pie whisperer. (4 August 2015)", ".")
 ```
 
-[^17]: d. E (because `.` matches anything, and returns only a single character).
+[^30]: d. E (because `.` matches anything, and returns only a single character).
 
 ---
 
-17. What will the result be for the following code?[^17]
+31. What will the result be for the following code?[^31]
     (a) .
     (b) Episode 2: The pie whisperer. (4 August 2015)
     (c) Episode
@@ -423,11 +423,11 @@ str_extract("Episode 2: The pie whisperer. (4 August 2015)", ".")
 str_extract("Episode 2: The pie whisperer. (4 August 2015)", ".+")
 ```
 
-[^17]: b. Episode 2: The pie whisperer. (4 August 2015) (because `.` matches anything, and with the `+` it returns multiple characters).
+[^31]: b. Episode 2: The pie whisperer. (4 August 2015) (because `.` matches anything, and with the `+` it returns multiple characters).
 
 ---
 
-17. What will the result be for the following code?[^17]
+32. What will the result be for the following code?[^32]
     (a) .
     (b) Episode 2: The pie whisperer. (4 August 2015)
     (c) Episode
@@ -439,111 +439,111 @@ str_extract("Episode 2: The pie whisperer. (4 August 2015)", ".+")
 str_extract("Episode 2: The pie whisperer. (4 August 2015)", "\\.")
 ```
 
-[^17]: a. . (because `\.` matches the period, .).
+[^32]: a. . (because `\.` matches the period, .).
 
 
 ---
 
-17. Which operator is used to search for a specified pattern in a column?[^17]
+57. Which operator is used to search for a specified pattern in a column?[^57]
     (a) LIKE
     (b) GET
     (c) FROM
 
-[^17]: a. LIKE
+[^57]: a. LIKE
 
 ---
 
-18. With **SQL**, how do you select all the records from a table named "Persons" where the value of the column "FirstName" starts with an "a"?[^18]
+58. With **SQL**, how do you select all the records from a table named "Persons" where the value of the column "FirstName" starts with an "a"?[^58]
     (a) `SELECT` * FROM Persons WHERE FirstName LIKE 'a%'
     (b) `SELECT` * FROM Persons WHERE FirstName = '%a%'
     (c) `SELECT` * FROM Persons WHERE FirstName LIKE '%a'
     (c) `SELECT` * FROM Persons WHERE FirstName = 'a'
 
-[^18]: a. `SELECT` * FROM Persons WHERE FirstName LIKE 'a%'
+[^58]: a. `SELECT` * FROM Persons WHERE FirstName LIKE 'a%'
 
 ---
 
-19. Which SQL statement is used to create a database table called 'Customers'?[^19]
+59. Which SQL statement is used to create a database table called 'Customers'?[^59]
     (a) CREATE DATABASE TAB Customers
     (b) CREATE TABLE Customers
     (c) CREATE DATABASE TABLE Customers
     (d) CREATE DB Customers
 
-[^19]: b. CREATE TABLE Customers
+[^59]: b. CREATE TABLE Customers
 
 ---
 
-20. Which **SQL** statement updates data in a database?[^20]
+60. Which **SQL** statement updates data in a database?[^60]
     (a) SAVE AS 
     (b) MODIFY
     (c) SAVE
     (d) UPDATE
 
-[^20]: d. UPDATE
+[^60]: d. UPDATE
 
 ---
 
-21. Which **SQL** statement deletes data from a database?[^21]
+61. Which **SQL** statement deletes data from a database?[^61]
     (a) REMOVE
     (b) DELETE
     (c) COLLAPSE
 
-[^21]: b. DELETE
+[^61]: b. DELETE
 
 ---
 
-22. The NOT NULL constraint enforces a column to not accept NULL values.[^22]
+62. The NOT NULL constraint enforces a column to not accept NULL values.[^62]
     (a) FALSE
     (b) TRUE
 
-[^22]: b. TRUE
+[^62]: b. TRUE
 
 ---
 
-23. Which **SQL** statement inserts new data in a database?[^23]
+63. Which **SQL** statement inserts new data in a database?[^63]
     (a) ADD RECORD
     (b) INSERT INTO
     (c) ADD NEW
     (d) INSERT NEW 
  
-[^23]: b. INSERT INTO
+[^63]: b. INSERT INTO
 
 ---
 
-24. With **SQL**, how can you insert a new record into the "Persons" table?[^24]
+64. With **SQL**, how can you insert a new record into the "Persons" table?[^64]
     (a) INSERT INTO Persons VALUES ('Jimmy', 'Jackson')
     (b) INSERT ('Jimmy', 'Jacskon') INTO Persons
     (c) INSERT VALUES ('Jimmy', 'Jackson') INTO Persons
 
-[^24]: a. INSERT INTO Persons VALUES ('Jimmy', 'Jackson')
+[^64]: a. INSERT INTO Persons VALUES ('Jimmy', 'Jackson')
 
 ---
 
-25. With **SQL**, how can you insert "Olsen" as the "LastName" in the "Persons" table?[^25]
+65. With **SQL**, how can you insert "Olsen" as the "LastName" in the "Persons" table?[^65]
     (a) INSERT INTO Persons (LastName) VALUES ('Olsen')
     (b) INSERT INTO Persons ('Olsen) INTO LastName
     (c) INSERT ('Olsen') INTO Persons (LastName)
  
-[^25]: a. INSERT INTO Persons (LastName) VALUES ('Olsen')
+[^65]: a. INSERT INTO Persons (LastName) VALUES ('Olsen')
 
 ---
 
-26. How can you change "Hansen" into "Nilsen" in the "LastName" column in the Persons table?[^26]
+66. How can you change "Hansen" into "Nilsen" in the "LastName" column in the Persons table?[^66]
     (a) MODIFY Persons SET LastName='Nilsen' WHERE LastName='Hansen'
     (b) UPDATE Persons SET LastName='Hansen' INTO LastName='Nilsen'
     (c) MODIFY Persons SET LastName='Hansen' INTO LastName='Nilsen'
     (d) UPDATE Persons SET LastName='Nilsen' WHERE LastName='Hansen' 
 
-[^26]: d. UPDATE Persons SET LastName='Nilsen' WHERE LastName='Hansen' 
+[^66]: d. UPDATE Persons SET LastName='Nilsen' WHERE LastName='Hansen' 
 
 ---
 
-27. With **SQL**, how can you delete the records where the "FirstName" is "Peter" in the Persons Table?[^27]
+67. With **SQL**, how can you delete the records where the "FirstName" is "Peter" in the Persons Table?[^67]
     (a) DELETE FROM Persons WHERE FirstName='Peter'
     (b) DELETE FirstName='Peter' FROM Persons
     (c) DELETE ROW FirstName='Peter' FROM Persons
 
-[^27]: a. DELETE FROM Persons WHERE FirstName='Peter'
+[^67]: a. DELETE FROM Persons WHERE FirstName='Peter'
 
 ---
 

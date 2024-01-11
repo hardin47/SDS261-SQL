@@ -470,7 +470,7 @@ which reg expr matches all countries with "ee"
 countries with "i" or "t" and ends in "land"; has "ee"; continents with "o"
 
 can use flights data for cities with particular names-->
-<ol start="17" type="1">
+<ol start="27" type="1">
 <li><code>grep("q[^u]", very.large.word.list)</code> would not match which of the following?<a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a>
 <ol type="a">
 <li>Iraqi</li>
@@ -481,7 +481,7 @@ can use flights data for cities with particular names-->
 </ol></li>
 </ol>
 <hr>
-<ol start="17" type="1">
+<ol start="28" type="1">
 <li>Which of the following regex would match to both “grey” and “gray”?<a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a>
 <ol type="a">
 <li>“gr[ae]y”</li>
@@ -492,7 +492,7 @@ can use flights data for cities with particular names-->
 </ol></li>
 </ol>
 <hr>
-<ol start="17" type="1">
+<ol start="29" type="1">
 <li>What will the result be for the following code?<a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a>
 <ol type="a">
 <li>10</li>
@@ -505,7 +505,7 @@ can use flights data for cities with particular names-->
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="st">"My dog is 10 years old"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
-<ol start="17" type="1">
+<ol start="30" type="1">
 <li>What will the result be for the following code?<a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a>
 <ol type="a">
 <li>.</li>
@@ -518,7 +518,7 @@ can use flights data for cities with particular names-->
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="st">"Episode 2: The pie whisperer. (4 August 2015)"</span>, <span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
-<ol start="17" type="1">
+<ol start="31" type="1">
 <li>What will the result be for the following code?<a href="#fn31" class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a>
 <ol type="a">
 <li>.</li>
@@ -531,7 +531,7 @@ can use flights data for cities with particular names-->
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="st">"Episode 2: The pie whisperer. (4 August 2015)"</span>, <span class="st">".+"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
-<ol start="17" type="1">
+<ol start="32" type="1">
 <li>What will the result be for the following code?<a href="#fn32" class="footnote-ref" id="fnref32" role="doc-noteref"><sup>32</sup></a>
 <ol type="a">
 <li>.</li>
@@ -760,27 +760,27 @@ can use flights data for cities with particular names-->
 </ol>
 <a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></li>
 <li id="fn27"><ol type="a">
-<li>LIKE</li>
+<li>DELETE FROM Persons WHERE FirstName=‘Peter’</li>
 </ol>
 <a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn28"><ol type="a">
-<li>LIKE</li>
+<li id="fn28"><ol start="5" type="a">
+<li>all of the above. Inside a character class <code>|</code> is a normal character and would therefore match “grey” and “gray” and “gr|y”. Which is not what we want, but would work to match both “grey” and “gray”.</li>
 </ol>
 <a href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn29"><ol type="a">
-<li>LIKE</li>
+<li id="fn29"><ol start="2" type="a">
+<li>1 (because <code>\d</code> matches only a single digit).</li>
 </ol>
 <a href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn30"><ol type="a">
-<li>LIKE</li>
+<li id="fn30"><ol start="4" type="a">
+<li>E (because <code>.</code> matches anything, and returns only a single character).</li>
 </ol>
 <a href="#fnref30" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn31"><ol type="a">
-<li>LIKE</li>
+<li id="fn31"><ol start="2" type="a">
+<li>Episode 2: The pie whisperer. (4 August 2015) (because <code>.</code> matches anything, and with the <code>+</code> it returns multiple characters).</li>
 </ol>
 <a href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></li>
 <li id="fn32"><ol type="a">
-<li>LIKE</li>
+<li>. (because <code>\.</code> matches the period, .).</li>
 </ol>
 <a href="#fnref32" class="footnote-back" role="doc-backlink">↩︎</a></li>
 <li id="fn33"><ol type="a">

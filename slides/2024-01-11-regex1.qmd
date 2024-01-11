@@ -28,7 +28,7 @@ fontawesome::fa_html_dependency()
 
 # Tools for characterizing a regular expression
 
-## Escape sequences
+## Escape sequences {.scrollable}
 
 Just to scratch the surface, here are a few special characters that cannot be directly coded.  Therefore, they are escaped with a backslash, `\`.
 
