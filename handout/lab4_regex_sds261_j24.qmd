@@ -40,7 +40,7 @@ The goals for lab 4 include:
 <!--do something with chatgpt.  ask chat gpt how to answer the question. then ask using SQL then ask using stringr.-->
 
 
-Example: Let's say that I want to test whether the string contains a US zip code (of the format: xxxxx-xxxx).  I might want to test it against a particular string.
+Example: Let's say that I want to test whether the string contains a US zip code (of the format: xxxxx or xxxxx-xxxx).  I might want to test it against a particular string.
 
 ```{r}
 string_zip <- c("01063-6302", "91711", "6302", "01063", "zip 01063")
