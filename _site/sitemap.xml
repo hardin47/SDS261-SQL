@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sds261-sql.netlify.app/index.html</loc>
-    <lastmod>2024-01-10T17:22:33.298Z</lastmod>
+    <lastmod>2024-01-11T01:44:00.982Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/clicker_study.html</loc>
@@ -70,7 +70,7 @@
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/handout/lab3_joins_sds261_j24.html</loc>
-    <lastmod>2024-01-10T18:01:13.810Z</lastmod>
+    <lastmod>2024-01-10T23:59:51.955Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/slides/2024-01-11-regex1.html</loc>
@@ -82,11 +82,11 @@
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/handout/lab4_regex_sds261_j24.html</loc>
-    <lastmod>2024-01-10T17:21:06.575Z</lastmod>
+    <lastmod>2024-01-11T01:43:43.085Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/handout/ws1_sds261_j24.html</loc>
-    <lastmod>2024-01-10T18:01:39.199Z</lastmod>
+    <lastmod>2024-01-11T01:43:59.052Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/handout/lab2_clauses_sds261_j24_sol.html</loc>
@@ -94,10 +94,14 @@
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/handout/lab3_joins_sds261_j24_sol.html</loc>
-    <lastmod>2024-01-10T18:01:13.774Z</lastmod>
+    <lastmod>2024-01-10T23:59:51.909Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/slides/2024-01-10-joins.html</loc>
     <lastmod>2024-01-10T12:11:20.876Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sds261-sql.netlify.app/handout/lab4_regex_sds261_j24_sol.html</loc>
+    <lastmod>2024-01-11T01:43:43.035Z</lastmod>
   </url>
 </urlset>

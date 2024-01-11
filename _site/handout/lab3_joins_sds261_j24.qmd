@@ -202,7 +202,7 @@ Because there are fewer records in the join, we know that some reviews were done
 #| connection: con_yelp
 #| unilur-solution: true
 
-SELECT DISTINCT reviews.user_id
+SELECT COUNT(DISTINCT reviews.user_id)
 FROM users
 RIGHT JOIN reviews ON users.user_id = reviews.user_id
 WHERE users.user_id IS NULL;
@@ -212,10 +212,10 @@ WHERE users.user_id IS NULL;
 ```{block}
 #| unilur-solution: true
 
-There are 10 users who wrote 14,028 reviews and who are not in the users table.
+There are 2,108 users who wrote 14,028 reviews and who are not in the users table.
 ```
 
-7. Write a query to ask a question that you think is interesting.  Provide both the question (in words) as well as the SQL code and results.
+7. Write a query to ask a question that you think is interesting and uses at least one join.  Provide both the question (in words) as well as the SQL code and results.
 
 
 ## Best practice

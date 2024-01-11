@@ -975,48 +975,21 @@ Solution
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> reviews.user_id</span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> reviews.user_id)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> users</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RIGHT</span> <span class="kw">JOIN</span> reviews <span class="kw">ON</span> users.user_id <span class="op">=</span> reviews.user_id</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> users.user_id <span class="kw">IS</span> <span class="kw">NULL</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 <table class="table table-sm table-striped small">
-<caption>Displaying records 1 - 10</caption>
+<caption>1 records</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">user_id</th>
+<th style="text-align: right;">COUNT(DISTINCT reviews.user_id)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">-0b8gEy62r6bHDaaCHWyVA</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">-4gBNDCEv6qTm55abgHxCQ</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">-7LfdqX286W8zJ01ljY_SQ</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">-80hvfhwF2PdPWitXOGLng</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">-896HwNelQJLFZUqW81Hsw</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">-AOinMZ5MAIVqqfWO5UPTg</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">-c9CcJX1miuOGaHQuY2oWA</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">-F8z6JmU5-601IC0QFtJLA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">-FiCSCiO6FJf38UG-4SsDg</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">-fVuUmA8BbcgU7j3gqlvAQ</td>
+<td style="text-align: right;">2108</td>
 </tr>
 </tbody>
 </table>
@@ -1038,13 +1011,13 @@ Solution
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<p>There are 10 users who wrote 14,028 reviews and who are not in the users table.</p>
+<p>There are 2,108 users who wrote 14,028 reviews and who are not in the users table.</p>
 </div>
 </div>
 </div>
 </div>
 <ol start="7" type="1">
-<li>Write a query to ask a question that you think is interesting. Provide both the question (in words) as well as the SQL code and results.</li>
+<li>Write a query to ask a question that you think is interesting and uses at least one join. Provide both the question (in words) as well as the SQL code and results.</li>
 </ol>
 </section>
 <section id="best-practice" class="level2">
