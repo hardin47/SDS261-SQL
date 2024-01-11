@@ -91,10 +91,10 @@ We now need information from both tables (the dog name is only in the `dogs` tab
 ```{sql}
 #| eval: false
 
-SELECT users.name, COUNT(*)
+SELECT users.name, COUNT(*) AS num_dogs
 FROM users INNER JOIN dogs on users.userid = dogs.ownerid
 GROUP BY users.userid
-ORDER BY COUNT(*) DESC
+ORDER BY num_dogs DESC
 LIMIT 1;
 ```
 

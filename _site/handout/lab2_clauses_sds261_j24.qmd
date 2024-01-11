@@ -224,5 +224,7 @@ Semicolon-->
 
 
 ```{r}
+#| echo: false
+
 dbDisconnect(con_taxi)
 ```
