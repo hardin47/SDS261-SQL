@@ -32,8 +32,8 @@ fontawesome::fa_html_dependency()
 
 Just to scratch the surface, here are a few special characters that cannot be directly coded.  Therefore, they are escaped with a backslash, `\`.
 
-  * `\'`: single quote. You don't need to escape single quote inside a double-quoted string, so we can also use `" ' "` in the previous example.        
-  * `\"`: double quote. Similarly, double quotes can be used inside a single-quoted string, i.e. `' " '`.          
+  * `\'`: single quote.         
+  * `\"`: double quote.          
   * `\n`: newline.   
   * `\r`: carriage return.   
   * `\t`: tab character.
@@ -91,7 +91,7 @@ grep("ac{2,3}b", strings, value = TRUE)
 ```{r}
 #| eval: false
 
-(strings <- c("abcd", "cdab", "cabd", "c abd"))
+strings <- c("abcd", "cdab", "cabd", "c abd")
 grep("ab", strings, value = TRUE)
 grep("^ab", strings, value = TRUE)
 grep("ab$", strings, value = TRUE)
@@ -103,7 +103,7 @@ grep("\\bab", strings, value = TRUE)
 ```{r}
 #| eval: true
 
-(strings <- c("abcd", "cdab", "cabd", "c abd"))
+strings <- c("abcd", "cdab", "cabd", "c abd")
 grep("ab", strings, value = TRUE)
 grep("^ab", strings, value = TRUE)
 grep("ab$", strings, value = TRUE)
@@ -114,9 +114,9 @@ grep("\\bab", strings, value = TRUE)
 
 
   * `.`: matches any single character,
-  * `[...]`: a character list, matches any one of the characters inside the square brackets. A `-` inside the brackets specifies a range of characters.   
+  * `[...]`: a character list, matches **any one of the characters** inside the square brackets. A `-` inside the brackets specifies a range of characters.   
   * `[^...]`: an inverted character list, similar to `[...]`, but matches any characters __except__ those inside the square brackets.  
-  * `\`: suppress the special meaning of metacharacters in regular expression, i.e. `$ * + . ? [ ] ^ { } | ( ) \`, similar to its usage in escape sequences. Since `\` itself needs to be escaped in R, we need to escape metacharacters with double backslash like `\\$`.   
+  * `\`: suppress the special meaning of metacharacters in regular expression, i.e. `$ * + . ? [ ] ^ { } | ( ) \`. Since `\` itself needs to be escaped in R, we need to escape metacharacters with double backslash like `\\$`.   
   * `|`: an "or" operator, matches patterns on either side of the `|`.  
   * `(...)`: grouping in regular expressions. This allows you to retrieve the bits that matched various parts of your regular expression so you can alter them or use them for building up a new string.
   
@@ -125,7 +125,7 @@ grep("\\bab", strings, value = TRUE)
 ```{r}
 #| eval: false
 
-(strings <- c("^ab", "ab", "abc", "abd", "abe", "ab 12"))
+strings <- c("^ab", "ab", "abc", "abd", "abe", "ab 12")
 grep("ab.", strings, value = TRUE)
 grep("ab[c-e]", strings, value = TRUE)
 grep("ab[^c]", strings, value = TRUE)
@@ -139,7 +139,7 @@ gsub("(ab) 12", "\\1 34", strings)
 ## Examples of operators - solution {.scrollable}
 
 ```{r}
-(strings <- c("^ab", "ab", "abc", "abd", "abe", "ab 12"))
+strings <- c("^ab", "ab", "abc", "abd", "abe", "ab 12")
 grep("ab.", strings, value = TRUE)
 grep("ab[c-e]", strings, value = TRUE)
 grep("ab[^c]", strings, value = TRUE)
@@ -195,37 +195,75 @@ str_extract(string, "(?i)\\bmeter\\b")
 
 * Match dates like 01/15/24 and also like 01.15.24 and like 01-15-24.
 
-## Proper times and dates
+```{r}
+string <- c("01/15/24", "01.15.24", "01-15-24", "011524", 
+            "January 15, 2024")
+```
+
+
+## Proper times and dates {.scrollable}
 
 * Match dates like 01/15/24 and also like 01.15.24 and like 01-15-24.
 
-"\\d\\d.\\d\\d.\\d\\d" will work, but it will also match 123456.  
 
-It is better to replace the dot with the characters of interest: "\\d\\d[/.\\-]\\d\\d[/.\\-]\\d\\d".  Remember that a dot inside a character class is just a dot. 
+```{r}
+string <- c("01/15/24", "01.15.24", "01-15-24", "01 15 24", 
+            "011524", "January 15, 2024")
+
+str_extract(string, "\\d\\d.\\d\\d.\\d\\d")
+
+str_extract(string, "\\d\\d[/.\\-]\\d\\d[/.\\-]\\d\\d")
+
+str_extract(string, "\\d{2}[/.\\-]\\d{2}[/.\\-]\\d{2}")
+```
+
 
 ## Proper times and dates
 
 * Match a time of day such as "9:17 am" or "12:30 pm".  Require that the time be a valid time (not "99:99 pm"). Assume no leading zeros (i.e., "09:17 am").
 
+```{r}
+string <- c("9:17 am", "12:30 pm", "99:99 pm", "09:17 am")
+```
 
 ## Proper times and dates
 
 * Match a time of day such as "9:17 am" or "12:30 pm".  Require that the time be a valid time (not "99:99 pm"). Assume no leading zeros (i.e., "09:17 am").
 
-"(1[012]|[1-9]):[0-5][0-9] (am|pm)"
+`^(1[012]|[1-9]):[0-5][0-9] (am|pm)$`
+
+```{r}
+string <- c("9:17 am", "12:30 pm", "99:99 pm", "09:17 am")
+
+str_extract(string, "(1[012]|[1-9]):[0-5][0-9] (am|pm)")
+str_extract(string, "^(1[012]|[1-9]):[0-5][0-9] (am|pm)$")
+```
 
 ## Alternation operator
 
 The "or" operator, `|` has the lowest precedence and parentheses have the highest precedence, which means that parentheses get evaluated before "or".
 
-* What is the difference between "\\bMary|Jane|Sue\\b" and "\\b(Mary|Jane|Sue)\\b"?
+* What is the difference between `\bMary|Jane|Sue\b` and `\b(Mary|Jane|Sue)\b`?
+
+```{r}
+#| eval: false
+string <- c("Mary", "Mar", "Janet", "jane", "Susan", "Sue")
+
+str_extract(string, "\\bMary|Jane|Sue\\b")
+str_extract(string, "\\b(Mary|Jane|Sue)\\b")
+```
 
 ## Alternation operator
 
 The "or" operator, `|` has the lowest precedence and parentheses have the highest precedence, which means that parentheses get evaluated before "or".
 
-* What is the difference between "\\bMary|Jane|Sue\\b" and "\\b(Mary|Jane|Sue)\\b"?
+* What is the difference between `\bMary|Jane|Sue\b` and `\b(Mary|Jane|Sue)\b`?
 
-In the former, the regex will search for "\\bMary" or "Jane" or "Sue\\b".  In the latter, the regex will search for "\\bMary\\b or "\\bJane\\b" or "\\bSue\\b".  That is, Janet will match the former but not the latter.
+```{r}
+string <- c("Mary", "Mar", "Janet", "jane", "Susan", "Sue")
+
+str_extract(string, "\\bMary|Jane|Sue\\b")
+str_extract(string, "\\b(Mary|Jane|Sue)\\b")
+```
 
 

@@ -872,7 +872,7 @@
     "href": "slides/2024-01-11-regex1.html#escape-sequences",
     "title": "Regular Expressions I",
     "section": "Escape sequences",
-    "text": "Escape sequences\nJust to scratch the surface, here are a few special characters that cannot be directly coded. Therefore, they are escaped with a backslash, \\.\n\n\\': single quote. You don’t need to escape single quote inside a double-quoted string, so we can also use \" ' \" in the previous example.\n\n\\\": double quote. Similarly, double quotes can be used inside a single-quoted string, i.e. ' \" '.\n\n\\n: newline.\n\n\\r: carriage return.\n\n\\t: tab character."
+    "text": "Escape sequences\nJust to scratch the surface, here are a few special characters that cannot be directly coded. Therefore, they are escaped with a backslash, \\.\n\n\\': single quote.\n\n\\\": double quote.\n\n\\n: newline.\n\n\\r: carriage return.\n\n\\t: tab character."
   },
   {
     "objectID": "slides/2024-01-11-regex1.html#quantifiers",
@@ -900,7 +900,7 @@
     "href": "slides/2024-01-11-regex1.html#examples-of-positions",
     "title": "Regular Expressions I",
     "section": "Examples of positions",
-    "text": "Examples of positions\n\n(strings &lt;- c(\"abcd\", \"cdab\", \"cabd\", \"c abd\"))\ngrep(\"ab\", strings, value = TRUE)\ngrep(\"^ab\", strings, value = TRUE)\ngrep(\"ab$\", strings, value = TRUE)\ngrep(\"\\\\bab\", strings, value = TRUE)"
+    "text": "Examples of positions\n\nstrings &lt;- c(\"abcd\", \"cdab\", \"cabd\", \"c abd\")\ngrep(\"ab\", strings, value = TRUE)\ngrep(\"^ab\", strings, value = TRUE)\ngrep(\"ab$\", strings, value = TRUE)\ngrep(\"\\\\bab\", strings, value = TRUE)"
   },
   {
     "objectID": "slides/2024-01-11-regex1.html#examples-of-quantifiers---solution",
@@ -914,28 +914,28 @@
     "href": "slides/2024-01-11-regex1.html#examples-of-positions---solution",
     "title": "Regular Expressions I",
     "section": "Examples of positions - solution",
-    "text": "Examples of positions - solution\n\n(strings &lt;- c(\"abcd\", \"cdab\", \"cabd\", \"c abd\"))\n\n[1] \"abcd\"  \"cdab\"  \"cabd\"  \"c abd\"\n\ngrep(\"ab\", strings, value = TRUE)\n\n[1] \"abcd\"  \"cdab\"  \"cabd\"  \"c abd\"\n\ngrep(\"^ab\", strings, value = TRUE)\n\n[1] \"abcd\"\n\ngrep(\"ab$\", strings, value = TRUE)\n\n[1] \"cdab\"\n\ngrep(\"\\\\bab\", strings, value = TRUE)\n\n[1] \"abcd\"  \"c abd\""
+    "text": "Examples of positions - solution\n\nstrings &lt;- c(\"abcd\", \"cdab\", \"cabd\", \"c abd\")\ngrep(\"ab\", strings, value = TRUE)\n\n[1] \"abcd\"  \"cdab\"  \"cabd\"  \"c abd\"\n\ngrep(\"^ab\", strings, value = TRUE)\n\n[1] \"abcd\"\n\ngrep(\"ab$\", strings, value = TRUE)\n\n[1] \"cdab\"\n\ngrep(\"\\\\bab\", strings, value = TRUE)\n\n[1] \"abcd\"  \"c abd\""
   },
   {
     "objectID": "slides/2024-01-11-regex1.html#operators",
     "href": "slides/2024-01-11-regex1.html#operators",
     "title": "Regular Expressions I",
     "section": "Operators",
-    "text": "Operators\n\n.: matches any single character,\n[...]: a character list, matches any one of the characters inside the square brackets. A - inside the brackets specifies a range of characters.\n\n[^...]: an inverted character list, similar to [...], but matches any characters except those inside the square brackets.\n\n\\: suppress the special meaning of metacharacters in regular expression, i.e. $ * + . ? [ ] ^ { } | ( ) \\, similar to its usage in escape sequences. Since \\ itself needs to be escaped in R, we need to escape metacharacters with double backslash like \\\\$.\n\n|: an “or” operator, matches patterns on either side of the |.\n\n(...): grouping in regular expressions. This allows you to retrieve the bits that matched various parts of your regular expression so you can alter them or use them for building up a new string."
+    "text": "Operators\n\n.: matches any single character,\n[...]: a character list, matches any one of the characters inside the square brackets. A - inside the brackets specifies a range of characters.\n\n[^...]: an inverted character list, similar to [...], but matches any characters except those inside the square brackets.\n\n\\: suppress the special meaning of metacharacters in regular expression, i.e. $ * + . ? [ ] ^ { } | ( ) \\. Since \\ itself needs to be escaped in R, we need to escape metacharacters with double backslash like \\\\$.\n\n|: an “or” operator, matches patterns on either side of the |.\n\n(...): grouping in regular expressions. This allows you to retrieve the bits that matched various parts of your regular expression so you can alter them or use them for building up a new string."
   },
   {
     "objectID": "slides/2024-01-11-regex1.html#examples-of-operators",
     "href": "slides/2024-01-11-regex1.html#examples-of-operators",
     "title": "Regular Expressions I",
     "section": "Examples of operators",
-    "text": "Examples of operators\n\n(strings &lt;- c(\"^ab\", \"ab\", \"abc\", \"abd\", \"abe\", \"ab 12\"))\ngrep(\"ab.\", strings, value = TRUE)\ngrep(\"ab[c-e]\", strings, value = TRUE)\ngrep(\"ab[^c]\", strings, value = TRUE)\ngrep(\"^ab\", strings, value = TRUE)\ngrep(\"\\\\^ab\", strings, value = TRUE)\ngrep(\"abc|abd\", strings, value = TRUE)\ngsub(\"(ab) 12\", \"\\\\1 34\", strings)"
+    "text": "Examples of operators\n\nstrings &lt;- c(\"^ab\", \"ab\", \"abc\", \"abd\", \"abe\", \"ab 12\")\ngrep(\"ab.\", strings, value = TRUE)\ngrep(\"ab[c-e]\", strings, value = TRUE)\ngrep(\"ab[^c]\", strings, value = TRUE)\ngrep(\"^ab\", strings, value = TRUE)\ngrep(\"\\\\^ab\", strings, value = TRUE)\ngrep(\"abc|abd\", strings, value = TRUE)\ngsub(\"(ab) 12\", \"\\\\1 34\", strings)"
   },
   {
     "objectID": "slides/2024-01-11-regex1.html#examples-of-operators---solution",
     "href": "slides/2024-01-11-regex1.html#examples-of-operators---solution",
     "title": "Regular Expressions I",
     "section": "Examples of operators - solution",
-    "text": "Examples of operators - solution\n\n(strings &lt;- c(\"^ab\", \"ab\", \"abc\", \"abd\", \"abe\", \"ab 12\"))\n\n[1] \"^ab\"   \"ab\"    \"abc\"   \"abd\"   \"abe\"   \"ab 12\"\n\ngrep(\"ab.\", strings, value = TRUE)\n\n[1] \"abc\"   \"abd\"   \"abe\"   \"ab 12\"\n\ngrep(\"ab[c-e]\", strings, value = TRUE)\n\n[1] \"abc\" \"abd\" \"abe\"\n\ngrep(\"ab[^c]\", strings, value = TRUE)\n\n[1] \"abd\"   \"abe\"   \"ab 12\"\n\ngrep(\"^ab\", strings, value = TRUE)\n\n[1] \"ab\"    \"abc\"   \"abd\"   \"abe\"   \"ab 12\"\n\ngrep(\"\\\\^ab\", strings, value = TRUE)\n\n[1] \"^ab\"\n\ngrep(\"abc|abd\", strings, value = TRUE)\n\n[1] \"abc\" \"abd\"\n\ngsub(\"(ab) 12\", \"\\\\1 34\", strings)\n\n[1] \"^ab\"   \"ab\"    \"abc\"   \"abd\"   \"abe\"   \"ab 34\""
+    "text": "Examples of operators - solution\n\nstrings &lt;- c(\"^ab\", \"ab\", \"abc\", \"abd\", \"abe\", \"ab 12\")\ngrep(\"ab.\", strings, value = TRUE)\n\n[1] \"abc\"   \"abd\"   \"abe\"   \"ab 12\"\n\ngrep(\"ab[c-e]\", strings, value = TRUE)\n\n[1] \"abc\" \"abd\" \"abe\"\n\ngrep(\"ab[^c]\", strings, value = TRUE)\n\n[1] \"abd\"   \"abe\"   \"ab 12\"\n\ngrep(\"^ab\", strings, value = TRUE)\n\n[1] \"ab\"    \"abc\"   \"abd\"   \"abe\"   \"ab 12\"\n\ngrep(\"\\\\^ab\", strings, value = TRUE)\n\n[1] \"^ab\"\n\ngrep(\"abc|abd\", strings, value = TRUE)\n\n[1] \"abc\" \"abd\"\n\ngsub(\"(ab) 12\", \"\\\\1 34\", strings)\n\n[1] \"^ab\"   \"ab\"    \"abc\"   \"abd\"   \"abe\"   \"ab 34\""
   },
   {
     "objectID": "slides/2024-01-11-regex1.html#character-classes",
@@ -1579,42 +1579,42 @@
     "href": "slides/2024-01-11-regex1.html#proper-times-and-dates",
     "title": "Regular Expressions I",
     "section": "Proper times and dates",
-    "text": "Proper times and dates\n\nMatch dates like 01/15/24 and also like 01.15.24 and like 01-15-24."
+    "text": "Proper times and dates\n\nMatch dates like 01/15/24 and also like 01.15.24 and like 01-15-24.\n\n\nstring &lt;- c(\"01/15/24\", \"01.15.24\", \"01-15-24\", \"011524\", \n            \"January 15, 2024\")"
   },
   {
     "objectID": "slides/2024-01-11-regex1.html#proper-times-and-dates-1",
     "href": "slides/2024-01-11-regex1.html#proper-times-and-dates-1",
     "title": "Regular Expressions I",
     "section": "Proper times and dates",
-    "text": "Proper times and dates\n\nMatch dates like 01/15/24 and also like 01.15.24 and like 01-15-24.\n\n“\\d\\d.\\d\\d.\\d\\d” will work, but it will also match 123456.\nIt is better to replace the dot with the characters of interest: “\\d\\d[/.\\-]\\d\\d[/.\\-]\\d\\d”. Remember that a dot inside a character class is just a dot."
+    "text": "Proper times and dates\n\nMatch dates like 01/15/24 and also like 01.15.24 and like 01-15-24.\n\n\nstring &lt;- c(\"01/15/24\", \"01.15.24\", \"01-15-24\", \"01 15 24\", \n            \"011524\", \"January 15, 2024\")\n\nstr_extract(string, \"\\\\d\\\\d.\\\\d\\\\d.\\\\d\\\\d\")\n\n[1] \"01/15/24\" \"01.15.24\" \"01-15-24\" \"01 15 24\" NA         NA        \n\nstr_extract(string, \"\\\\d\\\\d[/.\\\\-]\\\\d\\\\d[/.\\\\-]\\\\d\\\\d\")\n\n[1] \"01/15/24\" \"01.15.24\" \"01-15-24\" NA         NA         NA        \n\nstr_extract(string, \"\\\\d{2}[/.\\\\-]\\\\d{2}[/.\\\\-]\\\\d{2}\")\n\n[1] \"01/15/24\" \"01.15.24\" \"01-15-24\" NA         NA         NA"
   },
   {
     "objectID": "slides/2024-01-11-regex1.html#proper-times-and-dates-2",
     "href": "slides/2024-01-11-regex1.html#proper-times-and-dates-2",
     "title": "Regular Expressions I",
     "section": "Proper times and dates",
-    "text": "Proper times and dates\n\nMatch a time of day such as “9:17 am” or “12:30 pm”. Require that the time be a valid time (not “99:99 pm”). Assume no leading zeros (i.e., “09:17 am”)."
+    "text": "Proper times and dates\n\nMatch a time of day such as “9:17 am” or “12:30 pm”. Require that the time be a valid time (not “99:99 pm”). Assume no leading zeros (i.e., “09:17 am”).\n\n\nstring &lt;- c(\"9:17 am\", \"12:30 pm\", \"99:99 pm\", \"09:17 am\")"
   },
   {
     "objectID": "slides/2024-01-11-regex1.html#proper-times-and-dates-3",
     "href": "slides/2024-01-11-regex1.html#proper-times-and-dates-3",
     "title": "Regular Expressions I",
     "section": "Proper times and dates",
-    "text": "Proper times and dates\n\nMatch a time of day such as “9:17 am” or “12:30 pm”. Require that the time be a valid time (not “99:99 pm”). Assume no leading zeros (i.e., “09:17 am”).\n\n“(1[012]|[1-9]):[0-5][0-9] (am|pm)”"
+    "text": "Proper times and dates\n\nMatch a time of day such as “9:17 am” or “12:30 pm”. Require that the time be a valid time (not “99:99 pm”). Assume no leading zeros (i.e., “09:17 am”).\n\n^(1[012]|[1-9]):[0-5][0-9] (am|pm)$\n\nstring &lt;- c(\"9:17 am\", \"12:30 pm\", \"99:99 pm\", \"09:17 am\")\n\nstr_extract(string, \"(1[012]|[1-9]):[0-5][0-9] (am|pm)\")\n\n[1] \"9:17 am\"  \"12:30 pm\" NA         \"9:17 am\" \n\nstr_extract(string, \"^(1[012]|[1-9]):[0-5][0-9] (am|pm)$\")\n\n[1] \"9:17 am\"  \"12:30 pm\" NA         NA"
   },
   {
     "objectID": "slides/2024-01-11-regex1.html#alternation-operator",
     "href": "slides/2024-01-11-regex1.html#alternation-operator",
     "title": "Regular Expressions I",
     "section": "Alternation operator",
-    "text": "Alternation operator\nThe “or” operator, | has the lowest precedence and parentheses have the highest precedence, which means that parentheses get evaluated before “or”.\n\nWhat is the difference between “\\bMary|Jane|Sue\\b” and “\\b(Mary|Jane|Sue)\\b”?"
+    "text": "Alternation operator\nThe “or” operator, | has the lowest precedence and parentheses have the highest precedence, which means that parentheses get evaluated before “or”.\n\nWhat is the difference between \\bMary|Jane|Sue\\b and \\b(Mary|Jane|Sue)\\b?\n\n\nstring &lt;- c(\"Mary\", \"Mar\", \"Janet\", \"jane\", \"Susan\", \"Sue\")\n\nstr_extract(string, \"\\\\bMary|Jane|Sue\\\\b\")\nstr_extract(string, \"\\\\b(Mary|Jane|Sue)\\\\b\")"
   },
   {
     "objectID": "slides/2024-01-11-regex1.html#alternation-operator-1",
     "href": "slides/2024-01-11-regex1.html#alternation-operator-1",
     "title": "Regular Expressions I",
     "section": "Alternation operator",
-    "text": "Alternation operator\nThe “or” operator, | has the lowest precedence and parentheses have the highest precedence, which means that parentheses get evaluated before “or”.\n\nWhat is the difference between “\\bMary|Jane|Sue\\b” and “\\b(Mary|Jane|Sue)\\b”?\n\nIn the former, the regex will search for “\\bMary” or “Jane” or “Sue\\b”. In the latter, the regex will search for “\\bMary\\b or”\\bJane\\b” or “\\bSue\\b”. That is, Janet will match the former but not the latter."
+    "text": "Alternation operator\nThe “or” operator, | has the lowest precedence and parentheses have the highest precedence, which means that parentheses get evaluated before “or”.\n\nWhat is the difference between \\bMary|Jane|Sue\\b and \\b(Mary|Jane|Sue)\\b?\n\n\nstring &lt;- c(\"Mary\", \"Mar\", \"Janet\", \"jane\", \"Susan\", \"Sue\")\n\nstr_extract(string, \"\\\\bMary|Jane|Sue\\\\b\")\n\n[1] \"Mary\" NA     \"Jane\" NA     NA     \"Sue\" \n\nstr_extract(string, \"\\\\b(Mary|Jane|Sue)\\\\b\")\n\n[1] \"Mary\" NA     NA     NA     NA     \"Sue\""
   },
   {
     "objectID": "handout/lab4_regex_sds261_j24.html#advice-for-turning-in-the-assignment",

@@ -421,9 +421,9 @@ Jo Hardin
 <h2>Escape sequences</h2>
 <p>Just to scratch the surface, here are a few special characters that cannot be directly coded. Therefore, they are escaped with a backslash, <code>\</code>.</p>
 <ul>
-<li><code>\'</code>: single quote. You don’t need to escape single quote inside a double-quoted string, so we can also use <code>" ' "</code> in the previous example.<br>
+<li><code>\'</code>: single quote.<br>
 </li>
-<li><code>\"</code>: double quote. Similarly, double quotes can be used inside a single-quoted string, i.e.&nbsp;<code>' " '</code>.<br>
+<li><code>\"</code>: double quote.<br>
 </li>
 <li><code>\n</code>: newline.<br>
 </li>
@@ -519,7 +519,7 @@ Jo Hardin
 <section id="examples-of-positions" class="slide level2">
 <h2>Examples of positions</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>(strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"abcd"</span>, <span class="st">"cdab"</span>, <span class="st">"cabd"</span>, <span class="st">"c abd"</span>))</span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"abcd"</span>, <span class="st">"cdab"</span>, <span class="st">"cabd"</span>, <span class="st">"c abd"</span>)</span>
 <span id="cb20-2"><a href="#cb20-2"></a><span class="fu">grep</span>(<span class="st">"ab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb20-3"><a href="#cb20-3"></a><span class="fu">grep</span>(<span class="st">"^ab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb20-4"><a href="#cb20-4"></a><span class="fu">grep</span>(<span class="st">"ab$"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
@@ -529,23 +529,20 @@ Jo Hardin
 <section id="examples-of-positions---solution" class="slide level2">
 <h2>Examples of positions - solution</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>(strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"abcd"</span>, <span class="st">"cdab"</span>, <span class="st">"cabd"</span>, <span class="st">"c abd"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"abcd"</span>, <span class="st">"cdab"</span>, <span class="st">"cabd"</span>, <span class="st">"c abd"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">grep</span>(<span class="st">"ab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "abcd"  "cdab"  "cabd"  "c abd"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">grep</span>(<span class="st">"ab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "abcd"  "cdab"  "cabd"  "c abd"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">grep</span>(<span class="st">"^ab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">grep</span>(<span class="st">"^ab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "abcd"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">grep</span>(<span class="st">"ab$"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">grep</span>(<span class="st">"ab$"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "cdab"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">grep</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">bab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">grep</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">bab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "abcd"  "c abd"</code></pre>
 </div>
@@ -555,11 +552,11 @@ Jo Hardin
 <h2>Operators</h2>
 <ul>
 <li><code>.</code>: matches any single character,</li>
-<li><code>[...]</code>: a character list, matches any one of the characters inside the square brackets. A <code>-</code> inside the brackets specifies a range of characters.<br>
+<li><code>[...]</code>: a character list, matches <strong>any one of the characters</strong> inside the square brackets. A <code>-</code> inside the brackets specifies a range of characters.<br>
 </li>
 <li><code>[^...]</code>: an inverted character list, similar to <code>[...]</code>, but matches any characters <strong>except</strong> those inside the square brackets.<br>
 </li>
-<li><code>\</code>: suppress the special meaning of metacharacters in regular expression, i.e.&nbsp;<code>$ * + . ? [ ] ^ { } | ( ) \</code>, similar to its usage in escape sequences. Since <code>\</code> itself needs to be escaped in R, we need to escape metacharacters with double backslash like <code>\\$</code>.<br>
+<li><code>\</code>: suppress the special meaning of metacharacters in regular expression, i.e.&nbsp;<code>$ * + . ? [ ] ^ { } | ( ) \</code>. Since <code>\</code> itself needs to be escaped in R, we need to escape metacharacters with double backslash like <code>\\$</code>.<br>
 </li>
 <li><code>|</code>: an “or” operator, matches patterns on either side of the <code>|</code>.<br>
 </li>
@@ -569,48 +566,45 @@ Jo Hardin
 <section id="examples-of-operators" class="slide level2 scrollable">
 <h2>Examples of operators</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>(strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"^ab"</span>, <span class="st">"ab"</span>, <span class="st">"abc"</span>, <span class="st">"abd"</span>, <span class="st">"abe"</span>, <span class="st">"ab 12"</span>))</span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="fu">grep</span>(<span class="st">"ab."</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="fu">grep</span>(<span class="st">"ab[c-e]"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb31-4"><a href="#cb31-4"></a><span class="fu">grep</span>(<span class="st">"ab[^c]"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb31-5"><a href="#cb31-5"></a><span class="fu">grep</span>(<span class="st">"^ab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb31-6"><a href="#cb31-6"></a><span class="fu">grep</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">^ab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb31-7"><a href="#cb31-7"></a><span class="fu">grep</span>(<span class="st">"abc|abd"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb31-8"><a href="#cb31-8"></a><span class="fu">gsub</span>(<span class="st">"(ab) 12"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1 34"</span>, strings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"^ab"</span>, <span class="st">"ab"</span>, <span class="st">"abc"</span>, <span class="st">"abd"</span>, <span class="st">"abe"</span>, <span class="st">"ab 12"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="fu">grep</span>(<span class="st">"ab."</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="fu">grep</span>(<span class="st">"ab[c-e]"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="fu">grep</span>(<span class="st">"ab[^c]"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="fu">grep</span>(<span class="st">"^ab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="fu">grep</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">^ab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-7"><a href="#cb29-7"></a><span class="fu">grep</span>(<span class="st">"abc|abd"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="fu">gsub</span>(<span class="st">"(ab) 12"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1 34"</span>, strings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="examples-of-operators---solution" class="slide level2 scrollable">
 <h2>Examples of operators - solution</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>(strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"^ab"</span>, <span class="st">"ab"</span>, <span class="st">"abc"</span>, <span class="st">"abd"</span>, <span class="st">"abe"</span>, <span class="st">"ab 12"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "^ab"   "ab"    "abc"   "abd"   "abe"   "ab 12"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">grep</span>(<span class="st">"ab."</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"^ab"</span>, <span class="st">"ab"</span>, <span class="st">"abc"</span>, <span class="st">"abd"</span>, <span class="st">"abe"</span>, <span class="st">"ab 12"</span>)</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="fu">grep</span>(<span class="st">"ab."</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "abc"   "abd"   "abe"   "ab 12"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">grep</span>(<span class="st">"ab[c-e]"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">grep</span>(<span class="st">"ab[c-e]"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "abc" "abd" "abe"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">grep</span>(<span class="st">"ab[^c]"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">grep</span>(<span class="st">"ab[^c]"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "abd"   "abe"   "ab 12"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">grep</span>(<span class="st">"^ab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">grep</span>(<span class="st">"^ab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ab"    "abc"   "abd"   "abe"   "ab 12"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">grep</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">^ab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">grep</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">^ab"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "^ab"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">grep</span>(<span class="st">"abc|abd"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">grep</span>(<span class="st">"abc|abd"</span>, strings, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "abc" "abd"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">gsub</span>(<span class="st">"(ab) 12"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1 34"</span>, strings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">gsub</span>(<span class="st">"(ab) 12"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1 34"</span>, strings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "^ab"   "ab"    "abc"   "abd"   "abe"   "ab 34"</code></pre>
 </div>
@@ -666,10 +660,10 @@ Jo Hardin
 <li>Match only the word <code>meter</code> in “The cemetery is 1 meter from the stop sign.” Also match <code>Meter</code> in “The cemetery is 1 Meter from the stop sign.”</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>string <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"The cemetery is 1 meter from the stop sign."</span>, </span>
-<span id="cb48-2"><a href="#cb48-2"></a>            <span class="st">"The cemetery is 1 Meter from the stop sign."</span>)</span>
-<span id="cb48-3"><a href="#cb48-3"></a></span>
-<span id="cb48-4"><a href="#cb48-4"></a><span class="fu">str_extract</span>(string, <span class="st">"(?i)</span><span class="sc">\\</span><span class="st">bmeter</span><span class="sc">\\</span><span class="st">b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>string <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"The cemetery is 1 meter from the stop sign."</span>, </span>
+<span id="cb44-2"><a href="#cb44-2"></a>            <span class="st">"The cemetery is 1 Meter from the stop sign."</span>)</span>
+<span id="cb44-3"><a href="#cb44-3"></a></span>
+<span id="cb44-4"><a href="#cb44-4"></a><span class="fu">str_extract</span>(string, <span class="st">"(?i)</span><span class="sc">\\</span><span class="st">bmeter</span><span class="sc">\\</span><span class="st">b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "meter" "Meter"</code></pre>
 </div>
@@ -680,42 +674,93 @@ Jo Hardin
 <ul>
 <li>Match dates like 01/15/24 and also like 01.15.24 and like 01-15-24.</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>string <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"01/15/24"</span>, <span class="st">"01.15.24"</span>, <span class="st">"01-15-24"</span>, <span class="st">"011524"</span>, </span>
+<span id="cb46-2"><a href="#cb46-2"></a>            <span class="st">"January 15, 2024"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="proper-times-and-dates-1" class="slide level2">
+<section id="proper-times-and-dates-1" class="slide level2 scrollable">
 <h2>Proper times and dates</h2>
 <ul>
 <li>Match dates like 01/15/24 and also like 01.15.24 and like 01-15-24.</li>
 </ul>
-<p>“\d\d.\d\d.\d\d” will work, but it will also match 123456.</p>
-<p>It is better to replace the dot with the characters of interest: “\d\d[/.\-]\d\d[/.\-]\d\d”. Remember that a dot inside a character class is just a dot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>string <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"01/15/24"</span>, <span class="st">"01.15.24"</span>, <span class="st">"01-15-24"</span>, <span class="st">"01 15 24"</span>, </span>
+<span id="cb47-2"><a href="#cb47-2"></a>            <span class="st">"011524"</span>, <span class="st">"January 15, 2024"</span>)</span>
+<span id="cb47-3"><a href="#cb47-3"></a></span>
+<span id="cb47-4"><a href="#cb47-4"></a><span class="fu">str_extract</span>(string, <span class="st">"</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d.</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d.</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "01/15/24" "01.15.24" "01-15-24" "01 15 24" NA         NA        </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">str_extract</span>(string, <span class="st">"</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d[/.</span><span class="sc">\\</span><span class="st">-]</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d[/.</span><span class="sc">\\</span><span class="st">-]</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "01/15/24" "01.15.24" "01-15-24" NA         NA         NA        </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">str_extract</span>(string, <span class="st">"</span><span class="sc">\\</span><span class="st">d{2}[/.</span><span class="sc">\\</span><span class="st">-]</span><span class="sc">\\</span><span class="st">d{2}[/.</span><span class="sc">\\</span><span class="st">-]</span><span class="sc">\\</span><span class="st">d{2}"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "01/15/24" "01.15.24" "01-15-24" NA         NA         NA        </code></pre>
+</div>
+</div>
 </section>
 <section id="proper-times-and-dates-2" class="slide level2">
 <h2>Proper times and dates</h2>
 <ul>
 <li>Match a time of day such as “9:17 am” or “12:30 pm”. Require that the time be a valid time (not “99:99 pm”). Assume no leading zeros (i.e., “09:17 am”).</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>string <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"9:17 am"</span>, <span class="st">"12:30 pm"</span>, <span class="st">"99:99 pm"</span>, <span class="st">"09:17 am"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="proper-times-and-dates-3" class="slide level2">
 <h2>Proper times and dates</h2>
 <ul>
 <li>Match a time of day such as “9:17 am” or “12:30 pm”. Require that the time be a valid time (not “99:99 pm”). Assume no leading zeros (i.e., “09:17 am”).</li>
 </ul>
-<p>“(1[012]|[1-9]):[0-5][0-9] (am|pm)”</p>
+<p><code>^(1[012]|[1-9]):[0-5][0-9] (am|pm)$</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>string <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"9:17 am"</span>, <span class="st">"12:30 pm"</span>, <span class="st">"99:99 pm"</span>, <span class="st">"09:17 am"</span>)</span>
+<span id="cb54-2"><a href="#cb54-2"></a></span>
+<span id="cb54-3"><a href="#cb54-3"></a><span class="fu">str_extract</span>(string, <span class="st">"(1[012]|[1-9]):[0-5][0-9] (am|pm)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "9:17 am"  "12:30 pm" NA         "9:17 am" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">str_extract</span>(string, <span class="st">"^(1[012]|[1-9]):[0-5][0-9] (am|pm)$"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "9:17 am"  "12:30 pm" NA         NA        </code></pre>
+</div>
+</div>
 </section>
 <section id="alternation-operator" class="slide level2">
 <h2>Alternation operator</h2>
 <p>The “or” operator, <code>|</code> has the lowest precedence and parentheses have the highest precedence, which means that parentheses get evaluated before “or”.</p>
 <ul>
-<li>What is the difference between “\bMary|Jane|Sue\b” and “\b(Mary|Jane|Sue)\b”?</li>
+<li>What is the difference between <code>\bMary|Jane|Sue\b</code> and <code>\b(Mary|Jane|Sue)\b</code>?</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>string <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Mary"</span>, <span class="st">"Mar"</span>, <span class="st">"Janet"</span>, <span class="st">"jane"</span>, <span class="st">"Susan"</span>, <span class="st">"Sue"</span>)</span>
+<span id="cb58-2"><a href="#cb58-2"></a></span>
+<span id="cb58-3"><a href="#cb58-3"></a><span class="fu">str_extract</span>(string, <span class="st">"</span><span class="sc">\\</span><span class="st">bMary|Jane|Sue</span><span class="sc">\\</span><span class="st">b"</span>)</span>
+<span id="cb58-4"><a href="#cb58-4"></a><span class="fu">str_extract</span>(string, <span class="st">"</span><span class="sc">\\</span><span class="st">b(Mary|Jane|Sue)</span><span class="sc">\\</span><span class="st">b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="alternation-operator-1" class="slide level2">
 <h2>Alternation operator</h2>
 <p>The “or” operator, <code>|</code> has the lowest precedence and parentheses have the highest precedence, which means that parentheses get evaluated before “or”.</p>
 <ul>
-<li>What is the difference between “\bMary|Jane|Sue\b” and “\b(Mary|Jane|Sue)\b”?</li>
+<li>What is the difference between <code>\bMary|Jane|Sue\b</code> and <code>\b(Mary|Jane|Sue)\b</code>?</li>
 </ul>
-<p>In the former, the regex will search for “\bMary” or “Jane” or “Sue\b”. In the latter, the regex will search for “\bMary\b or”\bJane\b” or “\bSue\b”. That is, Janet will match the former but not the latter.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>string <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Mary"</span>, <span class="st">"Mar"</span>, <span class="st">"Janet"</span>, <span class="st">"jane"</span>, <span class="st">"Susan"</span>, <span class="st">"Sue"</span>)</span>
+<span id="cb59-2"><a href="#cb59-2"></a></span>
+<span id="cb59-3"><a href="#cb59-3"></a><span class="fu">str_extract</span>(string, <span class="st">"</span><span class="sc">\\</span><span class="st">bMary|Jane|Sue</span><span class="sc">\\</span><span class="st">b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Mary" NA     "Jane" NA     NA     "Sue" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="fu">str_extract</span>(string, <span class="st">"</span><span class="sc">\\</span><span class="st">b(Mary|Jane|Sue)</span><span class="sc">\\</span><span class="st">b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Mary" NA     NA     NA     NA     "Sue" </code></pre>
+</div>
+</div>
 
 <div class="footer footer-default">
 

@@ -395,7 +395,24 @@ str_extract("My dog is 10 years old", "\\d")
 
 ---
 
-30. What will the result be for the following code?[^30]
+
+30. What will the result be for the following code?[^30]  
+    (a) 10
+    (b) 1
+    (c) 0
+    (d) NA
+
+```{r}
+#| eval: false
+#| echo: true
+str_extract("My dog is 10 years old", "\\d+")
+``` 
+    
+[^30]: a. 10 (because `\d+` matches at least one digit).
+
+
+---
+31. What will the result be for the following code?[^31]
     (a) .
     (b) Episode 2: The pie whisperer. (4 August 2015)
     (c) Episode
@@ -407,23 +424,7 @@ str_extract("My dog is 10 years old", "\\d")
 str_extract("Episode 2: The pie whisperer. (4 August 2015)", ".")
 ```
 
-[^30]: d. E (because `.` matches anything, and returns only a single character).
-
----
-
-31. What will the result be for the following code?[^31]
-    (a) .
-    (b) Episode 2: The pie whisperer. (4 August 2015)
-    (c) Episode
-    (d) E
-
-```{r}
-#| eval: false
-#| echo: true
-str_extract("Episode 2: The pie whisperer. (4 August 2015)", ".+")
-```
-
-[^31]: b. Episode 2: The pie whisperer. (4 August 2015) (because `.` matches anything, and with the `+` it returns multiple characters).
+[^31]: d. E (because `.` matches anything, and returns only a single character).
 
 ---
 
@@ -436,10 +437,26 @@ str_extract("Episode 2: The pie whisperer. (4 August 2015)", ".+")
 ```{r}
 #| eval: false
 #| echo: true
+str_extract("Episode 2: The pie whisperer. (4 August 2015)", ".+")
+```
+
+[^32]: b. Episode 2: The pie whisperer. (4 August 2015) (because `.` matches anything, and with the `+` it returns multiple characters).
+
+---
+
+33. What will the result be for the following code?[^33]
+    (a) .
+    (b) Episode 2: The pie whisperer. (4 August 2015)
+    (c) Episode
+    (d) E
+
+```{r}
+#| eval: false
+#| echo: true
 str_extract("Episode 2: The pie whisperer. (4 August 2015)", "\\.")
 ```
 
-[^32]: a. . (because `\.` matches the period, .).
+[^33]: a. . (because `\.` matches the period, .).
 
 
 ---
