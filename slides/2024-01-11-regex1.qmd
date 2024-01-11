@@ -83,7 +83,7 @@ grep("ac{2,3}b", strings, value = TRUE)
 
   * `^`: matches the start of the string.   
   * `$`: matches the end of the string.   
-  * `\b`: matches the empty string at either edge of a _word_. Don't confuse it with `^ $` which marks the edge of a _string_.   
+  * `\b`: matches the boundary of a _word_. Don't confuse it with `^ $` which marks the edge of a _string_.   
   * `\B`: matches the empty string provided it is not at an edge of a word.
 
 ## Examples of positions
@@ -132,7 +132,6 @@ grep("ab[^c]", strings, value = TRUE)
 grep("^ab", strings, value = TRUE)
 grep("\\^ab", strings, value = TRUE)
 grep("abc|abd", strings, value = TRUE)
-gsub("(ab) 12", "\\1 34", strings)
 ```
 
 
@@ -146,7 +145,6 @@ grep("ab[^c]", strings, value = TRUE)
 grep("^ab", strings, value = TRUE)
 grep("\\^ab", strings, value = TRUE)
 grep("abc|abd", strings, value = TRUE)
-gsub("(ab) 12", "\\1 34", strings)
 ```
 
 ## Character classes {.scrollable}

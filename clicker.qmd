@@ -362,7 +362,7 @@ can use flights data for cities with particular names-->
     (d) zaqqun (tree that "springs out of the bottom of Hell", in the Quran)
     (e) Qantas (the Australian airline)
     
-[^27]: neither c. nor e. would match. Inside the bracket `[^u]` matches anything other than a "u".
+[^27]: neither c. nor e. would match. Inside the bracket "[^u]" matches anything other than a "u", but it has to match something.
 
 ---
 
@@ -412,6 +412,7 @@ str_extract("My dog is 10 years old", "\\d+")
 
 
 ---
+
 31. What will the result be for the following code?[^31]
     (a) .
     (b) Episode 2: The pie whisperer. (4 August 2015)
