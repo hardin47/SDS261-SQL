@@ -1678,5 +1678,19 @@
     "title": "Regular Expressions I",
     "section": "Case insenstive",
     "text": "Case insenstive\n\nMatch only the word meter in “The cemetery is 1 meter from the stop sign.” Also match Meter in “The cemetery is 1 Meter from the stop sign.”\n\n\nstring &lt;- c(\"The cemetery is 1 meter from the stop sign.\", \n            \"The cemetery is 1 Meter from the stop sign.\")\n\nstr_extract(string, \"(?i)\\\\bmeter\\\\b\")\n\n[1] \"meter\" \"Meter\""
+  },
+  {
+    "objectID": "slides/2024-01-12-regex2.html#regular-expressions-and-sql",
+    "href": "slides/2024-01-12-regex2.html#regular-expressions-and-sql",
+    "title": "Regular Expressions II",
+    "section": "Regular expressions and SQL",
+    "text": "Regular expressions and SQL\nBack to the IMDb database…\n\nSELECT production_year, title\n  FROM title\n  WHERE kind_id = 1 AND\n        title REGEXP '(?i)star'\n  LIMIT 0, 20;\n\n\n\n\nDisplaying records 1 - 10\n\n\n\n\nproduction_year\n\n\ntitle\n\n\n\n\n\n\n2005\n\n\n\"Dancing with the Stars\" (I)\n\n\n\n\n2005\n\n\n\"Dancing with the Stars\" (II)\n\n\n\n\n2005\n\n\n\"Dancing with the Stars\" (III)\n\n\n\n\n2017\n\n\n\"Girl Starter\" (II)\n\n\n\n\n2001\n\n\n\"Popstars\" (I)\n\n\n\n\n2001\n\n\n\"Popstars\" (II)\n\n\n\n\n2002\n\n\n\"Popstars\" (I)\n\n\n\n\n2000\n\n\n\"Popstars\" (I)\n\n\n\n\n1959\n\n\n\"Startime\" (II)\n\n\n\n\n1959\n\n\n\"Startime\" (I)"
+  },
+  {
+    "objectID": "slides/2024-01-12-regex2.html#course-project",
+    "href": "slides/2024-01-12-regex2.html#course-project",
+    "title": "Regular Expressions II",
+    "section": "Course project",
+    "text": "Course project\nDon’t forget, next week, each person will be working on their own mini project!\n\nUsing SQL queries and joins to wrangle complicated data tables.\nWriting regular expressions to parse observations.\nCreating a SQL database.\n\n\nemail jo.hardin@pomona.edu by Tuesday, Jan 16 with an idea of what you plan to do.\n\nQuestion of interest that you hope to address.\nHolistic description of the dataset(s) (a few sentences).\nDescription of the observational units and columns in each data table.\nFull reference for data citation.\nLink to the resources."
   }
 ]

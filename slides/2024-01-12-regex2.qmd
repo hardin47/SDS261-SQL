@@ -468,3 +468,51 @@ results |>
 
 
 
+## Regular expressions and **SQL** {.scrollable}
+
+Back to the IMDb database... 
+
+```{r}
+#| echo: false
+
+con_imdb <- DBI::dbConnect(
+  RMariaDB::MariaDB(),
+  dbname = "imdb",
+  host = Sys.getenv("SMITH_HOST"),
+  user = Sys.getenv("SMITH_USER"),
+  password = Sys.getenv("SMITH_PWD")
+)
+```
+
+```{sql}
+#| connection: con_imdb
+
+SELECT production_year, title
+  FROM title
+  WHERE kind_id = 1 AND
+        title REGEXP '(?i)star'
+  LIMIT 0, 20;
+```
+
+
+
+```{r}
+#| echo: false
+DBI::dbDisconnect(con_imdb)
+```
+
+## Course project {.scrollable}
+
+Don't forget, next week, each person will be working on their own <a href = "https://sds261-sql.netlify.app/project" target = "_blank">mini project</a>!
+
+
+1. Using **SQL** queries and joins to wrangle complicated data tables.
+2. Writing regular expressions to parse observations.
+3. Creating a **SQL** database.
+
+* email `jo.hardin@pomona.edu` by Tuesday, Jan 16 with an idea of what you plan to do.
+   * Question of interest that you hope to address.
+   * Holistic description of the dataset(s) (a few sentences).
+   * Description of the observational units and columns in each data table. 
+   * Full reference for data citation.
+   * Link to the resources.

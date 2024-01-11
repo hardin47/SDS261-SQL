@@ -883,6 +883,137 @@ Jo Hardin
 # ℹ 264 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="regular-expressions-and-sql" class="slide level2 scrollable">
+<h2>Regular expressions and <strong>SQL</strong></h2>
+<p>Back to the IMDb database…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb86-1"><a href="#cb86-1"></a><span class="kw">SELECT</span> production_year, title</span>
+<span id="cb86-2"><a href="#cb86-2"></a>  <span class="kw">FROM</span> title</span>
+<span id="cb86-3"><a href="#cb86-3"></a>  <span class="kw">WHERE</span> kind_id <span class="op">=</span> <span class="dv">1</span> <span class="kw">AND</span></span>
+<span id="cb86-4"><a href="#cb86-4"></a>        title REGEXP <span class="st">'(?i)star'</span></span>
+<span id="cb86-5"><a href="#cb86-5"></a>  <span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">20</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+
+<table>
+<caption>
+Displaying records 1 - 10
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+production_year
+</th>
+<th style="text-align:left;">
+title
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2005
+</td>
+<td style="text-align:left;">
+"Dancing with the Stars" (I)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2005
+</td>
+<td style="text-align:left;">
+"Dancing with the Stars" (II)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2005
+</td>
+<td style="text-align:left;">
+"Dancing with the Stars" (III)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+"Girl Starter" (II)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:left;">
+"Popstars" (I)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:left;">
+"Popstars" (II)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2002
+</td>
+<td style="text-align:left;">
+"Popstars" (I)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+"Popstars" (I)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1959
+</td>
+<td style="text-align:left;">
+"Startime" (II)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1959
+</td>
+<td style="text-align:left;">
+"Startime" (I)
+</td>
+</tr>
+</tbody>
+
+</table>
+</div>
+</div>
+</section>
+<section id="course-project" class="slide level2 scrollable">
+<h2>Course project</h2>
+<p>Don’t forget, next week, each person will be working on their own <a href="https://sds261-sql.netlify.app/project" target="_blank">mini project</a>!</p>
+<ol type="1">
+<li>Using <strong>SQL</strong> queries and joins to wrangle complicated data tables.</li>
+<li>Writing regular expressions to parse observations.</li>
+<li>Creating a <strong>SQL</strong> database.</li>
+</ol>
+<ul>
+<li>email <code>jo.hardin@pomona.edu</code> by Tuesday, Jan 16 with an idea of what you plan to do.
+<ul>
+<li>Question of interest that you hope to address.</li>
+<li>Holistic description of the dataset(s) (a few sentences).</li>
+<li>Description of the observational units and columns in each data table.</li>
+<li>Full reference for data citation.</li>
+<li>Link to the resources.</li>
+</ul></li>
+</ul>
 
 <div class="footer footer-default">
 
