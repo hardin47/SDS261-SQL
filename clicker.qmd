@@ -490,7 +490,17 @@ str_extract("$47", "(?<=\\$)\\d+")
 str_extract(c("apple pie", "chocolate pie", "peach pie"), "\\w+(?= pie)")
 ```
 
-[^34]: d. "\\w+(?= pie)"
+[^35]: d. "\\w+(?= pie)"
+
+---
+
+```{r}
+str_extract(c("apple pie", "chocolate pie", "peach pie"), "\\w+(?= pie)")
+```
+
+```{r}
+str_extract(c("apple pie", "chocolate pie", "peach pie"), "\\w+(?=pie)")
+```
 
 ---
 
