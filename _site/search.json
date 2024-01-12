@@ -886,7 +886,7 @@
     "href": "slides/2024-01-11-regex1.html#examples-of-quantifiers",
     "title": "Regular Expressions I",
     "section": "Examples of quantifiers",
-    "text": "Examples of quantifiers\n\nstrings &lt;- c(\"a\", \"ab\", \"acb\", \"accb\", \"acccb\", \"accccb\")\ngrep(\"ac*b\", strings, value = TRUE)\ngrep(\"ac*b\", strings, value = FALSE)\ngrep(\"ac+b\", strings, value = TRUE)\ngrep(\"ac?b\", strings, value = TRUE)\ngrep(\"ac{2}b\", strings, value = TRUE)\ngrep(\"ac{2,}b\", strings, value = TRUE)\ngrep(\"ac{2,3}b\", strings, value = TRUE)"
+    "text": "Examples of quantifiers\n\nstrings &lt;- c(\"a\", \"ab\", \"acb\", \"accb\", \"acccb\", \"accccb\")\ngrep(\"ac*b\", strings, value = TRUE)\ngrep(\"ac*b\", strings, value = FALSE)\ngrep(\"ac+b\", strings, value = TRUE)\ngrep(\"ac?b\", strings, value = TRUE)\ngrep(\"ac{2}b\", strings, value = TRUE)\ngrep(\"ac{2,}b\", strings, value = TRUE)\ngrep(\"ac{2,3}b\", strings, value = TRUE)\n\ngrep() stands for “global regular expression print”. grep() returns a character vector containing the selected elements, grepl() returns a logical vector of TRUE/FALSE for whether or not there was a match."
   },
   {
     "objectID": "slides/2024-01-11-regex1.html#position-of-pattern-within-the-string",
@@ -907,7 +907,7 @@
     "href": "slides/2024-01-11-regex1.html#examples-of-quantifiers---solution",
     "title": "Regular Expressions I",
     "section": "Examples of quantifiers - solution",
-    "text": "Examples of quantifiers - solution\n\nstrings &lt;- c(\"a\", \"ab\", \"acb\", \"accb\", \"acccb\", \"accccb\")\ngrep(\"ac*b\", strings, value = TRUE)\n\n[1] \"ab\"     \"acb\"    \"accb\"   \"acccb\"  \"accccb\"\n\ngrep(\"ac*b\", strings, value = FALSE)\n\n[1] 2 3 4 5 6\n\ngrep(\"ac+b\", strings, value = TRUE)\n\n[1] \"acb\"    \"accb\"   \"acccb\"  \"accccb\"\n\ngrep(\"ac?b\", strings, value = TRUE)\n\n[1] \"ab\"  \"acb\"\n\ngrep(\"ac{2}b\", strings, value = TRUE)\n\n[1] \"accb\"\n\ngrep(\"ac{2,}b\", strings, value = TRUE)\n\n[1] \"accb\"   \"acccb\"  \"accccb\"\n\ngrep(\"ac{2,3}b\", strings, value = TRUE)\n\n[1] \"accb\"  \"acccb\""
+    "text": "Examples of quantifiers - solution\n\nstrings &lt;- c(\"a\", \"ab\", \"acb\", \"accb\", \"acccb\", \"accccb\")\ngrep(\"ac*b\", strings, value = TRUE)\n\n[1] \"ab\"     \"acb\"    \"accb\"   \"acccb\"  \"accccb\"\n\ngrep(\"ac*b\", strings, value = FALSE)\n\n[1] 2 3 4 5 6\n\ngrep(\"ac+b\", strings, value = TRUE)\n\n[1] \"acb\"    \"accb\"   \"acccb\"  \"accccb\"\n\ngrep(\"ac?b\", strings, value = TRUE)\n\n[1] \"ab\"  \"acb\"\n\ngrep(\"ac{2}b\", strings, value = TRUE)\n\n[1] \"accb\"\n\ngrep(\"ac{2,}b\", strings, value = TRUE)\n\n[1] \"accb\"   \"acccb\"  \"accccb\"\n\ngrep(\"ac{2,3}b\", strings, value = TRUE)\n\n[1] \"accb\"  \"acccb\"\n\n\ngrep() stands for “global regular expression print”. grep() returns a character vector containing the selected elements, grepl() returns a logical vector of TRUE/FALSE for whether or not there was a match."
   },
   {
     "objectID": "slides/2024-01-11-regex1.html#examples-of-positions---solution",

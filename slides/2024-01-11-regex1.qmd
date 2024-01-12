@@ -64,6 +64,9 @@ grep("ac{2,}b", strings, value = TRUE)
 grep("ac{2,3}b", strings, value = TRUE)
 ```
 
+
+`grep()` stands for "global regular expression print".  `grep()` returns a character vector containing the selected elements, `grepl()` returns a logical vector of TRUE/FALSE for whether or not there was a match.
+
 ## Examples of quantifiers - solution {.scrollable}
 
 ```{r}
@@ -76,6 +79,9 @@ grep("ac{2}b", strings, value = TRUE)
 grep("ac{2,}b", strings, value = TRUE)
 grep("ac{2,3}b", strings, value = TRUE)
 ```
+
+
+`grep()` stands for "global regular expression print".  `grep()` returns a character vector containing the selected elements, `grepl()` returns a logical vector of TRUE/FALSE for whether or not there was a match.
 
 ## Position of pattern within the string
 
