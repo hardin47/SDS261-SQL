@@ -495,10 +495,12 @@ str_extract(c("apple pie", "chocolate pie", "peach pie"), "\\w+(?= pie)")
 ---
 
 ```{r}
+#| echo: true
 str_extract(c("apple pie", "chocolate pie", "peach pie"), "\\w+(?= pie)")
 ```
 
 ```{r}
+#| echo: true
 str_extract(c("apple pie", "chocolate pie", "peach pie"), "\\w+(?=pie)")
 ```
 
