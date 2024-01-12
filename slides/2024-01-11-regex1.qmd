@@ -54,13 +54,12 @@ Quantifiers specify how many repetitions of the pattern.
 ```{r}
 #| eval: false
 
-(strings <- c("a", "ab", "acb", "accb", "acccb", "accccb"))
+strings <- c("a", "ab", "acb", "accb", "acccb", "accccb")
 grep("ac*b", strings, value = TRUE)
 grep("ac*b", strings, value = FALSE)
 grep("ac+b", strings, value = TRUE)
 grep("ac?b", strings, value = TRUE)
 grep("ac{2}b", strings, value = TRUE)
-grep("ac{2}b", strings, value = FALSE)
 grep("ac{2,}b", strings, value = TRUE)
 grep("ac{2,3}b", strings, value = TRUE)
 ```
@@ -68,13 +67,12 @@ grep("ac{2,3}b", strings, value = TRUE)
 ## Examples of quantifiers - solution {.scrollable}
 
 ```{r}
-(strings <- c("a", "ab", "acb", "accb", "acccb", "accccb"))
+strings <- c("a", "ab", "acb", "accb", "acccb", "accccb")
 grep("ac*b", strings, value = TRUE)
 grep("ac*b", strings, value = FALSE)
 grep("ac+b", strings, value = TRUE)
 grep("ac?b", strings, value = TRUE)
 grep("ac{2}b", strings, value = TRUE)
-grep("ac{2}b", strings, value = FALSE)
 grep("ac{2,}b", strings, value = TRUE)
 grep("ac{2,3}b", strings, value = TRUE)
 ```
@@ -125,26 +123,30 @@ grep("\\bab", strings, value = TRUE)
 ```{r}
 #| eval: false
 
-strings <- c("^ab", "ab", "abc", "abd", "abe", "ab 12")
+strings <- c("^ab", "ab", "abc", "abd", "abe", "ab 12", "a|b")
 grep("ab.", strings, value = TRUE)
 grep("ab[c-e]", strings, value = TRUE)
 grep("ab[^c]", strings, value = TRUE)
 grep("^ab", strings, value = TRUE)
 grep("\\^ab", strings, value = TRUE)
 grep("abc|abd", strings, value = TRUE)
+grep("a[b|c]", strings, value = TRUE)
+str_extract(strings, "a[b|c]")
 ```
 
 
 ## Examples of operators - solution {.scrollable}
 
 ```{r}
-strings <- c("^ab", "ab", "abc", "abd", "abe", "ab 12")
+strings <- c("^ab", "ab", "abc", "abd", "abe", "ab 12", "a|b")
 grep("ab.", strings, value = TRUE)
 grep("ab[c-e]", strings, value = TRUE)
 grep("ab[^c]", strings, value = TRUE)
 grep("^ab", strings, value = TRUE)
 grep("\\^ab", strings, value = TRUE)
 grep("abc|abd", strings, value = TRUE)
+grep("a[b|c]", strings, value = TRUE)
+str_extract(strings, "a[b|c]")
 ```
 
 ## Character classes {.scrollable}
@@ -158,7 +160,7 @@ Character classes allow specifying entire classes of characters, such as numbers
   * `[:upper:]`: upper-case letters, equivalent to `[A-Z]`.  
   * `[:alpha:]`: alphabetic characters, equivalent to `[[:lower:][:upper:]]` or `[A-z]`.  
   * `[:alnum:]`: alphanumeric characters, equivalent to `[[:alpha:][:digit:]]` or `[A-z0-9]`.   
-  * `\w`: word characters, equivalent to `[[:alnum:]_]` or `[A-z0-9_]`.  
+  * `\w`: word characters, equivalent to `[[:alnum:]_]` or `[A-z0-9_]` (letter, number, or underscore).  
   * `\W`: not word, equivalent to `[^A-z0-9_]`.  
   * `[:blank:]`: blank characters, i.e. space and tab.  
   * `[:space:]`: space characters: tab, newline, vertical tab, form feed, carriage return, space.

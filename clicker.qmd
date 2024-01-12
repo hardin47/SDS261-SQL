@@ -49,18 +49,18 @@ library(tidyverse)
 
 ---
 
-2. When was SQL created?[^2]
+2. When was **SQL** created?[^2]
    (a) 1960s
    (b) 1970s
    (c) 1980s
    (d) 1990s
    (e) 2000s
 
-[^2]: b. The first versions were created in the 1970s and called SEQUEL (Structured English QUEry Language).  c. SQL came about in particular systems in the 1980s.
+[^2]: b. The first versions were created in the 1970s and called SEQUEL (Structured English QUEry Language).  c. **SQL** came about in particular systems in the 1980s.
    
 ---
 
-3. What type of databases is SQL designed for?[^3]
+3. What type of databases is **SQL** designed for?[^3]
    (a) hierarchical database management systems.
    (b) network database management systems.
    (c) object-oriented database management systems.
@@ -79,16 +79,16 @@ library(tidyverse)
 ---
 
 5. Where are each stored?[^5]
-   (a) SQL `tbl` and R `tibble` both in storage
-   (b) SQL `tbl` and R `tibble` both in memory
-   (c) SQL `tbl` in storage and R `tibble` in memory
-   (d) SQL `tbl` in memory and R `tibble` in storage
+   (a) **SQL** `tbl` and **R**  `tibble` both in storage
+   (b) **SQL** `tbl` and **R**  `tibble` both in memory
+   (c) **SQL** `tbl` in storage and **R**  `tibble` in memory
+   (d) **SQL** `tbl` in memory and **R**  `tibble` in storage
    
-[^5]: c. SQL `tbl` in storage and R `tibble` in memory
+[^5]: c. **SQL** `tbl` in storage and **R**  `tibble` in memory
 
 ---
 
-6. Which SQL clause is used to extract data from a database?[^6]
+6. Which **SQL** clause is used to extract data from a database?[^6]
    (a) OPEN
    (b) EXTRACT
    (c) SELECT
@@ -100,99 +100,99 @@ library(tidyverse)
 
 7. With SQL, how to you retrieve a column named "FirstName" from a table named "Persons"?[^7]
    (a) `SELECT` Persons.FirstName
-   (b) EXTRACT FIRSTNAME FROM Persons
-   (c) `SELECT` FirstName FROM Persons
-   (d) `SELECT` "FirstName" FROM "Persons"
+   (b) EXTRACT FIRSTNAME `FROM` Persons
+   (c) `SELECT` FirstName `FROM` Persons
+   (d) `SELECT` "FirstName" `FROM` "Persons"
 
-[^7]: c. `SELECT` FirstName FROM Persons
+[^7]: c. `SELECT` FirstName `FROM` Persons
 
 ---
 
 8. With SQL, how do you select all the columns from a table named "Persons"?[^8]
    (a) `SELECT` Persons
-   (b) `SELECT` * FROM Persons
-   (c) `SELECT` [all] FROM Persons
+   (b) `SELECT` * `FROM` Persons
+   (c) `SELECT` [all] `FROM` Persons
    (d) `SELECT` *.Persons
 
-[^8]: b. `SELECT` * FROM Persons
+[^8]: b. `SELECT` * `FROM` Persons
 
 ---
 
-9. With SQL, how can you return the number of records in the "Persons" table?[^9]
-   (a) `SELECT` COLUMNS(*) FROM Persons
-   (b) `SELECT` COUNT(*) FROM Persons
-   (c) `SELECT` NO(*) FROM Persons
-   (d) `SELECT` LEN(*) FROM Persons
+9. With **SQL**, how can you return the number of records in the "Persons" table?[^9]
+   (a) `SELECT` `COLUMNS(*)` `FROM` Persons
+   (b) `SELECT` `COUNT(*)` `FROM` Persons
+   (c) `SELECT` `NO(*)` `FROM` Persons
+   (d) `SELECT` `LEN(*)` `FROM` Persons
 
-[^9]: b. `SELECT` COUNT(*) FROM Persons
+[^9]: b. `SELECT` `COUNT(*)` `FROM` Persons
 
 ---
 
-10. With SQL, how do you select all the records from a table named "Persons" where the value of the column "FirstName" is "Peter"?[^10]
-   (a) `SELECT` * FROM Persons WHERE FirstName <> 'Peter'
-   (b) `SELECT` * FROM Persons WHERE FirstName = 'Peter'
-   (c) `SELECT` * FROM Persons WHERE FirstName == 'Peter'
-   (d) `SELECT` [all] FROM Persons WHERE FirstName LIKE 'Peter'
-   (e) `SELECT` [all] FROM Persons WHERE FirstName = 'Peter'
+10. With **SQL**, how do you select all the records from a table named "Persons" where the value of the column "FirstName" is "Peter"?[^10]
+   (a) `SELECT` * `FROM` Persons `WHERE` FirstName <> 'Peter'
+   (b) `SELECT` * `FROM` Persons `WHERE` FirstName = 'Peter'
+   (c) `SELECT` * `FROM` Persons `WHERE` FirstName == 'Peter'
+   (d) `SELECT` [all] `FROM` Persons `WHERE` FirstName `LIKE` 'Peter'
+   (e) `SELECT` [all] `FROM` Persons `WHERE` FirstName = 'Peter'
    
-[^10]: b. `SELECT` * FROM Persons WHERE FirstName = 'Peter'
+[^10]: b. `SELECT` * `FROM` Persons `WHERE` FirstName = 'Peter' (d. would also work.)
 
 ---
 
 11. With SQL, how do you select all the records from a table named "Persons" where the "FirstName" is "Peter" and the "LastName" is "Jackson"?[^11]
-   (a) `SELECT` FirstName = 'Peter', LastName = 'Jackson' FROM Persons
-   (b) `SELECT` * FROM Persons WHERE FirstName <> 'Peter' AND LastName <> 'Jackson'
-   (c) `SELECT` * FROM Persons WHERE FirstName = 'Peter' AND LastName = 'Jackson'
-   (d) `SELECT` * FROM Persons WHERE FirstName == 'Peter' AND LastName == 'Jackson'
+   (a) `SELECT` FirstName = 'Peter', LastName = 'Jackson' `FROM` Persons
+   (b) `SELECT` * `FROM` Persons `WHERE` FirstName <> 'Peter' AND LastName <> 'Jackson'
+   (c) `SELECT` * `FROM` Persons `WHERE` FirstName = 'Peter' AND LastName = 'Jackson'
+   (d) `SELECT` * `FROM` Persons `WHERE` FirstName == 'Peter' AND LastName == 'Jackson'
 
-[^11]: c. `SELECT` * FROM Persons WHERE FirstName = 'Peter' AND LastName = 'Jackson'
+[^11]: c. `SELECT` * `FROM` Persons `WHERE` FirstName = 'Peter' AND LastName = 'Jackson'
 
 ---
 
 12. Which operator selects values within a range?[^12]
-    (a) BEWTEEN
-    (b) WITHIN
-    (c) RANGE
+    (a) `BEWTEEN`
+    (b) `WITHIN`
+    (c) `RANGE`
 
-[^12]: a. BEWTEEN
-
----
-
-13. With SQL, how do you select all the records from a table named "Persons" where the "LastName" is alphabetically between (and including) "Hansen" and "Pettersen"?[^13]
-    (a) `SELECT` LastName > 'Hansen' AND LastName < 'Pettersen' FROM Persons
-    (b) `SELECT` * FROM Persons WHERE LastName BETWEEN 'Hansen' AND 'Pettersen'
-    (c) `SELECT` * FROM Persons WHERE LastName > 'Hansen' AND LastName < 'Pettersen'
-
-[^13]: b. `SELECT` * FROM Persons WHERE LastName BETWEEN 'Hansen' AND 'Pettersen'
+[^12]: a. `BEWTEEN`
 
 ---
 
-14. Which SQL statement returns only different values?[^14]
-    (a) `SELECT` UNIQUE
-    (b) `SELECT` DISTINCT
-    (c) `SELECT` DIFFERENT
+13. With **SQL**, how do you select all the records from a table named "Persons" where the "LastName" is alphabetically between (and including) "Hansen" and "Pettersen"?[^13]
+    (a) `SELECT` LastName > 'Hansen' AND LastName < 'Pettersen' `FROM` Persons
+    (b) `SELECT` * `FROM` Persons `WHERE` LastName BETWEEN 'Hansen' AND 'Pettersen'
+    (c) `SELECT` * `FROM` Persons `WHERE` LastName > 'Hansen' AND LastName < 'Pettersen'
 
-[^14]: b. `SELECT` DISTINCT
+[^13]: b. `SELECT` * `FROM` Persons `WHERE` LastName BETWEEN 'Hansen' AND 'Pettersen'
 
 ---
 
-15. Which SQL keyword is used to sort the result-set?[^15]
-    (a) ORDER BY
-    (b) ORDER
-    (c) SORT
-    (d) SORT BY
+14. Which **SQL** statement returns only different values?[^14]
+    (a) `SELECT` `UNIQUE`
+    (b) `SELECT` `DISTINCT`
+    (c) `SELECT` `DIFFERENT`
+
+[^14]: b. `SELECT` `DISTINCT`
+
+---
+
+15. Which **SQL** keyword is used to sort the result-set?[^15]
+    (a) `ORDER BY`
+    (b) `ORDER`
+    (c) `SORT`
+    (d) `SORT BY`
  
-[^15]: a. ORDER BY
+[^15]: a. `ORDER BY`
 
 ---
 
-16. With SQL, how can you return all the records from a table named "Persons" sorted descending by "FirstName"?[^16]
-    (a) `SELECT` * FROM Persons ORDER FirstName DESC
-    (b) `SELECT` * FROM Persons SORT 'FirstName' DESC
-    (c) `SELECT` * FROM Persons ORDER BY FirstName DESC
-    (d) `SELECT` * FROM Persons SORT BY 'FirstName' DESC
+16. With **SQL**, how can you return all the records from a table named "Persons" sorted descending by "FirstName"?[^16]
+    (a) `SELECT` * `FROM` Persons `ORDER` FirstName `DESC`
+    (b) `SELECT` * `FROM` Persons `SORT` 'FirstName' `DESC`
+    (c) `SELECT` * `FROM` Persons `ORDER BY` FirstName `DESC`
+    (d) `SELECT` * `FROM` Persons `SORT BY` 'FirstName' `DESC`
 
-[^16]: c. `SELECT` * FROM Persons ORDER BY FirstName DESC
+[^16]: c. `SELECT` * `FROM` Persons ORDER BY FirstName DESC
 
 ---
 
@@ -205,13 +205,13 @@ library(tidyverse)
 ---
 
 18. In order to `SELECT` the records with foods that are either green or yellow fruit:[^18] 
-    (a) ... WHERE type = 'fruit' AND color = 'yellow' OR color = 'green'  
-    (b) ... WHERE (type = 'fruit' AND color = 'yellow') OR color = 'green'  
-    (c) ... WHERE type = 'fruit' AND (color = 'yellow' OR color = 'green')  
-    (d) ... WHERE type = 'fruit' AND color = 'yellow' AND color = 'green'  
-    (e) ... WHERE type = 'fruit' AND (color = 'yellow' AND color = 'green') 
+    (a) ... `WHERE` type = 'fruit' AND color = 'yellow' OR color = 'green'  
+    (b) ... `WHERE` (type = 'fruit' AND color = 'yellow') OR color = 'green'  
+    (c) ... `WHERE` type = 'fruit' AND (color = 'yellow' OR color = 'green')  
+    (d) ... `WHERE` type = 'fruit' AND color = 'yellow' AND color = 'green'  
+    (e) ... `WHERE` type = 'fruit' AND (color = 'yellow' AND color = 'green') 
    
-[^18]: c. ... WHERE type = 'fruit' AND (color = 'yellow' OR color = 'green') 
+[^18]: c. ... `WHERE` type = 'fruit' AND (color = 'yellow' OR color = 'green') 
 
 ---
 
@@ -459,29 +459,72 @@ str_extract("Episode 2: The pie whisperer. (4 August 2015)", "\\.")
 
 [^33]: a. . (because `\.` matches the period, .).
 
+---
+
+34. How can I pull out just the numerical information in \$47?[^34]
+    (a) "(?<=\\$)\\d"
+    (b) "(?<=\\$)\\d+"
+    (c) "\\d+(?=\\$)"
+    (d) "\\d+(?=\\$)"
+
+```{r}
+#| eval: false
+#| echo: false
+str_extract("$47", "(?<=\\$)\\d+")
+```
+
+[^34]: b. "(?<=\\$)\\d+"
+
 
 ---
 
-57. Which operator is used to search for a specified pattern in a column?[^57]
-    (a) LIKE
-    (b) GET
-    (c) FROM
+35. You want to know all the types of pies in the text strings.  They are written as, for example "apple pie".[^35]
+    (a) "\\w+(?!pie)"
+    (b) "\\w+(?! pie)"
+    (c) "\\w+(?=pie)"
+    (d) "\\w+(?= pie)"
 
-[^57]: a. LIKE
+```{r}
+#| eval: false
+#| echo: false
+str_extract(c("apple pie", "chocolate pie", "peach pie"), "\\w+(?= pie)")
+```
+
+[^34]: d. "\\w+(?= pie)"
+
+---
+
+36. We say that lookarounds are "zero-lenghth assertions".  What does that mean?[^36]
+    (a) we return the string in the lookaround
+    (b) we replace the string in the lookaround
+    (c) we return the string at the lookaround
+    (d) we replace the string at the lookaround
+
+[^36]: c. we return the string at the lookaround
+
+---
+
+57. In **SQL**, which operator is used to search for a specified pattern in a column?[^57]
+    (a) `LIKE`
+    (b) `GET`
+    (c) `FROM`
+
+[^57]: a. `LIKE`
 
 ---
 
 58. With **SQL**, how do you select all the records from a table named "Persons" where the value of the column "FirstName" starts with an "a"?[^58]
-    (a) `SELECT` * FROM Persons WHERE FirstName LIKE 'a%'
-    (b) `SELECT` * FROM Persons WHERE FirstName = '%a%'
-    (c) `SELECT` * FROM Persons WHERE FirstName LIKE '%a'
-    (c) `SELECT` * FROM Persons WHERE FirstName = 'a'
+    (a) `SELECT` * `FROM` Persons `WHERE` FirstName = 'a.*'
+    (b) `SELECT` * `FROM` Persons `WHERE` FirstName = 'a*'
+    (c) `SELECT` * `FROM` Persons `WHERE` FirstName `REGEXP` 'a.*'
+    (d) `SELECT` * `FROM` Persons `WHERE` FirstName `REGEXP` 'a*'
+    (e) `SELECT` * `FROM` Persons `WHERE` FirstName `REGEXP` '(?i)a.*'
 
-[^58]: a. `SELECT` * FROM Persons WHERE FirstName LIKE 'a%'
+[^58]: e. `SELECT` * `FROM` Persons `WHERE` FirstName `REGEXP` '(?i)a.*' (n.b., the `LIKE` function will give you a similar result, with `%` as a wildcard: SELECT` * `FROM` Persons `WHERE` FirstName LIKE 'a%')
 
 ---
 
-59. Which SQL statement is used to create a database table called 'Customers'?[^59]
+59. Which **SQL** statement is used to create a database table called 'Customers'?[^59]
     (a) CREATE DATABASE TAB Customers
     (b) CREATE TABLE Customers
     (c) CREATE DATABASE TABLE Customers
@@ -519,49 +562,49 @@ str_extract("Episode 2: The pie whisperer. (4 August 2015)", "\\.")
 ---
 
 63. Which **SQL** statement inserts new data in a database?[^63]
-    (a) ADD RECORD
-    (b) INSERT INTO
-    (c) ADD NEW
-    (d) INSERT NEW 
+    (a) `ADD RECORD`
+    (b) `INSERT INTO`
+    (c) `ADD NEW`
+    (d) `INSERT NEW` 
  
-[^63]: b. INSERT INTO
+[^63]: b. `INSERT INTO`
 
 ---
 
 64. With **SQL**, how can you insert a new record into the "Persons" table?[^64]
-    (a) INSERT INTO Persons VALUES ('Jimmy', 'Jackson')
-    (b) INSERT ('Jimmy', 'Jacskon') INTO Persons
-    (c) INSERT VALUES ('Jimmy', 'Jackson') INTO Persons
+    (a) `INSERT` `INTO` Persons VALUES ('Jimmy', 'Jackson')
+    (b) `INSERT` ('Jimmy', 'Jacskon') `INTO` Persons
+    (c) `INSERT` VALUES ('Jimmy', 'Jackson') `INTO` Persons
 
-[^64]: a. INSERT INTO Persons VALUES ('Jimmy', 'Jackson')
+[^64]: a. `INSERT` `INTO` Persons VALUES ('Jimmy', 'Jackson')
 
 ---
 
 65. With **SQL**, how can you insert "Olsen" as the "LastName" in the "Persons" table?[^65]
-    (a) INSERT INTO Persons (LastName) VALUES ('Olsen')
-    (b) INSERT INTO Persons ('Olsen) INTO LastName
-    (c) INSERT ('Olsen') INTO Persons (LastName)
+    (a) `INSERT` `INTO` Persons (LastName) VALUES ('Olsen')
+    (b) `INSERT` `INTO` Persons ('Olsen) `INTO` LastName
+    (c) `INSERT` ('Olsen') `INTO` Persons (LastName)
  
-[^65]: a. INSERT INTO Persons (LastName) VALUES ('Olsen')
+[^65]: a. `INSERT` `INTO` Persons (LastName) VALUES ('Olsen')
 
 ---
 
 66. How can you change "Hansen" into "Nilsen" in the "LastName" column in the Persons table?[^66]
-    (a) MODIFY Persons SET LastName='Nilsen' WHERE LastName='Hansen'
-    (b) UPDATE Persons SET LastName='Hansen' INTO LastName='Nilsen'
-    (c) MODIFY Persons SET LastName='Hansen' INTO LastName='Nilsen'
-    (d) UPDATE Persons SET LastName='Nilsen' WHERE LastName='Hansen' 
+    (a) MODIFY Persons SET LastName='Nilsen' `WHERE` LastName='Hansen'
+    (b) `UPDATE` Persons SET LastName='Hansen' `INTO` LastName='Nilsen'
+    (c) MODIFY Persons SET LastName='Hansen' `INTO` LastName='Nilsen'
+    (d) `UPDATE` Persons SET LastName='Nilsen' `WHERE` LastName='Hansen' 
 
-[^66]: d. UPDATE Persons SET LastName='Nilsen' WHERE LastName='Hansen' 
+[^66]: d. `UPDATE` Persons SET LastName='Nilsen' `WHERE` LastName='Hansen' 
 
 ---
 
 67. With **SQL**, how can you delete the records where the "FirstName" is "Peter" in the Persons Table?[^67]
-    (a) DELETE FROM Persons WHERE FirstName='Peter'
-    (b) DELETE FirstName='Peter' FROM Persons
-    (c) DELETE ROW FirstName='Peter' FROM Persons
+    (a) `DELETE` `FROM` Persons `WHERE` FirstName='Peter'
+    (b) `DELETE` FirstName='Peter' `FROM` Persons
+    (c) `DELETE ROW` FirstName='Peter' `FROM` Persons
 
-[^67]: a. DELETE FROM Persons WHERE FirstName='Peter'
+[^67]: a. `DELETE` `FROM` Persons `WHERE` FirstName='Peter'
 
 ---
 

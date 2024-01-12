@@ -29,8 +29,8 @@ A lookaround specifies a **place** in the regular expression that will anchor th
 
 * "x(?=y)" – positive lookahead (matches 'x' when it is followed by 'y')
 * "x(?!y)" – negative lookahead (matches 'x' when it is not followed by 'y')
-* "x(?<=y)" – positive lookbehind (matches 'x' when it is preceded by 'y')
-* "x(?<!y)" – negative lookbehind (matches 'x' when it is not preceded by 'y')
+* "(?<=y)x" – positive lookbehind (matches 'x' when it is preceded by 'y')
+* "(?<!y)x" – negative lookbehind (matches 'x' when it is not preceded by 'y')
 
 ## Lookaround
 
