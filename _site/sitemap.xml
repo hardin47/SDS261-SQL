@@ -58,7 +58,7 @@
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/slides/2024-01-09-clauses.html</loc>
-    <lastmod>2024-01-10T04:32:03.867Z</lastmod>
+    <lastmod>2024-01-14T00:43:32.518Z</lastmod>
   </url>
   <url>
     <loc>https://sds261-sql.netlify.app/handout/ws4_sds261_j24.html</loc>
@@ -103,5 +103,9 @@
   <url>
     <loc>https://sds261-sql.netlify.app/handout/lab4_regex_sds261_j24_sol.html</loc>
     <lastmod>2024-01-11T01:45:39.541Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sds261-sql.netlify.app/slides/2024-01-16-creating-db.html</loc>
+    <lastmod>2024-01-12T22:06:07.159Z</lastmod>
   </url>
 </urlset>

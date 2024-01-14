@@ -1692,5 +1692,180 @@
     "title": "Regular Expressions II",
     "section": "Course project",
     "text": "Course project\nDon’t forget, next week, each person will be working on their own mini project!\n\nUsing SQL queries and joins to wrangle complicated data tables.\nWriting regular expressions to parse observations.\nCreating a SQL database.\n\n\nemail jo.hardin@pomona.edu by Tuesday, Jan 16 with an idea of what you plan to do.\n\nQuestion of interest that you hope to address.\nHolistic description of the dataset(s) (a few sentences).\nDescription of the observational units and columns in each data table.\nFull reference for data citation.\nLink to the resources."
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#duckdb",
+    "href": "slides/2024-01-16-creating-db.html#duckdb",
+    "title": "Creating Databases",
+    "section": "DuckDB",
+    "text": "DuckDB\nDuckDB\n\nin-process database management system that runs entirely on your own computer.\nthe data live in your storage (instead of your memory).\nyou don’t have to transfer queries or results over the internet."
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#duckdb-caveat",
+    "href": "slides/2024-01-16-creating-db.html#duckdb-caveat",
+    "title": "Creating Databases",
+    "section": "DuckDB caveat",
+    "text": "DuckDB caveat\n\nthe SQL dialect used in DuckDB is slightly different from MySQL\nwrite SELECT * FROM table 10; instead of SELECT * FROM table 0, 10;\nlots of different dialects, depending on the SQL server. Always be aware of the dialect you are using."
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#duckdb-via-r",
+    "href": "slides/2024-01-16-creating-db.html#duckdb-via-r",
+    "title": "Creating Databases",
+    "section": "DuckDB via R",
+    "text": "DuckDB via R\n\ninstall.packages(\"duckdb\")  # only once, in the Console, not in the .qmd or .Rmd file\nlibrary(duckdb)             # at the top of the .qmd or .Rmd file\n\nlibrary(DBI)                # we also still need the DBI package\n\n\ncon_duckdb &lt;- DBI::dbConnect(duckdb::duckdb(),\n                             dbdir = \"duck_datab\")\n\n\nthe database has been stored to a database directory called duck_datab which lives in the current R project.\ncan’t open it like a standard folder, but it is where DuckDB stores the database files."
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#preparing-to-load-data",
+    "href": "slides/2024-01-16-creating-db.html#preparing-to-load-data",
+    "title": "Creating Databases",
+    "section": "Preparing to load data",
+    "text": "Preparing to load data\nThe duckdb database is currently empty, so we need to load in some data. The duckdb_read_csv() function in the duckdb R package allows us to load the .csv file (available on GitHub) directly into the database without being loaded as an R object first.\nRecall that in ?@tbl-select-describe we used DESCRIBE to display the variable types of the database table(s). The list includes the variable name (Field), its Type, whether there are NULL values allowed, and whether there are keys or indices defined on the variable. See Table 2 for the DESCRIBE output on the table we are about to import.\nUnlike R, when creating a new data table, SQL requires that you communicate each future variable (column) and that variable’s type. Variable types are not automatically generated!"
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#saturday-night-live",
+    "href": "slides/2024-01-16-creating-db.html#saturday-night-live",
+    "title": "Creating Databases",
+    "section": "Saturday Night Live",
+    "text": "Saturday Night Live\n\nFigure 1: image credit: NBCConsider the Saturday Night Live datasets available on the snldb GitHub repo."
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#casts-table",
+    "href": "slides/2024-01-16-creating-db.html#casts-table",
+    "title": "Creating Databases",
+    "section": "casts table",
+    "text": "casts table\nUse R to understand the data from casts.csv.\n\ncasts &lt;- readr::read_csv(\"https://raw.githubusercontent.com/hhllcks/snldb/master/output/casts.csv\")\nglimpse(casts)\n\nRows: 614\nColumns: 8\n$ aid             &lt;chr&gt; \"A. Whitney Brown\", \"A. Whitney Brown\", \"A. Whitney Br…\n$ sid             &lt;dbl&gt; 11, 12, 13, 14, 15, 16, 5, 39, 40, 41, 42, 45, 46, 21,…\n$ featured        &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, …\n$ first_epid      &lt;dbl&gt; 19860222, NA, NA, NA, NA, NA, 19800409, 20140118, NA, …\n$ last_epid       &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…\n$ update_anchor   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…\n$ n_episodes      &lt;dbl&gt; 8, 20, 13, 20, 20, 20, 5, 11, 21, 21, 21, 18, 17, 20, …\n$ season_fraction &lt;dbl&gt; 0.444, 1.000, 1.000, 1.000, 1.000, 1.000, 0.250, 0.524…"
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#loading-data",
+    "href": "slides/2024-01-16-creating-db.html#loading-data",
+    "title": "Creating Databases",
+    "section": "Loading data",
+    "text": "Loading data\nImporting .csv files as tables, a series of steps:1\n\na USE statement that ensures we are in the right schema/database.\na series of DROP TABLE statements that drop any old tables with the same names as the ones we are going to create.\na series of CREATE TABLE statements that specify the table structures.\na series of COPY statements that read the data from the .csv files into the appropriate tables.\n\ntaken from MDSR."
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#loading-step-1-use",
+    "href": "slides/2024-01-16-creating-db.html#loading-step-1-use",
+    "title": "Creating Databases",
+    "section": "Loading step 1, USE",
+    "text": "Loading step 1, USE\nUse the (local) database that we’ve called duck_datab.\n\n```{sql}\n#| connection: con_duckdb\n\nUSE duck_datab;\n```"
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#loading-step-2-refresh",
+    "href": "slides/2024-01-16-creating-db.html#loading-step-2-refresh",
+    "title": "Creating Databases",
+    "section": "Loading step 2, refresh",
+    "text": "Loading step 2, refresh\nMake sure to “refresh” the table, in case it already exists. However, be very careful with the DROP TABLE statement, as it removes the casts table.\n\nDROP TABLE IF EXISTS casts;"
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#loading-step-3-create-table",
+    "href": "slides/2024-01-16-creating-db.html#loading-step-3-create-table",
+    "title": "Creating Databases",
+    "section": "Loading step 3, CREATE TABLE",
+    "text": "Loading step 3, CREATE TABLE\nCarefully define the variable types, whether or not they allow missing values, and what a default value is for that variable. Additionally, identify the key for accessing information.\n\nCREATE TABLE casts (\n  aid VARCHAR(255) NOT NULL DEFAULT '',\n  sid INTEGER NOT NULL DEFAULT 0,\n  featured BOOLEAN NOT NULL DEFAULT 'false',\n  first_epid INTEGER DEFAULT 0,\n  last_epid INTEGER DEFAULT 0,\n  update_anchor BOOLEAN NOT NULL DEFAULT 0,\n  n_episodes INTEGER NOT NULL DEFAULT 0,\n  season_fraction DECIMAL(21,20) NOT NULL DEFAULT 0,\n  PRIMARY KEY (sid, aid)\n);"
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#loading-step-4-copy",
+    "href": "slides/2024-01-16-creating-db.html#loading-step-4-copy",
+    "title": "Creating Databases",
+    "section": "Loading step 4, COPY",
+    "text": "Loading step 4, COPY\nThe .csv file lives on my computer, so I load it in directly. [n.b., the statement to load in data is different in MySQL.]\n\nCOPY casts FROM 'data/casts.csv' HEADER;"
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#checking-the-loading-select",
+    "href": "slides/2024-01-16-creating-db.html#checking-the-loading-select",
+    "title": "Creating Databases",
+    "section": "Checking the loading, SELECT",
+    "text": "Checking the loading, SELECT\n\nSELECT * FROM casts LIMIT 8;\n\n\n\n\n\nTable 1: After CREATE TABLE where variable types are set, the COPY command pulls the data into the table. SELECT shows us that the table is as expected.\n\n\naid\nsid\nfeatured\nfirst_epid\nlast_epid\nupdate_anchor\nn_episodes\nseason_fraction\n\n\n\n\nA. Whitney Brown\n11\nTRUE\n19860222\n\nFALSE\n8\n0.444\n\n\nA. Whitney Brown\n12\nTRUE\n\n\nFALSE\n20\n1.000\n\n\nA. Whitney Brown\n13\nTRUE\n\n\nFALSE\n13\n1.000\n\n\nA. Whitney Brown\n14\nTRUE\n\n\nFALSE\n20\n1.000\n\n\nA. Whitney Brown\n15\nTRUE\n\n\nFALSE\n20\n1.000\n\n\nA. Whitney Brown\n16\nTRUE\n\n\nFALSE\n20\n1.000\n\n\nAlan Zweibel\n5\nTRUE\n19800409\n\nFALSE\n5\n0.250\n\n\nSasheer Zamata\n39\nTRUE\n20140118\n\nFALSE\n11\n0.524"
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#check-the-database",
+    "href": "slides/2024-01-16-creating-db.html#check-the-database",
+    "title": "Creating Databases",
+    "section": "Check the database",
+    "text": "Check the database\nLet’s make sure that the database exists and that the table in the database exists.\n\nSHOW DATABASES;\n\n\n\n\n1 records\n\n\n\n\ndatabase_name\n\n\n\n\n\n\nduck_datab"
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#efficiencies",
+    "href": "slides/2024-01-16-creating-db.html#efficiencies",
+    "title": "Creating Databases",
+    "section": "Efficiencies",
+    "text": "Efficiencies\nIt is worth pointing out a few aspects to loading data into SQL: keys, indices, and partitioning."
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#key",
+    "href": "slides/2024-01-16-creating-db.html#key",
+    "title": "Creating Databases",
+    "section": "Key",
+    "text": "Key\nKeys are unique identifiers for each row, used primarily for connecting tables. Keys are generally not helpful for efficiency, but they are important for data integrity and relationships between tables.\n\nPRIMARY KEY is a column or set of columns that uniquely identify each row. Primary keys cannot be NULL.\nFOREIGN KEY is a column or set of columns that reference a primary key in a different table. A foreign key can be NULL."
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#index",
+    "href": "slides/2024-01-16-creating-db.html#index",
+    "title": "Creating Databases",
+    "section": "Index",
+    "text": "Index\nIndices are the crux of why SQL is so much more efficient than, say, R. An index is a lookup table that helps SQL keep track of which records contain certain values. By indexing the rows, SQL is able to optimize sorting and joining tables. The index is created in advance (when the table is created) and saved to disk, which can take up substantial space on the disk. Sometimes more than one variable is used to index the table. There are trade-offs to having a lot of indices (disk space but fast wrangling) versus a few indices (slow wrangling but less space)."
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#find-keys-and-indices",
+    "href": "slides/2024-01-16-creating-db.html#find-keys-and-indices",
+    "title": "Creating Databases",
+    "section": "Find keys and indices",
+    "text": "Find keys and indices\nIn MySQL the commands SHOW KEYS and SHOW INDEXES provide information about the keys and indices for each table."
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#best-practice",
+    "href": "slides/2024-01-16-creating-db.html#best-practice",
+    "title": "Creating Databases",
+    "section": "Best practice",
+    "text": "Best practice\nIt is always a good idea to terminate the SQL connection when you are done with it.\n\ndbDisconnect(con_duckdb, shutdown = TRUE)"
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#check-the-database-1",
+    "href": "slides/2024-01-16-creating-db.html#check-the-database-1",
+    "title": "Creating Databases",
+    "section": "Check the database",
+    "text": "Check the database\nLet’s make sure that the database exists and that the table in the database exists.\n\nSHOW TABLES;\n\n\n\n\n1 records\n\n\n\n\nname\n\n\n\n\n\n\ncasts"
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#check-the-database-2",
+    "href": "slides/2024-01-16-creating-db.html#check-the-database-2",
+    "title": "Creating Databases",
+    "section": "Check the database",
+    "text": "Check the database\nLet’s make sure that the database exists and that the table in the database exists.\n\nDESCRIBE casts;\n\n\n\n\n\nTable 2: DESCRIBE variables in the casts table.\n\n\ncolumn_name\ncolumn_type\nnull\nkey\ndefault\nextra\n\n\n\n\naid\nVARCHAR\nNO\nPRI\n''\n\n\n\nsid\nINTEGER\nNO\nPRI\n0\n\n\n\nfeatured\nBOOLEAN\nNO\n\n'false'\n\n\n\nfirst_epid\nINTEGER\nYES\n\n0\n\n\n\nlast_epid\nINTEGER\nYES\n\n0\n\n\n\nupdate_anchor\nBOOLEAN\nNO\n\n0\n\n\n\nn_episodes\nINTEGER\nNO\n\n0\n\n\n\nseason_fraction\nDECIMAL(21,20)\nNO\n\n0"
+  },
+  {
+    "objectID": "slides/2024-01-16-creating-db.html#partitioning",
+    "href": "slides/2024-01-16-creating-db.html#partitioning",
+    "title": "Creating Databases",
+    "section": "Partitioning",
+    "text": "Partitioning\nAnother way to speed up query retrievals is to partition the data tables. If, for example, the SNL queries were always done by year, then the episodes table could be partitioned such that they are stored as separate tables (one per year). The partitioning functions as an index on year. The user would not be able to tell the difference between the unpartitioned episodes table and the partitioned one. Queries done by year would be faster. Queries done grouped in another way would be slower."
+  },
+  {
+    "objectID": "slides/2024-01-09-clauses.html#a-null-example",
+    "href": "slides/2024-01-09-clauses.html#a-null-example",
+    "title": "SQL clauses",
+    "section": "A NULL example",
+    "text": "A NULL example\nThe logic of NULL:1\n\nIf you do anything with NULL, you’ll just get NULL. For instance if \\(x\\) is NULL, then \\(x &gt; 3\\), \\(1 = x\\), and \\(x + 4\\) all evaluate to NULL. Even \\(x =\\) NULL evaluates to NULL! if you want to check whether \\(x\\) is NULL, use x IS NULL or x IS NOT NULL.\nNULL short-circuits with boolean operators. That means a boolean expression involving NULL will evaluate to:\n\nTRUE, if it’d evaluate to TRUE regardless of whether the NULL value is really TRUE or FALSE.\nFALSE, if it’d evaluate to FALSE regardless of whether the NULL value is really TRUE or FALSE.\nOr NULL, if it depends on the NULL value.\n\n\ntaken from: https://cs186berkeley.net/notes/note1/#filtering-null-values"
+  },
+  {
+    "objectID": "slides/2024-01-09-clauses.html#a-null-example-1",
+    "href": "slides/2024-01-09-clauses.html#a-null-example-1",
+    "title": "SQL clauses",
+    "section": "A NULL example",
+    "text": "A NULL example\nConsider the following table and SQL query to evaluate WHERE age &lt;= 20 OR num_dogs = 3:\n\nSELECT * FROM (\n   SELECT 'Ace' AS name, 20 AS age, 4 as num_dogs\n   UNION\n   SELECT 'Ada' AS name, NULL AS age, 3 as num_dogs   \n   UNION\n   SELECT 'Ben' AS name, NULL AS age, NULL as num_dogs\n   UNION\n   SELECT 'Cho' AS name, 27 AS age, NULL as num_dogs\n   ) AS temptable;\n\n\n\n\n4 records\n\n\n\n\nname\n\n\nage\n\n\nnum_dogs\n\n\n\n\n\n\nAce\n\n\n20\n\n\n4\n\n\n\n\nAda\n\n\n\n\n3\n\n\n\n\nBen\n\n\n\n\n\n\n\n\nCho\n\n\n27"
+  },
+  {
+    "objectID": "slides/2024-01-09-clauses.html#a-null-example-2",
+    "href": "slides/2024-01-09-clauses.html#a-null-example-2",
+    "title": "SQL clauses",
+    "section": "A NULL example",
+    "text": "A NULL example\nWhere does the WHERE clause do? It tells us that we only want to keep the rows satisfying the age &lt;= 20 OR num_dogs = 3. Let’s consider each row one at a time:\n\nFor Ace, age &lt;= 20 evaluates to TRUE so the claim is satisfied.\nFor Ada, age &lt;= 20 evaluates to NULL but num_dogs = 3 evaluates to TRUE so the claim is satisfied.\nFor Ben, age &lt;= 20 evaluates to NULL and num_dogs = 3 evaluates to NULL so the overall expression is NULL which has a FALSE value.\nFor Cho, age &lt;= 20 evaluates to FALSE and num_dogs = 3 evaluates to NULL so the overall expression evaluates to NULL (because it depends on the value of the NULL).\n\nThus we keep only Ace and Ada."
+  },
+  {
+    "objectID": "slides/2024-01-09-clauses.html#a-null-example-3",
+    "href": "slides/2024-01-09-clauses.html#a-null-example-3",
+    "title": "SQL clauses",
+    "section": "A NULL example",
+    "text": "A NULL example\n\nSELECT * FROM (\n   SELECT 'Ace' AS name, 20 AS age, 4 as num_dogs\n   UNION\n   SELECT 'Ada' AS name, NULL AS age, 3 as num_dogs   \n   UNION\n   SELECT 'Ben' AS name, NULL AS age, NULL as num_dogs\n   UNION\n   SELECT 'Cho' AS name, 27 AS age, NULL as num_dogs\n   ) AS temptable\nWHERE age &lt;= 20 OR num_dogs = 3;\n\n\n\n\n2 records\n\n\n\n\nname\n\n\nage\n\n\nnum_dogs\n\n\n\n\n\n\nAce\n\n\n20\n\n\n4\n\n\n\n\nAda\n\n\n\n\n3"
   }
 ]
