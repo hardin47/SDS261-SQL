@@ -1,7 +1,7 @@
 ---
-title: Creating Databases
+title: Editing Databases
 author: "Jo Hardin"
-date: "January 16, 2024"
+date: "January 17, 2024"
 format:
   revealjs:
     slide-number: true
@@ -100,7 +100,7 @@ glimpse(casts)
 ```
 
 
-## Loading data {.scrollable}
+## Loading data 
 
 Importing .csv files as tables, a series of steps:^[taken from <a href = "https://mdsr-book.github.io/mdsr3e/16-sqlII.html#load-into-mysql-database" target = "_blank">MDSR</a>.]
 
