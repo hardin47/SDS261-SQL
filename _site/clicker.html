@@ -617,17 +617,60 @@ can use flights data for cities with particular names-->
 </ol>
 <hr>
 <ol start="38" type="1">
+<li>What is the main way to absolutely recognize a record within a database?<a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a>
+<ol type="a">
+<li>Foreign key</li>
+<li>Primary key</li>
+<li>Unique key</li>
+<li>Natural key</li>
+<li>Alternate key</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="39" type="1">
+<li>What does a foreign key do?<a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a>
+<ol type="a">
+<li>Directly identifies another table</li>
+<li>Directly identifies another column</li>
+<li>Gives access to another entire database</li>
+<li>Translates the database into another language</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="40" type="1">
+<li>Which of these would likely be used as a foreign key between a table on student enrollment and student grades?<a href="#fn40" class="footnote-ref" id="fnref40" role="doc-noteref"><sup>40</sup></a>
+<ol type="a">
+<li>grades</li>
+<li>tuition</li>
+<li>student_name</li>
+<li>student_hometown</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="41" type="1">
+<li>For the student records (for two tables: enrollment and grades), which is the most likely combination?<a href="#fn41" class="footnote-ref" id="fnref41" role="doc-noteref"><sup>41</sup></a>
+<ol type="a">
+<li>name as primary key to both</li>
+<li>name as foreign to both</li>
+<li>name as primary in enrollment and foreign in grades</li>
+<li>name as foreign in enrollment and primary in grades</li>
+</ol></li>
+</ol>
+<p><a href="#fn42" class="footnote-ref" id="fnref42" role="doc-noteref"><sup>42</sup></a> c.&nbsp;name as primary in enrollment and foreign in grades (the primary key must uniquely identify the records, and name is unlikely to do that in a grades database.)</p>
+<hr>
+<ol start="38" type="1">
 <li>Which <strong>SQL</strong> statement is used to create a database table called ‘Customers’?[^59]
 <ol type="a">
 <li>CREATE DATABASE TAB Customers</li>
-<li>CREATE TABLE Customers</li>
+<li>CREATE DATABASE Customers</li>
 <li>CREATE DATABASE TABLE Customers</li>
+<li>CREATE TABLE Customers</li>
 <li>CREATE DB Customers</li>
 </ol></li>
 </ol>
 <hr>
 <ol start="39" type="1">
-<li>Which <strong>SQL</strong> statement revises data in a database?<a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a>
+<li>Which <strong>SQL</strong> statement revises data in a database?<a href="#fn43" class="footnote-ref" id="fnref43" role="doc-noteref"><sup>43</sup></a>
 <ol type="a">
 <li>SAVE AS</li>
 <li>MODIFY</li>
@@ -637,7 +680,7 @@ can use flights data for cities with particular names-->
 </ol>
 <hr>
 <ol start="40" type="1">
-<li>Which <strong>SQL</strong> statement takes out data from a database?<a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a>
+<li>Which <strong>SQL</strong> statement takes out data from a database?<a href="#fn44" class="footnote-ref" id="fnref44" role="doc-noteref"><sup>44</sup></a>
 <ol type="a">
 <li>REMOVE</li>
 <li>DELETE</li>
@@ -646,7 +689,7 @@ can use flights data for cities with particular names-->
 </ol>
 <hr>
 <ol start="41" type="1">
-<li>The NOT NULL constraint enforces a column to not accept NULL values.<a href="#fn40" class="footnote-ref" id="fnref40" role="doc-noteref"><sup>40</sup></a>
+<li>The NOT NULL constraint enforces a column to not accept NULL values.<a href="#fn45" class="footnote-ref" id="fnref45" role="doc-noteref"><sup>45</sup></a>
 <ol type="a">
 <li>FALSE</li>
 <li>TRUE</li>
@@ -654,7 +697,7 @@ can use flights data for cities with particular names-->
 </ol>
 <hr>
 <ol start="42" type="1">
-<li>Which <strong>SQL</strong> statement places new data in a database?<a href="#fn41" class="footnote-ref" id="fnref41" role="doc-noteref"><sup>41</sup></a>
+<li>Which <strong>SQL</strong> statement places new data in a database?<a href="#fn46" class="footnote-ref" id="fnref46" role="doc-noteref"><sup>46</sup></a>
 <ol type="a">
 <li><code>ADD RECORD</code></li>
 <li><code>INSERT INTO</code></li>
@@ -664,7 +707,7 @@ can use flights data for cities with particular names-->
 </ol>
 <hr>
 <ol start="43" type="1">
-<li>With <strong>SQL</strong>, how can you insert a new record into the “Persons” table?<a href="#fn42" class="footnote-ref" id="fnref42" role="doc-noteref"><sup>42</sup></a>
+<li>With <strong>SQL</strong>, how can you insert a new record into the “Persons” table?<a href="#fn47" class="footnote-ref" id="fnref47" role="doc-noteref"><sup>47</sup></a>
 <ol type="a">
 <li><code>INSERT</code> <code>INTO</code> Persons VALUES (‘Jimmy’, ‘Jackson’)</li>
 <li><code>INSERT</code> (‘Jimmy’, ‘Jacskon’) <code>INTO</code> Persons</li>
@@ -673,7 +716,7 @@ can use flights data for cities with particular names-->
 </ol>
 <hr>
 <ol start="44" type="1">
-<li>With <strong>SQL</strong>, how can you insert “Olsen” as the “LastName” in the “Persons” table?<a href="#fn43" class="footnote-ref" id="fnref43" role="doc-noteref"><sup>43</sup></a>
+<li>With <strong>SQL</strong>, how can you insert “Olsen” as the “LastName” in the “Persons” table?<a href="#fn48" class="footnote-ref" id="fnref48" role="doc-noteref"><sup>48</sup></a>
 <ol type="a">
 <li><code>INSERT</code> <code>INTO</code> Persons (LastName) VALUES (‘Olsen’)</li>
 <li><code>INSERT</code> <code>INTO</code> Persons (’Olsen) <code>INTO</code> LastName</li>
@@ -682,7 +725,7 @@ can use flights data for cities with particular names-->
 </ol>
 <hr>
 <ol start="45" type="1">
-<li>How can you change “Hansen” into “Nilsen” in the “LastName” column in the Persons table?<a href="#fn44" class="footnote-ref" id="fnref44" role="doc-noteref"><sup>44</sup></a>
+<li>How can you change “Hansen” into “Nilsen” in the “LastName” column in the Persons table?<a href="#fn49" class="footnote-ref" id="fnref49" role="doc-noteref"><sup>49</sup></a>
 <ol type="a">
 <li>MODIFY Persons SET LastName=‘Nilsen’ <code>WHERE</code> LastName=‘Hansen’</li>
 <li><code>UPDATE</code> Persons SET LastName=‘Hansen’ <code>INTO</code> LastName=‘Nilsen’</li>
@@ -692,7 +735,7 @@ can use flights data for cities with particular names-->
 </ol>
 <hr>
 <ol start="46" type="1">
-<li>With <strong>SQL</strong>, how can you delete the records where the “FirstName” is “Peter” in the Persons Table?<a href="#fn45" class="footnote-ref" id="fnref45" role="doc-noteref"><sup>45</sup></a>
+<li>With <strong>SQL</strong>, how can you delete the records where the “FirstName” is “Peter” in the Persons Table?<a href="#fn50" class="footnote-ref" id="fnref50" role="doc-noteref"><sup>50</sup></a>
 <ol type="a">
 <li><code>DELETE</code> <code>FROM</code> Persons <code>WHERE</code> FirstName=‘Peter’</li>
 <li><code>DELETE</code> FirstName=‘Peter’ <code>FROM</code> Persons</li>
@@ -854,37 +897,57 @@ can use flights data for cities with particular names-->
 </ol>
 <a href="#fnref37" class="footnote-back" role="doc-backlink">↩︎</a></li>
 <li id="fn38"><ol start="4" type="a">
-<li>UPDATE</li>
+<li>CREATE TABLE Customers</li>
 </ol>
 <a href="#fnref38" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn39"><ol start="2" type="a">
-<li>DELETE</li>
+<li id="fn39"><ol start="4" type="a">
+<li>UPDATE</li>
 </ol>
 <a href="#fnref39" class="footnote-back" role="doc-backlink">↩︎</a></li>
 <li id="fn40"><ol start="2" type="a">
-<li>TRUE</li>
+<li>DELETE</li>
 </ol>
 <a href="#fnref40" class="footnote-back" role="doc-backlink">↩︎</a></li>
 <li id="fn41"><ol start="2" type="a">
-<li><code>INSERT INTO</code></li>
+<li>TRUE</li>
 </ol>
 <a href="#fnref41" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn42"><ol type="a">
-<li><code>INSERT</code> <code>INTO</code> Persons VALUES (‘Jimmy’, ‘Jackson’)</li>
+<li id="fn42"><ol start="2" type="a">
+<li>TRUE</li>
 </ol>
 <a href="#fnref42" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn43"><ol type="a">
-<li><code>INSERT</code> <code>INTO</code> Persons (LastName) VALUES (‘Olsen’)</li>
+<li id="fn43"><ol start="4" type="a">
+<li>UPDATE</li>
 </ol>
 <a href="#fnref43" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn44"><ol start="4" type="a">
-<li><code>UPDATE</code> Persons SET LastName=‘Nilsen’ <code>WHERE</code> LastName=‘Hansen’</li>
+<li id="fn44"><ol start="2" type="a">
+<li>DELETE</li>
 </ol>
 <a href="#fnref44" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn45"><ol type="a">
-<li><code>DELETE</code> <code>FROM</code> Persons <code>WHERE</code> FirstName=‘Peter’</li>
+<li id="fn45"><ol start="2" type="a">
+<li>TRUE</li>
 </ol>
 <a href="#fnref45" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn46"><ol start="2" type="a">
+<li><code>INSERT INTO</code></li>
+</ol>
+<a href="#fnref46" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn47"><ol type="a">
+<li><code>INSERT</code> <code>INTO</code> Persons VALUES (‘Jimmy’, ‘Jackson’)</li>
+</ol>
+<a href="#fnref47" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn48"><ol type="a">
+<li><code>INSERT</code> <code>INTO</code> Persons (LastName) VALUES (‘Olsen’)</li>
+</ol>
+<a href="#fnref48" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn49"><ol start="4" type="a">
+<li><code>UPDATE</code> Persons SET LastName=‘Nilsen’ <code>WHERE</code> LastName=‘Hansen’</li>
+</ol>
+<a href="#fnref49" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn50"><ol type="a">
+<li><code>DELETE</code> <code>FROM</code> Persons <code>WHERE</code> FirstName=‘Peter’</li>
+</ol>
+<a href="#fnref50" class="footnote-back" role="doc-backlink">↩︎</a></li>
 </ol>
 </section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

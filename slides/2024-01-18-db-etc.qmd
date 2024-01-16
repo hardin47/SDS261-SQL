@@ -1,7 +1,7 @@
 ---
-title: Creating Databases
+title: SQL Extras
 author: "Jo Hardin"
-date: "January 16, 2024"
+date: "January 18, 2024"
 format:
   revealjs:
     slide-number: true
@@ -65,6 +65,12 @@ con_duckdb <- DBI::dbConnect(duckdb::duckdb(),
 
 ## Preparing to load data 
 
+
+The `duckdb` database is currently empty, so we need to load in some data.  The `duckdb_read_csv()` function in the **duckdb** R package allows us to load the .csv file (available on GitHub) directly into the database without being loaded as an **R** object first.
+ 
+
+Recall that in @tbl-select-describe we used `DESCRIBE` to display the variable types of the database table(s).  The list includes the variable name (`Field`), its `Type`, whether there are `NULL` values allowed, and whether there are keys or indices defined on the variable.  See @tbl-casts-describe for the `DESCRIBE` output on the table we are about to import.
+
 Unlike **R**, when creating a new data table, **SQL** requires that you communicate each future variable (column) and that variable's type. Variable types are **not** automatically generated!   
 
 # Today's example
@@ -88,12 +94,8 @@ Consider the Saturday Night Live datasets available on the <a href = "https://gi
 Use **R** to understand the data from `casts.csv`.
 
 ```{r}
-#| echo: false
-casts <- readr::read_csv("https://raw.githubusercontent.com/hhllcks/snldb/master/output/casts.csv")
-```
-
-```{r}
 #| echo: true
+casts <- readr::read_csv("https://raw.githubusercontent.com/hhllcks/snldb/master/output/casts.csv")
 glimpse(casts)
 ```
 
@@ -124,52 +126,6 @@ CREATE TABLE CountryListCensus (
     PRIMARY KEY (Id)
 );
 ```
-
-
-## Efficiencies {.scrollable}
-
-> Each library (`database`) has books (`table`s). Each book (`table`) has pages (rows). Each page (row) has a unique page number to identify it (`key` value); to find a particular page, you sort through the page numbers (`key` values). But it isn't immediately obvious where the particular page of interest is, you might have to page through the book a little bit to find the page of interest.  It would be easier if you had several bookmarks throughout the book to anchor some of the page numbers.  For example, if you want page 1047 and you have a bookmark on page 1050, you only have to turn back three pages.  The bookmark is an `index`, it helps you find the desired rows much more quickly.^[Analogy taken from: https://www.quora.com/profile/Lara-Mazilu]
-
-
-## Key
-
-Keys are unique identifiers for each row, used primarily for connecting tables. Keys are generally not helpful for efficiency, but they are important for data integrity and relationships between tables.
-
-* `PRIMARY KEY` is a column or set of columns that uniquely identify each row.  Primary keys cannot be `NULL`.
-* `FOREIGN KEY` is a column or set of columns that reference a primary key in a different table.  A foreign key can be `NULL`.
-
-## Creating `KEY`s
-
-
-```{sql}
-#| eval: false
-
-CREATE TABLE table1 (
-  col1 ...,
-  col2 ...,
-  col3 ...,
-  PRIMARY KEY (col1),
-  FOREIGN KEY col2 REFERENCES table2(table2col)
-);
-```
-
-
-## Creating `INDEX`es
-
-Indexes can be created on one or more variable.  A table does not need to have an `INDEX` (or a `KEY`).
-
-```{sql}
-#| eval: false
-
-CREATE INDEX name_of_index ON table (col1);
-```
-
-```{sql}
-#| eval: false
-
-CREATE INDEX name_of_index ON table (col1, col2);
-```
-
 
 ## Loading data {.scrollable}
 
@@ -351,6 +307,31 @@ casts_describe |>
 
 ```
 
+
+## Efficiencies
+
+It is worth pointing out a few aspects to loading data into **SQL**: keys, indices, and partitioning.
+
+
+## Key
+
+Keys are unique identifiers for each row, used primarily for connecting tables. Keys are generally not helpful for efficiency, but they are important for data integrity and relationships between tables.
+
+* `PRIMARY KEY` is a column or set of columns that uniquely identify each row.  Primary keys cannot be `NULL`.
+* `FOREIGN KEY` is a column or set of columns that reference a primary key in a different table.  A foreign key can be `NULL`.
+
+## Index
+
+Indices are the crux of why **SQL** is so much more efficient than, say, **R**.  An index is a lookup table that helps **SQL** keep track of which records contain certain values.  By indexing the rows, **SQL** is able to optimize sorting and joining tables.  The index is created in advance (when the table is created) and saved to disk, which can take up substantial space on the disk.  Sometimes more than one variable is used to index the table. There are trade-offs to having a lot of indices (disk space but fast wrangling) versus a few indices (slow wrangling but less space).
+
+## Find keys and indices
+
+In **MySQL** the commands `SHOW KEYS` and `SHOW INDEXES` provide information about the keys and indices for each table.
+
+
+## Partitioning
+
+Another way to speed up query retrievals is to partition the data tables.  If, for example, the SNL queries were always done by year, then the `episodes` table could be partitioned such that they are stored as separate tables (one per `year`).  The partitioning functions as an index on `year`.  The user would not be able to tell the difference between the unpartitioned `episodes` table and the partitioned one.  Queries done by `year` would be faster.  Queries done grouped in another way would be slower.
 
 
 ## Best practice
