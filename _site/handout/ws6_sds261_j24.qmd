@@ -67,7 +67,8 @@ fig5 <- ggdraw() + draw_image(fig5_path)
 * creates a new table `assignedTo`
 * which stores the `donor` and the donor's `organ` assigned to a `patient`.
 * Furthermore, we want to store a treatment `price` for each such record. 
-* The combination of donor, organ, and patient uniquely identifies a record * `PRIMARY KEY`(s) and FOREIGN KEY`(s) should be identified.
+* The combination of donor, organ, and patient uniquely identifies a record 
+* `PRIMARY KEY`(s) and FOREIGN KEY`(s) should be identified.
 * Each record must have a treatment `price` that is bigger than 0 and smaller than 1,000,000 dollar.
 
 
@@ -96,7 +97,9 @@ CREATE TABLE assignedTo (
     price NUMERIC (8,2) NOT NULL CHECK (price BETWEEN 1 AND 999999),
     PRIMARY KEY (donor, organ, patient),
     FOREIGN KEY (donor, organ) REFERENCES organ(donor, organ),
-    FOREIGN KEY (patient) REFERENCES patient(pName)
+    FOREIGN KEY (patient) REFERENCES patient(pName),
+    FOREIGN KEY (donor) REFERENCES donor(dName),
+    FOREIGN KEY (patient, organ) REFERENCES takeCare(patient, organ)
 ) ;
 ```
 
