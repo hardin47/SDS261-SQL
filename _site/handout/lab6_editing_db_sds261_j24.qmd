@@ -47,7 +47,7 @@ The goals for lab 6 include:
 #| eval: false
 
 con_college <- DBI::dbConnect(duckdb::duckdb(),
-                             dbdir = "you_name_the_db")
+                             dbdir = "samenameaslab5")
 ```
 
 
@@ -55,7 +55,7 @@ con_college <- DBI::dbConnect(duckdb::duckdb(),
 
 The data we will work with today is on college tuition, pay, and diversity.  The original data source is the US Department of Education, but it has been compiled as part of <a href = "https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/2020-03-10" target = "_blank">TidyTuesday on March 10, 2020</a>.  Tuition and fees are for 2018-19.  Diversity is for 2014.
 
-1. Use the same database from Lab 5.  If the database somehow got deleted, go back and re-run your code from Lab 5.
+1. Use the same database from Lab 5.  If the database somehow got deleted or corrupted, go back and re-run your code from Lab 5.
 
 ```{r}
 #| unilur-solution: true
@@ -161,13 +161,61 @@ INSERT INTO diversity (name, total_enrollment, state, category, enrollment)
          ('Barden University', 10000, 'Louisiana', 'Black', 1667);
 ```
 
+4. Check to see that the values inserted into the `diversity` table are correct.  In order to tell, use a `SELECT` clause where you only look at schools from 'Louisiana' and sort by the name of the school.
 
-4. using `DELETE` to delete records. TBD
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+
+SELECT * FROM diversity
+WHERE state = 'Louisiana'
+ORDER BY name
+LIMIT 50;
+```
 
 
-5. using `ALTER TABLE` to change the table structure. TBD
+5. Using the `diversty` table, `DELETE` all the records that don't record race or ethnicity.  That is, delete the records that have a `category` of 'Total Minority', 'Women', or 'Non-Resident Foreign'.  Again, use a `SELECT` command to confirm that your code worked.
 
-6. Create a temporary table (e.g., to use in a follow up `SELECT` query) that contains only the 'Private' universities from the `tuition` table.
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+
+DELETE FROM diversity
+WHERE category = 'Total Minority' OR category = 'Women' OR category = 'Non-Resident Foreign'
+
+```
+
+
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+
+SELECT * FROM diversity
+WHERE state = 'Louisiana'
+ORDER BY name
+LIMIT 50;
+```
+
+
+6. Use `ALTER TABLE` to change the variable type of `make_world_better_percent` in the `salary` table from `VARCHAR` to `DOUBLE`.  Follow up by running `DESCRIBE` on the `salary` table to make sure your change worked.  (Note: for some reason, the same code doesn't seem to work on the `tuition` table with `room_and_board`.  It says that `tuition` depends on something.  You are welcome to try to make it work on your own computers!)
+
+
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+
+ALTER TABLE salary ALTER make_world_better_percent TYPE DOUBLE;
+```
+
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+
+DESCRIBE salary;
+```
+
+
+7. Create a temporary table (e.g., to use in a follow up `SELECT` query) that contains only the 'Private' universities from the `tuition` table.
 
 ```{sql}
 #| connection: con_college
@@ -195,7 +243,7 @@ CREATE TEMP TABLE tuition_private AS
 SELECT * FROM tuition_private LIMIT 10;
 ```
 
-7. Create a temporary table consisting of the `JOIN` of all three tables but including only the Smith College data.
+8. Create a temporary table consisting of the `JOIN` of all three tables but including only the Smith College data.
 
 
 ```{sql}
@@ -233,6 +281,8 @@ LIMIT 20;
 SELECT * FROM smith_data;
 ```
 
+
+## Disconnect from the server
 
 ```{r}
 #| echo: false

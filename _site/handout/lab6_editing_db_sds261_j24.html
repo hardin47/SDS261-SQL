@@ -204,14 +204,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>con_college <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(duckdb<span class="sc">::</span><span class="fu">duckdb</span>(),</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">dbdir =</span> <span class="st">"you_name_the_db"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">dbdir =</span> <span class="st">"samenameaslab5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="assignment" class="level2">
 <h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
 <p>The data we will work with today is on college tuition, pay, and diversity. The original data source is the US Department of Education, but it has been compiled as part of <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/2020-03-10" target="_blank">TidyTuesday on March 10, 2020</a>. Tuition and fees are for 2018-19. Diversity is for 2014.</p>
 <ol type="1">
-<li>Use the same database from Lab 5. If the database somehow got deleted, go back and re-run your code from Lab 5.</li>
+<li>Use the same database from Lab 5. If the database somehow got deleted or corrupted, go back and re-run your code from Lab 5.</li>
 </ol>
 <ol start="2" type="1">
 <li>Use <code>UPDATE</code> to change the <code>NA</code> values to <code>NULL</code> (for <code>room_and_board</code> in the <code>tuition</code> table and <code>make_world_better_percent</code> in the <code>salary</code> table). (Originally I had a follow up task to convert the data type from <code>VARCHAR</code> to <code>DOUBLE</code> as well. However, <strong>DuckDB</strong> is particularly finicky with those conversions, and so we aren’t going to do it. If/when you work on a <strong>SQL</strong> server, you might adjust the data type using something like: <code>ALTER TABLE tuition MODIFY room_and_board DOUBLE;</code>.)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
@@ -232,13 +232,23 @@ Shelley Regner as Ashley - white
 Caroline Fourmy as Mary-Elise - white
 Nicole Lovince as Kori - Black-->
 <ol start="4" type="1">
-<li><p>using <code>DELETE</code> to delete records. TBD</p></li>
-<li><p>using <code>ALTER TABLE</code> to change the table structure. TBD</p></li>
-<li><p>Create a temporary table (e.g., to use in a follow up <code>SELECT</code> query) that contains only the ‘Private’ universities from the <code>tuition</code> table.</p></li>
+<li>Check to see that the values inserted into the <code>diversity</code> table are correct. In order to tell, use a <code>SELECT</code> clause where you only look at schools from ‘Louisiana’ and sort by the name of the school.</li>
+</ol>
+<ol start="5" type="1">
+<li>Using the <code>diversty</code> table, <code>DELETE</code> all the records that don’t record race or ethnicity. That is, delete the records that have a <code>category</code> of ‘Total Minority’, ‘Women’, or ‘Non-Resident Foreign’. Again, use a <code>SELECT</code> command to confirm that your code worked.</li>
+</ol>
+<ol start="6" type="1">
+<li>Use <code>ALTER TABLE</code> to change the variable type of <code>make_world_better_percent</code> in the <code>salary</code> table from <code>VARCHAR</code> to <code>DOUBLE</code>. Follow up by running <code>DESCRIBE</code> on the <code>salary</code> table to make sure your change worked. (Note: for some reason, the same code doesn’t seem to work on the <code>tuition</code> table with <code>room_and_board</code>. It says that <code>tuition</code> depends on something. You are welcome to try to make it work on your own computers!)</li>
 </ol>
 <ol start="7" type="1">
+<li>Create a temporary table (e.g., to use in a follow up <code>SELECT</code> query) that contains only the ‘Private’ universities from the <code>tuition</code> table.</li>
+</ol>
+<ol start="8" type="1">
 <li>Create a temporary table consisting of the <code>JOIN</code> of all three tables but including only the Smith College data.</li>
 </ol>
+</section>
+<section id="disconnect-from-the-server" class="level2">
+<h2 class="anchored" data-anchor-id="disconnect-from-the-server">Disconnect from the server</h2>
 
 
 </section>

@@ -227,14 +227,14 @@ Solution
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>con_college <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(duckdb<span class="sc">::</span><span class="fu">duckdb</span>(),</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">dbdir =</span> <span class="st">"you_name_the_db"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">dbdir =</span> <span class="st">"samenameaslab5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="assignment" class="level2">
 <h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
 <p>The data we will work with today is on college tuition, pay, and diversity. The original data source is the US Department of Education, but it has been compiled as part of <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/2020-03-10" target="_blank">TidyTuesday on March 10, 2020</a>. Tuition and fees are for 2018-19. Diversity is for 2014.</p>
 <ol type="1">
-<li>Use the same database from Lab 5. If the database somehow got deleted, go back and re-run your code from Lab 5.</li>
+<li>Use the same database from Lab 5. If the database somehow got deleted or corrupted, go back and re-run your code from Lab 5.</li>
 </ol>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -582,7 +582,7 @@ Solution
 <th style="text-align: left;">state_name</th>
 <th style="text-align: right;">early_career_pay</th>
 <th style="text-align: right;">mid_career_pay</th>
-<th style="text-align: left;">make_world_better_percent</th>
+<th style="text-align: right;">make_world_better_percent</th>
 <th style="text-align: right;">stem_percent</th>
 </tr>
 </thead>
@@ -593,7 +593,7 @@ Solution
 <td style="text-align: left;">Alabama</td>
 <td style="text-align: right;">54400</td>
 <td style="text-align: right;">104500</td>
-<td style="text-align: left;">51</td>
+<td style="text-align: right;">51</td>
 <td style="text-align: right;">31</td>
 </tr>
 <tr class="even">
@@ -602,7 +602,7 @@ Solution
 <td style="text-align: left;">Alabama</td>
 <td style="text-align: right;">57500</td>
 <td style="text-align: right;">103900</td>
-<td style="text-align: left;">59</td>
+<td style="text-align: right;">59</td>
 <td style="text-align: right;">45</td>
 </tr>
 <tr class="odd">
@@ -611,7 +611,7 @@ Solution
 <td style="text-align: left;">Alabama</td>
 <td style="text-align: right;">52300</td>
 <td style="text-align: right;">97400</td>
-<td style="text-align: left;">50</td>
+<td style="text-align: right;">50</td>
 <td style="text-align: right;">15</td>
 </tr>
 <tr class="even">
@@ -620,7 +620,7 @@ Solution
 <td style="text-align: left;">Alabama</td>
 <td style="text-align: right;">54500</td>
 <td style="text-align: right;">93500</td>
-<td style="text-align: left;">61</td>
+<td style="text-align: right;">61</td>
 <td style="text-align: right;">30</td>
 </tr>
 <tr class="odd">
@@ -629,7 +629,7 @@ Solution
 <td style="text-align: left;">Alabama</td>
 <td style="text-align: right;">48400</td>
 <td style="text-align: right;">90500</td>
-<td style="text-align: left;">52</td>
+<td style="text-align: right;">52</td>
 <td style="text-align: right;">3</td>
 </tr>
 </tbody>
@@ -675,9 +675,7 @@ Solution
 </div>
 </div>
 <ol start="4" type="1">
-<li><p>using <code>DELETE</code> to delete records. TBD</p></li>
-<li><p>using <code>ALTER TABLE</code> to change the table structure. TBD</p></li>
-<li><p>Create a temporary table (e.g., to use in a follow up <code>SELECT</code> query) that contains only the ‘Private’ universities from the <code>tuition</code> table.</p></li>
+<li>Check to see that the values inserted into the <code>diversity</code> table are correct. In order to tell, use a <code>SELECT</code> clause where you only look at schools from ‘Louisiana’ and sort by the name of the school.</li>
 </ol>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
@@ -692,12 +690,110 @@ Solution
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> TEMP <span class="kw">TABLE</span> tuition_private <span class="kw">AS</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> tuition <span class="kw">WHERE</span> <span class="kw">type</span> <span class="op">=</span> <span class="st">'Private'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> diversity</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> state <span class="op">=</span> <span class="st">'Louisiana'</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> name</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">50</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>Displaying records 1 - 10</caption>
+<colgroup>
+<col style="width: 29%">
+<col style="width: 16%">
+<col style="width: 9%">
+<col style="width: 33%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">total_enrollment</th>
+<th style="text-align: left;">state</th>
+<th style="text-align: left;">category</th>
+<th style="text-align: right;">enrollment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Barden University</td>
+<td style="text-align: right;">10000</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Black</td>
+<td style="text-align: right;">1667</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Barden University</td>
+<td style="text-align: right;">10000</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Women</td>
+<td style="text-align: right;">5000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Barden University</td>
+<td style="text-align: right;">10000</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Black</td>
+<td style="text-align: right;">1667</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Barden University</td>
+<td style="text-align: right;">10000</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Black</td>
+<td style="text-align: right;">1667</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Baton Rouge Community College</td>
+<td style="text-align: right;">7740</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: right;">633</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Baton Rouge Community College</td>
+<td style="text-align: right;">7740</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">American Indian / Alaska Native</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Baton Rouge Community College</td>
+<td style="text-align: right;">7740</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Asian</td>
+<td style="text-align: right;">149</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Baton Rouge Community College</td>
+<td style="text-align: right;">7740</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Black</td>
+<td style="text-align: right;">3263</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Baton Rouge Community College</td>
+<td style="text-align: right;">7740</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Hispanic</td>
+<td style="text-align: right;">241</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Baton Rouge Community College</td>
+<td style="text-align: right;">7740</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Native Hawaiian / Pacific Islander</td>
+<td style="text-align: right;">12</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
+</div>
+<ol start="5" type="1">
+<li>Using the <code>diversty</code> table, <code>DELETE</code> all the records that don’t record race or ethnicity. That is, delete the records that have a <code>category</code> of ‘Total Minority’, ‘Women’, or ‘Non-Resident Foreign’. Again, use a <code>SELECT</code> command to confirm that your code worked.</li>
+</ol>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -711,7 +807,274 @@ Solution
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> tuition_private <span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">DELETE</span> <span class="kw">FROM</span> diversity</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">category</span> <span class="op">=</span> <span class="st">'Total Minority'</span> <span class="kw">OR</span> <span class="kw">category</span> <span class="op">=</span> <span class="st">'Women'</span> <span class="kw">OR</span> <span class="kw">category</span> <span class="op">=</span> <span class="st">'Non-Resident Foreign'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> diversity</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> state <span class="op">=</span> <span class="st">'Louisiana'</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> name</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">50</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>Displaying records 1 - 10</caption>
+<colgroup>
+<col style="width: 29%">
+<col style="width: 16%">
+<col style="width: 9%">
+<col style="width: 33%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">total_enrollment</th>
+<th style="text-align: left;">state</th>
+<th style="text-align: left;">category</th>
+<th style="text-align: right;">enrollment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Barden University</td>
+<td style="text-align: right;">10000</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Black</td>
+<td style="text-align: right;">1667</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Barden University</td>
+<td style="text-align: right;">10000</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Black</td>
+<td style="text-align: right;">1667</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Barden University</td>
+<td style="text-align: right;">10000</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Black</td>
+<td style="text-align: right;">1667</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Baton Rouge Community College</td>
+<td style="text-align: right;">7740</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Two Or More Races</td>
+<td style="text-align: right;">159</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Baton Rouge Community College</td>
+<td style="text-align: right;">7740</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">American Indian / Alaska Native</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Baton Rouge Community College</td>
+<td style="text-align: right;">7740</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Asian</td>
+<td style="text-align: right;">149</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Baton Rouge Community College</td>
+<td style="text-align: right;">7740</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Black</td>
+<td style="text-align: right;">3263</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Baton Rouge Community College</td>
+<td style="text-align: right;">7740</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Hispanic</td>
+<td style="text-align: right;">241</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Baton Rouge Community College</td>
+<td style="text-align: right;">7740</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Native Hawaiian / Pacific Islander</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Baton Rouge Community College</td>
+<td style="text-align: right;">7740</td>
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: right;">633</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="6" type="1">
+<li>Use <code>ALTER TABLE</code> to change the variable type of <code>make_world_better_percent</code> in the <code>salary</code> table from <code>VARCHAR</code> to <code>DOUBLE</code>. Follow up by running <code>DESCRIBE</code> on the <code>salary</code> table to make sure your change worked. (Note: for some reason, the same code doesn’t seem to work on the <code>tuition</code> table with <code>room_and_board</code>. It says that <code>tuition</code> depends on something. You are welcome to try to make it work on your own computers!)</li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="kw">TABLE</span> salary <span class="kw">ALTER</span> make_world_better_percent <span class="kw">TYPE</span> <span class="dt">DOUBLE</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>DESCRIBE salary;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>7 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">column_name</th>
+<th style="text-align: left;">column_type</th>
+<th style="text-align: left;">null</th>
+<th style="text-align: left;">key</th>
+<th style="text-align: left;">default</th>
+<th style="text-align: right;">extra</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">rank</td>
+<td style="text-align: left;">DOUBLE</td>
+<td style="text-align: left;">YES</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">VARCHAR</td>
+<td style="text-align: left;">YES</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">state_name</td>
+<td style="text-align: left;">VARCHAR</td>
+<td style="text-align: left;">YES</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">early_career_pay</td>
+<td style="text-align: left;">DOUBLE</td>
+<td style="text-align: left;">YES</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">mid_career_pay</td>
+<td style="text-align: left;">DOUBLE</td>
+<td style="text-align: left;">YES</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">make_world_better_percent</td>
+<td style="text-align: left;">DOUBLE</td>
+<td style="text-align: left;">YES</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stem_percent</td>
+<td style="text-align: left;">DOUBLE</td>
+<td style="text-align: left;">YES</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="7" type="1">
+<li>Create a temporary table (e.g., to use in a follow up <code>SELECT</code> query) that contains only the ‘Private’ universities from the <code>tuition</code> table.</li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> TEMP <span class="kw">TABLE</span> tuition_private <span class="kw">AS</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> tuition <span class="kw">WHERE</span> <span class="kw">type</span> <span class="op">=</span> <span class="st">'Private'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> tuition_private <span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 <table class="table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -869,11 +1232,11 @@ Solution
 </div>
 </div>
 </div>
-<ol start="7" type="1">
+<ol start="8" type="1">
 <li>Create a temporary table consisting of the <code>JOIN</code> of all three tables but including only the Smith College data.</li>
 </ol>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -882,27 +1245,27 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> TEMP <span class="kw">TABLE</span> smith_data <span class="kw">AS</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> tuition.name, <span class="kw">category</span>, enrollment, <span class="kw">type</span>, </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>       degree_length, room_and_board,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>       in_state_tuition, out_of_state_tuition, in_state_total,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>       out_of_state_total, early_career_pay, mid_career_pay,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>       make_world_better_percent, stem_percent,</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>       total_enrollment</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> tuition</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> salary <span class="kw">ON</span> tuition.name <span class="op">=</span> salary.name</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> diversity <span class="kw">ON</span> tuition.name <span class="op">=</span> diversity.name</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> tuition.name <span class="op">=</span> <span class="st">'Smith College'</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> TEMP <span class="kw">TABLE</span> smith_data <span class="kw">AS</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> tuition.name, <span class="kw">category</span>, enrollment, <span class="kw">type</span>, </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>       degree_length, room_and_board,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>       in_state_tuition, out_of_state_tuition, in_state_total,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>       out_of_state_total, early_career_pay, mid_career_pay,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>       make_world_better_percent, stem_percent,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>       total_enrollment</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> tuition</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> salary <span class="kw">ON</span> tuition.name <span class="op">=</span> salary.name</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> diversity <span class="kw">ON</span> tuition.name <span class="op">=</span> diversity.name</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> tuition.name <span class="op">=</span> <span class="st">'Smith College'</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -911,13 +1274,13 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> smith_data;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> smith_data;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 <table class="table table-sm table-striped small">
-<caption>Displaying records 1 - 10</caption>
+<caption>8 records</caption>
 <colgroup>
 <col style="width: 5%">
 <col style="width: 13%">
@@ -949,30 +1312,13 @@ Solution
 <th style="text-align: right;">out_of_state_total</th>
 <th style="text-align: right;">early_career_pay</th>
 <th style="text-align: right;">mid_career_pay</th>
-<th style="text-align: left;">make_world_better_percent</th>
+<th style="text-align: right;">make_world_better_percent</th>
 <th style="text-align: right;">stem_percent</th>
 <th style="text-align: right;">total_enrollment</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Smith College</td>
-<td style="text-align: left;">Women</td>
-<td style="text-align: right;">2927</td>
-<td style="text-align: left;">Private</td>
-<td style="text-align: left;">4 Year</td>
-<td style="text-align: left;">17520</td>
-<td style="text-align: right;">52404</td>
-<td style="text-align: right;">52404</td>
-<td style="text-align: right;">69924</td>
-<td style="text-align: right;">69924</td>
-<td style="text-align: right;">52700</td>
-<td style="text-align: right;">98200</td>
-<td style="text-align: left;">51</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">2989</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Smith College</td>
 <td style="text-align: left;">American Indian / Alaska Native</td>
 <td style="text-align: right;">5</td>
@@ -985,11 +1331,11 @@ Solution
 <td style="text-align: right;">69924</td>
 <td style="text-align: right;">52700</td>
 <td style="text-align: right;">98200</td>
-<td style="text-align: left;">51</td>
+<td style="text-align: right;">51</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">2989</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Smith College</td>
 <td style="text-align: left;">Asian</td>
 <td style="text-align: right;">348</td>
@@ -1002,11 +1348,11 @@ Solution
 <td style="text-align: right;">69924</td>
 <td style="text-align: right;">52700</td>
 <td style="text-align: right;">98200</td>
-<td style="text-align: left;">51</td>
+<td style="text-align: right;">51</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">2989</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Smith College</td>
 <td style="text-align: left;">Black</td>
 <td style="text-align: right;">149</td>
@@ -1019,11 +1365,11 @@ Solution
 <td style="text-align: right;">69924</td>
 <td style="text-align: right;">52700</td>
 <td style="text-align: right;">98200</td>
-<td style="text-align: left;">51</td>
+<td style="text-align: right;">51</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">2989</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Smith College</td>
 <td style="text-align: left;">Hispanic</td>
 <td style="text-align: right;">276</td>
@@ -1036,11 +1382,11 @@ Solution
 <td style="text-align: right;">69924</td>
 <td style="text-align: right;">52700</td>
 <td style="text-align: right;">98200</td>
-<td style="text-align: left;">51</td>
+<td style="text-align: right;">51</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">2989</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Smith College</td>
 <td style="text-align: left;">Native Hawaiian / Pacific Islander</td>
 <td style="text-align: right;">2</td>
@@ -1053,11 +1399,11 @@ Solution
 <td style="text-align: right;">69924</td>
 <td style="text-align: right;">52700</td>
 <td style="text-align: right;">98200</td>
-<td style="text-align: left;">51</td>
+<td style="text-align: right;">51</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">2989</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Smith College</td>
 <td style="text-align: left;">White</td>
 <td style="text-align: right;">1447</td>
@@ -1070,11 +1416,11 @@ Solution
 <td style="text-align: right;">69924</td>
 <td style="text-align: right;">52700</td>
 <td style="text-align: right;">98200</td>
-<td style="text-align: left;">51</td>
+<td style="text-align: right;">51</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">2989</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Smith College</td>
 <td style="text-align: left;">Two Or More Races</td>
 <td style="text-align: right;">128</td>
@@ -1087,11 +1433,11 @@ Solution
 <td style="text-align: right;">69924</td>
 <td style="text-align: right;">52700</td>
 <td style="text-align: right;">98200</td>
-<td style="text-align: left;">51</td>
+<td style="text-align: right;">51</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">2989</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Smith College</td>
 <td style="text-align: left;">Unknown</td>
 <td style="text-align: right;">246</td>
@@ -1104,24 +1450,7 @@ Solution
 <td style="text-align: right;">69924</td>
 <td style="text-align: right;">52700</td>
 <td style="text-align: right;">98200</td>
-<td style="text-align: left;">51</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">2989</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Smith College</td>
-<td style="text-align: left;">Non-Resident Foreign</td>
-<td style="text-align: right;">388</td>
-<td style="text-align: left;">Private</td>
-<td style="text-align: left;">4 Year</td>
-<td style="text-align: left;">17520</td>
-<td style="text-align: right;">52404</td>
-<td style="text-align: right;">52404</td>
-<td style="text-align: right;">69924</td>
-<td style="text-align: right;">69924</td>
-<td style="text-align: right;">52700</td>
-<td style="text-align: right;">98200</td>
-<td style="text-align: left;">51</td>
+<td style="text-align: right;">51</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">2989</td>
 </tr>
@@ -1132,6 +1461,9 @@ Solution
 </div>
 </div>
 </div>
+</section>
+<section id="disconnect-from-the-server" class="level2">
+<h2 class="anchored" data-anchor-id="disconnect-from-the-server">Disconnect from the server</h2>
 
 
 </section>

@@ -159,7 +159,7 @@ CREATE TABLE diversity (
 ```
 
 
-4. Use `COPY` to load the data from your computer.  (Hint: if there is a `NULL` value, **SQL** wants the variable to be loaded as a character string.)
+4. Use `COPY` to load the data from your computer.  (Hint: if there is an `NA` value, **SQL** doesn't know that it is actually `NULL` and wants the variable to be loaded as a character string.)
 
 
 ```{sql}
@@ -215,6 +215,10 @@ SELECT * FROM diversity LIMIT 10;
 
 CREATE INDEX state_idx ON tuition (state);
 ```
+
+
+## Disconnect from the server
+
 
 ```{r}
 #| echo: false
