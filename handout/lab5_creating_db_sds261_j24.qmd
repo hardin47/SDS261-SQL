@@ -159,7 +159,7 @@ CREATE TABLE diversity (
 ```
 
 
-4. Use `COPY` to load the data from your computer.  (Hint: if there is a `NULL` value, **SQL** wants the variable to be loaded as a character string.  Tomorrow, we'll learn how to set a variable in as a character string and then convert it to numeric after the data are loaded in.)
+4. Use `COPY` to load the data from your computer.  (Hint: if there is a `NULL` value, **SQL** wants the variable to be loaded as a character string.)
 
 
 ```{sql}
