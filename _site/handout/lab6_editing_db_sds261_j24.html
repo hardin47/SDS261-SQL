@@ -216,50 +216,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Use <code>UPDATE</code> to change the <code>NA</code> values to <code>NULL</code> (for <code>room_and_board</code> in the <code>tuition</code> table and <code>make_world_better_percent</code> in the <code>salary</code> table). (Originally I had a follow up task to convert the data type from <code>VARCHAR</code> to <code>DOUBLE</code> as well. However, <strong>DuckDB</strong> is particularly finicky with those conversions, and so we aren’t going to do it. If/when you work on a <strong>SQL</strong> server, you might adjust the data type using something like: <code>ALTER TABLE tuition MODIFY room_and_board DOUBLE;</code>.)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> number_null</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> tuition</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> room_and_board <span class="kw">IS</span> <span class="kw">NULL</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="knitsql-table">
-<table class="table table-sm table-striped small">
-<caption>1 records</caption>
-<thead>
-<tr class="header">
-<th style="text-align: right;">number_null</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">1094</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> number_null</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> salary</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> make_world_better_percent <span class="kw">IS</span> <span class="kw">NULL</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="knitsql-table">
-<table class="table table-sm table-striped small">
-<caption>1 records</caption>
-<thead>
-<tr class="header">
-<th style="text-align: right;">number_null</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">33</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 <ol start="3" type="1">
-<li>Using <code>INSERT INTO</code> add records to the <code>diversity</code> table. Add ‘Barden University’ in ‘Louisiana’ that has a total enrollment of 10,000 students, half of which are female. Add an additional value to record that, if the Bellas are representative of the student population, Barden University has 1667 Black students.</li>
+<li>Using <code>INSERT INTO</code> add records to the <code>diversity</code> table. Add ‘Barden University’ in ‘Louisiana’ that has a total enrollment of 10,000 students, half of whom are female. Add an additional value to indicate, if the Bellas are representative of the student population, that Barden University has 1667 Black students.</li>
 </ol>
 <!--Anna Kendrick as Beca Mitchell - white
 Rebel Wilson as Patricia "Fat Amy" Hobart - white

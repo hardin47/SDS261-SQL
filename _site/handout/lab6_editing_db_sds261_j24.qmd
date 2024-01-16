@@ -68,7 +68,7 @@ con_college <- DBI::dbConnect(duckdb::duckdb(),
 
 ```{sql}
 #| connection: con_college
-
+#| unilur-solution: true
 
 SELECT COUNT(*) AS number_null
 FROM tuition
@@ -103,7 +103,7 @@ SELECT * FROM tuition LIMIT 5;
 
 ```{sql}
 #| connection: con_college
-
+#| unilur-solution: true
 
 SELECT COUNT(*) AS number_null
 FROM salary
@@ -137,7 +137,7 @@ SELECT * FROM salary LIMIT 5;
 ```
 
 
-3. Using `INSERT INTO` add records to the `diversity` table.  Add 'Barden University' in 'Louisiana' that has a total enrollment of 10,000 students, half of which are female. Add an additional value to record that, if the Bellas are representative of the student population, Barden University has 1667 Black students.
+3. Using `INSERT INTO` add records to the `diversity` table.  Add 'Barden University' in 'Louisiana' that has a total enrollment of 10,000 students, half of whom are female. Add an additional value to indicate, if the Bellas are representative of the student population, that Barden University has 1667 Black students.
 
 <!--Anna Kendrick as Beca Mitchell - white
 Rebel Wilson as Patricia "Fat Amy" Hobart - white
