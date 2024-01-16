@@ -8,7 +8,7 @@
 
 <meta name="author" content="your name goes here">
 
-<title>Data Science, the SQL - Lab 5 - creating databases</title>
+<title>Data Science, the SQL - Lab 6 - editing databases</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -158,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 5 - creating databases</h1>
+<h1 class="title">Lab 6 - editing databases</h1>
 </div>
 
 
@@ -185,21 +185,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Today’s lab will provide practice working with creating <strong>SQL</strong> databases using <strong>DuckDB</strong>.</p>
-<p>The goals for lab 5 include:</p>
+<p>Today’s lab will provide practice working with editing <strong>SQL</strong> databases using <strong>DuckDB</strong>.</p>
+<p>The goals for lab 6 include:</p>
 <ul>
-<li>copying data into a local folder.</li>
-<li>identifying keys for identifying unique records.</li>
-<li>practice with the loading steps: <code>USE</code>, <code>CREATE TABLE</code>, and <code>COPY</code>.</li>
-<li>running <strong>SQL</strong> queries on the existing data to confirm correct loading.</li>
-<li><code>CREATE INDEX</code> for a variable of interest.</li>
+<li>using <code>UPDATE</code> to change the data.</li>
+<li>using <code>INSERT INTO</code> to add records to a table.</li>
+<li>using <code>DELETE</code> to delete records.</li>
+<li>using <code>ALTER TABLE</code> to change the table structure.</li>
+<li>creating temporary tables to use in a follow up <code>SELECT</code> query.</li>
 </ul>
 <section id="advice-for-turning-in-the-assignment" class="level2">
 <h2 class="anchored" data-anchor-id="advice-for-turning-in-the-assignment">Advice for turning in the assignment</h2>
 <ul>
 <li><p>Be sure to indicate (in the .qmd file) which problem is being answered with which code. A sentence or two with each response goes a long way toward your understanding!</p></li>
 <li><p>save the .Rproj file somewhere you can find it. Don’t keep everything in your downloads folder. Maybe make a folder called <code>SDS261</code> or something. That folder could live on your Desktop. Or maybe in your Dropbox.</p></li>
-<li><p>The <strong>.qmd</strong> document should be saved in the <strong>R</strong> Project as <code>lab5-sds261-yourlastname-yourfirstname.qmd</code>.</p></li>
+<li><p>The <strong>.qmd</strong> document should be saved in the <strong>R</strong> Project as <code>lab6-sds261-yourlastname-yourfirstname.qmd</code>.</p></li>
 <li><p>Set up a connection to a database of your naming using <strong>DuckDB</strong>.</p></li>
 </ul>
 <div class="cell">
@@ -211,28 +211,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
 <p>The data we will work with today is on college tuition, pay, and diversity. The original data source is the US Department of Education, but it has been compiled as part of <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/2020-03-10" target="_blank">TidyTuesday on March 10, 2020</a>. Tuition and fees are for 2018-19. Diversity is for 2014.</p>
 <ol type="1">
-<li>Download the data onto your own computer. In the interest of time, let’s only use three tables: <code>tuition_cost</code> and <code>salary_potential</code> and <code>diversity_school</code>.</li>
+<li>Use the same database from Lab 5. If the database somehow got deleted, go back and re-run your code from Lab 5.</li>
 </ol>
 <ol start="2" type="1">
-<li>Follow the first two steps in the notes: <code>USE</code> and <code>DROP TABLE</code>.</li>
+<li>Use <code>UPDATE</code> to change the <code>NA</code> values to <code>NULL</code> (for <code>room_and_board</code> in the <code>tuition</code> table and <code>make_world_better_percent</code> in the <code>salary</code> table). (Originally I had a follow up task to convert the data type from <code>VARCHAR</code> to <code>DOUBLE</code> as well. However, <strong>DuckDB</strong> is particularly finicky with those conversions, and so we aren’t going to do it. If/when you work on a <strong>SQL</strong> server, you might adjust the data type using something like: <code>ALTER TABLE tuition MODIFY room_and_board DOUBLE;</code>.)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
 </ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> number_null</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> tuition</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> room_and_board <span class="kw">IS</span> <span class="kw">NULL</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>1 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">number_null</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1094</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> number_null</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> salary</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> make_world_better_percent <span class="kw">IS</span> <span class="kw">NULL</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>1 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">number_null</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">33</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <ol start="3" type="1">
-<li>For each of the three tables, in the <code>CREATE TABLE</code> operation, carefully define variable types and identify any key variables. Unfortunately, <code>FOREIGN KEY</code>s don’t work here because there is not referential integrity across the tables.</li>
+<li>Using <code>INSERT INTO</code> add records to the <code>diversity</code> table. Add ‘Barden University’ in ‘Louisiana’ that has a total enrollment of 10,000 students, half of which are female. Add an additional value to record that, if the Bellas are representative of the student population, Barden University has 1667 Black students.</li>
 </ol>
+<!--Anna Kendrick as Beca Mitchell - white
+Rebel Wilson as Patricia "Fat Amy" Hobart - white
+Anna Camp as Aubrey Posen - white
+Brittany Snow as Chloe Beale - white
+Alexis Knapp as Stacie Conrad - white
+Ester Dean as Cynthia Rose Adams - Black
+Hana Mae Lee as Lilly Onakuramara - Asian
+Kelley Alice Jakle as Jessica - white
+Wanetah Walmsley as Denise - white
+Shelley Regner as Ashley - white
+Caroline Fourmy as Mary-Elise - white
+Nicole Lovince as Kori - Black-->
 <ol start="4" type="1">
-<li>Use <code>COPY</code> to load the data from your computer. (Hint: if there is a <code>NULL</code> value, <strong>SQL</strong> wants the variable to be loaded as a character string. Tomorrow, we’ll learn how to set a variable in as a character string and then convert it to numeric after the data are loaded in.)</li>
+<li><p>using <code>DELETE</code> to delete records. TBD</p></li>
+<li><p>using <code>ALTER TABLE</code> to change the table structure. TBD</p></li>
+<li><p>Create a temporary table (e.g., to use in a follow up <code>SELECT</code> query) that contains only the ‘Private’ universities from the <code>tuition</code> table.</p></li>
 </ol>
-<ol start="5" type="1">
-<li>Use <code>SELECT *</code> (with a <code>LIMIT</code>!) to make sure all three tables loaded correctly.</li>
-</ol>
-<ol start="6" type="1">
-<li>Add an <code>INDEX</code> to the <code>tuition</code> table on <code>state</code>. We won’t discuss until Thursday, but <code>state</code> is better than <code>state_code</code> because <code>state</code> allows you to join with other tables. <code>state</code> is better than <code>type</code> or <code>degree_length</code> because <code>state</code> has a much higher cardinality.</li>
+<ol start="7" type="1">
+<li>Create a temporary table consisting of the <code>JOIN</code> of all three tables but including only the Smith College data.</li>
 </ol>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>To change the data type only during a query, use <code>SELECT CAST(room_and_board AS DOUBLE) FROM tuition</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

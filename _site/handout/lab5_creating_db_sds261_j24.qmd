@@ -22,7 +22,7 @@ library(dbplyr)
 library(mdsr)
 ```
 
-Today's lab will provide practice working with createing **SQL** databases using **DuckDB**.  
+Today's lab will provide practice working with creating **SQL** databases using **DuckDB**.  
 
 The goals for lab 5 include:
 
@@ -60,7 +60,7 @@ con_college <- DBI::dbConnect(duckdb::duckdb(),
                              dbdir = "collegeDB")
 ```
 
-The data we will work with today is on college tuition, pay, and diversity.  The original data source is the US Department of Education, but it has been compiled as part of <a href = "https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/2020-03-10" target = "_blank">TidyTuesday on March 10, 2020</a>.
+The data we will work with today is on college tuition, pay, and diversity.  The original data source is the US Department of Education, but it has been compiled as part of <a href = "https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/2020-03-10" target = "_blank">TidyTuesday on March 10, 2020</a>.  Tuition and fees are for 2018-19.  Diversity is for 2014.
 
 1. Download the data onto your own computer.  In the interest of time, let's only use three tables: `tuition_cost` and `salary_potential` and `diversity_school`.
 
@@ -106,7 +106,7 @@ DROP TABLE IF EXISTS tuition;
 ```
 
 
-3. For each of the three tables, in the `CREATE TABLE` operation, carefully define variable types and identify any key variables.  Unfortunately, `FOREIGN KEY`s don't work here because there is not referntial integrity across the tables.
+3. For each of the three tables, in the `CREATE TABLE` operation, carefully define variable types and identify any key variables.  Unfortunately, `FOREIGN KEY`s don't work here because there is not referential integrity across the tables.
 
 ```{sql}
 #| connection: con_college
@@ -207,10 +207,18 @@ SELECT * FROM salary LIMIT 10;
 SELECT * FROM diversity LIMIT 10;
 ```
 
+6. Add an `INDEX` to the `tuition` table on `state`.  We won't discuss until Thursday, but `state` is better than `state_code` because `state` allows you to join with other tables.  `state` is better than `type` or `degree_length` because `state` has a much higher cardinality.
 
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+
+CREATE INDEX state_idx ON tuition (state);
+```
 
 ```{r}
 #| echo: false
 
 dbDisconnect(con_college, shutdown = TRUE)
 ```
+

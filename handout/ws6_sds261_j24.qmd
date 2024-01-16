@@ -62,10 +62,13 @@ fig5 <- ggdraw() + draw_image(fig5_path)
 
 **Task:**
 
-1. Write a **SQL** statement that creates a new table `assignedTo`, which stores the `donor` and the donor's `organ` assigned to a `patient`. Furthermore, we want to store a treatment `price` for each such record. The combination of donor, organ, and patient uniquely identifies a record. Each record must have a treatment price that is
-bigger than 0 and smaller than 1,000,000 dollar.
+1. Write a **SQL** statement that 
 
-Hint: indicate the primary key(s) as well as the foreign key(s) which link to both the `organ` table and the `patient` table.
+* creates a new table `assignedTo`
+* which stores the `donor` and the donor's `organ` assigned to a `patient`.
+* Furthermore, we want to store a treatment `price` for each such record. 
+* The combination of donor, organ, and patient uniquely identifies a record * `PRIMARY KEY`(s) and FOREIGN KEY`(s) should be identified.
+* Each record must have a treatment `price` that is bigger than 0 and smaller than 1,000,000 dollar.
 
 
 2. Write a **SQL** statement that creates a table `worksFor` that records which `doctor` works for which `hospital`. For each such relationship between doctors and hospitals we record a `salary` for the doctor. A doctor may work for several hospitals (and obviously a hospital can employ multiple doctors).
@@ -75,7 +78,12 @@ Hint: can the table with only the variables `doctor`, `hospital`, and `salary` h
 \newpage
 **Solution:**
 
-1. Write a **SQL** statement that creates a new table `assignedTo`, which stores the `donor` and the donor's `organ` assigned to a `patient`. Furthermore, we want to store a treatment `price` for each such record. The combination of donor, organ, and patient uniquely identifies a record Each record must have a treatment `price` that is bigger than 0 and smaller than 1,000,000 dollar.
+
+1. Write a **SQL** statement that creates a new table `assignedTo`, which stores the `donor` and the donor's `organ` assigned to a `patient`. Furthermore, we want to store a treatment `price` for each such record. The combination of donor, organ, and patient uniquely identifies a record. Each record must have a treatment price that is
+bigger than 0 and smaller than 1,000,000 dollar.
+
+Hint: indicate the primary key(s) as well as the foreign key(s) which link to both the `organ` table and the `patient` table.
+
 
 
 ```{sql}

@@ -1,0 +1,242 @@
+---
+title: "Lab 6 - editing databases"
+author: "your name goes here"
+date: "due 10am Thursday, January 18, 2024"
+format: 
+  unilur-html: default
+  unilur-html+solution:
+    output-file: lab6_editing_db_sds261_j24_sol.html
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| unilur-solution: true
+
+library(tidyverse)
+library(DBI)
+library(RMariaDB)
+library(dbplyr)
+library(mdsr)
+```
+
+Today's lab will provide practice working with editing **SQL** databases using **DuckDB**.  
+
+The goals for lab 6 include:
+
+* using `UPDATE` to change the data.
+* using `INSERT INTO` to add records to a table.
+* using `DELETE` to delete records.
+* using `ALTER TABLE` to change the table structure.
+* creating temporary tables to use in a follow up `SELECT` query.
+
+
+## Advice for turning in the assignment
+
+* Be sure to indicate (in the .qmd file) which problem is being answered with which code.  A sentence or two with each response goes a long way toward your understanding!
+
+* save the .Rproj file somewhere you can find it.  Don't keep everything in your downloads folder.  Maybe make a folder called `SDS261` or something.  That folder could live on your Desktop.  Or maybe in your Dropbox.  
+
+* The **.qmd** document should be saved in the **R** Project as `lab6-sds261-yourlastname-yourfirstname.qmd`. 
+
+* Set up a connection to a database of your naming using **DuckDB**.
+
+```{r}
+#| eval: false
+
+con_college <- DBI::dbConnect(duckdb::duckdb(),
+                             dbdir = "you_name_the_db")
+```
+
+
+##  Assignment
+
+The data we will work with today is on college tuition, pay, and diversity.  The original data source is the US Department of Education, but it has been compiled as part of <a href = "https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/2020-03-10" target = "_blank">TidyTuesday on March 10, 2020</a>.  Tuition and fees are for 2018-19.  Diversity is for 2014.
+
+1. Use the same database from Lab 5.  If the database somehow got deleted, go back and re-run your code from Lab 5.
+
+```{r}
+#| unilur-solution: true
+
+con_college <- DBI::dbConnect(duckdb::duckdb(),
+                             dbdir = "collegeDB")
+```
+
+2.  Use `UPDATE` to change the `NA` values to `NULL` (for `room_and_board` in the `tuition` table and `make_world_better_percent` in the `salary` table).  (Originally I had a follow up task to convert the data type from `VARCHAR` to `DOUBLE` as well. However, **DuckDB** is particularly finicky with those conversions, and so we aren't going to do it.  If/when you work on a **SQL** server, you might adjust the data type using something like: `ALTER TABLE tuition MODIFY room_and_board DOUBLE;`.)^[To change the data type only during a query, use `SELECT CAST(room_and_board AS DOUBLE) FROM tuition`.]
+
+```{sql}
+#| connection: con_college
+
+
+SELECT COUNT(*) AS number_null
+FROM tuition
+WHERE room_and_board IS NULL;
+```
+
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+
+UPDATE tuition
+SET room_and_board = NULL
+WHERE room_and_board = 'NA'
+```
+
+
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+
+SELECT COUNT(*) AS number_null
+FROM tuition
+WHERE room_and_board IS NULL;
+```
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+
+SELECT * FROM tuition LIMIT 5;
+```
+
+
+```{sql}
+#| connection: con_college
+
+
+SELECT COUNT(*) AS number_null
+FROM salary
+WHERE make_world_better_percent IS NULL;
+```
+
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+
+UPDATE salary
+SET make_world_better_percent = NULL
+WHERE make_world_better_percent = 'NA'
+```
+
+
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+
+SELECT COUNT(*) AS number_null
+FROM salary
+WHERE make_world_better_percent IS NULL;
+```
+
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+
+SELECT * FROM salary LIMIT 5;
+```
+
+
+3. Using `INSERT INTO` add records to the `diversity` table.  Add 'Barden University' in 'Louisiana' that has a total enrollment of 10,000 students, half of which are female. Add an additional value to record that, if the Bellas are representative of the student population, Barden University has 1667 Black students.
+
+<!--Anna Kendrick as Beca Mitchell - white
+Rebel Wilson as Patricia "Fat Amy" Hobart - white
+Anna Camp as Aubrey Posen - white
+Brittany Snow as Chloe Beale - white
+Alexis Knapp as Stacie Conrad - white
+Ester Dean as Cynthia Rose Adams - Black
+Hana Mae Lee as Lilly Onakuramara - Asian
+Kelley Alice Jakle as Jessica - white
+Wanetah Walmsley as Denise - white
+Shelley Regner as Ashley - white
+Caroline Fourmy as Mary-Elise - white
+Nicole Lovince as Kori - Black-->
+
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+
+INSERT INTO diversity (name, total_enrollment, state, category, enrollment)
+   VALUES('Barden University', 10000, 'Louisiana', 'Women', 5000),
+         ('Barden University', 10000, 'Louisiana', 'Black', 1667);
+```
+
+
+4. using `DELETE` to delete records. TBD
+
+
+5. using `ALTER TABLE` to change the table structure. TBD
+
+6. Create a temporary table (e.g., to use in a follow up `SELECT` query) that contains only the 'Private' universities from the `tuition` table.
+
+```{sql}
+#| connection: con_college
+#| echo: false
+#| include: false
+#| unilur-solution: true
+
+DROP TABLE IF EXISTS tuition_private;
+```
+
+
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+    
+CREATE TEMP TABLE tuition_private AS
+    SELECT * FROM tuition WHERE type = 'Private';
+```
+
+
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+    
+SELECT * FROM tuition_private LIMIT 10;
+```
+
+7. Create a temporary table consisting of the `JOIN` of all three tables but including only the Smith College data.
+
+
+```{sql}
+#| connection: con_college
+#| echo: false
+#| include: false
+#| unilur-solution: true
+
+DROP TABLE IF EXISTS smith_data;
+```
+
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+
+CREATE TEMP TABLE smith_data AS
+SELECT tuition.name, category, enrollment, type, 
+       degree_length, room_and_board,
+       in_state_tuition, out_of_state_tuition, in_state_total,
+       out_of_state_total, early_career_pay, mid_career_pay,
+       make_world_better_percent, stem_percent,
+       total_enrollment
+FROM tuition
+JOIN salary ON tuition.name = salary.name
+JOIN diversity ON tuition.name = diversity.name
+WHERE tuition.name = 'Smith College'
+LIMIT 20;
+
+```
+
+```{sql}
+#| connection: con_college
+#| unilur-solution: true
+    
+SELECT * FROM smith_data;
+```
+
+
+```{r}
+#| echo: false
+
+dbDisconnect(con_college, shutdown = TRUE)
+```
+
