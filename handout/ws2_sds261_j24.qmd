@@ -55,7 +55,7 @@ SHOW TABLES;
 \newpage
 ## An example query
 
-Below is an SQL query on the database, and the output of the query. Working with your neighbor, try to determine what each piece of the query is doing. What would be the equivalent dplyr code?
+Below is an SQL query on the database, and the output of the query. Working with your neighbor, try to determine what each piece of the query is doing. What would be the equivalent dplyr code?^[Taken from: https://mdsr-book.github.io/mdsr3e/15-sqlI.html#sec-dplyr-sql]
 
 ```{sql}
 #| connection: con_air
