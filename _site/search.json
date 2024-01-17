@@ -2426,7 +2426,7 @@
     "href": "slides/2024-01-17-editing-db.html#deleting-data",
     "title": "Editing Databases",
     "section": "Deleting data",
-    "text": "Deleting data\nYou might change your mind and decide that you really only want hosts from years up to 2022. The DELETE function deletes any rows specified by the WHERE clause.\n\nDELETE FROM hosts\n   WHERE epid &gt; 20221231\n\n\nSELECT * FROM hosts\n  ORDER BY epid DESC\n  LIMIT 10;\n\n\n\n\nDisplaying records 1 - 10\n\n\n\n\nepid\n\n\naid\n\n\n\n\n\n\n20221217\n\n\nAustin Butler\n\n\n\n\n20221210\n\n\nMartin Short\n\n\n\n\n20221203\n\n\nKeke Palmer\n\n\n\n\n20221112\n\n\nDave Chappelle\n\n\n\n\n20221105\n\n\nAmy Schumer\n\n\n\n\n20221029\n\n\nJack Harlow\n\n\n\n\n20221015\n\n\nMegan Thee Stallion\n\n\n\n\n20221008\n\n\nBrendan Gleeson\n\n\n\n\n20221001\n\n\nMiles Teller\n\n\n\n\n20220521\n\n\nNatasha Lyonne"
+    "text": "Deleting data\nYou might change your mind and decide that you really only want hosts from years up to 2022. The DELETE function deletes any rows specified by the WHERE clause.\n\nDELETE FROM hosts\n   WHERE epid &gt; 20221231;\n\n\nSELECT * FROM hosts\n  ORDER BY epid DESC\n  LIMIT 10;\n\n\n\n\nDisplaying records 1 - 10\n\n\n\n\nepid\n\n\naid\n\n\n\n\n\n\n20221217\n\n\nAustin Butler\n\n\n\n\n20221210\n\n\nMartin Short\n\n\n\n\n20221203\n\n\nKeke Palmer\n\n\n\n\n20221112\n\n\nDave Chappelle\n\n\n\n\n20221105\n\n\nAmy Schumer\n\n\n\n\n20221029\n\n\nJack Harlow\n\n\n\n\n20221015\n\n\nMegan Thee Stallion\n\n\n\n\n20221008\n\n\nBrendan Gleeson\n\n\n\n\n20221001\n\n\nMiles Teller\n\n\n\n\n20220521\n\n\nNatasha Lyonne"
   },
   {
     "objectID": "slides/2024-01-17-editing-db.html#altering-the-table",

@@ -224,7 +224,7 @@ You might change your mind and decide that you really only want hosts from years
 #| connection: con_duckdb
 
 DELETE FROM hosts
-   WHERE epid > 20221231
+   WHERE epid > 20221231;
 ```
 
 ```{sql}
