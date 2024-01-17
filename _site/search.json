@@ -1943,7 +1943,7 @@
     "href": "slides/2024-01-17-editing-db.html#saturday-night-live",
     "title": "Editing Databases",
     "section": "Saturday Night Live",
-    "text": "Saturday Night Live\n\n\n\n\n\nFigure 1: image credit: NBC\n\n\n\n\nConsider the Saturday Night Live datasets available on the snldb GitHub repo."
+    "text": "Saturday Night Live\n\nFigure 1: image credit: NBCConsider the Saturday Night Live datasets available on the snldb GitHub repo."
   },
   {
     "objectID": "slides/2024-01-17-editing-db.html#casts-table",
@@ -2160,7 +2160,7 @@
     "href": "slides/2024-01-16-creating-db.html#creating-keys",
     "title": "Creating Databases",
     "section": "Creating KEYs",
-    "text": "Creating KEYs\n\nCREATE TABLE table1 (\n  col1 ...,\n  col2 ...,\n  col3 ...,\n  PRIMARY KEY (col1),\n  FOREIGN KEY col2 REFERENCES table2(table2col)\n);"
+    "text": "Creating KEYs\n\nCREATE TABLE table1 (\n  col1 ...,\n  col2 ...,\n  col3 ...,\n  PRIMARY KEY col1,\n  FOREIGN KEY col2 REFERENCES table2(table2col1)\n);\n\nEither or both of the KEYs could be multiple columns.\n\nCREATE TABLE table1 (\n  col1 ...,\n  col2 ...,\n  col3 ...,\n  PRIMARY KEY (col1, col3),\n  FOREIGN KEY (col1, col2) REFERENCES table2(table2col1, table2col4)\n);"
   },
   {
     "objectID": "slides/2024-01-16-creating-db.html#creating-indexes",
@@ -2371,5 +2371,173 @@
     "title": "Lab 6 - editing databases",
     "section": "Disconnect from the server",
     "text": "Disconnect from the server"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#changing-data",
+    "href": "slides/2024-01-17-editing-db.html#changing-data",
+    "title": "Editing Databases",
+    "section": "Changing data",
+    "text": "Changing data\nThe UPDATE function allows you to change a value in a table across all rows that match a certain criteria.\n\nSELECT * FROM impressions \n   WHERE name LIKE 'Ivanka%';\n\n\n\n\n5 records\n\n\n\n\nimpid\n\n\naid\n\n\nname\n\n\n\n\n\n\n2598\n\n\nScarlett Johansson\n\n\nIvanka Trump\n\n\n\n\n3716\n\n\nEmily Blunt\n\n\nIvanka Trump\n\n\n\n\n3694\n\n\nMargot Robbie\n\n\nIvanka Trump\n\n\n\n\n3679\n\n\nVanessa Bayer\n\n\nIvanka Trump\n\n\n\n\n2340\n\n\nMaya Rudolph\n\n\nIvanka Trump"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#update",
+    "href": "slides/2024-01-17-editing-db.html#update",
+    "title": "Editing Databases",
+    "section": "UPDATE",
+    "text": "UPDATE\nFor funsies, let’s change Ivanka Trump to Ivanka Kushner.\n\nUPDATE impressions\n   SET name = 'Ivanka Kushner'\n   WHERE name LIKE 'Ivanka%';\n\n\nSELECT * FROM impressions \n   WHERE name LIKE 'Ivanka%';\n\n\n\n\n5 records\n\n\n\n\nimpid\n\n\naid\n\n\nname\n\n\n\n\n\n\n2598\n\n\nScarlett Johansson\n\n\nIvanka Kushner\n\n\n\n\n3716\n\n\nEmily Blunt\n\n\nIvanka Kushner\n\n\n\n\n3694\n\n\nMargot Robbie\n\n\nIvanka Kushner\n\n\n\n\n3679\n\n\nVanessa Bayer\n\n\nIvanka Kushner\n\n\n\n\n2340\n\n\nMaya Rudolph\n\n\nIvanka Kushner"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#update-1",
+    "href": "slides/2024-01-17-editing-db.html#update-1",
+    "title": "Editing Databases",
+    "section": "UPDATE",
+    "text": "UPDATE\n\n\n\n Watch out!\n\n\nBe careful with UPDATE. A careless UPDATE could write over all of the data in your table. There is no undo function."
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#inserting-data",
+    "href": "slides/2024-01-17-editing-db.html#inserting-data",
+    "title": "Editing Databases",
+    "section": "Inserting data",
+    "text": "Inserting data\nTask: include recent hosts in the hosts table.\nBy searching the SNL archives, we can see that the next host, chronologically was Elon Musk on May 8, 2021.\n\nFigure 2: Hosts information from snlarchives.net"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#inserting-data-1",
+    "href": "slides/2024-01-17-editing-db.html#inserting-data-1",
+    "title": "Editing Databases",
+    "section": "Inserting data",
+    "text": "Inserting data\nTask: include recent hosts in the hosts table.\nBy searching the SNL archives, we can see that the next host, chronologically was Elon Musk on May 8, 2021.\n\nSELECT * FROM hosts\n    ORDER BY epid DESC\n    LIMIT 10;\n\n\n\n\nDisplaying records 1 - 10\n\n\n\n\nepid\n\n\naid\n\n\n\n\n\n\n20210410\n\n\nCarey Mulligan\n\n\n\n\n20210403\n\n\nDaniel Kaluuya\n\n\n\n\n20210327\n\n\nMaya Rudolph\n\n\n\n\n20210227\n\n\nNick Jonas\n\n\n\n\n20210220\n\n\nRege-Jean Page\n\n\n\n\n20210213\n\n\nRegina King\n\n\n\n\n20210206\n\n\nDan Levy\n\n\n\n\n20210130\n\n\nJohn Krasinski\n\n\n\n\n20201219\n\n\nKristen Wiig\n\n\n\n\n20201212\n\n\nTimothee Chalamet"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#inserting-data-2",
+    "href": "slides/2024-01-17-editing-db.html#inserting-data-2",
+    "title": "Editing Databases",
+    "section": "Inserting data",
+    "text": "Inserting data\nINSERT allows us to add the relevant information associated with the episode of SNL that Elon Musk hosted.\n\nINSERT INTO hosts (epid, aid)\n   VALUES ('20210508', 'Elon Musk');\n\n\nSELECT * FROM hosts\n    ORDER BY epid DESC\n    LIMIT 10;\n\n\n\n\nDisplaying records 1 - 10\n\n\n\n\nepid\n\n\naid\n\n\n\n\n\n\n20210508\n\n\nElon Musk\n\n\n\n\n20210410\n\n\nCarey Mulligan\n\n\n\n\n20210403\n\n\nDaniel Kaluuya\n\n\n\n\n20210327\n\n\nMaya Rudolph\n\n\n\n\n20210227\n\n\nNick Jonas\n\n\n\n\n20210220\n\n\nRege-Jean Page\n\n\n\n\n20210213\n\n\nRegina King\n\n\n\n\n20210206\n\n\nDan Levy\n\n\n\n\n20210130\n\n\nJohn Krasinski\n\n\n\n\n20201219\n\n\nKristen Wiig"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#inserting-data-3",
+    "href": "slides/2024-01-17-editing-db.html#inserting-data-3",
+    "title": "Editing Databases",
+    "section": "Inserting data",
+    "text": "Inserting data\nIt would be tedious to INSERT all of the most recent host information by hand. Instead, we’ll scrape the SNL archives using the R package rvest, which allows us to pull out the appropriate html elements. The epid and aid are joined together in a tibble, and filtered to only include episodes which are not already in the episodes table.\n\nlibrary(rvest)\n\nrecent_hosts &lt;- read_html(\"http://www.snlarchives.net/Episodes/\") |&gt;\n  html_nodes(\"tr\") |&gt;\n  purrr::map_df( ~ tibble(\n    epid = .x |&gt; html_node(\"a.ms-2.me-2\") |&gt;\n      html_attr(\"href\") |&gt;\n      str_extract(\"\\\\d+\"),\n    aid = .x |&gt; html_node(\"td:nth-child(2)\") |&gt;\n      html_text2() |&gt;\n      str_extract(\"[\\\\w\\\\. \\\\w\\\\.]+(?=/|$)\")\n  )) |&gt;\n  filter(epid &gt; 20210508)\n\n\nwrite_csv(recent_hosts, \"data/recent_hosts.csv\")"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#deleting-data",
+    "href": "slides/2024-01-17-editing-db.html#deleting-data",
+    "title": "Editing Databases",
+    "section": "Deleting data",
+    "text": "Deleting data\nYou might change your mind and decide that you really only want hosts from years up to 2022. The DELETE function deletes any rows specified by the WHERE clause.\n\nDELETE FROM hosts\n   WHERE epid &gt; 20221231\n\n\nSELECT * FROM hosts\n  ORDER BY epid DESC\n  LIMIT 10;\n\n\n\n\nDisplaying records 1 - 10\n\n\n\n\nepid\n\n\naid\n\n\n\n\n\n\n20221217\n\n\nAustin Butler\n\n\n\n\n20221210\n\n\nMartin Short\n\n\n\n\n20221203\n\n\nKeke Palmer\n\n\n\n\n20221112\n\n\nDave Chappelle\n\n\n\n\n20221105\n\n\nAmy Schumer\n\n\n\n\n20221029\n\n\nJack Harlow\n\n\n\n\n20221015\n\n\nMegan Thee Stallion\n\n\n\n\n20221008\n\n\nBrendan Gleeson\n\n\n\n\n20221001\n\n\nMiles Teller\n\n\n\n\n20220521\n\n\nNatasha Lyonne"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#altering-the-table",
+    "href": "slides/2024-01-17-editing-db.html#altering-the-table",
+    "title": "Editing Databases",
+    "section": "Altering the table",
+    "text": "Altering the table\nALTER TABLE changes the structure of a table. For example, you can add or delete columns, create or destroy indexes, change the type of existing columns, or rename columns or the table itself.\nMultiple ADD, ALTER, DROP, and CHANGE clauses are permitted in a single ALTER TABLE statement, separated by commas.\nCaveat: I have found DuckDB to be slightly finicky in some of the operations…"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#inserting-data-4",
+    "href": "slides/2024-01-17-editing-db.html#inserting-data-4",
+    "title": "Editing Databases",
+    "section": "Inserting data",
+    "text": "Inserting data\n\nINSERT INTO hosts\n   SELECT *\n   FROM READ_CSV('data/recent_hosts.csv', AUTO_DETECT = TRUE);\n\n\nSELECT * FROM hosts\n  ORDER BY epid DESC\n  LIMIT 10;\n\n\n\n\nDisplaying records 1 - 10\n\n\n\n\nepid\n\n\naid\n\n\n\n\n\n\n20231216\n\n\nKate McKinnon\n\n\n\n\n20231209\n\n\nAdam Driver\n\n\n\n\n20231202\n\n\nEmma Stone\n\n\n\n\n20231118\n\n\nJason Momoa\n\n\n\n\n20231111\n\n\nTimothée Chalamet\n\n\n\n\n20231028\n\n\nNate Bargatze\n\n\n\n\n20231021\n\n\nBad Bunny\n\n\n\n\n20231014\n\n\nPete Davidson\n\n\n\n\n20230415\n\n\nAna de Armas\n\n\n\n\n20230408\n\n\nMolly Shannon"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#altering-the-table-drop-columns",
+    "href": "slides/2024-01-17-editing-db.html#altering-the-table-drop-columns",
+    "title": "Editing Databases",
+    "section": "Altering the table (DROP columns)",
+    "text": "Altering the table (DROP columns)\n\nALTER TABLE t1\nDROP COLUMN col1,\nDROP COLUMN col2;"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#altering-the-table-change-name-and-definition",
+    "href": "slides/2024-01-17-editing-db.html#altering-the-table-change-name-and-definition",
+    "title": "Editing Databases",
+    "section": "Altering the table (CHANGE name and definition)",
+    "text": "Altering the table (CHANGE name and definition)\n\nrename an INT NOT NULL column from a to b and change its definition to use the BIGINT data type while retaining the NOT NULL attribute.\n\n\nALTER TABLE t1 CHANGE a b BIGINT NOT NULL;"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#altering-the-table-change-definition-not-name",
+    "href": "slides/2024-01-17-editing-db.html#altering-the-table-change-definition-not-name",
+    "title": "Editing Databases",
+    "section": "Altering the table (CHANGE definition not name)",
+    "text": "Altering the table (CHANGE definition not name)\n\nCHANGE, the syntax requires two column names, so you must specify the same name twice to leave the name unchanged. For example, to change the definition of column b.\n\n\nALTER TABLE t1 CHANGE b b INT NOT NULL;"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#altering-the-table-modify-definition",
+    "href": "slides/2024-01-17-editing-db.html#altering-the-table-modify-definition",
+    "title": "Editing Databases",
+    "section": "Altering the table (MODIFY definition)",
+    "text": "Altering the table (MODIFY definition)\n\nMODIFY is more convenient to change the definition without changing the name because it requires the column name only once.\n\n\nALTER TABLE t1 MODIFY b INT NOT NULL;"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#altering-the-table-change-name-not-definition",
+    "href": "slides/2024-01-17-editing-db.html#altering-the-table-change-name-not-definition",
+    "title": "Editing Databases",
+    "section": "Altering the table (CHANGE name not definition)",
+    "text": "Altering the table (CHANGE name not definition)\n\nCHANGE, the syntax requires a column definition, so to leave the definition unchanged, you must respecify the definition the column currently has. For example, to rename an INT NOT NULL column from b to a.\n\n\nALTER TABLE t1 CHANGE b a INT NOT NULL;"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#altering-the-table-rename-column-name-not-definition",
+    "href": "slides/2024-01-17-editing-db.html#altering-the-table-rename-column-name-not-definition",
+    "title": "Editing Databases",
+    "section": "Altering the table (RENAME COLUMN name not definition)",
+    "text": "Altering the table (RENAME COLUMN name not definition)\n\nRENAME COLUMN is more convenient to change the name without changing the definition because it requires only the old and new names.\n\n\nALTER TABLE t1 RENAME COLUMN b TO a;"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#altering-the-table-rename-column-multiple-columns",
+    "href": "slides/2024-01-17-editing-db.html#altering-the-table-rename-column-multiple-columns",
+    "title": "Editing Databases",
+    "section": "Altering the table (RENAME COLUMN multiple columns)",
+    "text": "Altering the table (RENAME COLUMN multiple columns)\n\ncannot RENAME COLUMN to a column name that already exists. The following are valid.\n\n\n/* swap a and b */\nALTER TABLE t1 RENAME COLUMN a TO b,\n               RENAME COLUMN b TO a;\n\n/* \"rotate\" a, b, c through a cycle */\nALTER TABLE t1 RENAME COLUMN a TO b,\n               RENAME COLUMN b TO c,\n               RENAME COLUMN c TO a;"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#temporary-tables",
+    "href": "slides/2024-01-17-editing-db.html#temporary-tables",
+    "title": "Editing Databases",
+    "section": "Temporary Tables",
+    "text": "Temporary Tables\nTemporary tables are used to break down complex queries into smaller, more manageable steps. For example, let’s say we want to JOIN two tables after each has been filtered using different WHERE clauses. The filtered tables can each be saved into their own temporary tables and then the temporary tables can be merged.\nTables in DuckDB are saved (to disk), even when the connection is closed. However, temporary tables are saved in memory (instead of on disk) and are deleted when the connection is closed."
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#temporary-tables-1",
+    "href": "slides/2024-01-17-editing-db.html#temporary-tables-1",
+    "title": "Editing Databases",
+    "section": "Temporary Tables",
+    "text": "Temporary Tables\nWe wouldn’t want to wrangle the date every single time we used the data.\n\nCREATE TEMP TABLE episodes_date AS\n    SELECT *, CASE\n             WHEN POSITION(',' IN aired) &gt; 0 THEN\n    EXTRACT(YEAR FROM CAST(\n                SUBSTRING(aired, POSITION(',' IN aired) + 2) || '-' ||\n                CASE\n                    WHEN POSITION('January' IN aired) &gt; 0 THEN '01'\n                    WHEN POSITION('February' IN aired) &gt; 0 THEN '02'\n                    WHEN POSITION('March' IN aired) &gt; 0 THEN '03'\n                    WHEN POSITION('April' IN aired) &gt; 0 THEN '04'\n                    WHEN POSITION('May' IN aired) &gt; 0 THEN '05'\n                    WHEN POSITION('June' IN aired) &gt; 0 THEN '06'\n                    WHEN POSITION('July' IN aired) &gt; 0 THEN '07'\n                    WHEN POSITION('August' IN aired) &gt; 0 THEN '08'\n                    WHEN POSITION('September' IN aired) &gt; 0 THEN '09'\n                    WHEN POSITION('October' IN aired) &gt; 0 THEN '10'\n                    WHEN POSITION('November' IN aired) &gt; 0 THEN '11'\n                    WHEN POSITION('December' IN aired) &gt; 0 THEN '12'\n                    ELSE '01' -- Default to January if no month is found\n                END || '-' ||\n                SUBSTRING(aired, POSITION(' ' IN aired) + 1, 2) AS DATE\n            ))\n            END AS year FROM episodes;"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#temporary-tables-hosts",
+    "href": "slides/2024-01-17-editing-db.html#temporary-tables-hosts",
+    "title": "Editing Databases",
+    "section": "Temporary Tables (hosts)",
+    "text": "Temporary Tables (hosts)\n\nSELECT * FROM hosts LIMIT 10;\n\n\n\n\nDisplaying records 1 - 10\n\n\n\n\nepid\n\n\naid\n\n\n\n\n\n\n20210410\n\n\nCarey Mulligan\n\n\n\n\n20210403\n\n\nDaniel Kaluuya\n\n\n\n\n20210327\n\n\nMaya Rudolph\n\n\n\n\n20210227\n\n\nNick Jonas\n\n\n\n\n20210220\n\n\nRege-Jean Page\n\n\n\n\n20210213\n\n\nRegina King\n\n\n\n\n20210206\n\n\nDan Levy\n\n\n\n\n20210130\n\n\nJohn Krasinski\n\n\n\n\n20201219\n\n\nKristen Wiig\n\n\n\n\n20201212\n\n\nTimothee Chalamet"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#temporary-tables-episodes",
+    "href": "slides/2024-01-17-editing-db.html#temporary-tables-episodes",
+    "title": "Editing Databases",
+    "section": "Temporary Tables (episodes)",
+    "text": "Temporary Tables (episodes)\n\nSELECT * FROM episodes LIMIT 10;\n\n\n\n\nDisplaying records 1 - 10\n\n\n\n\nsid\n\n\nepid\n\n\naired\n\n\nepno\n\n\n\n\n\n\n46\n\n\n20210410\n\n\nApril 10, 2021\n\n\n17\n\n\n\n\n46\n\n\n20210403\n\n\nApril 3, 2021\n\n\n16\n\n\n\n\n46\n\n\n20210327\n\n\nMarch 27, 2021\n\n\n15\n\n\n\n\n46\n\n\n20210227\n\n\nFebruary 27, 2021\n\n\n14\n\n\n\n\n46\n\n\n20210220\n\n\nFebruary 20, 2021\n\n\n13\n\n\n\n\n46\n\n\n20210213\n\n\nFebruary 13, 2021\n\n\n12\n\n\n\n\n46\n\n\n20210206\n\n\nFebruary 6, 2021\n\n\n11\n\n\n\n\n46\n\n\n20210130\n\n\nJanuary 30, 2021\n\n\n10\n\n\n\n\n46\n\n\n20201219\n\n\nDecember 19, 2020\n\n\n9\n\n\n\n\n46\n\n\n20201212\n\n\nDecember 12, 2020\n\n\n8"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#temporary-table-exists",
+    "href": "slides/2024-01-17-editing-db.html#temporary-table-exists",
+    "title": "Editing Databases",
+    "section": "Temporary Table exists!",
+    "text": "Temporary Table exists!\n\nSELECT * FROM episodes_date LIMIT 10;\n\n\n\n\nDisplaying records 1 - 10\n\n\n\n\nsid\n\n\nepid\n\n\naired\n\n\nepno\n\n\nyear\n\n\n\n\n\n\n46\n\n\n20210410\n\n\nApril 10, 2021\n\n\n17\n\n\n2021\n\n\n\n\n46\n\n\n20210403\n\n\nApril 3, 2021\n\n\n16\n\n\n2021\n\n\n\n\n46\n\n\n20210327\n\n\nMarch 27, 2021\n\n\n15\n\n\n2021\n\n\n\n\n46\n\n\n20210227\n\n\nFebruary 27, 2021\n\n\n14\n\n\n2021\n\n\n\n\n46\n\n\n20210220\n\n\nFebruary 20, 2021\n\n\n13\n\n\n2021\n\n\n\n\n46\n\n\n20210213\n\n\nFebruary 13, 2021\n\n\n12\n\n\n2021\n\n\n\n\n46\n\n\n20210206\n\n\nFebruary 6, 2021\n\n\n11\n\n\n2021\n\n\n\n\n46\n\n\n20210130\n\n\nJanuary 30, 2021\n\n\n10\n\n\n2021\n\n\n\n\n46\n\n\n20201219\n\n\nDecember 19, 2020\n\n\n9\n\n\n2020\n\n\n\n\n46\n\n\n20201212\n\n\nDecember 12, 2020\n\n\n8\n\n\n2020"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#using-a-temporary-table",
+    "href": "slides/2024-01-17-editing-db.html#using-a-temporary-table",
+    "title": "Editing Databases",
+    "section": "Using a temporary table",
+    "text": "Using a temporary table\nNow that the year variable has been created in the new temporary table called episodes_date, we can use episode_date to query and find, for example, all of the hosts in 2019.\n\nSELECT hosts.aid, ep.aired, ep.year FROM hosts \nJOIN episodes_date AS ep ON hosts.epid = ep.epid\nWHERE year = 2019\nLIMIT 25;\n\n\n\n\nDisplaying records 1 - 10\n\n\n\n\naid\n\n\naired\n\n\nyear\n\n\n\n\n\n\nEddie Murphy\n\n\nDecember 21, 2019\n\n\n2019\n\n\n\n\nScarlett Johansson\n\n\nDecember 14, 2019\n\n\n2019\n\n\n\n\nJennifer Lopez\n\n\nDecember 7, 2019\n\n\n2019\n\n\n\n\nWill Ferrell\n\n\nNovember 23, 2019\n\n\n2019\n\n\n\n\nHarry Styles\n\n\nNovember 16, 2019\n\n\n2019\n\n\n\n\nKristen Stewart\n\n\nNovember 2, 2019\n\n\n2019\n\n\n\n\nChance the Rapper\n\n\nOctober 26, 2019\n\n\n2019\n\n\n\n\nDavid Harbour\n\n\nOctober 12, 2019\n\n\n2019\n\n\n\n\nPhoebe Waller-Bridge\n\n\nOctober 5, 2019\n\n\n2019\n\n\n\n\nWoody Harrelson\n\n\nSeptember 28, 2019\n\n\n2019"
+  },
+  {
+    "objectID": "slides/2024-01-17-editing-db.html#what-does-position-do",
+    "href": "slides/2024-01-17-editing-db.html#what-does-position-do",
+    "title": "Editing Databases",
+    "section": "What does POSITION do?",
+    "text": "What does POSITION do?\nIn case you are curious about the date wrangling code… consider SUBSTRING(aired, POSITION(',' IN aired) + 2)\n\nPOSITION(',' IN aired): This part of the expression uses the POSITION function to find the position of the first occurrence of the comma (,) in the string aired. The result is the index (position) of the comma within the string.\nPOSITION(',' IN aired) + 2: This adds 2 to the index of the comma. The + 2 is used to move the starting point of the substring two positions to the right of the comma. This is done to exclude the comma itself and any following spaces.\nSUBSTRING(aired, POSITION(',' IN aired) + 2): This part uses the SUBSTRING function to extract a substring from the string aired. The starting position of the substring is determined by POSITION(',' IN aired) + 2, and it goes until the end of the string. This effectively removes the part of the string that comes before and including the first comma.\n\nIn summary, the entire expression is extracting a substring from the original string aired, starting from two positions to the right of the first comma and continuing until the end of the string. This can be useful in scenarios where you want to remove or isolate part of a string based on the position of a specific character (in this case, the comma)."
   }
 ]

@@ -82,7 +82,7 @@ Write **SQL** code to accomplish the following tasks (one **SQL** operation for 
 #| eval: false
 
 DELETE FROM organ
-    WHERE availa ble < 2014;
+    WHERE available < 2014;
 ```
 
 2. Increase the rate of all doctors for HMO insurances by 1,000.

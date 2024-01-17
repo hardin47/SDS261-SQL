@@ -324,7 +324,7 @@ ggarrange(fig1, fig2, ncol = 2)
     (b) guitar
     (c) bass
     (d) NA
-    (e) NULL
+    (e) `NULL`
 
 ```{r}
 #| echo: false
@@ -342,7 +342,7 @@ fig2 <- ggdraw() + draw_image(fig2_path)
 ggarrange(fig1, fig2, ncol = 2)
 ```
 
-[^26]: e. NULL (it would be NA in **R**)
+[^26]: e. `NULL` (it would be NA in **R**)
  
 
 ---
@@ -581,36 +581,36 @@ str_extract(c("apple pie", "chocolate pie", "peach pie"), "\\w+(?=pie)")
 ---
 
 42. Which **SQL** statement is used to create a database table called 'Customers'?[^42]
-    (a) CREATE DATABASE TAB Customers
-    (b) CREATE DATABASE Customers
-    (c) CREATE DATABASE TABLE Customers
-    (d) CREATE TABLE Customers
-    (e) CREATE DB Customers
+    (a) `CREATE DATABASE TAB` Customers
+    (b) `CREATE DATABASE` Customers
+    (c) `CREATE DATABASE TABLE` Customers
+    (d) `CREATE TABLE` Customers
+    (e) `CREATE DB` Customers
 
-[^42]: d. CREATE TABLE Customers
+[^42]: d. `CREATE TABLE` Customers
 
 ---
 
 43. Which **SQL** statement revises data in a database?[^43]
-    (a) SAVE AS 
-    (b) MODIFY
-    (c) SAVE
-    (d) UPDATE
+    (a) `SAVE AS` 
+    (b) `MODIFY`
+    (c) `SAVE`
+    (d) `UPDATE`
 
-[^43]: d. UPDATE
+[^43]: d. `UPDATE`
 
 ---
 
 44. Which **SQL** statement takes out data from a database?[^44]
-    (a) REMOVE
-    (b) DELETE
-    (c) COLLAPSE
+    (a) `REMOVE`
+    (b) `DELETE`
+    (c) `COLLAPSE`
 
-[^44]: b. DELETE
+[^44]: b. `DELETE`
 
 ---
 
-45. The NOT NULL constraint enforces a column to not accept NULL values.[^45]
+45. The `NOT NULL` constraint enforces a column to not accept `NULL` values.[^45]
     (a) FALSE
     (b) TRUE
 
@@ -647,12 +647,12 @@ str_extract(c("apple pie", "chocolate pie", "peach pie"), "\\w+(?=pie)")
 ---
 
 49. How can you change "Hansen" into "Nilsen" in the "LastName" column in the Persons table?[^49]
-    (a) MODIFY Persons SET LastName='Nilsen' `WHERE` LastName='Hansen'
-    (b) `UPDATE` Persons SET LastName='Hansen' `INTO` LastName='Nilsen'
-    (c) MODIFY Persons SET LastName='Hansen' `INTO` LastName='Nilsen'
-    (d) `UPDATE` Persons SET LastName='Nilsen' `WHERE` LastName='Hansen' 
+    (a) `MODIFY` Persons `SET` LastName='Nilsen' `WHERE` LastName='Hansen'
+    (b) `UPDATE` Persons `SET` LastName='Hansen' `INTO` LastName='Nilsen'
+    (c) `MODIFY` Persons `SET` LastName='Hansen' `INTO` LastName='Nilsen'
+    (d) `UPDATE` Persons `SET` LastName='Nilsen' `WHERE` LastName='Hansen' 
 
-[^49]: d. `UPDATE` Persons SET LastName='Nilsen' `WHERE` LastName='Hansen' 
+[^49]: d. `UPDATE` Persons `SET` LastName='Nilsen' `WHERE` LastName='Hansen' 
 
 ---
 

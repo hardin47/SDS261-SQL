@@ -148,8 +148,22 @@ CREATE TABLE table1 (
   col1 ...,
   col2 ...,
   col3 ...,
-  PRIMARY KEY (col1),
-  FOREIGN KEY col2 REFERENCES table2(table2col)
+  PRIMARY KEY col1,
+  FOREIGN KEY col2 REFERENCES table2(table2col1)
+);
+```
+
+Either or both of the `KEY`s could be multiple columns.
+
+```{sql}
+#| eval: false
+
+CREATE TABLE table1 (
+  col1 ...,
+  col2 ...,
+  col3 ...,
+  PRIMARY KEY (col1, col3),
+  FOREIGN KEY (col1, col2) REFERENCES table2(table2col1, table2col4)
 );
 ```
 
