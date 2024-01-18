@@ -560,7 +560,7 @@ can use flights data for cities with particular names-->
 <ol type="a">
 <li>“(?&lt;=\$)\d”</li>
 <li>“(?&lt;=\$)\d+”</li>
-<li>“\d+(?=\$)”</li>
+<li>“\d(?=\$)”</li>
 <li>“\d+(?=\$)”</li>
 </ol></li>
 </ol>
@@ -742,6 +742,66 @@ can use flights data for cities with particular names-->
 <li><code>DELETE</code> <code>FROM</code> Persons <code>WHERE</code> FirstName=‘Peter’</li>
 <li><code>DELETE</code> FirstName=‘Peter’ <code>FROM</code> Persons</li>
 <li><code>DELETE ROW</code> FirstName=‘Peter’ <code>FROM</code> Persons</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="51" type="1">
+<li>Which has a larger cardinality, <code>Tailnum</code> or <code>Year</code>?<a href="#fn51" class="footnote-ref" id="fnref51" role="doc-noteref"><sup>51</sup></a>
+<ol type="a">
+<li><code>Tailnum</code></li>
+<li><code>Year</code></li>
+<li>they have the same cardinality</li>
+<li>neither has a cardinality</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="52" type="1">
+<li>Which index takes up more storage space, the one on <code>Tailnum</code> or the one on <code>Year</code>?<a href="#fn52" class="footnote-ref" id="fnref52" role="doc-noteref"><sup>52</sup></a>
+<ol type="a">
+<li><code>Tailnum</code></li>
+<li><code>Year</code></li>
+<li>they take up the same space</li>
+<li>you can’t index on either variable</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="53" type="1">
+<li>Which index is more effective at reducing querying time, the one on <code>Tailnum</code> or the one on <code>Year</code>?<a href="#fn53" class="footnote-ref" id="fnref53" role="doc-noteref"><sup>53</sup></a>
+<ol type="a">
+<li><code>Tailnum</code></li>
+<li><code>Year</code></li>
+<li>the queries would be the same</li>
+<li>you can’t query on either variable</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="54" type="1">
+<li>What does the <strong>R</strong> function <code>ifelse(a, b, c)</code> do?<a href="#fn54" class="footnote-ref" id="fnref54" role="doc-noteref"><sup>54</sup></a>
+<ol type="a">
+<li>a = TRUE option, b = FALSE option, c = question</li>
+<li>a = FALSE option, b = TRUE option, c = question</li>
+<li>a = question, b = TRUE option, c = FALSE option</li>
+<li>a = question, b = FALSE option, c = TRUE option</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="55" type="1">
+<li>What does the <strong>R</strong> function <code>case_when()</code> do?<a href="#fn55" class="footnote-ref" id="fnref55" role="doc-noteref"><sup>55</sup></a>
+<ol type="a">
+<li>renames a variable</li>
+<li>changes the data type of a variable</li>
+<li>partitions a numeric variable</li>
+<li>creates a new variable by re-coding an original variable</li>
+</ol></li>
+</ol>
+<hr>
+<ol start="56" type="1">
+<li>What does the <strong>R</strong> function <code>cut()</code> do?<a href="#fn56" class="footnote-ref" id="fnref56" role="doc-noteref"><sup>56</sup></a>
+<ol type="a">
+<li>renames a variable</li>
+<li>changes the data type of a variable</li>
+<li>partitions a numeric variable</li>
+<li>creates a new variable by re-coding an original variable</li>
 </ol></li>
 </ol>
 <hr>
@@ -950,6 +1010,30 @@ can use flights data for cities with particular names-->
 <li><code>DELETE</code> <code>FROM</code> Persons <code>WHERE</code> FirstName=‘Peter’</li>
 </ol>
 <a href="#fnref50" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn51"><ol type="a">
+<li><code>Tailnum</code>. The cardinality is the number of unique values, and there are many more unique planes than years.</li>
+</ol>
+<a href="#fnref51" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn52"><ol type="a">
+<li><code>Tailnum</code>. Because the cardinality is higher, it will take up much more space in the index.</li>
+</ol>
+<a href="#fnref52" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn53"><ol type="a">
+<li><code>Tailnum</code>. Because the index is more complete, it will make the querying more efficient.</li>
+</ol>
+<a href="#fnref53" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn54"><ol start="3" type="a">
+<li>a = question, b = TRUE option, c = FALSE option</li>
+</ol>
+<a href="#fnref54" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn55"><ol start="4" type="a">
+<li>creates a new variable by re-coding an original variable</li>
+</ol>
+<a href="#fnref55" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn56"><ol start="3" type="a">
+<li>partitions a numeric variable</li>
+</ol>
+<a href="#fnref56" class="footnote-back" role="doc-backlink">↩︎</a></li>
 </ol>
 </section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

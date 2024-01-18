@@ -893,8 +893,7 @@ BTREE
 <li><p><code>Seq_in_index</code>: The column sequence number in the index, starting with 1.</p></li>
 <li><p><code>Column_name</code>: The column name. See also the description for the Expression column.</p></li>
 <li><p><code>Collation</code>: How the column is sorted in the index. This can have values A (ascending), D (descending), or NULL (not sorted).</p></li>
-<li><p><code>Cardinality</code>: An estimate of the number of unique values in the index.<br>
-Cardinality is counted based on statistics stored as integers, so the value is not necessarily exact even for small tables. The higher the cardinality, the greater the chance that <strong>MySQL</strong> uses the index when doing joins. Indexing with a high cardinality variable will be particularly useful for increased efficiency (if that variable is being queried).</p></li>
+<li><p><code>Cardinality</code>: An estimate of the number of unique values in the index.</p></li>
 <li><p><code>Sub_part</code>: The index prefix. That is, the number of indexed characters if the column is only partly indexed, NULL if the entire column is indexed.</p></li>
 <li><p><code>Packed</code>: Indicates how the key is packed. <code>NULL</code> if it is not.</p></li>
 <li><p><code>Null</code>: Contains <code>YES</code> if the column may contain <code>NULL</code> values and ’’ if not.</p></li>
@@ -1447,6 +1446,10 @@ Using where
 </div>
 </div>
 </section>
+<section id="cardinality-x-rows" class="slide level2">
+<h2><code>Cardinality</code> x <code>rows</code></h2>
+<p>The <code>Cardinality</code> from <code>SHOW INDEXES</code> times the <code>rows</code> from <code>EXPLAIN</code> is roughly the total number of rows in the dataframe.</p>
+</section>
 <section id="explain-with-year-and-month" class="slide level2">
 <h2><code>EXPLAIN</code> with <code>year</code> and <code>month</code></h2>
 <p>In a search by <code>year</code> and <code>month</code>, <strong>SQL</strong> uses the <code>Date</code> index. Only 700,000 rows are searched, those in June of 2013.</p>
@@ -1906,8 +1909,7 @@ Using where
 </section>
 <section id="median" class="slide level2 scrollable">
 <h2>Median</h2>
-<p>Spoiler: <strong>dbplyr</strong> is not able to translate the <code>median()</code> function into <strong>SQL</strong>.</p>
-<p>Let’s start with an example, calculating the median <code>alt</code>itude in the <code>airports</code> table. (Using <code>airports</code> instead of <code>flights</code> just because the <code>airports</code> table is so much smaller.)<sup>1</sup></p>
+<p>Let’s start with an example, calculating the median <code>alt</code>itude in the <code>airports</code> table.<sup>1</sup></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>airports <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con_air, <span class="st">"airports"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2"></a></span>
@@ -1971,7 +1973,7 @@ LIMIT 7' at line 1 [1064]</code></pre>
 </section>
 <section id="median-4" class="slide level2">
 <h2>Median</h2>
-<p>The following is <strong>SQL</strong> code to calculate the median. What does it all mean?</p>
+<p>How can the median be calculated in <strong>SQL</strong>?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">SET</span> @row_index <span class="op">:=</span> <span class="op">-</span><span class="dv">1</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -2213,6 +2215,14 @@ median_value
 </table>
 </div>
 </div>
+</section>
+<section id="median-8" class="slide level2 scrollable">
+<h2>Median</h2>
+<p>Take-aways:</p>
+<ol type="1">
+<li><p><strong>dbplyr</strong> is not able to translate the <code>median()</code> function into <strong>SQL</strong>.</p></li>
+<li><p>The median is actually really hard to calculate! In particular, it is hard to calculate the median in one pass through the data.</p></li>
+</ol>
 </section>
 <section id="case-when-and-ifelse" class="slide level2 scrollable">
 <h2><code>CASE WHEN</code> and <code>ifelse()</code></h2>
@@ -3368,14 +3378,27 @@ United States
 </div>
 </div>
 </section>
+<section id="take-away-message" class="slide level2">
+<h2>Take-away message</h2>
+<ul>
+<li><p><strong>dbplyr</strong> is awesome and can often be helpful in figuring out <strong>SQL</strong> syntax</p></li>
+<li><p>sometimes <strong>dplyr</strong> will provide <strong>SQL</strong> syntax that does not work (see the median example)</p></li>
+<li><p>sometimes there is no <strong>SQL</strong> syntax to match the <strong>R</strong> task of interest (see ggplot)</p></li>
+</ul>
+</section>
 <section id="best-practice" class="slide level2">
 <h2>Best practice</h2>
 <p>It is always a good idea to terminate the <strong>SQL</strong> connection when you are done with it.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">dbDisconnect</span>(con_air, <span class="at">shutdown =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="section" class="slide level2">
+<h2>47</h2>
+<p>Pomona’s number is 47, and I wanted to have a 47th slide.</p>
 
-<div class="footer footer-default">
+
+<img data-src="../images/st47sd47am47h.png" style="width:90.0%" alt="icon that says STATS, DATA, MATH but has a 47 replacing every instance of AT in the words.'." class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: image credit: Jo Hardin</p><div class="footer footer-default">
 
 </div>
 </section>
