@@ -285,7 +285,7 @@ SELECT * FROM smith_data;
 ## Disconnect from the server
 
 ```{r}
-#| echo: false
+#| echo: true
 
 dbDisconnect(con_college, shutdown = TRUE)
 ```

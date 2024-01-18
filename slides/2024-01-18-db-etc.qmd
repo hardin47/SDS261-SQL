@@ -28,9 +28,9 @@ fontawesome::fa_html_dependency()
 con_air <- DBI::dbConnect(
   RMariaDB::MariaDB(),
   dbname = "airlines",
-  host = Sys.getenv("SMITH_HOST"),
-  user = Sys.getenv("SMITH_USER"),
-  password = Sys.getenv("SMITH_PWD")
+  host = Sys.getenv("MDSR_HOST"),
+  user = Sys.getenv("MDSR_USER"),
+  password = Sys.getenv("MDSR_PWD")
 )
 ```
 
@@ -40,7 +40,7 @@ con_air <- DBI::dbConnect(
 
 The examples below use the `airlines` database, including the `flights`, `carriers`, `airports`, and `planes` tables.
 
-## Efficiencies
+## Efficiencies {.scrollable}
 
 Reconsider this analogy:
 
@@ -56,7 +56,7 @@ Keys are unique identifiers for each row, used primarily for connecting tables. 
 
 
 
-## `INDEX`es
+## `INDEX`es {.scrollable}
 
 * By indexing the rows, **SQL** is able to optimize sorting and joining tables.  
 
@@ -70,7 +70,7 @@ Keys are unique identifiers for each row, used primarily for connecting tables. 
 
 * Indexes should be added to columns that are frequently included in queries.
 
-## `SHOW INDEXES`
+## `SHOW INDEXES` {.scrollable}
 
 Notice that the `planes` table has a single `PRIMARY` key.  That primary key is used to index the table.  The `flights` table has no `PRIMARY` key, but it does have six different indexes: `Year`, `Date`, `Origin`, `Dest`, `Carrier`, and `tailNum`.
 
@@ -87,7 +87,7 @@ SHOW INDEXES FROM flights;
 ```
 
 
-## `SHOW INDEXES`
+## `SHOW INDEXES` {.scrollable}
 
 The values output by `SHOW INDEXES` are:^[Taken from: https://dev.mysql.com/doc/refman/8.0/en/show-index.html]
 
@@ -124,7 +124,7 @@ Cardinality is counted based on statistics stored as integers, so the value is n
 
 Another way to speed up query retrievals is to partition the data tables.  If, for example, the SNL queries were always done by year, then the `episodes` table could be partitioned such that they are stored as separate tables (one per `year`).  The partitioning functions as an index on `year`.  The user would not be able to tell the difference between the unpartitioned `episodes` table and the partitioned one.  However, queries done by `year` would be faster.  Queries done grouped in another way would be slower.
 
-## Querying quickly
+## Querying quickly {.scrollable}
 
 Indexes are built to accommodate the specific queries that are most likely to be run.  However, you might not know which queries are going to be run, so it isn't always obviously how to index a table.
 
@@ -136,7 +136,7 @@ SHOW INDEXES FROM flights;
 
 
 
-## `EXPLAIN` with `distance`
+## `EXPLAIN` with `distance` {.scrollable}
 
 `EXPLAIN` communicates how onerous the query is, without actually running it—saving you the time of having to wait for it to execute. 
 
@@ -172,7 +172,7 @@ EXPLAIN SELECT * FROM flights WHERE year = 2013 AND month = 6;
 ```
 
 
-## `EXPLAIN` with `month`
+## `EXPLAIN` with `month` {.scrollable}
 
 If we search for particular months across all years, the indexing does not help at all.  The query results in a table scan.
 
@@ -186,7 +186,7 @@ EXPLAIN SELECT * FROM flights WHERE month = 6;
 
 Although month is part of the `Date` index, it is the **second** column in the index, and thus it doesn't help us when we aren't filtering on year. Thus, if it were common for our users to search on month without year, it would probably be worth building an index on month. Were we to actually run these queries, there would be a significant difference in computational time.
 
-## `EXPLAIN` with `JOIN` - faster
+## `EXPLAIN` with `JOIN` - faster {.scrollable}
 
 The cardinality of the index on `tailnum` is large (the number of rows in `flights` associated with each unique value of `tailnum` is small).
 
@@ -200,7 +200,7 @@ EXPLAIN
 ```
 
 
-## `EXPLAIN` with `JOIN` - slower
+## `EXPLAIN` with `JOIN` - slower {.scrollable}
 
 * The cardinality of the index on `year` is small (the number of rows in `flights` associated with each unique `year` is large).
 
@@ -219,7 +219,7 @@ EXPLAIN
 As mentioned previously, **dbplyr** doesn’t translate every R command into SQL. After all, SQL is not a statistical software and doesn’t, for example, have a mechanism for creating data visualizations. To track which R commands are connected to SQL see the <a href = "https://dbplyr.tidyverse.org/reference/" target = "_blank">dbplyr reference sheet</a>.
 
 
-## Median
+## Median {.scrollable}
 
 Spoiler: **dbplyr** is not able to translate the `median()` function into **SQL**.
 
@@ -251,6 +251,8 @@ But when the **SQL** code is run, it doesn't seem to work.
 #| connection: con_air
 #| error: true
 
+SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY `alt`) AS `med_alt`
+FROM `airports`;
 ```
 
 ## Median
@@ -261,7 +263,7 @@ What happens when we computer the median on the `tbl`?
 #| error: true
 
 airports |>
-  summarize(med_lat = median(alt, na.rm = TRUE))
+  summarize(med_alt = median(alt, na.rm = TRUE))
 ```
 
 ## Median
@@ -287,7 +289,7 @@ WHERE subquery.row_index IN (FLOOR(@row_index / 2), CEIL(@row_index / 2));
 ```
 
 
-## Median
+## Median {.scrollable}
 
 Let's break down what the code is doing...  First, set the `row_index` to -1 and iterate through by adding +1 for each row.  Then concatenate the `row_index` information onto our table of interest. (Basically, create a column that gives a row value to the dataset, sorted by `alt`itude.)
 
@@ -307,7 +309,7 @@ SELECT @row_index:=@row_index + 1 AS row_index, alt
   LIMIT 10;
 ```
 
-## Median
+## Median {.scrollable}
 
 Next, filter the data to include only the middle row or two rows.
 
@@ -329,7 +331,7 @@ SELECT @row_index:=@row_index + 1 AS row_index, alt
 WHERE subquery.row_index IN (FLOOR(@row_index / 2), CEIL(@row_index / 2));
 ```
 
-## Median
+## Median {.scrollable}
 
 The last step is to average the middle row(s).  If only one row is pulled out in the previous query, then only one row will be averaged (which the computer does happily).
 
@@ -448,7 +450,7 @@ airports |>
 ```
 
 
-## `CASE WHEN` and `case_when()` {.scrollable}
+## `CASE WHEN` and `cut()` {.scrollable}
 
 ```{r}
 cw_query <- airports |>
@@ -462,7 +464,7 @@ cw_query <- airports |>
 show_query(cw_query)
 ```
 
-## `CASE WHEN` and `case_when()` {.scrollable}
+## `CASE WHEN` and `cut()` {.scrollable}
 
 ```{sql}
 #| connection: con_air
@@ -518,14 +520,14 @@ FROM `airports`;
 
 
 
-## `LIMIT` as `head()`
+## `LIMIT` as `head()`  {.scrollable}
 
 ```{r}
 airports |>
   head(5)
 ```
 
-## `LIMIT` as `head()`
+## `LIMIT` as `head()` {.scrollable}
 
 ```{r}
 head_query <- airports |>
@@ -535,7 +537,7 @@ show_query(head_query)
 ```
 
 
-## `LIMIT` as `head()`
+## `LIMIT` as `head()` {.scrollable}
 
 ```{sql}
 #| connection: con_air
@@ -545,7 +547,7 @@ FROM `airports`
 LIMIT 5;
 ```
 
-## `ggplot()`
+## `ggplot()` {.scrollable}
 
 ```{r}
 airports |>
@@ -553,7 +555,7 @@ airports |>
   geom_point()
 ```
 
-## `ggplot()`
+## `ggplot()` {.scrollable}
 
 ```{r}
 airports |>
@@ -562,7 +564,7 @@ airports |>
   geom_point()
 ```
 
-## `ggplot()`
+## `ggplot()` {.scrollable}
 
 ```{r}
 #| error: true

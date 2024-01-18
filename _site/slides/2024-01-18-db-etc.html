@@ -410,7 +410,7 @@ Jo Hardin
 <h2>Back to the flights</h2>
 <p>The examples below use the <code>airlines</code> database, including the <code>flights</code>, <code>carriers</code>, <code>airports</code>, and <code>planes</code> tables.</p>
 </section>
-<section id="efficiencies" class="slide level2">
+<section id="efficiencies" class="slide level2 scrollable">
 <h2>Efficiencies</h2>
 <p>Reconsider this analogy:</p>
 <blockquote>
@@ -425,7 +425,7 @@ Jo Hardin
 <li>They are also used to generate relationships among different tables.</li>
 </ol>
 </section>
-<section id="indexes" class="slide level2">
+<section id="indexes" class="slide level2 scrollable">
 <h2><code>INDEX</code>es</h2>
 <ul>
 <li><p>By indexing the rows, <strong>SQL</strong> is able to optimize sorting and joining tables.</p></li>
@@ -436,7 +436,7 @@ Jo Hardin
 <li><p>Indexes should be added to columns that are frequently included in queries.</p></li>
 </ul>
 </section>
-<section id="show-indexes" class="slide level2">
+<section id="show-indexes" class="slide level2 scrollable">
 <h2><code>SHOW INDEXES</code></h2>
 <p>Notice that the <code>planes</code> table has a single <code>PRIMARY</code> key. That primary key is used to index the table. The <code>flights</code> table has no <code>PRIMARY</code> key, but it does have six different indexes: <code>Year</code>, <code>Date</code>, <code>Origin</code>, <code>Dest</code>, <code>Carrier</code>, and <code>tailNum</code>.</p>
 <div class="cell">
@@ -473,7 +473,7 @@ Cardinality
 <th style="text-align:right;">
 Sub_part
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 Packed
 </th>
 <th style="text-align:left;">
@@ -487,12 +487,6 @@ Comment
 </th>
 <th style="text-align:left;">
 Index_comment
-</th>
-<th style="text-align:left;">
-Visible
-</th>
-<th style="text-align:left;">
-Expression
 </th>
 </tr>
 </thead>
@@ -517,11 +511,11 @@ tailnum
 A
 </td>
 <td style="text-align:right;">
-3358
+3322
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 </td>
@@ -529,11 +523,6 @@ A
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -577,7 +566,7 @@ Cardinality
 <th style="text-align:right;">
 Sub_part
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 Packed
 </th>
 <th style="text-align:left;">
@@ -591,12 +580,6 @@ Comment
 </th>
 <th style="text-align:left;">
 Index_comment
-</th>
-<th style="text-align:left;">
-Visible
-</th>
-<th style="text-align:left;">
-Expression
 </th>
 </tr>
 </thead>
@@ -621,11 +604,11 @@ year
 A
 </td>
 <td style="text-align:right;">
-23
+7
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 YES
@@ -634,11 +617,6 @@ YES
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -663,11 +641,11 @@ year
 A
 </td>
 <td style="text-align:right;">
-23
+7
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 YES
@@ -676,11 +654,6 @@ YES
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -705,11 +678,11 @@ month
 A
 </td>
 <td style="text-align:right;">
-261
+89
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 YES
@@ -718,11 +691,6 @@ YES
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -747,11 +715,11 @@ day
 A
 </td>
 <td style="text-align:right;">
-8463
+2712
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 YES
@@ -760,11 +728,6 @@ YES
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -789,11 +752,11 @@ origin
 A
 </td>
 <td style="text-align:right;">
-6775
+2267
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 </td>
@@ -801,11 +764,6 @@ A
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -830,11 +788,11 @@ dest
 A
 </td>
 <td style="text-align:right;">
-7155
+2267
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 </td>
@@ -842,11 +800,6 @@ A
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -871,11 +824,11 @@ carrier
 A
 </td>
 <td style="text-align:right;">
-451
+134
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 </td>
@@ -883,11 +836,6 @@ A
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -912,11 +860,11 @@ tailnum
 A
 </td>
 <td style="text-align:right;">
-327836
+37862
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 YES
@@ -928,11 +876,6 @@ BTREE
 </td>
 <td style="text-align:left;">
 </td>
-<td style="text-align:left;">
-YES
-</td>
-<td style="text-align:left;">
-</td>
 </tr>
 </tbody>
 
@@ -940,7 +883,7 @@ YES
 </div>
 </div>
 </section>
-<section id="show-indexes-1" class="slide level2">
+<section id="show-indexes-1" class="slide level2 scrollable">
 <h2><code>SHOW INDEXES</code></h2>
 <p>The values output by <code>SHOW INDEXES</code> are:<sup>1</sup></p>
 <ul>
@@ -964,7 +907,7 @@ Cardinality is counted based on statistics stored as integers, so the value is n
 <h2>Partitioning</h2>
 <p>Another way to speed up query retrievals is to partition the data tables. If, for example, the SNL queries were always done by year, then the <code>episodes</code> table could be partitioned such that they are stored as separate tables (one per <code>year</code>). The partitioning functions as an index on <code>year</code>. The user would not be able to tell the difference between the unpartitioned <code>episodes</code> table and the partitioned one. However, queries done by <code>year</code> would be faster. Queries done grouped in another way would be slower.</p>
 </section>
-<section id="querying-quickly" class="slide level2">
+<section id="querying-quickly" class="slide level2 scrollable">
 <h2>Querying quickly</h2>
 <p>Indexes are built to accommodate the specific queries that are most likely to be run. However, you might not know which queries are going to be run, so it isn’t always obviously how to index a table.</p>
 <div class="cell">
@@ -1001,7 +944,7 @@ Cardinality
 <th style="text-align:right;">
 Sub_part
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 Packed
 </th>
 <th style="text-align:left;">
@@ -1015,12 +958,6 @@ Comment
 </th>
 <th style="text-align:left;">
 Index_comment
-</th>
-<th style="text-align:left;">
-Visible
-</th>
-<th style="text-align:left;">
-Expression
 </th>
 </tr>
 </thead>
@@ -1045,11 +982,11 @@ year
 A
 </td>
 <td style="text-align:right;">
-23
+7
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 YES
@@ -1058,11 +995,6 @@ YES
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -1087,11 +1019,11 @@ year
 A
 </td>
 <td style="text-align:right;">
-23
+7
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 YES
@@ -1100,11 +1032,6 @@ YES
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -1129,11 +1056,11 @@ month
 A
 </td>
 <td style="text-align:right;">
-261
+89
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 YES
@@ -1142,11 +1069,6 @@ YES
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -1171,11 +1093,11 @@ day
 A
 </td>
 <td style="text-align:right;">
-8463
+2712
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 YES
@@ -1184,11 +1106,6 @@ YES
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -1213,11 +1130,11 @@ origin
 A
 </td>
 <td style="text-align:right;">
-6775
+2267
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 </td>
@@ -1225,11 +1142,6 @@ A
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -1254,11 +1166,11 @@ dest
 A
 </td>
 <td style="text-align:right;">
-7155
+2267
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 </td>
@@ -1266,11 +1178,6 @@ A
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -1295,11 +1202,11 @@ carrier
 A
 </td>
 <td style="text-align:right;">
-451
+134
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 </td>
@@ -1307,11 +1214,6 @@ A
 BTREE
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-YES
 </td>
 <td style="text-align:left;">
 </td>
@@ -1336,11 +1238,11 @@ tailnum
 A
 </td>
 <td style="text-align:right;">
-327836
+37862
 </td>
 <td style="text-align:right;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 YES
@@ -1352,11 +1254,6 @@ BTREE
 </td>
 <td style="text-align:left;">
 </td>
-<td style="text-align:left;">
-YES
-</td>
-<td style="text-align:left;">
-</td>
 </tr>
 </tbody>
 
@@ -1364,7 +1261,7 @@ YES
 </div>
 </div>
 </section>
-<section id="explain-with-distance" class="slide level2">
+<section id="explain-with-distance" class="slide level2 scrollable">
 <h2><code>EXPLAIN</code> with <code>distance</code></h2>
 <p><code>EXPLAIN</code> communicates how onerous the query is, without actually running it—saving you the time of having to wait for it to execute.</p>
 <div class="cell">
@@ -1427,7 +1324,7 @@ SIMPLE
 flights
 </td>
 <td style="text-align:left;">
-p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30,p31
+p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30,p31,p32
 </td>
 <td style="text-align:left;">
 ALL
@@ -1441,7 +1338,7 @@ ALL
 <td style="text-align:left;">
 </td>
 <td style="text-align:right;">
-163980678
+47932811
 </td>
 <td style="text-align:right;">
 33.3
@@ -1523,27 +1420,25 @@ flights
 p27
 </td>
 <td style="text-align:left;">
-ref
+ALL
 </td>
 <td style="text-align:left;">
 Year,Date
 </td>
 <td style="text-align:left;">
-Year
 </td>
 <td style="text-align:left;">
-3
 </td>
 <td style="text-align:left;">
-const
 </td>
 <td style="text-align:right;">
-2978153
+6369482
 </td>
 <td style="text-align:right;">
 100
 </td>
 <td style="text-align:left;">
+Using where
 </td>
 </tr>
 </tbody>
@@ -1633,7 +1528,7 @@ Date
 const,const
 </td>
 <td style="text-align:right;">
-1056720
+714535
 </td>
 <td style="text-align:right;">
 100
@@ -1647,7 +1542,7 @@ const,const
 </div>
 </div>
 </section>
-<section id="explain-with-month" class="slide level2">
+<section id="explain-with-month" class="slide level2 scrollable">
 <h2><code>EXPLAIN</code> with <code>month</code></h2>
 <p>If we search for particular months across all years, the indexing does not help at all. The query results in a table scan.</p>
 <div class="cell">
@@ -1710,7 +1605,7 @@ SIMPLE
 flights
 </td>
 <td style="text-align:left;">
-p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30,p31
+p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30,p31,p32
 </td>
 <td style="text-align:left;">
 ALL
@@ -1724,7 +1619,7 @@ ALL
 <td style="text-align:left;">
 </td>
 <td style="text-align:right;">
-163980678
+47932811
 </td>
 <td style="text-align:right;">
 10
@@ -1740,7 +1635,7 @@ Using where
 </div>
 <p>Although month is part of the <code>Date</code> index, it is the <strong>second</strong> column in the index, and thus it doesn’t help us when we aren’t filtering on year. Thus, if it were common for our users to search on month without year, it would probably be worth building an index on month. Were we to actually run these queries, there would be a significant difference in computational time.</p>
 </section>
-<section id="explain-with-join---faster" class="slide level2">
+<section id="explain-with-join---faster" class="slide level2 scrollable">
 <h2><code>EXPLAIN</code> with <code>JOIN</code> - faster</h2>
 <p>The cardinality of the index on <code>tailnum</code> is large (the number of rows in <code>flights</code> associated with each unique value of <code>tailnum</code> is small).</p>
 <div class="cell">
@@ -1819,7 +1714,7 @@ ALL
 <td style="text-align:left;">
 </td>
 <td style="text-align:right;">
-3358
+3322
 </td>
 <td style="text-align:right;">
 10
@@ -1839,7 +1734,7 @@ SIMPLE
 o
 </td>
 <td style="text-align:left;">
-p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30,p31
+p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30,p31,p32
 </td>
 <td style="text-align:left;">
 ref
@@ -1857,7 +1752,7 @@ tailNum
 airlines.p.tailnum
 </td>
 <td style="text-align:right;">
-500
+1266
 </td>
 <td style="text-align:right;">
 100
@@ -1871,7 +1766,7 @@ airlines.p.tailnum
 </div>
 </div>
 </section>
-<section id="explain-with-join---slower" class="slide level2">
+<section id="explain-with-join---slower" class="slide level2 scrollable">
 <h2><code>EXPLAIN</code> with <code>JOIN</code> - slower</h2>
 <ul>
 <li>The cardinality of the index on <code>year</code> is small (the number of rows in <code>flights</code> associated with each unique <code>year</code> is large).</li>
@@ -1952,7 +1847,7 @@ ALL
 <td style="text-align:left;">
 </td>
 <td style="text-align:right;">
-3358
+3322
 </td>
 <td style="text-align:right;">
 10
@@ -1972,7 +1867,7 @@ SIMPLE
 o
 </td>
 <td style="text-align:left;">
-p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30,p31
+p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30,p31,p32
 </td>
 <td style="text-align:left;">
 ref
@@ -1990,7 +1885,7 @@ Year
 airlines.p.year
 </td>
 <td style="text-align:right;">
-6897632
+6450117
 </td>
 <td style="text-align:right;">
 100
@@ -2009,7 +1904,7 @@ Using where
 <h2><strong>SQL</strong> in <strong>dbplyr</strong></h2>
 <p>As mentioned previously, <strong>dbplyr</strong> doesn’t translate every R command into SQL. After all, SQL is not a statistical software and doesn’t, for example, have a mechanism for creating data visualizations. To track which R commands are connected to SQL see the <a href="https://dbplyr.tidyverse.org/reference/" target="_blank">dbplyr reference sheet</a>.</p>
 </section>
-<section id="median" class="slide level2">
+<section id="median" class="slide level2 scrollable">
 <h2>Median</h2>
 <p>Spoiler: <strong>dbplyr</strong> is not able to translate the <code>median()</code> function into <strong>SQL</strong>.</p>
 <p>Let’s start with an example, calculating the median <code>alt</code>itude in the <code>airports</code> table. (Using <code>airports</code> instead of <code>flights</code> just because the <code>airports</code> table is so much smaller.)<sup>1</sup></p>
@@ -2019,7 +1914,7 @@ Using where
 <span id="cb10-3"><a href="#cb10-3"></a><span class="fu">head</span>(airports)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [6 x 9]
-# Database: mysql  [sds192@scidb.smith.edu:NA/airlines]
+# Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]
   faa   name                           lat   lon   alt    tz dst   city  country
   &lt;chr&gt; &lt;chr&gt;                        &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  
 1 04G   Lansdowne Airport             41.1 -80.6  1044    -5 A     Youn… United…
@@ -2050,9 +1945,11 @@ FROM `airports`</code></pre>
 <h2>Median</h2>
 <p>But when the <strong>SQL</strong> code is run, it doesn’t seem to work.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">SELECT</span> <span class="fu">PERCENTILE_CONT</span>(<span class="fl">0.5</span>) WITHIN <span class="kw">GROUP</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> `alt`) <span class="kw">AS</span> `med_alt`</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="kw">FROM</span> `airports`;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Error: Query was empty [1065]</code></pre>
+<pre><code>Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP (ORDER BY `alt`) AS `med_alt`
+FROM `airports`' at line 1 [1064]</code></pre>
 </div>
 </div>
 </section>
@@ -2061,12 +1958,12 @@ FROM `airports`</code></pre>
 <p>What happens when we computer the median on the <code>tbl</code>?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>airports <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">summarize</span>(<span class="at">med_lat =</span> <span class="fu">median</span>(alt, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">summarize</span>(<span class="at">med_alt =</span> <span class="fu">median</span>(alt, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `collect()`:
 ! Failed to collect lazy table.
 Caused by error:
-! You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(ORDER BY `alt`) AS `med_lat`
+! You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP (ORDER BY `alt`) AS `med_alt`
 FROM `airports`
 LIMIT 7' at line 1 [1064]</code></pre>
 </div>
@@ -2111,7 +2008,7 @@ median_value
 </div>
 </div>
 </section>
-<section id="median-5" class="slide level2">
+<section id="median-5" class="slide level2 scrollable">
 <h2>Median</h2>
 <p>Let’s break down what the code is doing… First, set the <code>row_index</code> to -1 and iterate through by adding +1 for each row. Then concatenate the <code>row_index</code> information onto our table of interest. (Basically, create a column that gives a row value to the dataset, sorted by <code>alt</code>itude.)</p>
 <div class="cell">
@@ -2225,7 +2122,7 @@ alt
 </div>
 </div>
 </section>
-<section id="median-6" class="slide level2">
+<section id="median-6" class="slide level2 scrollable">
 <h2>Median</h2>
 <p>Next, filter the data to include only the middle row or two rows.</p>
 <div class="cell">
@@ -2278,7 +2175,7 @@ alt
 </div>
 </div>
 </section>
-<section id="median-7" class="slide level2">
+<section id="median-7" class="slide level2 scrollable">
 <h2>Median</h2>
 <p>The last step is to average the middle row(s). If only one row is pulled out in the previous query, then only one row will be averaged (which the computer does happily).</p>
 <div class="cell">
@@ -2326,7 +2223,7 @@ median_value
 <span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [5 x 10]
-# Database: mysql  [sds192@scidb.smith.edu:NA/airlines]
+# Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]
   faa   name                     lat   lon   alt    tz dst   city  country sea  
   &lt;chr&gt; &lt;chr&gt;                  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;
 1 04G   Lansdowne Airport       41.1 -80.6  1044    -5 A     Youn… United… abov…
@@ -2580,7 +2477,7 @@ near sea
 <span id="cb31-8"><a href="#cb31-8"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [5 x 10]
-# Database: mysql  [sds192@scidb.smith.edu:NA/airlines]
+# Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]
   faa   name                     lat   lon   alt    tz dst   city  country sea  
   &lt;chr&gt; &lt;chr&gt;                  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;
 1 04G   Lansdowne Airport       41.1 -80.6  1044    -5 A     Youn… United… low …
@@ -2852,7 +2749,7 @@ near sea
 <span id="cb36-8"><a href="#cb36-8"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [5 x 10]
-# Database: mysql  [sds192@scidb.smith.edu:NA/airlines]
+# Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]
   faa   name                     lat   lon   alt    tz dst   city  country sea  
   &lt;chr&gt; &lt;chr&gt;                  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;
 1 04G   Lansdowne Airport       41.1 -80.6  1044    -5 A     Youn… United… low …
@@ -2863,8 +2760,8 @@ near sea
 </div>
 </div>
 </section>
-<section id="case-when-and-case_when-3" class="slide level2 scrollable">
-<h2><code>CASE WHEN</code> and <code>case_when()</code></h2>
+<section id="case-when-and-cut-1" class="slide level2 scrollable">
+<h2><code>CASE WHEN</code> and <code>cut()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>cw_query <span class="ot">&lt;-</span> airports <span class="sc">|&gt;</span></span>
 <span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">mutate</span>(<span class="at">sea =</span> <span class="fu">cut</span>(</span>
@@ -2890,8 +2787,8 @@ FROM `airports`</code></pre>
 </div>
 </div>
 </section>
-<section id="case-when-and-case_when-4" class="slide level2 scrollable">
-<h2><code>CASE WHEN</code> and <code>case_when()</code></h2>
+<section id="case-when-and-cut-2" class="slide level2 scrollable">
+<h2><code>CASE WHEN</code> and <code>cut()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb40-1"><a href="#cb40-1"></a><span class="kw">SELECT</span></span>
 <span id="cb40-2"><a href="#cb40-2"></a>  <span class="op">*</span>,</span>
@@ -3120,7 +3017,7 @@ near sea
 <span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [?? x 1]
-# Database: mysql  [sds192@scidb.smith.edu:NA/airlines]
+# Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]
      tz
   &lt;int&gt;
 1    -5
@@ -3210,14 +3107,14 @@ tz
 </div>
 </div>
 </section>
-<section id="limit-as-head" class="slide level2">
+<section id="limit-as-head" class="slide level2 scrollable">
 <h2><code>LIMIT</code> as <code>head()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>airports <span class="sc">|&gt;</span></span>
 <span id="cb46-2"><a href="#cb46-2"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [5 x 9]
-# Database: mysql  [sds192@scidb.smith.edu:NA/airlines]
+# Database: mysql  [mdsr_public@mdsr.cdc7tgkkqd0n.us-east-1.rds.amazonaws.com:NA/airlines]
   faa   name                           lat   lon   alt    tz dst   city  country
   &lt;chr&gt; &lt;chr&gt;                        &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  
 1 04G   Lansdowne Airport             41.1 -80.6  1044    -5 A     Youn… United…
@@ -3228,7 +3125,7 @@ tz
 </div>
 </div>
 </section>
-<section id="limit-as-head-1" class="slide level2">
+<section id="limit-as-head-1" class="slide level2 scrollable">
 <h2><code>LIMIT</code> as <code>head()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>head_query <span class="ot">&lt;-</span> airports <span class="sc">|&gt;</span></span>
@@ -3243,7 +3140,7 @@ LIMIT 5</code></pre>
 </div>
 </div>
 </section>
-<section id="limit-as-head-2" class="slide level2">
+<section id="limit-as-head-2" class="slide level2 scrollable">
 <h2><code>LIMIT</code> as <code>head()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb50-1"><a href="#cb50-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
@@ -3438,7 +3335,7 @@ United States
 </div>
 </div>
 </section>
-<section id="ggplot" class="slide level2">
+<section id="ggplot" class="slide level2 scrollable">
 <h2><code>ggplot()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>airports <span class="sc">|&gt;</span></span>
@@ -3447,7 +3344,7 @@ United States
 
 </div>
 <img data-src="2024-01-18-db-etc_files/figure-revealjs/unnamed-chunk-39-1.png" style="width:90.0%" class="r-stretch"></section>
-<section id="ggplot-1" class="slide level2">
+<section id="ggplot-1" class="slide level2 scrollable">
 <h2><code>ggplot()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>airports <span class="sc">|&gt;</span></span>
@@ -3457,7 +3354,7 @@ United States
 
 </div>
 <img data-src="2024-01-18-db-etc_files/figure-revealjs/unnamed-chunk-40-1.png" style="width:90.0%" class="r-stretch"></section>
-<section id="ggplot-2" class="slide level2">
+<section id="ggplot-2" class="slide level2 scrollable">
 <h2><code>ggplot()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>gg_query <span class="ot">&lt;-</span> airports <span class="sc">|&gt;</span></span>
