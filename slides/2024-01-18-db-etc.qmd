@@ -588,7 +588,7 @@ show_query(gg_query)
 
 * **dbplyr** is awesome and can often be helpful in figuring out **SQL** syntax
 
-* sometimes **dplyr** will provide **SQL** syntax that does not work (see the median example)
+* sometimes **dbplyr** will provide **SQL** syntax that does not work (see the median example)
 
 * sometimes there is no **SQL** syntax to match the **R** task of interest (see ggplot)
 

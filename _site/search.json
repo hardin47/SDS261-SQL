@@ -2860,7 +2860,7 @@
     "href": "slides/2024-01-18-db-etc.html#take-away-message",
     "title": "SQL Extras",
     "section": "Take-away message",
-    "text": "Take-away message\n\ndbplyr is awesome and can often be helpful in figuring out SQL syntax\nsometimes dplyr will provide SQL syntax that does not work (see the median example)\nsometimes there is no SQL syntax to match the R task of interest (see ggplot)"
+    "text": "Take-away message\n\ndbplyr is awesome and can often be helpful in figuring out SQL syntax\nsometimes dbplyr will provide SQL syntax that does not work (see the median example)\nsometimes there is no SQL syntax to match the R task of interest (see ggplot)"
   },
   {
     "objectID": "slides/2024-01-18-db-etc.html#section",
