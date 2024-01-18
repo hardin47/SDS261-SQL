@@ -265,7 +265,7 @@ I had set up my connection to the entire **mdsr** database, so I needed to add t
 9. Always a good idea to terminate the **SQL** connection when you are done with it.
 
 ```{r}
-dbDisconnect(con_air)
+dbDisconnect(con_air, shutdown = TRUE)
 ```
 
 

@@ -226,5 +226,5 @@ Semicolon-->
 ```{r}
 #| echo: false
 
-dbDisconnect(con_taxi)
+dbDisconnect(con_taxi, shutdown = TRUE)
 ```

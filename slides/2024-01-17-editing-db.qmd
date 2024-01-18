@@ -12,6 +12,22 @@ execute:
   message: false
 ---
 
+<!--
+
+this lecture is way too short (barely an hour including clicker and worksheet).  there are a lot of things that can be expanded (see below), but it would be even better with a great example or two.
+
+* slide 11, what is AUTO_DETECT?
+* fix slide 10 to match the selector gadget
+* Ivanka example, use REGEXP
+* slide 9, can i input without quotes?
+* can I input just **one** field?
+* is epid a number or character?  look at both where it is entered (originally and with the Elon Musk insertion) as well as for example where epid > 20221231 on slide 12
+* add 2 values in INSERT INTO (elon musk plus one other)
+* slide 23 walk through POSITION example, breaking down the example, use more slides
+* add SHOW TABLES along the way to show the temp table
+
+
+-->
 
 ```{r}
 #| include: false
@@ -19,6 +35,14 @@ execute:
 source("../_common.R")
 fontawesome::fa_html_dependency()
 ```
+ 
+ 
+<!--
+
+The slides were way to short.  Barely an hour with clicker and worksheet.  Here are some things to add, but might be good to also add another topic.
+
+
+-->
  
 
 # Today's example

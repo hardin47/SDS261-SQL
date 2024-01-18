@@ -607,5 +607,5 @@ new_table |>
 Always a good idea to terminate the **SQL** connection when you are done with it.
 
 ```{r}
-dbDisconnect(con_taxi)
+dbDisconnect(con_taxi, shutdown = TRUE)
 ```

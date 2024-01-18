@@ -221,7 +221,7 @@ There are 2,108 users who wrote 14,028 reviews and who are not in the users tabl
 
 ```{r}
 #| echo: false
-DBI::dbDisconnect(con_yelp)
+DBI::dbDisconnect(con_yelp, shutdown = TRUE)
 ```
 
 

@@ -107,6 +107,6 @@ flights |>
 ```{r}
 #| echo: false
 
-dbDisconnect(con_air)
+dbDisconnect(con_air, shutdown = TRUE)
 ```
 

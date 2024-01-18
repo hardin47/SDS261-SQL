@@ -22,324 +22,566 @@ fontawesome::fa_html_dependency()
 
 
 
-## **DuckDB**
-
-**DuckDB** 
-
-* in-process database management system that runs entirely on your own computer.
-
-* the data live in your storage (instead of your memory).
-
-* you don't have to transfer queries or results over the internet.
-
-## **DuckDB** caveat
-
-* the **SQL** dialect used in **DuckDB** is slightly different from **MySQL** 
-
-* write `SELECT * FROM table 10;` instead of `SELECT * FROM table 0, 10;` 
-
-* lots of different dialects, depending on the **SQL** server.  Always be aware of the dialect you are using.
-
-
-## **DuckDB** via **R** {.scrollable}
-
 ```{r}
-#| eval: false
-
-install.packages("duckdb")  # only once, in the Console, not in the .qmd or .Rmd file
-library(duckdb)             # at the top of the .qmd or .Rmd file
-
-library(DBI)                # we also still need the DBI package
-```
-
-
-```{r}
-con_duckdb <- DBI::dbConnect(duckdb::duckdb(),
-                             dbdir = "duck_datab")
-```
-
-
-* the database has been stored to a database directory called `duck_datab` which lives in the current **R** project.  
-
-* can't open it like a standard folder, but it is where **DuckDB** stores the database files.
-
-## Preparing to load data 
-
-
-The `duckdb` database is currently empty, so we need to load in some data.  The `duckdb_read_csv()` function in the **duckdb** R package allows us to load the .csv file (available on GitHub) directly into the database without being loaded as an **R** object first.
- 
-
-Recall that in @tbl-select-describe we used `DESCRIBE` to display the variable types of the database table(s).  The list includes the variable name (`Field`), its `Type`, whether there are `NULL` values allowed, and whether there are keys or indices defined on the variable.  See @tbl-casts-describe for the `DESCRIBE` output on the table we are about to import.
-
-Unlike **R**, when creating a new data table, **SQL** requires that you communicate each future variable (column) and that variable's type. Variable types are **not** automatically generated!   
-
-# Today's example
-
-## Saturday Night Live {.scrollable}
-
-
-```{r}
-#| label: fig-snl
-#| out.width: 90%
-#| fig-cap: "image credit: NBC"
-#| fig-alt: "Image says 'Saturday Night Live'."
 #| echo: false
-knitr::include_graphics("../images/SNL.jpg")
-```
 
-Consider the Saturday Night Live datasets available on the <a href = "https://github.com/hhllcks/snldb/" target = "_blank">snldb GitHub repo</a>. 
-
-## `casts` table {.scrollable}
-
-Use **R** to understand the data from `casts.csv`.
-
-```{r}
-#| echo: true
-casts <- readr::read_csv("https://raw.githubusercontent.com/hhllcks/snldb/master/output/casts.csv")
-glimpse(casts)
+con_air <- DBI::dbConnect(
+  RMariaDB::MariaDB(),
+  dbname = "airlines",
+  host = Sys.getenv("SMITH_HOST"),
+  user = Sys.getenv("SMITH_USER"),
+  password = Sys.getenv("SMITH_PWD")
+)
 ```
 
 
-## Data types
 
+## Back to the flights {-}
 
-* **Numbers**: `INTEGER`, `SMALLINT`, `NUMERIC`, `DECIMAL`, `DOUBLE(precision, scale)` precision = \# sig digits, scale = \# digits the follow decimal.
-* **String**: `CHAR`, `VARCHAR`, `BINARY`, `TEXT`
-* **Date**: `DATE`, `TIME`, `DATETIME`, `TIMESTAMP`, `YEAR`
-* **Boolean**: `SMALLINT(1)` in **MySQL**, `BOOLEAN` in **DuckDB**
-
-
-## `CHECK` constraints
-
-Violation will result in an error.
-
-```{sql}
-#| eval: false
-
-CREATE TABLE CountryListCensus (
-    Id INT,
-    CountryName VARCHAR(255) NOT NULL,
-    CountryPopulation INT CHECK(CountryPopulation > 0),
-    LastCensus DATE,
-    NextCensus DATE,
-    CHECK(LastCensus<NextCensus),
-    PRIMARY KEY (Id)
-);
-```
-
-## Loading data {.scrollable}
-
-Importing .csv files as tables, a series of steps:^[taken from <a href = "https://mdsr-book.github.io/mdsr3e/16-sqlII.html#load-into-mysql-database" target = "_blank">MDSR</a>.]
-
-1. a `USE` statement that ensures we are in the right schema/database.
-2. a series of `DROP TABLE` statements that drop any old tables with the same names as the ones we are going to create.
-3. a series of `CREATE TABLE` statements that specify the table structures.
-4. a series of `COPY` statements that read the data from the .csv files into the appropriate tables.
-
-## Loading step 1, `USE`
-
-Use the (local) database that we've called `duck_datab`.
-
-```{sql}
-#| connection: con_duckdb
-#| echo: fenced
-
-USE duck_datab;
-```
-
-## Loading step 2, refresh
-
-Make sure to "refresh" the table, in case it already exists.  However, be very careful with the `DROP TABLE` statement, as it **removes** the `casts` table.
-
-```{sql}
-#| connection: con_duckdb
-
-DROP TABLE IF EXISTS casts;
-```
-
-
-## Loading step 3, `CREATE TABLE`
-
-Carefully define the variable types, whether or not they allow missing values, and what a default value is for that variable.  Additionally, identify the key for accessing information.
-
-```{sql}
-#| connection: con_duckdb
-
-CREATE TABLE casts (
-  aid VARCHAR(255) NOT NULL DEFAULT '',
-  sid INTEGER NOT NULL DEFAULT 0,
-  featured BOOLEAN NOT NULL DEFAULT 'false',
-  first_epid INTEGER DEFAULT 0,
-  last_epid INTEGER DEFAULT 0,
-  update_anchor BOOLEAN NOT NULL DEFAULT 0,
-  n_episodes INTEGER NOT NULL DEFAULT 0,
-  season_fraction DECIMAL(21,20) NOT NULL DEFAULT 0,
-  PRIMARY KEY (sid, aid)
-);
-```
-
-
-## Loading step 4, `COPY`
-
-The .csv file lives on my computer, so I load it in directly.  [n.b., the statement to load in data is different in **MySQL**.]
-
-```{sql}
-#| connection: con_duckdb
-
-COPY casts FROM 'data/casts.csv' HEADER;
-```
-
-## Checking the loading, `SELECT` {.scrollable}
-
-```{sql}
-#| connection: con_duckdb
-#| label: select-casts
-#| output.var: "select_casts"
-
-SELECT * FROM casts LIMIT 8;
-```
-
-```{r}
-#| label: tbl-select-casts
-#| echo: false
-#| tbl-cap: "After `CREATE TABLE` where variable types are set, the `COPY` command pulls the data into the table.  `SELECT` shows us that the table is as expected."
-
-select_casts |>
-  kbl(linesep = "", booktabs = TRUE) |>
-  kable_styling(bootstrap_options = c("striped", "condensed"), 
-                latex_options = c("striped", "hold_position"),
-                full_width = FALSE) 
-
-```
-
-
-## Check the database {.scrollable}
-
-Let's make sure that the database exists and that the table in the database exists.
-
-
-```{sql}
-#| connection: con_duckdb
-
-SHOW DATABASES;
-```
-
-
-```{sql}
-#| connection: con_duckdb
-#| echo: false
-#| include: false
-
-DROP TABLE IF EXISTS actors;
-```
-
-```{sql}
-#| connection: con_duckdb
-#| echo: false
-#| include: false
-
-DROP TABLE IF EXISTS seasons;
-```
-
-```{sql}
-#| connection: con_duckdb
-#| echo: false
-#| include: false
-
-DROP TABLE IF EXISTS titles;
-```
-
-```{sql}
-#| connection: con_duckdb
-#| echo: false
-#| include: false
-
-DROP TABLE IF EXISTS hosts;
-```
-
-```{sql}
-#| connection: con_duckdb
-#| echo: false
-#| include: false
-
-DROP TABLE IF EXISTS episodes;
-```
-
-```{sql}
-#| connection: con_duckdb
-#| echo: false
-#| include: false
-
-DROP TABLE IF EXISTS impressions;
-```
-
-## Check the database {.scrollable}
-
-Let's make sure that the database exists and that the table in the database exists.
-
-```{sql}
-#| connection: con_duckdb
-
-SHOW TABLES;
-```
-## Check the database {.scrollable}
-
-Let's make sure that the database exists and that the table in the database exists.
-
-```{sql}
-#| connection: con_duckdb
-#| label: casts-describe
-#| output.var: "casts_describe"
-
-DESCRIBE casts;
-```
-
-```{r}
-#| label: tbl-casts-describe
-#| echo: false
-#| tbl-cap: "DESCRIBE variables in the casts table."
-
-casts_describe |>
-  kbl(linesep = "", booktabs = TRUE) |>
-  kable_styling(bootstrap_options = c("striped", "condensed"), 
-                latex_options = c("striped", "hold_position"),
-                full_width = FALSE) 
-
-```
-
+The examples below use the `airlines` database, including the `flights`, `carriers`, `airports`, and `planes` tables.
 
 ## Efficiencies
 
-It is worth pointing out a few aspects to loading data into **SQL**: keys, indices, and partitioning.
+Reconsider this analogy:
+
+> Each library (`database`) has books (`table`s). Each book (`table`) has pages (rows). Each page (row) has a unique page number to identify it (`key` value); to find a particular page, you sort through the page numbers (`key` values). But it isn't immediately obvious where the particular page of interest is, you might have to page through the book a little bit to find the page of interest.  It would be easier if you had several bookmarks throughout the book to anchor some of the page numbers.  For example, if you want page 1047 and you have a bookmark on page 1050, you only have to turn back three pages.  The bookmark is an `index`, it helps you find the desired rows much more quickly.^[Analogy taken from: https://www.quora.com/profile/Lara-Mazilu]
 
 
-## Key
+## `KEY`s
 
-Keys are unique identifiers for each row, used primarily for connecting tables. Keys are generally not helpful for efficiency, but they are important for data integrity and relationships between tables.
+Keys are unique identifiers for each row, used primarily for connecting tables. Keys are generally not helpful for efficiency, but they are important for data integrity and relationships between tables. A key is a pointer that identifies a record. In practice, a key is one or more columns that are earmarked to uniquely identify a record in a table. Keys serve two main purposes:
 
-* `PRIMARY KEY` is a column or set of columns that uniquely identify each row.  Primary keys cannot be `NULL`.
-* `FOREIGN KEY` is a column or set of columns that reference a primary key in a different table.  A foreign key can be `NULL`.
+1. They provide constraints on the column such as that it can't store duplicate or null values.
+2. They are also used to generate relationships among different tables.
 
-## Index
 
-Indices are the crux of why **SQL** is so much more efficient than, say, **R**.  An index is a lookup table that helps **SQL** keep track of which records contain certain values.  By indexing the rows, **SQL** is able to optimize sorting and joining tables.  The index is created in advance (when the table is created) and saved to disk, which can take up substantial space on the disk.  Sometimes more than one variable is used to index the table. There are trade-offs to having a lot of indices (disk space but fast wrangling) versus a few indices (slow wrangling but less space).
 
-## Find keys and indices
+## `INDEX`es
 
-In **MySQL** the commands `SHOW KEYS` and `SHOW INDEXES` provide information about the keys and indices for each table.
+* By indexing the rows, **SQL** is able to optimize sorting and joining tables.  
+
+* The index is created in advance (when the table is created) and saved to disk, which can take up substantial space on the disk.  
+
+* Sometimes more than one variable is used to index the table. 
+
+* There are trade-offs to having a lot of indexes (disk space but fast wrangling) versus a few indexes (slow wrangling but less space).
+
+* A table may have more than one index but you shouldn't add indexes to every column in a table, as these have to be updated for every addition/update/delete to the column. 
+
+* Indexes should be added to columns that are frequently included in queries.
+
+## `SHOW INDEXES`
+
+Notice that the `planes` table has a single `PRIMARY` key.  That primary key is used to index the table.  The `flights` table has no `PRIMARY` key, but it does have six different indexes: `Year`, `Date`, `Origin`, `Dest`, `Carrier`, and `tailNum`.
+
+```{sql}
+#| connection: con_air
+
+SHOW INDEXES FROM planes;
+```
+
+```{sql}
+#| connection: con_air
+
+SHOW INDEXES FROM flights;
+```
+
+
+## `SHOW INDEXES`
+
+The values output by `SHOW INDEXES` are:^[Taken from: https://dev.mysql.com/doc/refman/8.0/en/show-index.html]
+
+* `Table`: The name of the table.
+
+* `Non_unique`: 0 if the index cannot contain duplicates, 1 if it can.
+
+* `Key_name`: The name of the index. If the index is the primary key, the name is always `PRIMARY`.
+
+* `Seq_in_index`: The column sequence number in the index, starting with 1.
+
+* `Column_name`: The column name. See also the description for the Expression column.
+
+* `Collation`: How the column is sorted in the index. This can have values A (ascending), D (descending), or NULL (not sorted).
+
+* `Cardinality`: An estimate of the number of unique values in the index.  
+Cardinality is counted based on statistics stored as integers, so the value is not necessarily exact even for small tables. The higher the cardinality, the greater the chance that **MySQL** uses the index when doing joins. Indexing with a high cardinality variable will be particularly useful for increased efficiency (if that variable is being queried).
+
+* `Sub_part`: The index prefix. That is, the number of indexed characters if the column is only partly indexed, NULL if the entire column is indexed.
+
+* `Packed`: Indicates how the key is packed. `NULL` if it is not.
+
+* `Null`: Contains `YES` if the column may contain `NULL` values and '' if not.
+
+* `Index_type`: The index method used (`BTREE`, `FULLTEXT`, `HASH`, `RTREE`).
+
+* `Comment`: Information about the index not described in its own column, such as disabled if the index is disabled.
+
+* `Index_comment`: Any comment provided for the index with a `COMMENT` attribute when the index was created.
+
 
 
 ## Partitioning
 
-Another way to speed up query retrievals is to partition the data tables.  If, for example, the SNL queries were always done by year, then the `episodes` table could be partitioned such that they are stored as separate tables (one per `year`).  The partitioning functions as an index on `year`.  The user would not be able to tell the difference between the unpartitioned `episodes` table and the partitioned one.  Queries done by `year` would be faster.  Queries done grouped in another way would be slower.
+Another way to speed up query retrievals is to partition the data tables.  If, for example, the SNL queries were always done by year, then the `episodes` table could be partitioned such that they are stored as separate tables (one per `year`).  The partitioning functions as an index on `year`.  The user would not be able to tell the difference between the unpartitioned `episodes` table and the partitioned one.  However, queries done by `year` would be faster.  Queries done grouped in another way would be slower.
 
+## Querying quickly
+
+Indexes are built to accommodate the specific queries that are most likely to be run.  However, you might not know which queries are going to be run, so it isn't always obviously how to index a table.
+
+```{sql}
+#| connection: con_air
+
+SHOW INDEXES FROM flights;
+```
+
+
+
+## `EXPLAIN` with `distance`
+
+`EXPLAIN` communicates how onerous the query is, without actually running it—saving you the time of having to wait for it to execute. 
+
+```{sql}
+#| connection: con_air
+
+EXPLAIN SELECT * FROM flights WHERE distance > 3000;
+```
+
+
+If we were to run a query for long flights using the `distance` column the server will have to inspect **each** of the 48 million rows, because `distance` is not indexed. A query on a non-indexed variable is the slowest possible search and is often called a table scan. The 48 million number that you see in the rows column is an estimate of the number of rows that **MySQL** will have to consult in order to process your query. In general, more rows mean a slower query.
+
+
+## `EXPLAIN` with `year`
+
+
+A search for recent flights using the `year` column, which has an index built on it, considers many fewer rows (about 6.3 million, those flights in 2013).
+
+```{sql}
+#| connection: con_air
+
+EXPLAIN SELECT * FROM flights WHERE year = 2013;
+```
+
+## `EXPLAIN` with `year` and `month`
+
+In a search by `year` and `month`, **SQL** uses the `Date` index. Only 700,000 rows are searched, those in June of 2013.
+
+```{sql}
+#| connection: con_air
+
+EXPLAIN SELECT * FROM flights WHERE year = 2013 AND month = 6;
+```
+
+
+## `EXPLAIN` with `month`
+
+If we search for particular months across all years, the indexing does not help at all.  The query results in a table scan.
+
+```{sql}
+#| connection: con_air
+
+EXPLAIN SELECT * FROM flights WHERE month = 6;
+```
+
+
+
+Although month is part of the `Date` index, it is the **second** column in the index, and thus it doesn't help us when we aren't filtering on year. Thus, if it were common for our users to search on month without year, it would probably be worth building an index on month. Were we to actually run these queries, there would be a significant difference in computational time.
+
+## `EXPLAIN` with `JOIN` - faster
+
+The cardinality of the index on `tailnum` is large (the number of rows in `flights` associated with each unique value of `tailnum` is small).
+
+```{sql}
+#| connection: con_air
+
+EXPLAIN 
+  SELECT * FROM planes p 
+  LEFT JOIN flights o ON p.tailnum = o.TailNum
+  WHERE manufacturer = 'BOEING';
+```
+
+
+## `EXPLAIN` with `JOIN` - slower
+
+* The cardinality of the index on `year` is small (the number of rows in `flights` associated with each unique `year` is large).
+
+```{sql}
+#| connection: con_air
+
+EXPLAIN 
+  SELECT * FROM planes p 
+  LEFT JOIN flights o ON p.Year = o.Year
+  WHERE manufacturer = 'BOEING';
+```
+
+
+## **SQL** in **dbplyr**
+
+As mentioned previously, **dbplyr** doesn’t translate every R command into SQL. After all, SQL is not a statistical software and doesn’t, for example, have a mechanism for creating data visualizations. To track which R commands are connected to SQL see the <a href = "https://dbplyr.tidyverse.org/reference/" target = "_blank">dbplyr reference sheet</a>.
+
+
+## Median
+
+Spoiler: **dbplyr** is not able to translate the `median()` function into **SQL**.
+
+Let's start with an example, calculating the median `alt`itude in the `airports` table.  (Using `airports` instead of `flights` just because the `airports` table is so much smaller.)^[Example taken from: https://sebhastian.com/mysql-median/]
+
+```{r}
+airports <- tbl(con_air, "airports")
+
+head(airports)
+```
+
+## Median
+
+It *looks* like `show_query()` is providing **SQL** code for calculating the median!
+
+```{r}
+median_query <- airports |>
+  summarize(med_alt = median(alt, na.rm = TRUE))
+
+show_query(median_query)
+```
+
+
+## Median
+
+But when the **SQL** code is run, it doesn't seem to work.
+
+```{sql}
+#| connection: con_air
+#| error: true
+
+```
+
+## Median
+
+What happens when we computer the median on the `tbl`?
+
+```{r}
+#| error: true
+
+airports |>
+  summarize(med_lat = median(alt, na.rm = TRUE))
+```
+
+## Median
+
+The following is **SQL** code to calculate the median.  What does it all mean?
+
+```{sql}
+#| connection: con_air
+
+SET @row_index := -1;
+```
+
+```{sql}
+#| connection: con_air
+
+SELECT AVG(subquery.alt) AS median_value
+FROM (
+SELECT @row_index:=@row_index + 1 AS row_index, alt
+  FROM airports
+  ORDER BY alt
+) AS subquery
+WHERE subquery.row_index IN (FLOOR(@row_index / 2), CEIL(@row_index / 2));
+```
+
+
+## Median
+
+Let's break down what the code is doing...  First, set the `row_index` to -1 and iterate through by adding +1 for each row.  Then concatenate the `row_index` information onto our table of interest. (Basically, create a column that gives a row value to the dataset, sorted by `alt`itude.)
+
+
+```{sql}
+#| connection: con_air
+
+SET @row_index := -1;
+```
+
+```{sql}
+#| connection: con_air
+
+SELECT @row_index:=@row_index + 1 AS row_index, alt
+  FROM airports
+  ORDER BY alt
+  LIMIT 10;
+```
+
+## Median
+
+Next, filter the data to include only the middle row or two rows.
+
+```{sql}
+#| connection: con_air
+
+SET @row_index := -1;
+```
+
+```{sql}
+#| connection: con_air
+
+SELECT *
+FROM (
+SELECT @row_index:=@row_index + 1 AS row_index, alt
+  FROM airports
+  ORDER BY alt
+) AS subquery
+WHERE subquery.row_index IN (FLOOR(@row_index / 2), CEIL(@row_index / 2));
+```
+
+## Median
+
+The last step is to average the middle row(s).  If only one row is pulled out in the previous query, then only one row will be averaged (which the computer does happily).
+
+```{sql}
+#| connection: con_air
+
+SET @row_index := -1;
+```
+
+```{sql}
+#| connection: con_air
+
+SELECT AVG(subquery.alt) AS median_value
+FROM (
+SELECT @row_index:=@row_index + 1 AS row_index, alt
+  FROM airports
+  ORDER BY alt
+) AS subquery
+WHERE subquery.row_index IN (FLOOR(@row_index / 2), CEIL(@row_index / 2));
+```
+
+
+## `CASE WHEN` and `ifelse()` {.scrollable}
+
+Consider the various R functions that create new variables based on an original variable.
+
+
+```{r}
+airports |>
+  mutate(sea = ifelse(alt > 500, "above sea", "near sea")) |>
+  head(5)
+```
+
+
+## `CASE WHEN` and `ifelse()` {.scrollable}
+
+```{r}
+if_query <- airports |>
+  mutate(sea = ifelse(alt > 500, "above sea", "near sea"))
+
+show_query(if_query)
+```
+
+## `CASE WHEN` and `ifelse()` {.scrollable}
+
+```{sql}
+#| connection: con_air
+
+SELECT *,
+CASE WHEN (`alt` > 500.0) THEN 'above sea' WHEN NOT (`alt` > 500.0) THEN 'near sea' END AS `sea`
+FROM `airports` 
+LIMIT 5;
+```
+
+
+## `CASE WHEN` and `case_when()` {.scrollable}
+
+
+```{r}
+airports |>
+  mutate(sea = case_when(
+    alt < 500 ~ "near sea",
+    alt < 2000 ~ "low alt",
+    alt < 3000 ~ "mod alt",
+    alt < 5500 ~ "high alt",
+    alt > 5500 ~ "extreme alt")) |>
+  head(5)
+```
+
+
+## `CASE WHEN` and `case_when()` {.scrollable}
+
+```{r}
+cw_query <- airports |>
+  mutate(sea = case_when(
+    alt < 500 ~ "near sea",
+    alt < 2000 ~ "low alt",
+    alt < 3000 ~ "mod alt",
+    alt < 5500 ~ "high alt",
+    alt > 5500 ~ "extreme alt"))
+
+show_query(cw_query)
+```
+
+## `CASE WHEN` and `case_when()` {.scrollable}
+
+```{sql}
+#| connection: con_air
+
+SELECT
+  *,
+  CASE
+WHEN (`alt` < 500.0) THEN 'near sea'
+WHEN (`alt` < 2000.0) THEN 'low alt'
+WHEN (`alt` < 3000.0) THEN 'mod alt'
+WHEN (`alt` < 5500.0) THEN 'high alt'
+WHEN (`alt` > 5500.0) THEN 'extreme alt'
+END AS `sea`
+FROM `airports`
+LIMIT 5;
+```
+
+
+## `CASE WHEN` and `cut()` {.scrollable}
+
+
+```{r}
+airports |>
+  mutate(sea = cut(
+    alt,
+    breaks = c(-Inf, 500, 2000, 3000, 5500, Inf),
+    labels = c("near sea", "low alt", "mod alt", "high alt", "extreme alt")
+  )
+)|>
+  head(5)
+```
+
+
+## `CASE WHEN` and `case_when()` {.scrollable}
+
+```{r}
+cw_query <- airports |>
+  mutate(sea = cut(
+    alt,
+    breaks = c(-Inf, 500, 2000, 3000, 5500, Inf),
+    labels = c("near sea", "low alt", "mod alt", "high alt", "extreme alt")
+  )
+)
+
+show_query(cw_query)
+```
+
+## `CASE WHEN` and `case_when()` {.scrollable}
+
+```{sql}
+#| connection: con_air
+
+SELECT
+  *,
+  CASE
+WHEN (`alt` <= 500.0) THEN 'near sea'
+WHEN (`alt` <= 2000.0) THEN 'low alt'
+WHEN (`alt` <= 3000.0) THEN 'mod alt'
+WHEN (`alt` <= 5500.0) THEN 'high alt'
+WHEN (`alt` > 5500.0) THEN 'extreme alt'
+END AS `sea`
+FROM `airports`
+LIMIT 5;
+```
+
+
+## `distinct()` {.scrollable}
+
+How many distinct time zones are there in the `airports` table?
+
+```{r}
+airports |>
+  select(tz) |>
+  distinct()
+```
+
+## `distinct()` {.scrollable}
+
+How many distinct time zones are there in the `airports` table?
+
+```{r}
+dist_query <- airports |>
+  select(tz) |>
+  distinct()
+
+show_query(dist_query)
+```
+
+## `distinct()` {.scrollable}
+
+How many distinct time zones are there in the `airports` table?
+
+
+```{sql}
+#| connection: con_air
+
+SELECT DISTINCT `tz`
+FROM `airports`;
+```
+
+
+
+
+## `LIMIT` as `head()`
+
+```{r}
+airports |>
+  head(5)
+```
+
+## `LIMIT` as `head()`
+
+```{r}
+head_query <- airports |>
+  head(5)
+
+show_query(head_query)
+```
+
+
+## `LIMIT` as `head()`
+
+```{sql}
+#| connection: con_air
+
+SELECT *
+FROM `airports`
+LIMIT 5;
+```
+
+## `ggplot()`
+
+```{r}
+airports |>
+  ggplot(aes(x = lon, y = lat)) +
+  geom_point()
+```
+
+## `ggplot()`
+
+```{r}
+airports |>
+  filter(lon < 0) |>
+  ggplot(aes(x = lon, y = lat)) +
+  geom_point()
+```
+
+## `ggplot()`
+
+```{r}
+#| error: true
+gg_query <- airports |>
+  filter(lon < 0) |>
+  ggplot(aes(x = lon, y = lat)) +
+  geom_point()
+
+show_query(gg_query)
+```
 
 ## Best practice
 
 It is always a good idea to terminate the **SQL** connection when you are done with it.
 
 ```{r}
-dbDisconnect(con_duckdb, shutdown = TRUE)
+dbDisconnect(con_air, shutdown = TRUE)
 ```
+
+
 
 

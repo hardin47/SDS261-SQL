@@ -267,7 +267,7 @@ SELECT year, count(*) AS num_flights
 Always a good idea to terminate the **SQL** connection when you are done with it.
 
 ```{r}
-dbDisconnect(con_air)
+dbDisconnect(con_air, shutdown = TRUE)
 ```
 
 # Using **SQL** in **DBeaver**

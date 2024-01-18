@@ -666,7 +666,7 @@ ORDER BY production_year DESC, num_votes;
 It is always a good idea to terminate the **SQL** connection when you are done with it.
 
 ```{r}
-DBI::dbDisconnect(con_imdb)
+DBI::dbDisconnect(con_imdb, shutdown = TRUE)
 ```
 
 
