@@ -665,64 +665,74 @@ str_extract(c("apple pie", "chocolate pie", "peach pie"), "\\w+(?=pie)")
 
 ---
 
-51. Which has a larger cardinality, `Tailnum` or `Year`?[^51]
+51. In the `flights` table, the following `INDEX`es exist: `Tailnum`, `Year`, and `Date`.  How many rows would be looked through if the `WHERE` filter was on `month` only?[^51]
+    (a) more than 6.3 million
+    (b) less than 6.3 million
+    (c) more than 700,000
+    (d) less than 700,000
+    
+[^51]: a. more than 6.3 million. Because there is no index on month (and we don't have a year to incorporate month into the Date index), we need to look through all 48 million rows.
+
+---
+
+52. Which has a larger cardinality, `Tailnum` or `Year`?[^52]
     (a) `Tailnum`
     (b) `Year`
     (c) they have the same cardinality
     (d) neither has a cardinality
 
-[^51]: a. `Tailnum`. The cardinality is the number of unique values, and there are many more unique planes than years.
+[^52]: a. `Tailnum`. The cardinality is the number of unique values, and there are many more unique planes than years.
 
 
 ---
 
-52. Which index takes up more storage space, the one on `Tailnum` or the one on `Year`?[^52]
+53. Which index takes up more storage space, the one on `Tailnum` or the one on `Year`?[^53]
     (a) `Tailnum`
     (b) `Year`
     (c) they take up the same space
     (d) you can't index on either variable
 
-[^52]: a. `Tailnum`. Because the cardinality is higher, it will take up much more space in the index.
+[^53]: a. `Tailnum`. Because the cardinality is higher, it will take up much more space in the index.
 
 ---
 
-53. Which index is more effective at reducing querying time, the one on `Tailnum` or the one on `Year`?[^53]
+54. Which index is more effective at reducing querying time, the one on `Tailnum` or the one on `Year`?[^54]
     (a) `Tailnum`
     (b) `Year`
     (c) the queries would be the same
     (d) you can't query on either variable
     
-[^53]: a. `Tailnum`. Because the index is more complete, it will make the querying more efficient.
+[^54]: a. `Tailnum`. Because the index is more complete, it will make the querying more efficient.
 
 ---
 
-54. What does the **R** function `ifelse(a, b, c)` do?[^54]
+55. What does the **R** function `ifelse(a, b, c)` do?[^55]
     (a) a = TRUE option, b = FALSE option, c = question
     (b) a = FALSE option, b = TRUE option, c = question
     (c) a = question, b = TRUE option, c = FALSE option
     (d) a = question, b = FALSE option, c = TRUE option
 
-[^54]: c. a = question, b = TRUE option, c = FALSE option
+[^55]: c. a = question, b = TRUE option, c = FALSE option
 
 ---
 
-55. What does the **R** function `case_when()` do?[^55]
+56. What does the **R** function `case_when()` do?[^56]
     (a) renames a variable
     (b) changes the data type of a variable
     (c) partitions a numeric variable
     (d) creates a new variable by re-coding an original variable
 
-[^55]: d. creates a new variable by re-coding an original variable
+[^56]: d. creates a new variable by re-coding an original variable
 
 ---
 
-56. What does the **R** function `cut()` do?[^56]
+57. What does the **R** function `cut()` do?[^57]
     (a) renames a variable
     (b) changes the data type of a variable
     (c) partitions a numeric variable
     (d) creates a new variable by re-coding an original variable
 
-[^56]: c. partitions a numeric variable
+[^57]: c. partitions a numeric variable
 
 ---
 

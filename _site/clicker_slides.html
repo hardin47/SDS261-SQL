@@ -1087,7 +1087,19 @@ can use flights data for cities with particular names-->
 <section class="slide level2">
 
 <ol start="51" type="1">
-<li>Which has a larger cardinality, <code>Tailnum</code> or <code>Year</code>?<a href="#/footnotes" class="footnote-ref" id="fnref51" role="doc-noteref" data-footnote-href="#/fn51" onclick=""><sup>51</sup></a>
+<li>In the <code>flights</code> table, the following <code>INDEX</code>es exist: <code>Tailnum</code>, <code>Year</code>, and <code>Date</code>. How many rows would be looked through if the <code>WHERE</code> filter was on <code>month</code> only?<a href="#/footnotes" class="footnote-ref" id="fnref51" role="doc-noteref" data-footnote-href="#/fn51" onclick=""><sup>51</sup></a>
+<ol type="a">
+<li>more than 6.3 million</li>
+<li>less than 6.3 million</li>
+<li>more than 700,000</li>
+<li>less than 700,000</li>
+</ol></li>
+</ol>
+<aside></aside></section>
+<section class="slide level2">
+
+<ol start="52" type="1">
+<li>Which has a larger cardinality, <code>Tailnum</code> or <code>Year</code>?<a href="#/footnotes" class="footnote-ref" id="fnref52" role="doc-noteref" data-footnote-href="#/fn52" onclick=""><sup>52</sup></a>
 <ol type="a">
 <li><code>Tailnum</code></li>
 <li><code>Year</code></li>
@@ -1098,8 +1110,8 @@ can use flights data for cities with particular names-->
 <aside></aside></section>
 <section class="slide level2">
 
-<ol start="52" type="1">
-<li>Which index takes up more storage space, the one on <code>Tailnum</code> or the one on <code>Year</code>?<a href="#/footnotes" class="footnote-ref" id="fnref52" role="doc-noteref" data-footnote-href="#/fn52" onclick=""><sup>52</sup></a>
+<ol start="53" type="1">
+<li>Which index takes up more storage space, the one on <code>Tailnum</code> or the one on <code>Year</code>?<a href="#/footnotes" class="footnote-ref" id="fnref53" role="doc-noteref" data-footnote-href="#/fn53" onclick=""><sup>53</sup></a>
 <ol type="a">
 <li><code>Tailnum</code></li>
 <li><code>Year</code></li>
@@ -1110,8 +1122,8 @@ can use flights data for cities with particular names-->
 <aside></aside></section>
 <section class="slide level2">
 
-<ol start="53" type="1">
-<li>Which index is more effective at reducing querying time, the one on <code>Tailnum</code> or the one on <code>Year</code>?<a href="#/footnotes" class="footnote-ref" id="fnref53" role="doc-noteref" data-footnote-href="#/fn53" onclick=""><sup>53</sup></a>
+<ol start="54" type="1">
+<li>Which index is more effective at reducing querying time, the one on <code>Tailnum</code> or the one on <code>Year</code>?<a href="#/footnotes" class="footnote-ref" id="fnref54" role="doc-noteref" data-footnote-href="#/fn54" onclick=""><sup>54</sup></a>
 <ol type="a">
 <li><code>Tailnum</code></li>
 <li><code>Year</code></li>
@@ -1122,8 +1134,8 @@ can use flights data for cities with particular names-->
 <aside></aside></section>
 <section class="slide level2">
 
-<ol start="54" type="1">
-<li>What does the <strong>R</strong> function <code>ifelse(a, b, c)</code> do?<a href="#/footnotes" class="footnote-ref" id="fnref54" role="doc-noteref" data-footnote-href="#/fn54" onclick=""><sup>54</sup></a>
+<ol start="55" type="1">
+<li>What does the <strong>R</strong> function <code>ifelse(a, b, c)</code> do?<a href="#/footnotes" class="footnote-ref" id="fnref55" role="doc-noteref" data-footnote-href="#/fn55" onclick=""><sup>55</sup></a>
 <ol type="a">
 <li>a = TRUE option, b = FALSE option, c = question</li>
 <li>a = FALSE option, b = TRUE option, c = question</li>
@@ -1134,8 +1146,8 @@ can use flights data for cities with particular names-->
 <aside></aside></section>
 <section class="slide level2">
 
-<ol start="55" type="1">
-<li>What does the <strong>R</strong> function <code>case_when()</code> do?<a href="#/footnotes" class="footnote-ref" id="fnref55" role="doc-noteref" data-footnote-href="#/fn55" onclick=""><sup>55</sup></a>
+<ol start="56" type="1">
+<li>What does the <strong>R</strong> function <code>case_when()</code> do?<a href="#/footnotes" class="footnote-ref" id="fnref56" role="doc-noteref" data-footnote-href="#/fn56" onclick=""><sup>56</sup></a>
 <ol type="a">
 <li>renames a variable</li>
 <li>changes the data type of a variable</li>
@@ -1146,8 +1158,8 @@ can use flights data for cities with particular names-->
 <aside></aside></section>
 <section class="slide level2">
 
-<ol start="56" type="1">
-<li>What does the <strong>R</strong> function <code>cut()</code> do?<a href="#/footnotes" class="footnote-ref" id="fnref56" role="doc-noteref" data-footnote-href="#/fn56" onclick=""><sup>56</sup></a>
+<ol start="57" type="1">
+<li>What does the <strong>R</strong> function <code>cut()</code> do?<a href="#/footnotes" class="footnote-ref" id="fnref57" role="doc-noteref" data-footnote-href="#/fn57" onclick=""><sup>57</sup></a>
 <ol type="a">
 <li>renames a variable</li>
 <li>changes the data type of a variable</li>
@@ -1364,26 +1376,30 @@ can use flights data for cities with particular names-->
 </ol>
 </li>
 <li id="fn51"><ol type="a">
-<li><code>Tailnum</code>. The cardinality is the number of unique values, and there are many more unique planes than years.</li>
+<li>more than 6.3 million. Because there is no index on month (and we don’t have a year to incorporate month into the Date index), we need to look through all 48 million rows.</li>
 </ol>
 </li>
 <li id="fn52"><ol type="a">
-<li><code>Tailnum</code>. Because the cardinality is higher, it will take up much more space in the index.</li>
+<li><code>Tailnum</code>. The cardinality is the number of unique values, and there are many more unique planes than years.</li>
 </ol>
 </li>
 <li id="fn53"><ol type="a">
+<li><code>Tailnum</code>. Because the cardinality is higher, it will take up much more space in the index.</li>
+</ol>
+</li>
+<li id="fn54"><ol type="a">
 <li><code>Tailnum</code>. Because the index is more complete, it will make the querying more efficient.</li>
 </ol>
 </li>
-<li id="fn54"><ol start="3" type="a">
+<li id="fn55"><ol start="3" type="a">
 <li>a = question, b = TRUE option, c = FALSE option</li>
 </ol>
 </li>
-<li id="fn55"><ol start="4" type="a">
+<li id="fn56"><ol start="4" type="a">
 <li>creates a new variable by re-coding an original variable</li>
 </ol>
 </li>
-<li id="fn56"><ol start="3" type="a">
+<li id="fn57"><ol start="3" type="a">
 <li>partitions a numeric variable</li>
 </ol>
 </li>

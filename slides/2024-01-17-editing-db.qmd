@@ -25,6 +25,11 @@ this lecture is way too short (barely an hour including clicker and worksheet). 
 * add 2 values in INSERT INTO (elon musk plus one other)
 * slide 23 walk through POSITION example, breaking down the example, use more slides
 * add SHOW TABLES along the way to show the temp table
+* add `ALTER` to `ALTER TABLE` because that's what DuckDB uses, and it's the answer to a problem in Lab 6
+* sum two columns:
+ALTER TABLE your_table ADD COLUMN sum_column INTEGER;
+UPDATE your_table SET sum_column = column1 + column2;
+
 
 
 -->
